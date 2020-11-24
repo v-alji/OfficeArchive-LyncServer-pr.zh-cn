@@ -1,0 +1,185 @@
+---
+title: Lync Server 2013：配置自动发现的证书
+description: Lync Server 2013：配置自动发现的证书。
+ms.reviewer: ''
+ms.author: v-lanac
+author: lanachin
+f1.keywords:
+- NOCSH
+TOCTitle: Configuring certificates for Autodiscover
+ms:assetid: 1842191d-df9a-41e0-9286-08c25f9b5dca
+ms:mtpsurl: https://technet.microsoft.com/en-us/library/JJ945617(v=OCS.15)
+ms:contentKeyID: 51541453
+ms.date: 07/23/2014
+manager: serdars
+mtps_version: v=OCS.15
+ms.openlocfilehash: 98ab9eca92685eef8bccc500dc4a91efa891dec6
+ms.sourcegitcommit: 36fee89bb887bea4f18b19f17a8c69daf5bc423d
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "49391753"
+---
+# <a name="configuring-certificates-for-autodiscover-in-lync-server-2013"></a><span data-ttu-id="44086-103">在 Lync Server 2013 中配置自动发现的证书</span><span class="sxs-lookup"><span data-stu-id="44086-103">Configuring certificates for Autodiscover in Lync Server 2013</span></span>
+
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+
+<div class="topic" data-xmlns="http://www.w3.org/1999/xhtml" data-msxsl="urn:schemas-microsoft-com:xslt" data-cs="https://msdn.microsoft.com/">
+
+<div data-asp="https://msdn2.microsoft.com/asp">
+
+
+
+</div>
+
+<div id="mainSection">
+
+<div id="mainBody"><span data-ttu-id="44086-104">
+
+<span> </span></span><span class="sxs-lookup"><span data-stu-id="44086-104">
+
+<span> </span></span></span>
+
+<span data-ttu-id="44086-105">_**主题上次修改时间：** 2012-12-12_</span><span class="sxs-lookup"><span data-stu-id="44086-105">_**Topic Last Modified:** 2012-12-12_</span></span>
+
+<span data-ttu-id="44086-106">Director 池、前端池和反向代理的证书需要其他使用者备用名称条目才能支持与 Lync 客户端的安全连接。</span><span class="sxs-lookup"><span data-stu-id="44086-106">The certificates for your Director pool, Front End pool, and reverse proxy require additional subject alternative name entries to support secure connections with Lync clients.</span></span>
+
+<div>
+
+
+> [!NOTE]  
+> <span data-ttu-id="44086-107">你可以使用 <STRONG>CsCertificate</STRONG> cmdlet 查看有关当前已分配证书的信息。</span><span class="sxs-lookup"><span data-stu-id="44086-107">You can use the <STRONG>Get-CsCertificate</STRONG> cmdlet to view information about the currently assigned certificates.</span></span> <span data-ttu-id="44086-108">但是，默认视图将截断证书的属性，并且不显示 SubjectAlternativeNames 属性中的所有值。</span><span class="sxs-lookup"><span data-stu-id="44086-108">However, the default view truncates the properties of the certificate and does not display all values in the SubjectAlternativeNames property.</span></span> <span data-ttu-id="44086-109">你可以使用 <STRONG>CsCertificate</STRONG> <STRONG>、CsCertificate 和</STRONG> <STRONG>CsCertificate</STRONG> cmdlet 查看某些信息以及申请和分配证书。</span><span class="sxs-lookup"><span data-stu-id="44086-109">You can use the <STRONG>Get-CsCertificate</STRONG> , <STRONG>Request-</STRONG>CsCertificate and the <STRONG>Set-CsCertificate</STRONG> cmdlets to view some information and to request and assign certificates.</span></span> <span data-ttu-id="44086-110">但是，如果不确定当前证书上 (SAN) 的主题备用名称的属性，则不能使用最佳方法。</span><span class="sxs-lookup"><span data-stu-id="44086-110">However, it’s not the best method to use if you are unsure of the properties of the subject alternative names (SAN) on the current certificate.</span></span> <span data-ttu-id="44086-111">若要查看证书和所有属性成员，建议使用 <EM>Microsoft 管理控制台 (MMC) </EM> 中的 "证书" 管理单元，或使用 Lync Server 部署向导。</span><span class="sxs-lookup"><span data-stu-id="44086-111">To view the certificate and all property members, it is suggested to use the Certificates snap-in the <EM>Microsoft Management Console (MMC)</EM> or to use the Lync Server Deployment Wizard.</span></span> <span data-ttu-id="44086-112">在 Lync Server 部署向导中，可以使用证书向导查看证书属性。</span><span class="sxs-lookup"><span data-stu-id="44086-112">In the Lync Server Deployment Wizard, you can use the Certificate Wizard to view the certificate properties.</span></span> <span data-ttu-id="44086-113">下面的过程详细介绍了使用 Lync Server 管理外壳程序和 Microsoft 管理控制台查看、请求和分配证书 <EM> (MMC) </EM> 的过程。</span><span class="sxs-lookup"><span data-stu-id="44086-113">The procedures for viewing, requesting and assigning a certificate using the Lync Server Management Shell and the <EM>Microsoft Management Console (MMC)</EM> are detailed in the following procedures.</span></span> <span data-ttu-id="44086-114">若要使用 Lync Server 部署向导，请参阅此处的详细信息如果已部署可选控制器或控制器池，请执行以下操作： <A href="lync-server-2013-configure-certificates-for-the-director.md">在 Lync Server 2013 中配置 Director 的证书</A>。</span><span class="sxs-lookup"><span data-stu-id="44086-114">To use the Lync Server Deployment Wizard, see details here if you have deployed the optional Director or Director pool: <A href="lync-server-2013-configure-certificates-for-the-director.md">Configure certificates for the Director in Lync Server 2013</A>.</span></span> <span data-ttu-id="44086-115">对于前端服务器或前端池，请参阅此处的详细信息： <A href="lync-server-2013-configure-certificates-for-servers.md">在 Lync Server 2013 中配置服务器的证书</A>。</span><span class="sxs-lookup"><span data-stu-id="44086-115">For the Front End Server or Front End pool, see the details here: <A href="lync-server-2013-configure-certificates-for-servers.md">Configure certificates for servers in Lync Server 2013</A>.</span></span><BR><span data-ttu-id="44086-116">此过程中的初始步骤是准备步骤，以指导你确定当前证书扮演的角色。</span><span class="sxs-lookup"><span data-stu-id="44086-116">The initial steps in this procedure are preparation steps, to orient you as to what role the current certificates play.</span></span> <span data-ttu-id="44086-117">默认情况下，证书将没有 lyncdiscover。 &lt;sipdomain &gt; 或 lyncdiscoverinternal。 &lt;内部域名 &gt; 条目，除非您之前已安装移动服务或事先已准备好您的证书。</span><span class="sxs-lookup"><span data-stu-id="44086-117">By default, the certificates will not have a lyncdiscover.&lt;sipdomain&gt; or lyncdiscoverinternal.&lt;internal domain name&gt; entry unless you have previously installed Mobility Services or have prepared your certificates in advance.</span></span> <span data-ttu-id="44086-118">此过程使用示例 SIP 域名 "contoso.com" 和示例内部域名 "contoso.net"。</span><span class="sxs-lookup"><span data-stu-id="44086-118">This procedure uses the example SIP domain name ‘contoso.com’ and the example internal domain name ‘contoso.net’.</span></span><BR><span data-ttu-id="44086-119">Lync Server 2013 和 Lync Server 2010 的默认证书配置是使用名为 "Default" ) 的单个证书 (，除了 web services) 、WebServicesExternal 和 WebServicesInternal 之外的所有其他用途的默认 (。</span><span class="sxs-lookup"><span data-stu-id="44086-119">The default certificate configuration for Lync Server 2013 and Lync Server 2010 is to use a single certificate (named ‘Default’) with the purposes Default (for all purposes except for the web services), WebServicesExternal and WebServicesInternal.</span></span> <span data-ttu-id="44086-120">可选配置是对每个用途使用单独的证书。</span><span class="sxs-lookup"><span data-stu-id="44086-120">An optional configuration is to use separate certificates for each purpose.</span></span> <span data-ttu-id="44086-121">可通过使用 Lync Server Management Shell 和 Windows PowerShell cmdlet，或使用 Lync Server 部署向导中的证书向导来管理证书。</span><span class="sxs-lookup"><span data-stu-id="44086-121">Certificates can be managed by using the Lync Server Management Shell and Windows PowerShell cmdlets, or by using the Certificate Wizard in the Lync Server Deployment Wizard.</span></span>
+
+
+
+</div>
+
+<div>
+
+## <a name="to-update-certificates-with-new-subject-alternative-names-using-the-lync-server-management-shell"></a><span data-ttu-id="44086-122">使用 Lync Server 命令行管理程序使用新的主题替换名称更新证书</span><span class="sxs-lookup"><span data-stu-id="44086-122">To update certificates with new subject alternative names using the Lync Server Management Shell</span></span>
+
+1.  <span data-ttu-id="44086-123">使用具有本地管理员权限和权限的帐户登录到计算机。</span><span class="sxs-lookup"><span data-stu-id="44086-123">Log on to the computer using an account that has local administrator rights and permissions.</span></span>
+
+2.  <span data-ttu-id="44086-124">启动 Lync Server 命令行管理程序：依次单击 " **开始**"、" **所有程序**"、" **Microsoft Lync server 2013**"，然后单击 " **Lync server Management shell**"。</span><span class="sxs-lookup"><span data-stu-id="44086-124">Start the Lync Server Management Shell: Click **Start**, click **All Programs**, click **Microsoft Lync Server 2013**, and then click **Lync Server Management Shell**.</span></span>
+
+3.  <span data-ttu-id="44086-125">了解已分配给服务器的证书以及使用哪种类型的证书。</span><span class="sxs-lookup"><span data-stu-id="44086-125">Find out what certificates have been assigned to the server and for which type of use.</span></span> <span data-ttu-id="44086-126">在下一步中需要此信息来分配已更新的证书。</span><span class="sxs-lookup"><span data-stu-id="44086-126">You need this information in the next step to assign the updated certificate.</span></span> <span data-ttu-id="44086-127">在命令行中键入：</span><span class="sxs-lookup"><span data-stu-id="44086-127">At the command line, type:</span></span>
+    
+        Get-CsCertificate
+
+4.  <span data-ttu-id="44086-128">查看上一步骤的输出，以查看是否为多个用途分配了一个证书，或者是否为每个使用分配了不同的证书。</span><span class="sxs-lookup"><span data-stu-id="44086-128">Look in the output from the previous step to see whether a single certificate is assigned for multiple uses or whether a different certificate is assigned for each use.</span></span> <span data-ttu-id="44086-129">查看 "使用" 参数，了解如何使用证书。</span><span class="sxs-lookup"><span data-stu-id="44086-129">Look in the Use parameter to find out how a certificate is used.</span></span> <span data-ttu-id="44086-130">比较所显示的证书的指纹参数，以查看相同的证书是否有多个用途。</span><span class="sxs-lookup"><span data-stu-id="44086-130">Compare the Thumbprint parameter for the displayed certificates to see if the same certificate has multiple uses.</span></span>
+
+5.  <span data-ttu-id="44086-131">更新证书。</span><span class="sxs-lookup"><span data-stu-id="44086-131">Update the certificate.</span></span> <span data-ttu-id="44086-132">在命令行中键入：</span><span class="sxs-lookup"><span data-stu-id="44086-132">At the command line, type:</span></span>
+    
+        Set-CsCertificate -Type <type of certificate as displayed in the Use parameter> -Thumbprint <unique identifier>
+    
+    <span data-ttu-id="44086-133">例如，如果 **CsCertificate** cmdlet 显示了使用默认值的证书，另一个使用了 WebServicesInternal 的证书，而另一个使用 WebServicesExternal，并且它们都具有相同的指纹值，请在命令行中键入：</span><span class="sxs-lookup"><span data-stu-id="44086-133">For example, if the **Get-CsCertificate** cmdlet displayed a certificate with Use of Default, another with a Use of WebServicesInternal, and another with a Use of WebServicesExternal, and they all had the same Thumbprint value, at the command line, type:</span></span>
+    
+        Set-CsCertificate -Type Default,WebServicesInternal,WebServicesExternal -Thumbprint <Certificate Thumbprint>
+    
+    <span data-ttu-id="44086-134">**重要提示：**</span><span class="sxs-lookup"><span data-stu-id="44086-134">**Important:**</span></span>
+    
+    <span data-ttu-id="44086-135">如果为每个使用分配了单独的证书 (指纹值对于每个证书) 不同，请务必不要使用多个类型运行 **CsCertificate** cmdlet。</span><span class="sxs-lookup"><span data-stu-id="44086-135">If a separate certificate is assigned for each use (the Thumbprint value is different for each certificate), it is important that you do not run the **Set-CsCertificate** cmdlet with multiple types.</span></span> <span data-ttu-id="44086-136">在这种情况下，为每次使用单独运行 **CsCertificate** cmdlet。</span><span class="sxs-lookup"><span data-stu-id="44086-136">In this case, run the **Set-CsCertificate** cmdlet separately for each use.</span></span> <span data-ttu-id="44086-137">例如：</span><span class="sxs-lookup"><span data-stu-id="44086-137">For example:</span></span>
+    
+        Set-CsCertificate -Type Default -Thumbprint <Certificate Thumbprint>
+        Set-CsCertificate -Type WebServicesInternal -Thumbprint <Certificate Thumbprint>
+        Set-CsCertificate -Type WebServicesExternal -Thumbprint <Certificate Thumbprint>
+
+6.  <span data-ttu-id="44086-138">若要查看证书，请单击 " **开始**"，单击 " **运行 ...**"。</span><span class="sxs-lookup"><span data-stu-id="44086-138">To view the certificate, click **Start**, click **Run…**.</span></span> <span data-ttu-id="44086-139">键入 MMC 以打开 Microsoft 管理控制台。</span><span class="sxs-lookup"><span data-stu-id="44086-139">Type MMC to open the Microsoft Management Console.</span></span>
+
+7.  <span data-ttu-id="44086-140">从 MMC 菜单中，选择 " **文件**"，选择 " **添加/删除管理单元 ...**"，然后选择 "证书"。</span><span class="sxs-lookup"><span data-stu-id="44086-140">From the MMC menu, select **File**, select **Add/Remove snap-in…**, select Certificates.</span></span> <span data-ttu-id="44086-141">单击“添加”。</span><span class="sxs-lookup"><span data-stu-id="44086-141">Click **Add**.</span></span> <span data-ttu-id="44086-142">出现提示时，选择 " **计算机帐户**"，然后单击 " **下一步**"。</span><span class="sxs-lookup"><span data-stu-id="44086-142">When prompted, select **Computer account**, then click **Next**.</span></span>
+
+8.  <span data-ttu-id="44086-143">如果证书位于此计算机上，请选择 " **本地计算机**"。</span><span class="sxs-lookup"><span data-stu-id="44086-143">If the certificate is located on this computer, select **Local computer**.</span></span> <span data-ttu-id="44086-144">如果证书位于另一台计算机上，请选择 "**另一** 台计算机"，键入计算机的完全限定的域名，或单击 **"在输入要选择的对象名称"** 中的 "**浏览**"，键入计算机的名称。</span><span class="sxs-lookup"><span data-stu-id="44086-144">If the certificate is located on another computer, select **Another computer**, type in the fully qualified domain name of the computer or click **Browse** In **Enter the object name to select**, type the name of the computer.</span></span> <span data-ttu-id="44086-145">单击 " **检查姓名**"。</span><span class="sxs-lookup"><span data-stu-id="44086-145">Click **Check Names**.</span></span> <span data-ttu-id="44086-146">当解析计算机的名称时，它将带有下划线。</span><span class="sxs-lookup"><span data-stu-id="44086-146">When the name of the computer is resolved, it will be underlined.</span></span> <span data-ttu-id="44086-147">单击 **"确定**"，然后单击 " **完成**"。</span><span class="sxs-lookup"><span data-stu-id="44086-147">Click **OK**, then click **Finish**.</span></span> <span data-ttu-id="44086-148">单击 **"确定"** 提交选定内容，然后关闭 " **添加或删除管理单元** " 对话框。</span><span class="sxs-lookup"><span data-stu-id="44086-148">Click **OK** to commit the selection and close the **Add or Remove Snap-ins** dialog.</span></span>
+    
+    <div>
+    
+
+    > [!IMPORTANT]  
+    > <span data-ttu-id="44086-149">如果该证书未显示在控制台中，请确保您没有选中 "用户或服务"。</span><span class="sxs-lookup"><span data-stu-id="44086-149">If the certificate does not show up in the console, ensure that you have not selected User or Service.</span></span> <span data-ttu-id="44086-150">您必须选择 "计算机"，否则您将无法找到 probper 证书。</span><span class="sxs-lookup"><span data-stu-id="44086-150">You must select Computer, or you will not be able to locate the probper certificate.</span></span>
+
+    
+    </div>
+
+9.  <span data-ttu-id="44086-151">若要查看证书的属性，请展开 " **证书**"，展开 " **个人**"，然后选择 " **证书**"。</span><span class="sxs-lookup"><span data-stu-id="44086-151">To view the properties of the certificate, expand **Certificates**, expand **Personal**, and select **Certificates**.</span></span> <span data-ttu-id="44086-152">选择要查看的证书，右键单击该证书，然后选择 " **打开**"。</span><span class="sxs-lookup"><span data-stu-id="44086-152">Select the certificate to view, right-click on the certificate and select **Open**.</span></span>
+
+10. <span data-ttu-id="44086-153">在 " **证书** " 视图中，选择 " **详细信息**"。</span><span class="sxs-lookup"><span data-stu-id="44086-153">In the **Certificate** view, select **Details**.</span></span> <span data-ttu-id="44086-154">在此处，你可以通过选择 " **主题** "，然后显示 "分配的主题名称和关联的属性" 来选择证书主题名称。</span><span class="sxs-lookup"><span data-stu-id="44086-154">From here, you can select the certificate subject name by selecting **Subject** and the assigned subject name and associated properties are displayed.</span></span>
+
+11. <span data-ttu-id="44086-155">若要查看分配的主题备用名称，请选择 " **主题备用名称**"。</span><span class="sxs-lookup"><span data-stu-id="44086-155">To view the assigned subject alternative names, select **Subject Alternative Name**.</span></span> <span data-ttu-id="44086-156">显示所有指定的主题备用名称。</span><span class="sxs-lookup"><span data-stu-id="44086-156">All assigned subject alternative names are displayed.</span></span> <span data-ttu-id="44086-157">默认情况下，在属性中找到的 "使用者替换名称" 是 " **DNS 名称** " 类型。</span><span class="sxs-lookup"><span data-stu-id="44086-157">The subject alternative names that are found in the property are of type **DNS Name** by default.</span></span> <span data-ttu-id="44086-158">你应该会看到以下成员 (所有这些成员都应作为 DNS 主机 (A 或（如果 IPv6 AAAA) 记录）中表示的完全限定的域名：</span><span class="sxs-lookup"><span data-stu-id="44086-158">You should see the following members (all of which should be fully qualified domain names as represented in DNS host (A or, if IPv6 AAAA) records:</span></span>
+    
+      - <span data-ttu-id="44086-159">此池的池名称，如果这不是池，则为单个服务器名称</span><span class="sxs-lookup"><span data-stu-id="44086-159">Pool name for this pool, or the single server name if this is not a pool</span></span>
+    
+      - <span data-ttu-id="44086-160">证书分配到的服务器名称</span><span class="sxs-lookup"><span data-stu-id="44086-160">Server name that the certificate is assigned to</span></span>
+    
+      - <span data-ttu-id="44086-161">简单的 URL 记录，通常满足和拨入</span><span class="sxs-lookup"><span data-stu-id="44086-161">Simple URL records, typically meet and dialin</span></span>
+    
+      - <span data-ttu-id="44086-162">Web 服务内部和 Web 服务外部名称 (例如，webpool01.contoso.net、webpool01.contoso.com) ，基于拓扑生成器和 ridden 的 Web 服务选择中的选择。</span><span class="sxs-lookup"><span data-stu-id="44086-162">Web services internal and Web services external names (for example, webpool01.contoso.net, webpool01.contoso.com), based on choices made in Topology Builder and over-ridden web services selections.</span></span>
+    
+      - <span data-ttu-id="44086-163">如果已分配，则 lyncdiscover。\<sipdomain\></span><span class="sxs-lookup"><span data-stu-id="44086-163">If already assigned, the lyncdiscover.\<sipdomain\></span></span> <span data-ttu-id="44086-164">和 lyncdiscoverinternal。\<sipdomain\></span><span class="sxs-lookup"><span data-stu-id="44086-164">and lyncdiscoverinternal.\<sipdomain\></span></span> <span data-ttu-id="44086-165">记录.</span><span class="sxs-lookup"><span data-stu-id="44086-165">records.</span></span>
+    
+    <span data-ttu-id="44086-166">最后一项是你最感兴趣的项-如果存在 lyncdiscover 和 lyncdiscoverinternal SAN 条目。</span><span class="sxs-lookup"><span data-stu-id="44086-166">The last item is what you are most interested in – if there is a lyncdiscover and lyncdiscoverinternal SAN entry.</span></span>
+    
+    <span data-ttu-id="44086-167">获得此信息后，您可以关闭 "证书" 视图和 MMC。</span><span class="sxs-lookup"><span data-stu-id="44086-167">Once you have this information, you can close the certificate view and the MMC.</span></span>
+
+12. <span data-ttu-id="44086-168">如果自动发现服务，即 lyncdiscover。 \>域名 \> 和 lyncdiscoverinternal。\<domain name\></span><span class="sxs-lookup"><span data-stu-id="44086-168">If an Autodiscover Service, meaning the lyncdiscover.\>domain name\> and lyncdiscoverinternal.\<domain name\></span></span> <span data-ttu-id="44086-169"> (基于外部或内部证书) 缺少使用者备用名称，并且使用默认、WebServicesInternal 和 WebServiceExternal 类型的单个默认证书，请执行下列操作：</span><span class="sxs-lookup"><span data-stu-id="44086-169">(based on if this is an external or internal certificate) subject alternative name is missing, and you are using a single Default certificate for the Default, WebServicesInternal and WebServiceExternal types, do the following:</span></span>
+    
+      - <span data-ttu-id="44086-170">在 Lync Server Management Shell 命令行提示符处，键入：</span><span class="sxs-lookup"><span data-stu-id="44086-170">At the Lync Server Management Shell command line prompt, type:</span></span>
+        
+            Request-CsCertificate -New -Type Default,WebServicesInternal,WebServicesExternal -Ca dc\myca -AllSipDomain -verbose
+        
+        <span data-ttu-id="44086-171">如果您有多个 SIP 域，则不能使用新的 AllSipDomain 参数。</span><span class="sxs-lookup"><span data-stu-id="44086-171">If you have many SIP domains, you cannot use the new AllSipDomain parameter.</span></span> <span data-ttu-id="44086-172">而是必须使用 DomainName 参数。</span><span class="sxs-lookup"><span data-stu-id="44086-172">Instead, you must use DomainName parameter.</span></span> <span data-ttu-id="44086-173">使用 DomainName 参数时，必须定义 lyncdiscoverinternal 和 lyncdiscover 记录的 FQDN。</span><span class="sxs-lookup"><span data-stu-id="44086-173">When you use the DomainName parameter, you must define the FQDN for the lyncdiscoverinternal and lyncdiscover records.</span></span> <span data-ttu-id="44086-174">例如：</span><span class="sxs-lookup"><span data-stu-id="44086-174">For example:</span></span>
+        
+            Request-CsCertificate -New -Type Default,WebServicesInternal,WebServicesExternal -Ca dc\myca -DomainName "LyncdiscoverInternal.contoso.com, LyncdiscoverInternal.contoso.net" -verbose
+    
+      - <span data-ttu-id="44086-175">若要分配证书，请键入以下内容：</span><span class="sxs-lookup"><span data-stu-id="44086-175">To assign the certificate, type the following:</span></span>
+        
+            Set-CsCertificate -Type Default,WebServicesInternal,WebServicesExternal -Thumbprint <Certificate Thumbprint>
+        
+        <span data-ttu-id="44086-176">其中 "指纹" 是为新颁发的证书显示的指纹。</span><span class="sxs-lookup"><span data-stu-id="44086-176">Where “Thumbprint” is the thumbprint displayed for the newly issued certificate.</span></span>
+
+13. <span data-ttu-id="44086-177">对于在默认、WebServicesInternal 和 WebServicesExternal 使用单独的证书时缺少内部自动发现主题备用名称，请执行下列操作：</span><span class="sxs-lookup"><span data-stu-id="44086-177">For a missing internal Autodiscover subject alternative names when using separate certificates for Default, WebServicesInternal, and WebServicesExternal, do the following:</span></span>
+    
+      - <span data-ttu-id="44086-178">在 Lync Server Management Shell 命令行提示符处，键入：</span><span class="sxs-lookup"><span data-stu-id="44086-178">At the Lync Server Management Shell command line prompt, type:</span></span>
+        
+            Request-CsCertificate -New -Type WebServicesInternal -Ca dc\myca -AllSipDomain -verbose
+        
+        <span data-ttu-id="44086-179">如果您有多个 SIP 域，则不能使用新的 AllSipDomain 参数。</span><span class="sxs-lookup"><span data-stu-id="44086-179">If you have many SIP domains, you cannot use the new AllSipDomain parameter.</span></span> <span data-ttu-id="44086-180">而是必须使用 DomainName 参数。</span><span class="sxs-lookup"><span data-stu-id="44086-180">Instead, you must use DomainName parameter.</span></span> <span data-ttu-id="44086-181">使用 DomainName 参数时，必须为 SIP 域 FQDN 使用适当的前缀。</span><span class="sxs-lookup"><span data-stu-id="44086-181">When you use the DomainName parameter, you must use an appropriate prefix for the SIP domain FQDN.</span></span> <span data-ttu-id="44086-182">例如：</span><span class="sxs-lookup"><span data-stu-id="44086-182">For example:</span></span>
+        
+            Request-CsCertificate -New -Type WebServicesInternal -Ca dc\myca -DomainName "LyncdiscoverInternal.contoso.com, LyncdiscoverInternal.contoso.net" -verbose
+    
+      - <span data-ttu-id="44086-183">对于缺少的外部自动发现主题备用名称，请在命令行中键入：</span><span class="sxs-lookup"><span data-stu-id="44086-183">For a missing external Autodiscover subject alternative name, at the command line, type:</span></span>
+        
+            Request-CsCertificate -New -Type WebServicesExternal -Ca dc\myca -AllSipDomain -verbose
+        
+        <span data-ttu-id="44086-184">如果您有多个 SIP 域，则不能使用新的 AllSipDomain 参数。</span><span class="sxs-lookup"><span data-stu-id="44086-184">If you have many SIP domains, you cannot use the new AllSipDomain parameter.</span></span> <span data-ttu-id="44086-185">而是必须使用 DomainName 参数。</span><span class="sxs-lookup"><span data-stu-id="44086-185">Instead, you must use DomainName parameter.</span></span> <span data-ttu-id="44086-186">使用 DomainName 参数时，必须为 SIP 域 FQDN 使用适当的前缀。</span><span class="sxs-lookup"><span data-stu-id="44086-186">When you use the DomainName parameter, you must use an appropriate prefix for the SIP domain FQDN.</span></span> <span data-ttu-id="44086-187">例如：</span><span class="sxs-lookup"><span data-stu-id="44086-187">For example:</span></span>
+        
+            Request-CsCertificate -New -Type WebServicesExternal -Ca dc\myca -DomainName "Lyncdiscover.contoso.com, Lyncdiscover.contoso.net" -verbose
+    
+      - <span data-ttu-id="44086-188">若要分配单个证书类型，请键入以下内容：</span><span class="sxs-lookup"><span data-stu-id="44086-188">To assign the individual certificate types, type the following:</span></span>
+        
+            Set-CsCertificate -Type Default -Thumbprint <Certificate Thumbprint>
+            Set-CsCertificate -Type WebServicesInternal -Thumbprint <Certificate Thumbprint>
+            Set-CsCertificate -Type WebServicesExternal -Thumbprint <Certificate Thumbprint>
+        
+        <span data-ttu-id="44086-189">其中 "指纹" 是为新颁发的单个证书显示的指纹。</span><span class="sxs-lookup"><span data-stu-id="44086-189">Where “Thumbprint” is the thumbprint displayed for the newly issued individual certificates.</span></span>
+
+<span data-ttu-id="44086-190"></div>
+
+</div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</span><span class="sxs-lookup"><span data-stu-id="44086-190"></div>
+
+</div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</span></span></div>
+
