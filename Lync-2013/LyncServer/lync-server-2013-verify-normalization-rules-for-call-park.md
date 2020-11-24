@@ -1,0 +1,74 @@
+---
+title: Lync Server 2013：验证呼叫寄存的规范化规则
+description: Lync Server 2013：验证呼叫寄存的规范化规则。
+ms.reviewer: ''
+ms.author: v-lanac
+author: lanachin
+f1.keywords:
+- NOCSH
+TOCTitle: Verify normalization rules for Call Park
+ms:assetid: deaa170f-041e-45cb-8eab-f02931ab541e
+ms:mtpsurl: https://technet.microsoft.com/en-us/library/Gg398981(v=OCS.15)
+ms:contentKeyID: 48185646
+ms.date: 07/23/2014
+manager: serdars
+mtps_version: v=OCS.15
+ms.openlocfilehash: 2ac4c15091141e3069e7b77533d0e4148459f570
+ms.sourcegitcommit: 36fee89bb887bea4f18b19f17a8c69daf5bc423d
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "49392355"
+---
+# <a name="verify-normalization-rules-for-call-park-in-lync-server-2013"></a>在 Lync Server 2013 中验证呼叫寄存的规范化规则
+
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+
+<div class="topic" data-xmlns="http://www.w3.org/1999/xhtml" data-msxsl="urn:schemas-microsoft-com:xslt" data-cs="https://msdn.microsoft.com/">
+
+<div data-asp="https://msdn2.microsoft.com/asp">
+
+
+
+</div>
+
+<div id="mainSection">
+
+<div id="mainBody">
+
+<span> </span>
+
+_**主题上次修改时间：** 2012-09-11_
+
+调用寄存轨道式不得正常化。 检查拨号计划以确保未对通道号码进行规范化。 如果必须创建另一个规范化规则来防止你的轨道式被正常化，请按照在 [Lync Server 2013 中创建拨号计划](lync-server-2013-create-a-dial-plan.md)中的过程定义新的规范化规则，以便 **匹配**"轨道范围" 和 "翻译 **$1****模式**"。 例如，如果您的呼叫公园的 "轨道" 范围为 7000-7999，则 " **要匹配的模式** " 为 **^ (7 \\ d {3}) $** 和 **翻译模式** 为 **$1**。
+
+<div>
+
+
+> [!IMPORTANT]  
+> 请确保拨号计划中的默认规范化规则不包含 <STRONG>^(\d*)</STRONG>。 否则，您的通话寄存规范化规则将永远不会运行。
+
+
+
+</div>
+
+<div>
+
+## <a name="see-also"></a>另请参阅
+
+
+[在 Lync Server 2013 中创建拨号计划](lync-server-2013-create-a-dial-plan.md)  
+  
+
+</div>
+
+</div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</div>
+
