@@ -1,0 +1,126 @@
+---
+title: Lync Server 2013：查看网络带宽策略配置文件信息
+description: Lync Server 2013：查看网络带宽策略配置文件信息。
+ms.reviewer: ''
+ms.author: v-lanac
+author: lanachin
+f1.keywords:
+- NOCSH
+TOCTitle: Viewing network bandwidth policy profile information
+ms:assetid: eed453fc-04e9-4971-959c-6fad54bf1c96
+ms:mtpsurl: https://technet.microsoft.com/en-us/library/JJ721931(v=OCS.15)
+ms:contentKeyID: 49733866
+ms.date: 07/23/2014
+manager: serdars
+mtps_version: v=OCS.15
+ms.openlocfilehash: c72a3533ae6f49f91db91b2c3b515c0b5153ec27
+ms.sourcegitcommit: 36fee89bb887bea4f18b19f17a8c69daf5bc423d
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "49392079"
+---
+# <a name="viewing-network-bandwidth-policy-profile-information-in-lync-server-2013"></a><span data-ttu-id="6d008-103">在 Lync Server 2013 中查看网络带宽策略配置文件信息</span><span class="sxs-lookup"><span data-stu-id="6d008-103">Viewing network bandwidth policy profile information in Lync Server 2013</span></span>
+
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+
+<div class="topic" data-xmlns="http://www.w3.org/1999/xhtml" data-msxsl="urn:schemas-microsoft-com:xslt" data-cs="https://msdn.microsoft.com/">
+
+<div data-asp="https://msdn2.microsoft.com/asp">
+
+
+
+</div>
+
+<div id="mainSection">
+
+<div id="mainBody"><span data-ttu-id="6d008-104">
+
+<span> </span></span><span class="sxs-lookup"><span data-stu-id="6d008-104">
+
+<span> </span></span></span>
+
+<span data-ttu-id="6d008-105">_**主题上次修改时间：** 2013-02-23_</span><span class="sxs-lookup"><span data-stu-id="6d008-105">_**Topic Last Modified:** 2013-02-23_</span></span>
+
+<span data-ttu-id="6d008-106">作为 "呼叫许可控制" (CAC) 的一部分，带宽策略用于定义某些形式的带宽限制。</span><span class="sxs-lookup"><span data-stu-id="6d008-106">As part of call admission control (CAC), a bandwidth policy is used to define bandwidth limitations for certain modalities.</span></span> <span data-ttu-id="6d008-107">在 Microsoft Lync Server 2013 中，只有音频和视频形式可以分配带宽限制。</span><span class="sxs-lookup"><span data-stu-id="6d008-107">In Microsoft Lync Server 2013, only audio and video modalities can be assigned bandwidth limitations.</span></span> <span data-ttu-id="6d008-108">你可以设置整体带宽限制和会话限制。</span><span class="sxs-lookup"><span data-stu-id="6d008-108">You can set overall bandwidth limitations and session limitations.</span></span> <span data-ttu-id="6d008-109">你可以使用 Lync Server 控制面板为这些策略创建、修改或删除容器配置文件。</span><span class="sxs-lookup"><span data-stu-id="6d008-109">You can use the Lync Server Control Panel to create, modify, or delete a container profile for these policies.</span></span> <span data-ttu-id="6d008-110">每个带宽策略配置文件都可以与一个或多个网络网站相关联。</span><span class="sxs-lookup"><span data-stu-id="6d008-110">Each bandwidth policy profile can be associated with one or more network sites.</span></span> <span data-ttu-id="6d008-111">使用以下过程查看带宽策略配置文件。</span><span class="sxs-lookup"><span data-stu-id="6d008-111">Use the following procedures to view a bandwidth policy profile.</span></span> <span data-ttu-id="6d008-112">若要创建或修改带宽策略配置文件，请参阅 [在 Lync Server 2013 中创建或修改带宽策略配置文件](lync-server-2013-creating-or-modifying-bandwidth-policy-profiles.md)。</span><span class="sxs-lookup"><span data-stu-id="6d008-112">To create or modify a bandwidth policy profile, see [Creating or modifying bandwidth policy profiles in Lync Server 2013](lync-server-2013-creating-or-modifying-bandwidth-policy-profiles.md).</span></span>
+
+<div>
+
+## <a name="to-view-a-bandwidth-policy-profile"></a><span data-ttu-id="6d008-113">查看带宽策略配置文件</span><span class="sxs-lookup"><span data-stu-id="6d008-113">To view a bandwidth policy profile</span></span>
+
+1.  <span data-ttu-id="6d008-114">使用 RTCUniversalServerAdmins 组成员（或具有同等用户权限）的用户帐户，或分配给 CsAdministrator 角色的用户帐户，登录到内部部署中的任何计算机。</span><span class="sxs-lookup"><span data-stu-id="6d008-114">From a user account that is a member of the RTCUniversalServerAdmins group (or has equivalent user rights), or is assigned to the CsAdministrator role, log on to any computer in your internal deployment.</span></span>
+
+2.  <span data-ttu-id="6d008-115">打开一个浏览器窗口，然后输入 "管理员" URL 以打开 Lync Server "控制面板"。</span><span class="sxs-lookup"><span data-stu-id="6d008-115">Open a browser window, and then enter the Admin URL to open the Lync Server Control Panel.</span></span> <span data-ttu-id="6d008-116">有关可用于启动 Lync Server "控制面板" 的不同方法的详细信息，请参阅 [打开 Lync server 2013 管理工具](lync-server-2013-open-lync-server-administrative-tools.md)。</span><span class="sxs-lookup"><span data-stu-id="6d008-116">For details about the different methods you can use to start Lync Server Control Panel, see [Open Lync Server 2013 administrative tools](lync-server-2013-open-lync-server-administrative-tools.md).</span></span>
+
+3.  <span data-ttu-id="6d008-117">在左侧导航栏中，单击 " **网络配置** "，然后单击 " **带宽策略**"。</span><span class="sxs-lookup"><span data-stu-id="6d008-117">In the left navigation bar, click **Network Configuration** and then click **Bandwidth Policy**.</span></span>
+
+4.  <span data-ttu-id="6d008-118">在 " **带宽策略** " 页面上，单击要查看的带宽策略配置文件。</span><span class="sxs-lookup"><span data-stu-id="6d008-118">On the **Bandwidth Policy** page, click the bandwidth policy profile that you want to view.</span></span>
+
+5.  <span data-ttu-id="6d008-119">在“编辑”菜单上，单击“显示详细信息”。</span><span class="sxs-lookup"><span data-stu-id="6d008-119">On the **Edit** menu, click **Show details**.</span></span>
+
+</div>
+
+<div>
+
+## <a name="viewing-network-bandwidth-policy-profile-information-by-using-windows-powershell-cmdlets"></a><span data-ttu-id="6d008-120">使用 Windows PowerShell Cmdlet 查看网络带宽策略配置文件信息</span><span class="sxs-lookup"><span data-stu-id="6d008-120">Viewing Network Bandwidth Policy Profile Information by Using Windows PowerShell Cmdlets</span></span>
+
+<span data-ttu-id="6d008-121">可以使用 Windows PowerShell 和 Get-CsNetworkBandwidthPolicyProfile cmdlet 查看网络带宽配置文件。</span><span class="sxs-lookup"><span data-stu-id="6d008-121">Network bandwidth profiles can be viewed by using Windows PowerShell and the Get-CsNetworkBandwidthPolicyProfile cmdlet.</span></span> <span data-ttu-id="6d008-122">此 cmdlet 既可以从 Lync Server 2013 管理外壳运行，也可以从 Windows PowerShell 的远程会话运行。</span><span class="sxs-lookup"><span data-stu-id="6d008-122">This cmdlet can be run either from the Lync Server 2013 Management Shell or from a remote session of Windows PowerShell.</span></span> <span data-ttu-id="6d008-123">有关使用远程 Windows PowerShell 连接到 Lync Server 的详细信息，请参阅 Lync Server Windows PowerShell 博客文章 "快速入门：使用远程 PowerShell 管理 Microsoft Lync Server 2010" [https://go.microsoft.com/fwlink/p/?linkId=255876](https://go.microsoft.com/fwlink/p/?linkid=255876) 。</span><span class="sxs-lookup"><span data-stu-id="6d008-123">For details about using remote Windows PowerShell to connect to Lync Server, see the Lync Server Windows PowerShell blog article "Quick Start: Managing Microsoft Lync Server 2010 Using Remote PowerShell" at [https://go.microsoft.com/fwlink/p/?linkId=255876](https://go.microsoft.com/fwlink/p/?linkid=255876).</span></span>
+
+<div>
+
+## <a name="to-view-network-bandwidth-policy-profile-information"></a><span data-ttu-id="6d008-124">查看网络带宽策略配置文件信息</span><span class="sxs-lookup"><span data-stu-id="6d008-124">To view network bandwidth policy profile information</span></span>
+
+  - <span data-ttu-id="6d008-125">若要查看所有网络带宽策略配置文件的信息，请在 Lync Server 命令行管理程序中键入以下命令，然后按 ENTER：</span><span class="sxs-lookup"><span data-stu-id="6d008-125">To view information about all your network bandwidth policy profiles, type the following command in the Lync Server Management Shell and then press ENTER:</span></span>
+    
+        Get-CsNetworkBandwidthPolicyProfile
+    
+    <span data-ttu-id="6d008-126">这将返回与以下类似的信息：</span><span class="sxs-lookup"><span data-stu-id="6d008-126">That will return information similar to this:</span></span>
+    
+        Identity          : RedmondBandwidthPolicy
+        BWPolicy          : {BWLimit=200;BWSessionLimit=200;
+                            BWPolicyModality=Audio, 
+                            BWLimit=1400;BWSessionLimit=500;
+                            BWPolicyModality=Video}
+        BWPolicyProfileID : RedmondBandwidthPolicy
+        Description       :
+
+</div>
+
+<span data-ttu-id="6d008-127">有关详细信息，请参阅 [CsNetworkBandwidthPolicyProfile](https://docs.microsoft.com/powershell/module/skype/Get-CsNetworkBandwidthPolicyProfile) cmdlet 的帮助主题。</span><span class="sxs-lookup"><span data-stu-id="6d008-127">For more information, see the help topic for the [Get-CsNetworkBandwidthPolicyProfile](https://docs.microsoft.com/powershell/module/skype/Get-CsNetworkBandwidthPolicyProfile) cmdlet.</span></span>
+
+</div>
+
+<div>
+
+## <a name="see-also"></a><span data-ttu-id="6d008-128">另请参阅</span><span class="sxs-lookup"><span data-stu-id="6d008-128">See Also</span></span>
+
+
+[<span data-ttu-id="6d008-129">在 Lync Server 2013 中创建或修改带宽策略配置文件</span><span class="sxs-lookup"><span data-stu-id="6d008-129">Creating or modifying bandwidth policy profiles in Lync Server 2013</span></span>](lync-server-2013-creating-or-modifying-bandwidth-policy-profiles.md)  
+[<span data-ttu-id="6d008-130">删除 Lync Server 2013 中的网络带宽策略配置文件</span><span class="sxs-lookup"><span data-stu-id="6d008-130">Deleting network bandwidth policy profiles in Lync Server 2013</span></span>](lync-server-2013-deleting-network-bandwidth-policy-profiles.md)  
+
+
+[<span data-ttu-id="6d008-131">在 Lync Server 2013 中配置呼叫许可控制</span><span class="sxs-lookup"><span data-stu-id="6d008-131">Configure call admission control in Lync Server 2013</span></span>](lync-server-2013-configure-call-admission-control.md)  
+  
+
+<span data-ttu-id="6d008-132"></div>
+
+</div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</span><span class="sxs-lookup"><span data-stu-id="6d008-132"></div>
+
+</div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</span></span></div>
+

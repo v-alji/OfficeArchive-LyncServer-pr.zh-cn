@@ -1,0 +1,273 @@
+---
+title: 集成本地统一消息的部署过程
+description: 集成本地统一消息的部署过程。
+ms.reviewer: ''
+ms.author: v-lanac
+author: lanachin
+f1.keywords:
+- NOCSH
+TOCTitle: Deployment process for integrating on-premises Unified Messaging and Lync Server
+ms:assetid: 269a4436-f09f-415b-96ab-49a64370a385
+ms:mtpsurl: https://technet.microsoft.com/en-us/library/Gg425737(v=OCS.15)
+ms:contentKeyID: 48183664
+ms.date: 07/23/2014
+manager: serdars
+mtps_version: v=OCS.15
+ms.openlocfilehash: 6c1b8f528edb970893198ed06b821535a398f09d
+ms.sourcegitcommit: 36fee89bb887bea4f18b19f17a8c69daf5bc423d
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "49392299"
+---
+# <a name="deployment-process-for-integrating-on-premises-unified-messaging-and-lync-server-2013"></a><span data-ttu-id="c8774-103">集成本地统一消息与 Lync Server 2013 的部署过程</span><span class="sxs-lookup"><span data-stu-id="c8774-103">Deployment process for integrating on-premises Unified Messaging and Lync Server 2013</span></span>
+
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+
+<div class="topic" data-xmlns="http://www.w3.org/1999/xhtml" data-msxsl="urn:schemas-microsoft-com:xslt" data-cs="https://msdn.microsoft.com/">
+
+<div data-asp="https://msdn2.microsoft.com/asp">
+
+
+
+</div>
+
+<div id="mainSection">
+
+<div id="mainBody"><span data-ttu-id="c8774-104">
+
+<span> </span></span><span class="sxs-lookup"><span data-stu-id="c8774-104">
+
+<span> </span></span></span>
+
+<span data-ttu-id="c8774-105">_**主题上次修改时间：** 2012-12-17_</span><span class="sxs-lookup"><span data-stu-id="c8774-105">_**Topic Last Modified:** 2012-12-17_</span></span>
+
+<span data-ttu-id="c8774-106">如果要将 Exchange 统一消息 (UM) 与 Lync Server 2013 进行集成，必须执行本主题中所述的任务。</span><span class="sxs-lookup"><span data-stu-id="c8774-106">If you want to integrate Exchange Unified Messaging (UM) with Lync Server 2013, you must perform the tasks described in this topic.</span></span> <span data-ttu-id="c8774-107">此外，请务必查看 [有关集成本地统一消息和 Lync Server 2013 的指南](lync-server-2013-guidelines-for-integrating-on-premises-unified-messaging.md)中所述的计划和部署最佳做法。</span><span class="sxs-lookup"><span data-stu-id="c8774-107">Also be sure that you review the planning and deployment best practices described in [Guidelines for integrating on-premises Unified Messaging and Lync Server 2013](lync-server-2013-guidelines-for-integrating-on-premises-unified-messaging.md).</span></span> <span data-ttu-id="c8774-108">本主题假定你已将 Lync Server 2013 与 collocated 中介服务器一起部署，并且已为 Lync Server 2013 启用了用户，但不一定已执行了启用企业语音的所有部署和配置步骤，如在部署文档的 [Lync Server 2013 中部署企业语音](lync-server-2013-deploying-enterprise-voice.md) 中所述。</span><span class="sxs-lookup"><span data-stu-id="c8774-108">This topic assumes that you have deployed Lync Server 2013 with a collocated Mediation Server and that you have enabled users for Lync Server 2013, but not necessarily that you have performed all deployment and configuration steps to enable Enterprise Voice, as described in [Deploying Enterprise Voice in Lync Server 2013](lync-server-2013-deploying-enterprise-voice.md) in the Deployment documentation.</span></span>
+
+<div>
+
+## <a name="unified-messaging-integration-process"></a><span data-ttu-id="c8774-109">统一消息集成过程</span><span class="sxs-lookup"><span data-stu-id="c8774-109">Unified Messaging Integration Process</span></span>
+
+<div>
+
+
+> [!IMPORTANT]
+> <span data-ttu-id="c8774-110">与组织的 Exchange 管理员协调，以确认为帮助确保实现顺利而又成功的集成每人所需执行的任务，这一点很重要。</span><span class="sxs-lookup"><span data-stu-id="c8774-110">It is important that you coordinate with your organization’s Exchange administrators to confirm the tasks that each of you will perform to help ensure a smooth, successful integration.</span></span>
+
+
+
+</div>
+
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><span data-ttu-id="c8774-111">阶段</span><span class="sxs-lookup"><span data-stu-id="c8774-111">Phase</span></span></th>
+<th><span data-ttu-id="c8774-112">步骤</span><span class="sxs-lookup"><span data-stu-id="c8774-112">Steps</span></span></th>
+<th><span data-ttu-id="c8774-113">所需的组和角色</span><span class="sxs-lookup"><span data-stu-id="c8774-113">Required groups and roles</span></span></th>
+<th><span data-ttu-id="c8774-114">部署文档</span><span class="sxs-lookup"><span data-stu-id="c8774-114">Deployment documentation</span></span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><p><span data-ttu-id="c8774-115">部署下列各项之一：</span><span class="sxs-lookup"><span data-stu-id="c8774-115">Deploy one of the following:</span></span></p>
+<ul>
+<li><p><span data-ttu-id="c8774-116">Microsoft Exchange Server 2007 Service Pack 1 (SP2) 或最新 Service pack</span><span class="sxs-lookup"><span data-stu-id="c8774-116">Microsoft Exchange Server 2007 Service Pack 1 (SP2) or latest service pack</span></span></p></li>
+<li><p><span data-ttu-id="c8774-117">Microsoft Exchange Server 2010 或最新服务包</span><span class="sxs-lookup"><span data-stu-id="c8774-117">Microsoft Exchange Server 2010 or latest service pack</span></span></p></li>
+<li><p><span data-ttu-id="c8774-118">Microsoft Exchange Server 2013</span><span class="sxs-lookup"><span data-stu-id="c8774-118">Microsoft Exchange Server 2013</span></span></p></li>
+</ul></td>
+<td><p><span data-ttu-id="c8774-119">如果您使用的是 Microsoft Exchange Server 2013，请在与 Lync Server 2013 相同的林中或不同的林中安装以下 Exchange Server 角色：</span><span class="sxs-lookup"><span data-stu-id="c8774-119">If you are using Microsoft Exchange Server 2013, install the following Exchange Server roles in either the same forest or a different forest as Lync Server 2013:</span></span></p>
+<ul>
+<li><p><span data-ttu-id="c8774-120">客户端访问</span><span class="sxs-lookup"><span data-stu-id="c8774-120">Client Access</span></span></p></li>
+<li><p><span data-ttu-id="c8774-121">邮箱</span><span class="sxs-lookup"><span data-stu-id="c8774-121">Mailbox</span></span></p></li>
+</ul>
+<p><span data-ttu-id="c8774-122">如果 Microsoft Exchange Server 2013 和 Exchange 统一消息 (UM) 安装在不同的林中，请将每个 Exchange 林配置为信任 Lync Server 2013 林。</span><span class="sxs-lookup"><span data-stu-id="c8774-122">If Microsoft Exchange Server 2013 and Exchange Unified Messaging (UM) are installed in different forests, configure each Exchange forest to trust the Lync Server 2013 forest.</span></span></p>
+<p><span data-ttu-id="c8774-123">如果您使用的是 Exchange 2010，请在与 Lync Server 2013 相同的林中或不同的林中安装以下 Exchange Server 角色：</span><span class="sxs-lookup"><span data-stu-id="c8774-123">If you are using Exchange 2010, install the following Exchange Server roles in either the same forest or a different forest as Lync Server 2013:</span></span></p>
+<ul>
+<li><p><span data-ttu-id="c8774-124">统一消息</span><span class="sxs-lookup"><span data-stu-id="c8774-124">Unified Messaging</span></span></p></li>
+<li><p><span data-ttu-id="c8774-125">集线器传输</span><span class="sxs-lookup"><span data-stu-id="c8774-125">Hub Transport</span></span></p></li>
+<li><p><span data-ttu-id="c8774-126">客户端访问</span><span class="sxs-lookup"><span data-stu-id="c8774-126">Client Access</span></span></p></li>
+<li><p><span data-ttu-id="c8774-127">邮箱</span><span class="sxs-lookup"><span data-stu-id="c8774-127">Mailbox</span></span></p></li>
+</ul>
+<p><span data-ttu-id="c8774-128">如果 Lync Server 2013 和 Exchange 统一消息 (UM) 安装在不同的林中，请将每个 Exchange 林配置为信任 Lync Server 2013 林。</span><span class="sxs-lookup"><span data-stu-id="c8774-128">If Lync Server 2013 and Exchange Unified Messaging (UM) are installed in different forests, configure each Exchange forest to trust the Lync Server 2013 forest.</span></span></p></td>
+<td><p><span data-ttu-id="c8774-129">企业管理员（如果这是组织中的第一个 Exchange Server）</span><span class="sxs-lookup"><span data-stu-id="c8774-129">Enterprise administrators (if this is the first Exchange Server in the organization)</span></span></p>
+<p><span data-ttu-id="c8774-130">- 或者 -</span><span class="sxs-lookup"><span data-stu-id="c8774-130">-OR-</span></span></p>
+<p><span data-ttu-id="c8774-131">Exchange 组织管理员（如果这不是组织中的第一个 Exchange Server）</span><span class="sxs-lookup"><span data-stu-id="c8774-131">Exchange Organization administrator (if this is not the first Exchange Server in the organization)</span></span></p></td>
+<td><p><span data-ttu-id="c8774-132">请参阅适用于您的 Exchange Server 版本的文档：</span><span class="sxs-lookup"><span data-stu-id="c8774-132">See the appropriate documentation for your version of Exchange Server:</span></span></p>
+<dl>
+<dt><span></span></dt>
+<dd><p><span data-ttu-id="c8774-133">Exchange Server 2007 中的部署文档 <a href="https://go.microsoft.com/fwlink/p/?linkid=268694">https://go.microsoft.com/fwlink/p/?LinkId=268694</a> 。</span><span class="sxs-lookup"><span data-stu-id="c8774-133">Exchange Server 2007 deployment documentation at <a href="https://go.microsoft.com/fwlink/p/?linkid=268694">https://go.microsoft.com/fwlink/p/?LinkId=268694</a>.</span></span></p>
+</dd>
+<dt><span></span></dt>
+<dd><p><span data-ttu-id="c8774-134">中的 Exchange Server 2010 或最新的 service pack 部署文档 <a href="https://go.microsoft.com/fwlink/p/?linkid=268695">https://go.microsoft.com/fwlink/p/?LinkId=268695</a> 。</span><span class="sxs-lookup"><span data-stu-id="c8774-134">Exchange Server 2010 or latest service pack deployment documentation at <a href="https://go.microsoft.com/fwlink/p/?linkid=268695">https://go.microsoft.com/fwlink/p/?LinkId=268695</a>.</span></span></p>
+</dd>
+<dt><span></span></dt>
+<dd><p><span data-ttu-id="c8774-135">Microsoft Exchange Server 2013 规划和部署位置 <a href="https://go.microsoft.com/fwlink/p/?linkid=266569">https://go.microsoft.com/fwlink/p/?LinkId=266569</a> 。</span><span class="sxs-lookup"><span data-stu-id="c8774-135">Microsoft Exchange Server 2013 Planning and Deployment at <a href="https://go.microsoft.com/fwlink/p/?linkid=266569">https://go.microsoft.com/fwlink/p/?LinkId=266569</a>.</span></span></p>
+</dd>
+</dl></td>
+</tr>
+<tr class="even">
+<td><p><span data-ttu-id="c8774-136">安装证书。</span><span class="sxs-lookup"><span data-stu-id="c8774-136">Install certificates.</span></span></p></td>
+<td><p><span data-ttu-id="c8774-137">从受信任的根证书颁发机构 (CA) 下载并安装每个 Exchange UM 服务器的证书。</span><span class="sxs-lookup"><span data-stu-id="c8774-137">Download and install certificates for each Exchange UM server from a trusted root certificate authority (CA).</span></span> <span data-ttu-id="c8774-138">证书是在运行 Exchange UM 和 Lync Server 2013 的服务器之间 (MTLS) 相互传输级别安全所必需的。</span><span class="sxs-lookup"><span data-stu-id="c8774-138">The certificates are required for mutual Transport Level Security (MTLS) between the servers running Exchange UM and Lync Server 2013.</span></span></p></td>
+<td><p><span data-ttu-id="c8774-139">管理员</span><span class="sxs-lookup"><span data-stu-id="c8774-139">Administrators</span></span></p></td>
+<td><p><span data-ttu-id="c8774-140"><a href="lync-server-2013-configure-certificates-on-the-server-running-microsoft-exchange-server-unified-messaging.md">在运行 Microsoft Exchange Server 统一消息的服务器上配置证书</a></span><span class="sxs-lookup"><span data-stu-id="c8774-140"><a href="lync-server-2013-configure-certificates-on-the-server-running-microsoft-exchange-server-unified-messaging.md">Configure certificates on the server running Microsoft Exchange Server Unified Messaging</a></span></span></p></td>
+</tr>
+<tr class="odd">
+<td><p><span data-ttu-id="c8774-141">创建和配置新的 Exchange UM SIP 拨号计划。</span><span class="sxs-lookup"><span data-stu-id="c8774-141">Create and configure a new Exchange UM SIP dial plan.</span></span></p></td>
+<td><p><span data-ttu-id="c8774-142">在 Exchange UM 服务器上，根据组织的特定部署要求创建 SIP 拨号计划。</span><span class="sxs-lookup"><span data-stu-id="c8774-142">On the Exchange UM server, create a SIP dial plan based on your organization’s specific deployment requirements.</span></span></p></td>
+<td><p><span data-ttu-id="c8774-143">Exchange 组织管理员</span><span class="sxs-lookup"><span data-stu-id="c8774-143">Exchange Organization administrator</span></span></p></td>
+<td><p><span data-ttu-id="c8774-144">有关 Exchange 2007 SP1 或最新服务包，请参阅 &quot; 如何在创建统一消息 SIP URI 拨号 &quot; 计划 <a href="https://go.microsoft.com/fwlink/p/?linkid=268632">https://go.microsoft.com/fwlink/p/?linkId=268632</a> 。</span><span class="sxs-lookup"><span data-stu-id="c8774-144">For Exchange 2007 SP1 or latest service pack, see &quot;How to Create a Unified Messaging SIP URI Dial Plan&quot; at <a href="https://go.microsoft.com/fwlink/p/?linkid=268632">https://go.microsoft.com/fwlink/p/?linkId=268632</a>.</span></span></p>
+<p><span data-ttu-id="c8774-145">对于 Exchange 2010 或最新服务包，请参阅 &quot; 在上创建 UM 拨号计划 &quot; <a href="https://go.microsoft.com/fwlink/p/?linkid=268674">https://go.microsoft.com/fwlink/p/?linkId=268674</a> 。</span><span class="sxs-lookup"><span data-stu-id="c8774-145">For Exchange 2010 or latest service pack, see &quot;Create a UM Dial Plan&quot; at <a href="https://go.microsoft.com/fwlink/p/?linkid=268674">https://go.microsoft.com/fwlink/p/?linkId=268674</a>.</span></span></p>
+<p><span data-ttu-id="c8774-146">对于 Exchange 2013，请参阅中的统一消息 <a href="https://go.microsoft.com/fwlink/p/?linkid=266579">https://go.microsoft.com/fwlink/p/?LinkId=266579</a> 。</span><span class="sxs-lookup"><span data-stu-id="c8774-146">For Exchange 2013, see Unified Messaging at <a href="https://go.microsoft.com/fwlink/p/?linkid=266579">https://go.microsoft.com/fwlink/p/?LinkId=266579</a>.</span></span></p></td>
+</tr>
+<tr class="even">
+<td><p><span data-ttu-id="c8774-147">配置 Exchange UM SIP 拨号计划的安全设置。</span><span class="sxs-lookup"><span data-stu-id="c8774-147">Configure security settings for the Exchange UM SIP dial plan.</span></span></p></td>
+<td><p><span data-ttu-id="c8774-148">若要对企业语音流量进行加密，请将 Exchange UM SIP 拨号计划中的安全设置配置为 <strong>SIP 安全</strong> 或 <strong>安全</strong>。</span><span class="sxs-lookup"><span data-stu-id="c8774-148">To encrypt Enterprise Voice traffic, configure the security settings on the Exchange UM SIP dial plan as <strong>SIP Secured</strong> or <strong>Secured</strong>.</span></span> <span data-ttu-id="c8774-149">如果你已部署或计划在你的环境中部署 Lync Phone Edition 设备，这是一个非常重要的步骤。</span><span class="sxs-lookup"><span data-stu-id="c8774-149">This is an especially important step if you have deployed or plan to deploy Lync Phone Edition devices in your environment.</span></span> <span data-ttu-id="c8774-150">为了使 Lync Phone Edition 设备在具有 Exchange UM 集成的环境中正常工作，Lync Server 加密设置必须与 Exchange UM 拨号计划安全设置一致。</span><span class="sxs-lookup"><span data-stu-id="c8774-150">For Lync Phone Edition devices to function in an environment with Exchange UM integration, Lync Server encryption settings must align with the Exchange UM dial plan security settings.</span></span> <span data-ttu-id="c8774-151">有关详细信息，请参考部署文档。</span><span class="sxs-lookup"><span data-stu-id="c8774-151">For details, refer to the Deployment documentation.</span></span></p></td>
+<td><p><span data-ttu-id="c8774-152">Exchange 组织管理员</span><span class="sxs-lookup"><span data-stu-id="c8774-152">Exchange Organization administrator</span></span></p></td>
+<td><p><span data-ttu-id="c8774-153"><a href="lync-server-2013-configure-unified-messaging-on-microsoft-exchange.md">在 Microsoft Exchange for Lync Server 2013 上配置统一消息</a></span><span class="sxs-lookup"><span data-stu-id="c8774-153"><a href="lync-server-2013-configure-unified-messaging-on-microsoft-exchange.md">Configure Unified Messaging on Microsoft Exchange for Lync Server 2013</a></span></span></p>
+<p><span data-ttu-id="c8774-154">对于 Exchange 2007 SP1 或最新服务包，另请参阅：</span><span class="sxs-lookup"><span data-stu-id="c8774-154">For Exchange 2007 SP1 or latest service pack, see also:</span></span></p>
+<p><span data-ttu-id="c8774-155">&quot;如何配置统一邮件拨号计划的安全性 &quot; <a href="https://go.microsoft.com/fwlink/p/?linkid=268696">https://go.microsoft.com/fwlink/p/?LinkId=268696</a> 。</span><span class="sxs-lookup"><span data-stu-id="c8774-155">&quot;How to Configure Security on a Unified Messaging Dial Plan&quot; at <a href="https://go.microsoft.com/fwlink/p/?linkid=268696">https://go.microsoft.com/fwlink/p/?LinkId=268696</a>.</span></span></p>
+<p><span data-ttu-id="c8774-156">对于 Exchange 2010 或最新的 Service Pack，另请参阅：</span><span class="sxs-lookup"><span data-stu-id="c8774-156">For Exchange 2010 or latest service pack, see also:</span></span></p>
+<p><span data-ttu-id="c8774-157">&quot;在 UM 拨号计划上配置 VoIP 安全 &quot; <a href="https://go.microsoft.com/fwlink/p/?linkid=268697">https://go.microsoft.com/fwlink/p/?LinkId=268697</a> 。</span><span class="sxs-lookup"><span data-stu-id="c8774-157">&quot;Configure VoIP Security on a UM Dial Plan&quot; <a href="https://go.microsoft.com/fwlink/p/?linkid=268697">https://go.microsoft.com/fwlink/p/?LinkId=268697</a>.</span></span></p>
+<p><span data-ttu-id="c8774-158">对于 Exchange 2013，请参阅中的统一消息 <a href="https://go.microsoft.com/fwlink/p/?linkid=266579">https://go.microsoft.com/fwlink/p/?LinkId=266579</a> 。</span><span class="sxs-lookup"><span data-stu-id="c8774-158">For Exchange 2013, see Unified Messaging at <a href="https://go.microsoft.com/fwlink/p/?linkid=266579">https://go.microsoft.com/fwlink/p/?LinkId=266579</a>.</span></span></p></td>
+</tr>
+<tr class="odd">
+<td><p><span data-ttu-id="c8774-159">将统一消息服务器添加到 Exchange UM SIP 拨号计划。</span><span class="sxs-lookup"><span data-stu-id="c8774-159">Add Unified Messaging servers to the Exchange UM SIP dial plan.</span></span></p></td>
+<td><p><span data-ttu-id="c8774-160">要使新安装的统一消息服务器可以应答和处理传入呼叫，必须将该统一消息服务器添加到 UM 拨号计划中。</span><span class="sxs-lookup"><span data-stu-id="c8774-160">To enable a newly installed Unified Messaging server to answer and process incoming calls, you must add the Unified Messaging server to a UM dial plan.</span></span> <span data-ttu-id="c8774-161">在这种情况下，将服务器添加到 Exchange UM SIP 拨号计划。</span><span class="sxs-lookup"><span data-stu-id="c8774-161">In this case, add the server to the Exchange UM SIP dial plan.</span></span></p></td>
+<td><p><span data-ttu-id="c8774-162">管理员</span><span class="sxs-lookup"><span data-stu-id="c8774-162">Administrators</span></span></p>
+<p><span data-ttu-id="c8774-163">Exchange Server 管理员</span><span class="sxs-lookup"><span data-stu-id="c8774-163">Exchange Server administrators</span></span></p></td>
+<td><p><span data-ttu-id="c8774-164">对于 Exchange 2007 SP1 或最新服务包，请参阅 &quot; 如何将统一消息服务器添加到拨号 &quot; 计划 <a href="https://go.microsoft.com/fwlink/p/?linkid=268681">https://go.microsoft.com/fwlink/p/?linkId=268681</a> 。</span><span class="sxs-lookup"><span data-stu-id="c8774-164">For Exchange 2007 SP1 or latest service pack, see &quot;How to Add Unified Messaging Server to a Dial Plan&quot; at <a href="https://go.microsoft.com/fwlink/p/?linkid=268681">https://go.microsoft.com/fwlink/p/?linkId=268681</a>.</span></span></p>
+<p><span data-ttu-id="c8774-165">对于 Exchange 2010 或最新服务包，请参阅 &quot; 查看或配置 UM 服务器的属性 &quot; <a href="https://go.microsoft.com/fwlink/p/?linkid=268682">https://go.microsoft.com/fwlink/p/?linkId=268682</a> 。</span><span class="sxs-lookup"><span data-stu-id="c8774-165">For Exchange 2010 or latest service pack, see &quot;View or Configure the Properties of a UM Server&quot; at <a href="https://go.microsoft.com/fwlink/p/?linkid=268682">https://go.microsoft.com/fwlink/p/?linkId=268682</a>.</span></span></p>
+<p><span data-ttu-id="c8774-166">对于 Exchange 2013，请参阅中的统一消息 <a href="https://go.microsoft.com/fwlink/p/?linkid=266579">https://go.microsoft.com/fwlink/p/?LinkId=266579</a> 。</span><span class="sxs-lookup"><span data-stu-id="c8774-166">For Exchange 2013, see Unified Messaging at <a href="https://go.microsoft.com/fwlink/p/?linkid=266579">https://go.microsoft.com/fwlink/p/?LinkId=266579</a>.</span></span></p></td>
+</tr>
+<tr class="even">
+<td><p><span data-ttu-id="c8774-167">配置使用 SIP 地址的邮箱。</span><span class="sxs-lookup"><span data-stu-id="c8774-167">Configure mailboxes with SIP addresses.</span></span></p></td>
+<td><p><span data-ttu-id="c8774-168">将 SIP 地址分配给将使用 Exchange UM 功能的企业语音用户的邮箱。</span><span class="sxs-lookup"><span data-stu-id="c8774-168">Assign SIP addresses to the mailboxes of Enterprise Voice users who will be using Exchange UM features.</span></span></p></td>
+<td><p><span data-ttu-id="c8774-169">Lync Server 2013 管理员</span><span class="sxs-lookup"><span data-stu-id="c8774-169">Lync Server 2013 administrator</span></span></p>
+<p><span data-ttu-id="c8774-170">Exchange 收件人管理员</span><span class="sxs-lookup"><span data-stu-id="c8774-170">Exchange Recipient administrator</span></span></p></td>
+<td><p><span data-ttu-id="c8774-171">对于 Exchange 2007 SP1 或最新服务包，请参阅 &quot; 如何为 UM-Enabled 用户添加、删除或修改 SIP 地址 &quot; <a href="https://go.microsoft.com/fwlink/p/?linkid=268698">https://go.microsoft.com/fwlink/p/?LinkId=268698</a> 。</span><span class="sxs-lookup"><span data-stu-id="c8774-171">For Exchange 2007 SP1 or latest service pack, see &quot;How to Add, Remove, or Modify a SIP Address for a UM-Enabled User&quot; at <a href="https://go.microsoft.com/fwlink/p/?linkid=268698">https://go.microsoft.com/fwlink/p/?LinkId=268698</a>.</span></span></p>
+<p><span data-ttu-id="c8774-172">对于 Exchange 2010 或最新服务包，请参阅为 &quot; UM-Enabled 用户修改 SIP 地址 &quot; <a href="https://go.microsoft.com/fwlink/p/?linkid=268699">https://go.microsoft.com/fwlink/p/?LinkId=268699</a> 。</span><span class="sxs-lookup"><span data-stu-id="c8774-172">For Exchange 2010 or latest service pack, see &quot;Modify a SIP Address for a UM-Enabled User&quot; at <a href="https://go.microsoft.com/fwlink/p/?linkid=268699">https://go.microsoft.com/fwlink/p/?LinkId=268699</a>.</span></span></p>
+<p><span data-ttu-id="c8774-173">对于 Exchange 2013，请参阅中的统一消息 <a href="https://go.microsoft.com/fwlink/p/?linkid=266579">https://go.microsoft.com/fwlink/p/?LinkId=266579</a> 。</span><span class="sxs-lookup"><span data-stu-id="c8774-173">For Exchange 2013, see Unified Messaging at <a href="https://go.microsoft.com/fwlink/p/?linkid=266579">https://go.microsoft.com/fwlink/p/?LinkId=266579</a>.</span></span></p></td>
+</tr>
+<tr class="odd">
+<td><p><span data-ttu-id="c8774-174">运行 exchucutil.ps1 脚本。</span><span class="sxs-lookup"><span data-stu-id="c8774-174">Run the exchucutil.ps1 script.</span></span></p></td>
+<td><p><span data-ttu-id="c8774-175">在运行 Exchange UM 服务的服务器上，打开 Exchange 命令行管理程序并运行 exchucutil.ps1 脚本，该脚本执行以下操作：</span><span class="sxs-lookup"><span data-stu-id="c8774-175">On the server running Exchange UM services, open the Exchange Management Shell and run the exchucutil.ps1 script, which does the following:</span></span></p>
+<ul>
+<li><p><span data-ttu-id="c8774-176">授予 Lync Server 2013 权限以读取 Exchange UM Active Directory 域服务对象，特别是在上一任务中创建的 SIP 拨号计划。</span><span class="sxs-lookup"><span data-stu-id="c8774-176">Grants Lync Server 2013 permission to read Exchange UM Active Directory Domain Services objects, specifically, the SIP dial plans created in the previous task.</span></span></p></li>
+<li><p><span data-ttu-id="c8774-177">为托管已启用企业语音的用户的每个 Lync Server 2013 企业版池或标准版服务器在 Active Directory 中创建统一消息 IP 网关对象。</span><span class="sxs-lookup"><span data-stu-id="c8774-177">Creates a Unified Messaging IP gateway object in Active Directory for each Lync Server 2013 Enterprise Edition pool or Standard Edition server that hosts users who are enabled for Enterprise Voice.</span></span></p></li>
+<li><p><span data-ttu-id="c8774-178">为每个网关创建一个 Exchange UM 查寻组。</span><span class="sxs-lookup"><span data-stu-id="c8774-178">Creates an Exchange UM hunt group for each gateway.</span></span> <span data-ttu-id="c8774-179">该智能寻线的前导标识符将是与相应网关相关联的拨号计划的名称。</span><span class="sxs-lookup"><span data-stu-id="c8774-179">The hunt group pilot identifier will be the name of the dial plan that is associated with the corresponding gateway.</span></span> <span data-ttu-id="c8774-180">如果存在多个拨号计划，则需要进行一对一映射。</span><span class="sxs-lookup"><span data-stu-id="c8774-180">These need to be mapped 1:1 if there is more than one dial plan.</span></span></p></li>
+</ul></td>
+<td><p><span data-ttu-id="c8774-181">Exchange 组织管理员</span><span class="sxs-lookup"><span data-stu-id="c8774-181">Exchange Organization administrator</span></span></p>
+<p><span data-ttu-id="c8774-182">Exchange 收件人管理员</span><span class="sxs-lookup"><span data-stu-id="c8774-182">Exchange Recipient administrator</span></span></p></td>
+<td><p><span data-ttu-id="c8774-183"><a href="lync-server-2013-configure-unified-messaging-on-microsoft-exchange.md">在 Microsoft Exchange for Lync Server 2013 上配置统一消息</a></span><span class="sxs-lookup"><span data-stu-id="c8774-183"><a href="lync-server-2013-configure-unified-messaging-on-microsoft-exchange.md">Configure Unified Messaging on Microsoft Exchange for Lync Server 2013</a></span></span></p></td>
+</tr>
+<tr class="even">
+<td><p><span data-ttu-id="c8774-184">配置 Lync Server 2013 拨号计划。</span><span class="sxs-lookup"><span data-stu-id="c8774-184">Configure Lync Server 2013 dial plans.</span></span></p></td>
+<td><p><span data-ttu-id="c8774-185">如果你要与 Exchange 2007 SP1 或最新服务包或 Exchange 2010 集成，请创建一个新的企业语音拨号计划，其名称与 Exchange UM 拨号计划完全限定的域名 (FQDN) 。</span><span class="sxs-lookup"><span data-stu-id="c8774-185">If you are integrating with Exchange 2007 SP1 or latest service pack, or Exchange 2010, create a new Enterprise Voice dial plan with a name that matches the Exchange UM dial plan fully qualified domain name (FQDN).</span></span></p>
+
+
+
+> [!NOTE]
+> <span data-ttu-id="c8774-186">您需要对每个 UM 拨号计划执行此操作。</span><span class="sxs-lookup"><span data-stu-id="c8774-186">You will need to do this for each UM Dial plan.</span></span>
+
+
+<p><span data-ttu-id="c8774-187">如果您要与 Exchange 2010 SP1 集成，请确保已配置合适的全局/网站级或池级的企业语音拨号计划。</span><span class="sxs-lookup"><span data-stu-id="c8774-187">If you are integrating with Exchange 2010 SP1, ensure that suitable global/site-level or pool-level Enterprise Voice dial plans have been configured.</span></span></p>
+
+
+
+> [!NOTE]
+> <span data-ttu-id="c8774-188">如果您与 Exchange 2010 SP1 集成，则 Lync Server 拨号计划和 Exchange UM SIP 拨号计划名称不需要匹配。</span><span class="sxs-lookup"><span data-stu-id="c8774-188">If you are integrating with Exchange 2010 SP1, the Lync Server dial plan and Exchange UM SIP dial plan names do not need to match.</span></span>
+
+</td>
+<td><p><span data-ttu-id="c8774-189">RTCUniversalServerAdmins</span><span class="sxs-lookup"><span data-stu-id="c8774-189">RTCUniversalServerAdmins</span></span></p></td>
+<td><p><span data-ttu-id="c8774-190"><a href="lync-server-2013-configuring-dial-plans.md">在 Lync Server 2013 中配置拨号计划</a></span><span class="sxs-lookup"><span data-stu-id="c8774-190"><a href="lync-server-2013-configuring-dial-plans.md">Configuring dial plans in Lync Server 2013</a></span></span></p></td>
+</tr>
+<tr class="odd">
+<td><p><span data-ttu-id="c8774-191">运行 Exchange UM 集成工具。</span><span class="sxs-lookup"><span data-stu-id="c8774-191">Run the Exchange UM Integration tool.</span></span></p></td>
+<td><p><span data-ttu-id="c8774-192">在 Lync Server 2013 上，运行 <strong>ocsumutil.exe</strong>，它：</span><span class="sxs-lookup"><span data-stu-id="c8774-192">On the Lync Server 2013, run <strong>ocsumutil.exe</strong>, which:</span></span></p>
+<ul>
+<li><p><span data-ttu-id="c8774-193">创建订阅者访问和自动助理联系对象。</span><span class="sxs-lookup"><span data-stu-id="c8774-193">Creates Subscriber Access and Auto Attendant contact objects.</span></span></p></li>
+<li><p><span data-ttu-id="c8774-194">验证是否存在具有与 Exchange UM 拨号计划 FQDN 匹配的名称的企业语音拨号计划。</span><span class="sxs-lookup"><span data-stu-id="c8774-194">Validates that there is an Enterprise Voice dial plan with a name that matches the Exchange UM dial plan FQDN.</span></span> <span data-ttu-id="c8774-195">如果你运行的是 Exchange 2010 SP1 或更高版本，则拨号计划名称不需要匹配，你可以忽略该工具关于此工具的警告。</span><span class="sxs-lookup"><span data-stu-id="c8774-195">If you are running Exchange 2010 SP1 or later, the dial plan names do not need to match, and you can ignore the tool’s warning about this.</span></span></p></li>
+</ul>
+<p><span data-ttu-id="c8774-196">此工具的工作原理是扫描 Active Directory for Exchange UM 设置，并允许 Lync Server 2013 管理员查看、创建和编辑联系人对象。</span><span class="sxs-lookup"><span data-stu-id="c8774-196">This tool works by scanning the Active Directory for Exchange UM settings and allowing the Lync Server 2013 administrator to view, create, and edit contact objects.</span></span></p></td>
+<td><p><span data-ttu-id="c8774-197">RTCUniversalServerAdmins <em>和 </em> RTCUniversalUserAdmins</span><span class="sxs-lookup"><span data-stu-id="c8774-197">RTCUniversalServerAdmins <em>and</em> RTCUniversalUserAdmins</span></span></p>
+
+
+
+> [!IMPORTANT]
+> <span data-ttu-id="c8774-198">要成功运行 ocsumutil.exe，用户必须同时属于这两个组。</span><span class="sxs-lookup"><span data-stu-id="c8774-198">To run ocsumutil.exe successfully, the user must belong to both of these groups.</span></span>
+
+
+
+
+
+> [!NOTE]
+> <span data-ttu-id="c8774-199">要创建联系对象，运行 ocsumutil.exe 的用户必须对存储新联系对象的 Active Directory 组织单位 (OU) 具有正确的权限。</span><span class="sxs-lookup"><span data-stu-id="c8774-199">To create Contact objects, the user who runs ocsumutil.exe must have the correct permission to the Active Directory organizational unit (OU) where the new contact objects are stored.</span></span> <span data-ttu-id="c8774-200">可以通过运行 <STRONG>Grant-CsOUPermission</STRONG> cmdlet 授予此权限。</span><span class="sxs-lookup"><span data-stu-id="c8774-200">This permission can be granted by running the <STRONG>Grant-CsOUPermission</STRONG> cmdlet.</span></span> <span data-ttu-id="c8774-201">有关详细信息，请参阅 Lync Server Management Shell 文档。</span><span class="sxs-lookup"><span data-stu-id="c8774-201">For details, see the Lync Server Management Shell documentation.</span></span>
+
+</td>
+<td><p><span data-ttu-id="c8774-202"><a href="lync-server-2013-configure-lync-server-2013-to-work-with-unified-messaging-on-microsoft-exchange-server.md">配置 Lync Server 2013 以使用 Microsoft Exchange Server 统一消息</a></span><span class="sxs-lookup"><span data-stu-id="c8774-202"><a href="lync-server-2013-configure-lync-server-2013-to-work-with-unified-messaging-on-microsoft-exchange-server.md">Configure Lync Server 2013 to work with Unified Messaging on Microsoft Exchange Server</a></span></span></p></td>
+</tr>
+<tr class="even">
+<td><p><span data-ttu-id="c8774-203">如有必要，请执行其他企业语音配置步骤。</span><span class="sxs-lookup"><span data-stu-id="c8774-203">If necessary, perform other Enterprise Voice configuration steps.</span></span></p></td>
+<td><p><span data-ttu-id="c8774-204">如果尚未在服务器或用户上配置企业语音设置，请执行下列一项或多项操作：</span><span class="sxs-lookup"><span data-stu-id="c8774-204">If you have not already configured Enterprise Voice settings on your servers or users, do one or more of the following:</span></span></p>
+<ul>
+<li><p><span data-ttu-id="c8774-205">部署和配置</span><span class="sxs-lookup"><span data-stu-id="c8774-205">Deploy and configure</span></span></p>
+<p><span data-ttu-id="c8774-206">公用电话交换网 (PSTN) 网关和中介服务器</span><span class="sxs-lookup"><span data-stu-id="c8774-206">Public switched telephone network (PSTN) gateways and Mediation Servers</span></span></p></li>
+<li><p><span data-ttu-id="c8774-207">定义语音策略、PSTN 用量记录和出站呼叫路由。</span><span class="sxs-lookup"><span data-stu-id="c8774-207">Define voice policies, PSTN usage records, and outbound call routes.</span></span></p></li>
+<li><p><span data-ttu-id="c8774-208">为用户启用企业语音。</span><span class="sxs-lookup"><span data-stu-id="c8774-208">Enable users for Enterprise Voice.</span></span></p></li>
+<li><p><span data-ttu-id="c8774-209">（可选）为特定用户配置拨号计划。</span><span class="sxs-lookup"><span data-stu-id="c8774-209">Optionally, configure specific users with dial plans.</span></span></p></li>
+</ul>
+<p><span data-ttu-id="c8774-210">可能需要其他配置步骤，具体取决于你启用的企业语音功能。</span><span class="sxs-lookup"><span data-stu-id="c8774-210">Other configuration steps may be required depending on the Enterprise Voice features that you enable.</span></span></p></td>
+<td><p><span data-ttu-id="c8774-211">RTCUniversalServerAdmins</span><span class="sxs-lookup"><span data-stu-id="c8774-211">RTCUniversalServerAdmins</span></span></p>
+<p><span data-ttu-id="c8774-212">RTCUniversalUserAdmins</span><span class="sxs-lookup"><span data-stu-id="c8774-212">RTCUniversalUserAdmins</span></span></p></td>
+<td><p><span data-ttu-id="c8774-213">请参阅以下各节中的主题：</span><span class="sxs-lookup"><span data-stu-id="c8774-213">See topics in the following sections:</span></span></p>
+<ul>
+<li><p><span data-ttu-id="c8774-214"><a href="lync-server-2013-configuring-voice-policies-pstn-usage-records-and-voice-routes.md">在 Lync Server 2013 中配置语音策略、PSTN 使用记录和语音路由</a></span><span class="sxs-lookup"><span data-stu-id="c8774-214"><a href="lync-server-2013-configuring-voice-policies-pstn-usage-records-and-voice-routes.md">Configuring voice policies, PSTN usage records, and voice routes in Lync Server 2013</a></span></span></p></li>
+<li><p><span data-ttu-id="c8774-215"><a href="lync-server-2013-deploying-enterprise-voice.md">在 Lync Server 2013 中部署企业语音</a></span><span class="sxs-lookup"><span data-stu-id="c8774-215"><a href="lync-server-2013-deploying-enterprise-voice.md">Deploying Enterprise Voice in Lync Server 2013</a></span></span></p></li>
+</ul></td>
+</tr>
+<tr class="odd">
+<td><p><span data-ttu-id="c8774-216">为 Exchange UM 启用企业语音用户。</span><span class="sxs-lookup"><span data-stu-id="c8774-216">Enable Enterprise Voice users for Exchange UM.</span></span></p></td>
+<td><p><span data-ttu-id="c8774-217">在 Exchange UM 服务器上，确保已创建统一消息邮箱策略，并且每位用户都有唯一的分机号码分配，然后为用户启用统一消息。</span><span class="sxs-lookup"><span data-stu-id="c8774-217">On the Exchange UM server, ensure that a Unified Messaging mailbox policy has been created and that each user has a unique extension number assignment, and then enable the user for Unified Messaging.</span></span></p></td>
+<td><p><span data-ttu-id="c8774-218">Exchange 收件人管理员</span><span class="sxs-lookup"><span data-stu-id="c8774-218">Exchange Recipient administrator</span></span></p></td>
+<td><p><span data-ttu-id="c8774-219">对于 Exchange 2007 SP1 或最新服务包，请参阅 &quot; 如何为用户启用统一消息 &quot; <a href="https://go.microsoft.com/fwlink/p/?linkid=268700">https://go.microsoft.com/fwlink/p/?LinkId=268700</a> 。</span><span class="sxs-lookup"><span data-stu-id="c8774-219">For Exchange 2007 SP1 or latest service pack, see &quot;How to Enable a User for Unified Messaging&quot; at <a href="https://go.microsoft.com/fwlink/p/?linkid=268700">https://go.microsoft.com/fwlink/p/?LinkId=268700</a>.</span></span></p>
+<p><span data-ttu-id="c8774-220">对于 Exchange 2010 或最新服务包，请参阅为 &quot; 用户启用统一 &quot; 消息 <a href="https://go.microsoft.com/fwlink/p/?linkid=268701">https://go.microsoft.com/fwlink/p/?LinkId=268701</a> 。</span><span class="sxs-lookup"><span data-stu-id="c8774-220">For Exchange 2010 or latest service pack, see &quot;Enable a User for Unified Messaging&quot; at <a href="https://go.microsoft.com/fwlink/p/?linkid=268701">https://go.microsoft.com/fwlink/p/?LinkId=268701</a>.</span></span></p>
+<p><span data-ttu-id="c8774-221">对于 Exchange 2013，请参阅中的统一消息 <a href="https://go.microsoft.com/fwlink/p/?linkid=266579">https://go.microsoft.com/fwlink/p/?LinkId=266579</a> 。</span><span class="sxs-lookup"><span data-stu-id="c8774-221">For Exchange 2013, see Unified Messaging at <a href="https://go.microsoft.com/fwlink/p/?linkid=266579">https://go.microsoft.com/fwlink/p/?LinkId=266579</a>.</span></span></p></td>
+</tr><span data-ttu-id="c8774-222">
+</tbody>
+</table>
+
+
+</div>
+
+</div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</span><span class="sxs-lookup"><span data-stu-id="c8774-222">
+</tbody>
+</table>
+
+
+</div>
+
+</div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</span></span></div>
+
