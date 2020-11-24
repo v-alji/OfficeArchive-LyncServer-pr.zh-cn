@@ -1,0 +1,103 @@
+---
+title: Lync Server 2013：外部用户访问概述
+description: Lync Server 2013：外部用户访问概述。
+ms.reviewer: ''
+ms.author: v-lanac
+author: lanachin
+f1.keywords:
+- NOCSH
+TOCTitle: Overview of external user access
+ms:assetid: 97aded6c-5fa3-4225-95a6-9ad094d61654
+ms:mtpsurl: https://technet.microsoft.com/en-us/library/Gg398775(v=OCS.15)
+ms:contentKeyID: 48184934
+ms.date: 07/23/2014
+manager: serdars
+mtps_version: v=OCS.15
+ms.openlocfilehash: d2900dde457da34c4438892878ae7ddb4f74723a
+ms.sourcegitcommit: 36fee89bb887bea4f18b19f17a8c69daf5bc423d
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "49392285"
+---
+# <a name="overview-of-external-user-access-in-lync-server-2013"></a>Lync Server 2013 中的外部用户访问概述
+
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+
+<div class="topic" data-xmlns="http://www.w3.org/1999/xhtml" data-msxsl="urn:schemas-microsoft-com:xslt" data-cs="https://msdn.microsoft.com/">
+
+<div data-asp="https://msdn2.microsoft.com/asp">
+
+
+
+</div>
+
+<div id="mainSection">
+
+<div id="mainBody">
+
+<span> </span>
+
+_**主题上次修改时间：** 2013-11-07_
+
+在本文档中，我们使用术语 " *外部用户* " 定义从防火墙外与 lync Server 2013 和 lync 2013 用户通信的大型用户类别。 您可以授权以与内部用户通信 Lync Server 2013 的外部用户 (也就是说，从) 防火墙内登录 Lync Server 的用户可能包括以下内容：
+
+  - **远程用户**   从防火墙外登录 Lync Server 的组织的用户。
+
+  - **联盟用户**   将帐户与受信任的客户或合作伙伴组织（如 Lync Server 2010、Lync Server 2013 或 Office 通信服务器 2007 R2）一起使用的用户。 联盟用户也可以是使用可扩展消息和状态协议的已定义合作伙伴组织的成员， (XMPP) 通过在 Edge 服务器上的 XMPP 代理和前端服务器或池中的 XMPP 网关。 已定义的信任关系（称为联合）与 Active Directory 域服务信任关系无关或依赖于 Active Directory 域服务信任关系。
+    
+    <div>
+    
+
+    > [!NOTE]  
+    > AOL 和 Yahoo！的有效期结束日期为2014年6月 已宣布。 有关详细信息，请参阅 <A href="lync-server-2013-support-for-public-instant-messenger-connectivity.md">Lync Server 2013 中的公共即时消息连接支持</A>。
+
+    
+    </div>
+
+  - **公共即时消息连接用户**   用户通过公共即时消息连接服务建立的联系人 (Windows Live、Yahoo\! 和 AOL) 。
+
+  - **移动用户**   您的组织中使用智能电话或平板电脑的用户登录到内部部署，并且可以与其他用户类别进行通信。 移动用户使用通过反向代理发布的移动服务来访问内部部署。 有关 Lync Mobile 可用的功能和功能的详细信息，请参阅中的移动客户端比较表 [https://go.microsoft.com/fwlink/p/?LinkID=234777](https://go.microsoft.com/fwlink/p/?linkid=234777) 。
+
+  - **匿名用户**   在组织的 Active Directory 域服务或受支持的联盟域中没有用户帐户的用户，但在本地会议中收到了远程参与邀请的用户。
+
+你的 edge 部署为以下类型的通信提供外部访问：
+
+  - **IM 和状态**   授权的外部用户可以参与 IM 对话和会议，并且他们可以获取有关其他人的状态的信息。 公共 IM 服务提供商的用户可以与组织中的单个 Lync 服务器用户参与 IM 对话并访问状态信息，但不能使用 Lync Server 参与 IM 多方会议。 它是严格的对等通信。 公用 IM 服务提供商的用户不支持文件传输，并且 Windows Messenger 2011 用户（而不是公共 IM 服务提供商的其他用户）支持对等通信中的音频/视频。
+    
+    SIP 和 XMPP 协议均受支持。 若要为 XMPP 提供服务，请参阅 [Lync Server 2013 中的 "规划 SIP"、"XMPP 联盟" 和 "公共即时消息](lync-server-2013-planning-for-sip-xmpp-federation-and-public-instant-messaging.md)"。
+
+  - **网络会议**   授权外部用户可以参与 Lync Server 部署上托管的会议。 可以为远程用户、联盟用户和匿名用户启用网络会议，但公共 IM 用户不能参与会议。 根据你选择的选项，启用网络会议的用户可以参与桌面和应用程序共享，并且可以充当会议组织者或演示者。
+
+  - **A/V 会议**   授权外部用户可以参与 Lync Server 部署托管的音频和视频会议。 对等通信中的音频/视频支持 Windows Messenger 2011 用户，但不适用于公共 IM 服务提供商的其他用户。
+
+为了控制通信，你可以配置一个或多个策略来定义你的组织内部和外部的用户之间的通信方式。 你还可以为单个内部用户或特定类型的外部用户配置设置和应用策略，以控制与外部用户的通信。
+
+Lync Server 2013 用于提供外部访问的角色：
+
+**边缘服务器**   Edge 服务器是运行服务的服务器或服务器池，这些服务允许外部访问 IM 和状态、会议、音频/视频和其他媒体 (例如，文件传输) 服务。 或者，你可以将 Edge 服务器配置为与其他 Lync Server 或 Office 通信服务器 2007 R2 部署以及其他 XMPP 部署进行联盟。 通过 Edge 服务器启用和配置可选的公共 IM 连接功能。
+
+**董事**   Director 是运行 Lync Server 2013 Director 角色的可选服务器或服务器池，它预身份验证用户请求并将请求路由到用户的主前端服务器或前端池，但不会在家任何用户帐户。
+
+**反向代理**   反向代理是专用服务器的常规术语，用于发布内部网络上可用的资源和检索已发布资源中的客户端信息。 Lync Server 2013 使用反向代理来发布许多功能，例如会议会议、会议加入位置、通讯簿、通讯组列表扩展、下载会议内容、设备更新、移动服务等。 可以使用任何可满足发布必要资源位置要求的反向代理。 Microsoft Forefront 威胁管理网关 (TMG) 2010 用作演示必要的发布规则的示例，但不需要 Forefront TMG 2010。
+
+<div>
+
+
+> [!IMPORTANT]  
+> Lync Server 2013 支持 IPv4 和 IPv6。 Windows Server &nbsp; 2008 &nbsp; R2、windows server 2012 和 windows Server 2012 R2 使用可以同时使用 IPv4 和 IPv6 的双重堆栈。 这一点很重要，因为部署从 IPv4 迁移到 IPv6 的过渡性质。 在某些区域中，可以支持 IPv4，在部署的其他区域中，可以使用 IPv6。 这在 Internet 和内部部署关注的地方尤其重要。 外部客户端必须通过反向代理进行通信才能使用诸如移动、会议、通讯簿下载等服务。 目前，Forefront 威胁管理网关2010和 Internet 安全性和加速服务器2006不支持 IPv6 寻址，无论它们的部署操作系统版本如何。 你必须相对于使用 IPv6 和 IPv4 做出相应的计划，因为它们与外部客户端相关。
+
+
+
+</div>
+
+</div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</div>
+
