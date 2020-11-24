@@ -1,0 +1,99 @@
+---
+title: Lync Server 2013：E9-1-1 概述
+description: Lync Server 2013： E9-1-1 概述。
+ms.reviewer: ''
+ms.author: v-lanac
+author: lanachin
+f1.keywords:
+- NOCSH
+TOCTitle: Overview of E9-1-1
+ms:assetid: c01e6774-bc9f-4c5b-a60b-478b7317b2b7
+ms:mtpsurl: https://technet.microsoft.com/en-us/library/Gg412936(v=OCS.15)
+ms:contentKeyID: 48185290
+ms.date: 07/23/2014
+manager: serdars
+mtps_version: v=OCS.15
+ms.openlocfilehash: 2fa13d8bfd1c273e8cbbb1d70f1fb3d733ac6167
+ms.sourcegitcommit: 36fee89bb887bea4f18b19f17a8c69daf5bc423d
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "49391923"
+---
+# <a name="overview-of-e9-1-1-in-lync-server-2013"></a>Lync Server 2013 中的 E9-1-1 概述
+
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+
+<div class="topic" data-xmlns="http://www.w3.org/1999/xhtml" data-msxsl="urn:schemas-microsoft-com:xslt" data-cs="https://msdn.microsoft.com/">
+
+<div data-asp="https://msdn2.microsoft.com/asp">
+
+
+
+</div>
+
+<div id="mainSection">
+
+<div id="mainBody">
+
+<span> </span>
+
+_**主题上次修改时间：** 2012-10-29_
+
+Microsoft Lync Server 2013 支持增强 9-1-1 (E9-1-1) 从 Lync 客户端和 Lync Phone 版设备进行呼叫。 为 E9 配置 Lync Server 时，由 Lync 2013 或 Lync Phone 版本发出的紧急呼叫包括 "紧急响应" 位置 (ERL 从位置信息服务数据库中) 信息。 ERL 包含市政（即街道）地址，以及有助于确定在办公楼和其他多租户设施中的更精确位置的其他信息。 当用户进行紧急呼叫时，Lync 服务器通过中介服务器向 E9 服务提供商路由呼叫音频以及位置和回拨信息。 E9-1-1 服务提供商会使用呼叫者的市政地址，将呼叫路由到为呼叫者所在的位置提供服务的公共安全应答点 (PSAP)，并沿着 PSAP 用来查找呼叫者 ERL 的紧急服务查询键 (ESQK) 进行发送。
+
+Lync Server 支持两种方法将紧急呼叫路由到 E9 服务提供商：
+
+  - 到合格的 E9-1-1 服务提供商的会话初始协议 (SIP) 中继连接
+
+  - 到基于公用电话交换网 (PSTN) 的 E9-1-1 服务提供商的紧急位置标识号 (ELIN) 网关
+
+使用 SIP trunk E9 服务提供商时，请将 ERLs 添加到位置信息服务数据库，然后根据主街道地址指南 (MSAG) （由 E9-1 服务提供商维护）验证位置。 如果 E9 服务提供商收到一个没有位置信息的呼叫，或者有一个未通过 MSAG 验证的位置，E9 服务提供商将呼叫路由到国家/地区紧急呼叫回复中心 (ECRC) ，它由专门训练有素的人员负责，口头获取呼叫方的位置（如有可能），并手动将呼叫路由到相应的 PSAP。  (某些 SIP 中继 E9 服务提供商还向客户提供 PSTN 直接向内拨号 (是否) 号码发送到 ECRC，后者提供了路由9-1-1 呼叫的备用方法，如果 SIP 干线因任何原因而失败。 ) 
+
+与时间分段多路传输 (TDM) 和基于 IP 的专用分支 exchange (PBX) 电话（具有固定位置），Lync 终结点可以非常轻松地进行移动。 当您部署 E9-1 功能时，Lync 服务器有助于确保无论呼叫者身在何处，紧急呼叫都可以路由到服务于呼叫者位置的 PSAP。 例如，如果用户的总部位于华盛顿州的雷德蒙德，而用户从位于堪萨斯州威奇托的分支机构的计算机发出紧急呼叫，则基于 SIP 中继或 PSTN 的 E9-1-1 服务提供商会将该呼叫路由至威奇托的 PSAP，而不是雷德蒙德的 PSAP。
+
+使用 ELIN 网关时，还会将 ERLs 添加到位置信息服务数据库，但每个位置还包括一个 ELIN 号码。 ELIN 号码会在紧急呼叫过程中变为紧急呼叫号码。 然后，你必须确保 PSTN 运营商将 ELIN 上载到自动位置标识 (ALI) 数据库。
+
+<div>
+
+
+> [!NOTE]  
+> 连接到 Lync 的模拟设备无法接收位置信息服务中的位置信息或将位置信息发送到 E9 服务提供商。 如果使用 SIP 中继 E9-1-1 服务提供商选项并需要通过模拟电话支持 E9-1-1，则有以下两个选项： 
+> <UL>
+> <LI>
+> <P><STRONG>传统 PS-阿里选项</STRONG> &nbsp; &nbsp; &nbsp;如果你的每个网站上都有本地 PSTN 网关，并且每个模拟电话都有，则可以直接使用专用开关/自动位置标识（ (PS-阿里) 服务提供商）预配模拟设备的位置。 在这种情况下，你将配置巧尽心思构建的 Lync 语音策略，并将其分配给模拟设备联系人对象，以便 E9 从这些电话直接路由到服务于该 (站点的 PSTN 提供商，而不是将呼叫路由到 E9 服务提供商 SIP 干线) 。 发出紧急呼叫后，与 PSTN 中继关联的 PS-ALI 提供商的数据库会将每个模拟电话的 DID 映射到一个物理位置并将此位置提供给 PSAP。 每当将电话移至不同的 ERL 时，必须通过 PS-ALI 服务提供商更新这些记录。</P>
+> <LI>
+> <P><STRONG>E9-1-1 服务提供商选项</STRONG> &nbsp; &nbsp; &nbsp;如果 E9-1 服务提供商支持，则可以向 E9 服务提供商注册模拟电话 DIDs 及其相应的 ERLs。 如果提供商收到来自 Lync Server 的不包含 PIDF 数据的呼叫，则该提供商可以查看呼叫方的已做号码是否存在数据库匹配。 通过使用从数据库检索到的 ERL，提供商可自动将紧急呼叫路由至正确的 PSAP，该 PSAP 将收到模拟设备的 DID 和允许调度程序查找呼叫者位置的 ESQK 记录。</P></LI></UL>如果您使用 ELIN 网关选项并需要通过模拟电话支持 E9-1-1，则可以直接向 PS-ALI 服务提供商提供模拟设备的位置，如上面第一个选项中所述。</div>
+
+从 Lync Server 的角度来看，E9 （1-1）过程可以分为两个阶段：
+
+  - 阶段 1：获取位置
+
+  - 阶段 2：将紧急呼叫路由至 E9-1-1 服务提供商
+
+本节介绍这些阶段的工作原理。
+
+如果计划将基础结构配置为自动检测客户端位置，则首先需要确定将使用哪些网络元素将呼叫者映射到不同位置。 有关可能的选项的详细信息，请参阅 [定义用于确定 Lync Server 2013 中的位置的网络元素](lync-server-2013-defining-the-network-elements-used-to-determine-location.md)。
+
+<div>
+
+## <a name="in-this-section"></a>本节内容
+
+  - [在 Lync Server 2013 中获取位置](lync-server-2013-acquiring-a-location.md)
+
+  - [在 Lync Server 2013 中使用 SIP 中继路由 E9-1-1 呼叫](lync-server-2013-routing-e9-1-1-calls-by-using-a-sip-trunk.md)
+
+  - [在 Lync Server 2013 中使用 ELIN 网关路由 E9-1-1 呼叫](lync-server-2013-routing-e9-1-1-calls-by-using-an-elin-gateway.md)
+
+</div>
+
+</div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</div>
+
