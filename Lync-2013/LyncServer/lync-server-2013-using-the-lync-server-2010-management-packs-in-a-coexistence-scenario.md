@@ -1,0 +1,152 @@
+---
+title: 在共存方案中使用 Lync Server 2010 管理包
+description: 在共存方案中使用 Lync Server 2010 管理包。
+ms.reviewer: ''
+ms.author: v-lanac
+author: lanachin
+f1.keywords:
+- NOCSH
+TOCTitle: Using the Lync Server 2010 management packs in a coexistence scenario
+ms:assetid: 8b792503-bd88-47fe-9d97-b071e8d429a5
+ms:mtpsurl: https://technet.microsoft.com/en-us/library/JJ205078(v=OCS.15)
+ms:contentKeyID: 48184772
+ms.date: 07/23/2014
+manager: serdars
+mtps_version: v=OCS.15
+ms.openlocfilehash: f5f6e76f49b74badd0f40d115101abb38aa35172
+ms.sourcegitcommit: 36fee89bb887bea4f18b19f17a8c69daf5bc423d
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "49392478"
+---
+# <a name="using-the-lync-server-2010-management-packs-in-a-coexistence-scenario"></a><span data-ttu-id="9a841-103">在共存方案中使用 Lync Server 2010 管理包</span><span class="sxs-lookup"><span data-stu-id="9a841-103">Using the Lync Server 2010 management packs in a coexistence scenario</span></span>
+
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+
+<div class="topic" data-xmlns="http://www.w3.org/1999/xhtml" data-msxsl="urn:schemas-microsoft-com:xslt" data-cs="https://msdn.microsoft.com/">
+
+<div data-asp="https://msdn2.microsoft.com/asp">
+
+
+
+</div>
+
+<div id="mainSection">
+
+<div id="mainBody"><span data-ttu-id="9a841-104">
+
+<span> </span></span><span class="sxs-lookup"><span data-stu-id="9a841-104">
+
+<span> </span></span></span>
+
+<span data-ttu-id="9a841-105">_**主题上次修改时间：** 2012-10-22_</span><span class="sxs-lookup"><span data-stu-id="9a841-105">_**Topic Last Modified:** 2012-10-22_</span></span>
+
+<span data-ttu-id="9a841-106">许多客户在其企业内采用推出计划，用户从 Microsoft Lync Server 2010 逐渐迁移到 Lync Server 2013。</span><span class="sxs-lookup"><span data-stu-id="9a841-106">Many customers adopt a rollout program inside of their enterprises in which users are progressively migrated from Microsoft Lync Server 2010 to Lync Server 2013.</span></span> <span data-ttu-id="9a841-107">这些公司的管理员将注意监视这两个版本的 Lync Server，以帮助确保其所有最终用户获得最佳通信体验。</span><span class="sxs-lookup"><span data-stu-id="9a841-107">The administrators at these companies will care about monitoring both versions of Lync Server to help ensure that all of their end users are getting the best possible communication experience.</span></span> <span data-ttu-id="9a841-108">对于此方案，Lync Server 2013 管理包支持使用 Lync Server 2010 管理包的并行迁移路径。</span><span class="sxs-lookup"><span data-stu-id="9a841-108">For this scenario, the Lync Server 2013 Management Pack supports a side-by-side migration path with the Lync Server 2010 Management Pack.</span></span>
+
+<span data-ttu-id="9a841-109">在 Lync Server 2010 中，通过中央管理存储中存储的拓扑文档发现了 Lync Server 计算机。</span><span class="sxs-lookup"><span data-stu-id="9a841-109">In the Lync Server 2010, Lync Server computers were discovered through the topology document stored with the Central Management store.</span></span> <span data-ttu-id="9a841-110">在此配置中，单个计算机将报告所有其他 Lync 服务器计算机的存在。</span><span class="sxs-lookup"><span data-stu-id="9a841-110">In this configuration, a single computer would report the existence of all the other Lync Server computers.</span></span>
+
+<span data-ttu-id="9a841-111">Lync Server 2013 的管理包现在使用计算机级发现，而不是在 Lync Server 2010 中使用的集中发现机制。</span><span class="sxs-lookup"><span data-stu-id="9a841-111">The management packs for Lync Server 2013 now use machine-level discovery instead of the central discovery mechanism that was used in Lync Server 2010.</span></span> <span data-ttu-id="9a841-112">这意味着每个 System Center 代理实质上都会发现自己并向 System Center Operations Manager 报告它的存在。</span><span class="sxs-lookup"><span data-stu-id="9a841-112">This means that each System Center agent essentially discovers itself and reports its existence to System Center Operations Manager.</span></span> <span data-ttu-id="9a841-113">使用计算机级发现可简化 System Center 基础结构的管理，还支持不同版本的 Lync Server 管理包 (例如，适用于 lync server 2010 的管理包和 Lync Server 2013 的管理包) 更加轻松地共存。</span><span class="sxs-lookup"><span data-stu-id="9a841-113">Using machine-level discovery simplifies administration of your System Center infrastructure and also enables different versions of the Lync Server management packs (for example, management packs for Lync Server 2010 and management packs for Lync Server 2013) to coexist more easily.</span></span>
+
+<span data-ttu-id="9a841-114">若要支持此迁移，首先需要升级现有 Lync Server 2010 监视，以避免覆盖范围中的差距。</span><span class="sxs-lookup"><span data-stu-id="9a841-114">To support this migration, you will first need to upgrade your existing Lync Server 2010 monitoring to avoid gaps in coverage.</span></span> <span data-ttu-id="9a841-115">若要执行此操作，请在将中央管理存储升级到 Lync Server 2013 之前，选择现有 Lync Server 2010 计算机为 Lync Server 2010 服务 "中央发现脚本"。</span><span class="sxs-lookup"><span data-stu-id="9a841-115">To do this, elect an existing Lync Server 2010 computer to service the Central Discovery script for the Lync Server 2010 before upgrading your Central Management store to Lync Server 2013.</span></span> <span data-ttu-id="9a841-116">这是一个包含四个步骤的过程：</span><span class="sxs-lookup"><span data-stu-id="9a841-116">This is a four-step process:</span></span>
+
+1.  <span data-ttu-id="9a841-117">将 Lync Server 2010 管理包升级到累积更新7。</span><span class="sxs-lookup"><span data-stu-id="9a841-117">Upgrade the Lync Server 2010 Management Packs to Cumulative Update 7.</span></span>
+
+2.  <span data-ttu-id="9a841-118">指示 Lync Server 2010 计算机运行中央发现脚本。</span><span class="sxs-lookup"><span data-stu-id="9a841-118">Instruct a Lync Server 2010 computer to run the Central Discovery script.</span></span>
+
+3.  <span data-ttu-id="9a841-119">替代 Microsoft Lync Server 2010 管理包中的中央发现候选人。</span><span class="sxs-lookup"><span data-stu-id="9a841-119">Override the Central Discovery Candidate in the Microsoft Lync Server 2010 Management Pack.</span></span>
+
+4.  <span data-ttu-id="9a841-120">验证是否已发现新的中心发现候选项。</span><span class="sxs-lookup"><span data-stu-id="9a841-120">Verify that the new Central Discovery Candidate has been discovered.</span></span>
+
+<div>
+
+## <a name="instructing-a-lync-server-2010-computer-to-run-the-central-discovery-script"></a><span data-ttu-id="9a841-121">指示 Lync Server 2010 计算机运行中央发现脚本</span><span class="sxs-lookup"><span data-stu-id="9a841-121">Instructing a Lync Server 2010 Computer to Run the Central Discovery script</span></span>
+
+<span data-ttu-id="9a841-122">若要提名非中央管理存储计算机 (例如，Lync Server 前端) 服务器处理中央发现，你需要在非中心管理存储服务器上创建以下注册表项：</span><span class="sxs-lookup"><span data-stu-id="9a841-122">To nominate a non-Central Management store computer (for example, a Lync Server Front End) server to handle central discovery, you will need to create the following registry key on the non-Central Management store server:</span></span>
+
+<span data-ttu-id="9a841-123">HKLM \\ 软件 \\ Microsoft \\ 实时通信 \\ 运行状况 \\ CentralDiscoveryCandidate</span><span class="sxs-lookup"><span data-stu-id="9a841-123">HKLM\\Software\\Microsoft\\Real-Time Communications\\Health\\CentralDiscoveryCandidate</span></span>
+
+<span data-ttu-id="9a841-124">你可以通过完成以下过程来创建此注册表项：</span><span class="sxs-lookup"><span data-stu-id="9a841-124">You can create this registry key by completing the following procedure:</span></span>
+
+1.  <span data-ttu-id="9a841-125">单击 " **开始** "，然后单击 " **运行**"。</span><span class="sxs-lookup"><span data-stu-id="9a841-125">Click **Start** and then click **Run**.</span></span>
+
+2.  <span data-ttu-id="9a841-126">在 " **运行** " 对话框中，键入 **regedit** ，然后按 enter。</span><span class="sxs-lookup"><span data-stu-id="9a841-126">In the **Run** dialog box, type **regedit** and then press ENTER.</span></span>
+
+3.  <span data-ttu-id="9a841-127">在注册表编辑器中，展开 " **HKEY \_ 本地 \_ 计算机**"，展开 " **软件**"，展开 " **Microsoft**"，然后展开 " **实时通信**"。</span><span class="sxs-lookup"><span data-stu-id="9a841-127">In Registry Editor, expand **HKEY\_LOCAL\_MACHINE**, expand **SOFTWARE**, expand **Microsoft**, and then expand **Real-Time Communications**.</span></span>
+
+4.  <span data-ttu-id="9a841-128">右键单击 " **运行状况**"，单击 " **新建**"，然后单击 " **项**"。</span><span class="sxs-lookup"><span data-stu-id="9a841-128">Right-click **Health**, click **New**, and then click **Key**.</span></span> <span data-ttu-id="9a841-129">如果 **运行状况** 键不存在，则右键单击 " **实时通信**"，指向 " **新建**"，然后单击 " **项**"。</span><span class="sxs-lookup"><span data-stu-id="9a841-129">If the **Health** key does not exist, then right-click **Real-Time Communications**, point to **New**, and then click **Key**.</span></span> <span data-ttu-id="9a841-130">创建新密钥时，键入 "运行状况"，然后按 ENTER。</span><span class="sxs-lookup"><span data-stu-id="9a841-130">When the new key is created, type Health, and then press ENTER.</span></span>
+    
+    <span data-ttu-id="9a841-131">创建新密钥后，键入 **CentralDiscoveryCandidate** ，然后按 enter 重命名该键。</span><span class="sxs-lookup"><span data-stu-id="9a841-131">After the new key has been created, type **CentralDiscoveryCandidate** and then press ENTER to rename the key.</span></span>
+
+<span data-ttu-id="9a841-132">该计算机可能需要几个小时才能获取此更改。</span><span class="sxs-lookup"><span data-stu-id="9a841-132">It may take the computer several hours to pick up this change.</span></span> <span data-ttu-id="9a841-133">若要使更改立即生效，请停止运行状况代理服务，然后重新启动它。</span><span class="sxs-lookup"><span data-stu-id="9a841-133">To make the change take effect immediately, stop and then restart the Health Agent service.</span></span> <span data-ttu-id="9a841-134">若要重新启动运行状况代理服务，请在 Lync Server 2010 计算机上完成以下过程：</span><span class="sxs-lookup"><span data-stu-id="9a841-134">To restart the Health Agent service, complete the following procedure on the Lync Server 2010 computer:</span></span>
+
+1.  <span data-ttu-id="9a841-135">单击 " **开始**"，单击 " **所有程序**"，单击 " **附件**"，右键单击 " **命令提示符**"，然后单击 "以 **管理员身份运行**"。</span><span class="sxs-lookup"><span data-stu-id="9a841-135">Click **Start**, click **All Programs**, click **Accessories**, right-click **Command Prompt**, and then click **Run as administrator**.</span></span>
+
+2.  <span data-ttu-id="9a841-136">在控制台窗口中，键入以下命令，然后按 ENTER：</span><span class="sxs-lookup"><span data-stu-id="9a841-136">In the console window, type the following command and then press ENTER:</span></span>
+    
+        Net stop HealthService
+
+3.  <span data-ttu-id="9a841-137">你将看到一条消息，指出 "System Center Management service 正在停止"，然后再次出现一条消息，告知你服务已停止。</span><span class="sxs-lookup"><span data-stu-id="9a841-137">You will see a message that states "The System Center Management service is stopping," followed by a second message that tells you that the service has been stopped.</span></span> <span data-ttu-id="9a841-138">服务停止后，您可以通过键入以下命令并按 ENTER 来重新启动它：</span><span class="sxs-lookup"><span data-stu-id="9a841-138">After the service has stopped, you can restart it by typing the following command and pressing ENTER:</span></span>
+    
+        Net start HealthService
+
+</div>
+
+<div>
+
+## <a name="overriding-the-central-discovery-candidate-in-the-lync-server-2010-management-pack"></a><span data-ttu-id="9a841-139">覆盖 Lync Server 2010 管理包中的中央发现候选人</span><span class="sxs-lookup"><span data-stu-id="9a841-139">Overriding the Central Discovery Candidate in the Lync Server 2010 Management Pack</span></span>
+
+<span data-ttu-id="9a841-140">指示 Lync Server 2010 计算机在 Lync Server 2010 计算机上进行报告后，您还需要通知 Lync Server 2010 管理包此更改。</span><span class="sxs-lookup"><span data-stu-id="9a841-140">After instructing a Lync Server 2010 computer to report on Lync Server 2010 computers, you will need to inform the Lync Server 2010 Management Pack about this change as well.</span></span> <span data-ttu-id="9a841-141">若要执行此操作，你需要在管理包中创建替代。</span><span class="sxs-lookup"><span data-stu-id="9a841-141">To do this, you will need to create an override in the Management Pack.</span></span> <span data-ttu-id="9a841-142">可通过完成以下过程来执行此操作：</span><span class="sxs-lookup"><span data-stu-id="9a841-142">That can be done by completing the following procedure:</span></span>
+
+1.  <span data-ttu-id="9a841-143">在 Operations Manager 控制台中，单击 " **创作**"。</span><span class="sxs-lookup"><span data-stu-id="9a841-143">In the Operations Manager console, click **Authoring**.</span></span>
+
+2.  <span data-ttu-id="9a841-144">在 "创作" 选项卡上，展开 " **管理包对象**"，单击 " **对象发现**"，然后单击 " **范围**"。</span><span class="sxs-lookup"><span data-stu-id="9a841-144">On the Authoring tab, expand **Management Pack Objects**, click **Object Discoveries**, and then click **Scope**.</span></span>
+
+3.  <span data-ttu-id="9a841-145">在 " **作用域管理包对象** " 对话框中，选择带有目标 **LS "发现候选** 项" 的项目，然后单击 **"确定"**。</span><span class="sxs-lookup"><span data-stu-id="9a841-145">In the **Scope Management Pack Objects** dialog box, select the item with the Target **LS Discovery Candidate** and then click **OK**.</span></span> <span data-ttu-id="9a841-146">请注意，只有在安装了 Lync Server 2010 管理包后，才会显示 LS "发现候选项"。</span><span class="sxs-lookup"><span data-stu-id="9a841-146">Note that LS Discovery Candidate will appear only if you have installed the Lync Server 2010 Management Pack.</span></span>
+
+4.  <span data-ttu-id="9a841-147">在 Operations Manager 控制台中，右键单击 **LS "发现候选** 项"，指向 " **替代**"，指向 " **替代对象发现**"，然后单击 " **用于类的所有对象： LS 发现候选项**"。</span><span class="sxs-lookup"><span data-stu-id="9a841-147">In the Operations Manager console, right-click **LS Discovery Candidate**, point to **Overrides**, point to **Override the Object Discovery**, and then click **For all objects of class: LS Discovery Candidate**.</span></span>
+
+5.  <span data-ttu-id="9a841-148">在 "**替代属性**" 对话框中，选中参数 "**中央发现 WatcherNode Fqdn**" 旁边的 "**覆盖**" 复选框。</span><span class="sxs-lookup"><span data-stu-id="9a841-148">In the **Override Properties** dialog box, select the **Override** check box next to the parameter **Central Discovery WatcherNode Fqdn**.</span></span> <span data-ttu-id="9a841-149">在 " **替代值** " 和 " **有效值** " 框中键入 Lync Server 2010 计算机的完全限定的域名。</span><span class="sxs-lookup"><span data-stu-id="9a841-149">Type the fully qualified domain name of the Lync Server 2010 computer in the **Override Value** and **Effective Value** boxes.</span></span> <span data-ttu-id="9a841-150">选中 " **强制执行** " 复选框，然后单击 **"确定"**。</span><span class="sxs-lookup"><span data-stu-id="9a841-150">Select the **Enforced** check box and click **OK**.</span></span>
+
+<span data-ttu-id="9a841-151">创建替代后，需要重启根管理服务器上的运行状况服务。</span><span class="sxs-lookup"><span data-stu-id="9a841-151">After you have created the override, you need to restart the health service on the Root Management Server.</span></span> <span data-ttu-id="9a841-152">若要重新启动运行状况服务，请在根管理服务器上完成以下过程：</span><span class="sxs-lookup"><span data-stu-id="9a841-152">To restart the health service, complete the following procedure on the Root Management Server:</span></span>
+
+1.  <span data-ttu-id="9a841-153">单击 " **开始**"，单击 " **所有程序**"，单击 " **附件**"，右键单击 " **命令提示符**"，然后单击 "以 **管理员身份运行**"。</span><span class="sxs-lookup"><span data-stu-id="9a841-153">Click **Start**, click **All Programs**, click **Accessories**, right-click **Command Prompt**, and then click **Run as administrator**.</span></span>
+
+2.  <span data-ttu-id="9a841-154">在控制台窗口中，键入以下命令，然后按 ENTER：</span><span class="sxs-lookup"><span data-stu-id="9a841-154">In the console window, type the following command, and then press ENTER:</span></span>
+    
+        Net stop HealthService
+
+3.  <span data-ttu-id="9a841-155">你将看到一条消息，指出 "System Center Management service 即将停止"，然后是另一条消息，告诉你服务已停止。</span><span class="sxs-lookup"><span data-stu-id="9a841-155">You will see a message stating that "The System Center Management service is stopping," followed by a second message that tells you that the service has been stopped.</span></span> <span data-ttu-id="9a841-156">服务停止后，您可以通过键入以下命令并按 ENTER 来重新启动它：</span><span class="sxs-lookup"><span data-stu-id="9a841-156">After the service has stopped, you can then restart it by typing the following command and pressing ENTER:</span></span>
+    
+        Net start HealthService
+
+</div>
+
+<div>
+
+## <a name="verifying-that-the-new-central-discovery-candidate-was-discovered"></a><span data-ttu-id="9a841-157">验证是否发现新的中央发现候选项</span><span class="sxs-lookup"><span data-stu-id="9a841-157">Verifying that the New Central Discovery Candidate Was Discovered</span></span>
+
+<span data-ttu-id="9a841-158">升级中央管理存储之前的最后一步是确保 Lync Server 2010 管理包发现新的中心发现候选项。</span><span class="sxs-lookup"><span data-stu-id="9a841-158">The final step before upgrading Central Management store is to make sure that the new central discovery candidate was discovered by the Lync Server 2010 Management Pack.</span></span> <span data-ttu-id="9a841-159">若要执行此操作，请打开 Operations Manager 控制台，然后单击 "监视"。</span><span class="sxs-lookup"><span data-stu-id="9a841-159">To do this, open the Operations Manager console and then click Monitoring.</span></span> <span data-ttu-id="9a841-160">在 "监视" 选项卡上，展开 " **Microsoft Lync Server 2010 运行状况**"，展开 " **拓扑发现**"，然后单击 " **发现状态视图**"。</span><span class="sxs-lookup"><span data-stu-id="9a841-160">On the Monitoring tab, expand **Microsoft Lync Server 2010 Health**, expand **Topology Discovery**, and then click **Discovery State View**.</span></span> <span data-ttu-id="9a841-161">验证显示中的行是否具有列出中央发现候选项的完全限定的域名的 **路径** 。</span><span class="sxs-lookup"><span data-stu-id="9a841-161">Verify that a row in the display has a **Path** that lists the fully qualified domain name of the central discovery candidate.</span></span> <span data-ttu-id="9a841-162">你还应验证计算机状态是否报告为 " **正常**"。</span><span class="sxs-lookup"><span data-stu-id="9a841-162">You should also verify that the computer state is reported as **Healthy**.</span></span>
+
+<span data-ttu-id="9a841-163"></div>
+
+</div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</span><span class="sxs-lookup"><span data-stu-id="9a841-163"></div>
+
+</div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</span></span></div>
+
