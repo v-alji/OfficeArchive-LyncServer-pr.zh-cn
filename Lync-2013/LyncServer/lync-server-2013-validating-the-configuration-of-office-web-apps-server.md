@@ -1,0 +1,74 @@
+---
+title: Lync Server 2013：验证 Office Web Apps 服务器的配置
+description: Lync Server 2013：验证 Office Web Apps 服务器的配置。
+ms.reviewer: ''
+ms.author: v-lanac
+author: lanachin
+f1.keywords:
+- NOCSH
+TOCTitle: Validating the configuration of Office Web Apps Server
+ms:assetid: f6e8ecbf-305d-4a13-92d0-b61dbd82b0ea
+ms:mtpsurl: https://technet.microsoft.com/en-us/library/JJ205393(v=OCS.15)
+ms:contentKeyID: 48185859
+ms.date: 07/23/2014
+manager: serdars
+mtps_version: v=OCS.15
+ms.openlocfilehash: 80c3160dd9a76c129fbb0289929a868b897beb2c
+ms.sourcegitcommit: 36fee89bb887bea4f18b19f17a8c69daf5bc423d
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "49440442"
+---
+# <a name="validating-the-configuration-of-office-web-apps-server-in-lync-server-2013"></a>在 Lync Server 2013 中验证 Office Web Apps 服务器的配置
+
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+
+<div class="topic" data-xmlns="http://www.w3.org/1999/xhtml" data-msxsl="urn:schemas-microsoft-com:xslt" data-cs="https://msdn.microsoft.com/">
+
+<div data-asp="https://msdn2.microsoft.com/asp">
+
+
+
+</div>
+
+<div id="mainSection">
+
+<div id="mainBody">
+
+<span> </span>
+
+_**主题上次修改时间：** 2014-04-22_
+
+在将 Office Web Apps 服务器添加到拓扑后，在该拓扑发布后，你应该会在 Lync Server 事件日志中看到两个新的事件日志事件。 首先，应该添加 LS 数据 MCU 事件（事件 ID 41034）；此事件将报告已发现 Office Web Apps Server：
+
+**已发现 Web 会议服务器 Office Web Apps Server，启用了 PowerPoint 内容。**
+
+例如，除了应该查看报告回 Office Web Apps Server URL 的另一个 LS Data MCU 事件（事件 ID 41032），还应该查看类似以下内容：
+
+**已成功发现 Web 会议服务器 Office Web Apps Server。**
+
+**Office Web Apps 服务器内部演示者页面： https://atl-officewebapps-001.litwareinc.com/m/Presenter.aspx?a=0\&embed=**
+
+**Office Web Apps 服务器内部与会者页面： https://atl-officewebapps-001.litwareinc.com/m/ParticipantFrame.aspx?a=0\&embed=true&=**
+
+**Office Web Apps 服务器外部演示者页面： https://atl-officewebapps-001.litwareinc.com/m/Presenter.aspx?a=0\&embed**
+
+**Office Web Apps 服务器内部与会者页面： https://atl-officewebapps-001.litwareinc.com/m/ParticipantFrame.aspx?a=0\&embed=true&**
+
+如果看到的 LS 数据 MCU 事件的事件 ID 为41033，表示 Office Web Apps 服务器发现失败。 在这种情况下，Microsoft Lync Server 2013 将根据需要尝试多次，以发现新配置的 Office Web Apps 服务器。 如果发现过程重复失败，则应从拓扑文档中删除 Office Web Apps 服务器，发布更新后的拓扑，然后尝试在连接问题解决后将 Office Web App 服务器重新添加到拓扑。
+
+如果 Office Web Apps 服务器似乎配置正确且已被发现过程识别，则可以通过在一对 Microsoft Lync 2013 客户端之间共享 PowerPoint 演示文稿来验证 Office Web Apps 服务器是否按预期工作。 如果用户 A 可以加载和显示 PowerPoint 演示文稿，并且如果用户 B 可以加入会议并查看该演示文稿，则 Office Web Apps 服务器正在工作。
+
+即使 Office Web Apps 服务器显示正确配置，您也可能会收到错误消息 "当你尝试共享 PowerPoint 演示文稿时，由于服务器连接问题，某些共享功能不可用"。 如果收到该错误消息，您应该重新启动前端服务器 (或服务器，) 与新的 Office Web Apps 服务器相关联。
+
+</div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</div>
+
