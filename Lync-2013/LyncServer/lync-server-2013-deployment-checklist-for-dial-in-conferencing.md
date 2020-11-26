@@ -1,0 +1,244 @@
+---
+title: Lync Server 2013 电话拨入式会议的部署清单
+description: 用于电话拨入式会议的 Lync Server 2013 部署清单。
+ms.reviewer: ''
+ms.author: v-lanac
+author: lanachin
+f1.keywords:
+- NOCSH
+TOCTitle: Deployment checklist for dial-in conferencing
+ms:assetid: 9c8d3ebe-0d70-4a61-9bd0-522286cddd9a
+ms:mtpsurl: https://technet.microsoft.com/en-us/library/Gg412726(v=OCS.15)
+ms:contentKeyID: 48184987
+ms.date: 10/03/2014
+manager: serdars
+mtps_version: v=OCS.15
+ms.openlocfilehash: 743b5120bf011ab8467679bea9869a46231b0835
+ms.sourcegitcommit: 36fee89bb887bea4f18b19f17a8c69daf5bc423d
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "49429739"
+---
+# <a name="deployment-checklist-for-dial-in-conferencing-in-lync-server-2013"></a><span data-ttu-id="60e4a-103">Lync Server 2013 中的电话拨入式会议的部署清单</span><span class="sxs-lookup"><span data-stu-id="60e4a-103">Deployment checklist for dial-in conferencing in Lync Server 2013</span></span>
+
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+
+<div class="topic" data-xmlns="http://www.w3.org/1999/xhtml" data-msxsl="urn:schemas-microsoft-com:xslt" data-cs="https://msdn.microsoft.com/">
+
+<div data-asp="https://msdn2.microsoft.com/asp">
+
+
+
+</div>
+
+<div id="mainSection">
+
+<div id="mainBody"><span data-ttu-id="60e4a-104">
+
+<span> </span></span><span class="sxs-lookup"><span data-stu-id="60e4a-104">
+
+<span> </span></span></span>
+
+<span data-ttu-id="60e4a-105">_**主题上次修改时间：** 2014-10-03_</span><span class="sxs-lookup"><span data-stu-id="60e4a-105">_**Topic Last Modified:** 2014-10-03_</span></span>
+
+<span data-ttu-id="60e4a-106">部署会议工作负荷时，将部署电话拨入式会议所需的组件。</span><span class="sxs-lookup"><span data-stu-id="60e4a-106">The components required for dial-in conferencing are deployed when you deploy the conferencing workload.</span></span> <span data-ttu-id="60e4a-107">在配置拨入式会议之前，你需要在 (PSTN) 网关部署企业语音或中介服务器以及公共交换电话网络。</span><span class="sxs-lookup"><span data-stu-id="60e4a-107">Before you can configure dial-in conferencing, you need to deploy either Enterprise Voice or a Mediation Server and a public switched telephone network (PSTN) gateway.</span></span>
+
+<span data-ttu-id="60e4a-108">必须先执行下表中的所有步骤，然后用户才能从 PSTN 拨入以加入音频/视频会议。</span><span class="sxs-lookup"><span data-stu-id="60e4a-108">All the steps in the following table must be performed before users can dial in from the PSTN to join an audio/video conference.</span></span>
+
+<div>
+
+
+> [!NOTE]  
+> <span data-ttu-id="60e4a-109">如果从 Office 通信服务器 2007 R2 迁移，则必须在部署电话拨入式会议之前将最新更新应用到 Office 通信服务器 2007 R2 环境。</span><span class="sxs-lookup"><span data-stu-id="60e4a-109">If you are migrating from Office Communications Server 2007 R2, you must apply the latest updates to your Office Communications Server 2007 R2 environment before deploying dial-in conferencing.</span></span>
+
+
+
+</div>
+
+### <a name="dial-in-conferencing-deployment-process"></a><span data-ttu-id="60e4a-110">电话拨入式会议部署过程</span><span class="sxs-lookup"><span data-stu-id="60e4a-110">Dial-in Conferencing Deployment Process</span></span>
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><span data-ttu-id="60e4a-111">阶段</span><span class="sxs-lookup"><span data-stu-id="60e4a-111">Phase</span></span></th>
+<th><span data-ttu-id="60e4a-112">步骤</span><span class="sxs-lookup"><span data-stu-id="60e4a-112">Steps</span></span></th>
+<th><span data-ttu-id="60e4a-113">权限</span><span class="sxs-lookup"><span data-stu-id="60e4a-113">Permissions</span></span></th>
+<th><span data-ttu-id="60e4a-114">部署文档</span><span class="sxs-lookup"><span data-stu-id="60e4a-114">Deployment documentation</span></span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><p><span data-ttu-id="60e4a-115"><strong>创建包括会议工作负荷的拓扑，包括中介服务器和 PSTN 网关，以及部署前端池或标准版服务器</strong></span><span class="sxs-lookup"><span data-stu-id="60e4a-115"><strong>Create a topology that includes the Conferencing workload, including a Mediation Server and PSTN gateway, and deploy the Front End pool or Standard Edition server</strong></span></span></p></td>
+<td><ol>
+<li><p><span data-ttu-id="60e4a-116">运行拓扑生成器以配置拓扑。</span><span class="sxs-lookup"><span data-stu-id="60e4a-116">Run Topology Builder to configure your topology.</span></span> <span data-ttu-id="60e4a-117">配置拓扑时，请选择电话拨入式会议选项。</span><span class="sxs-lookup"><span data-stu-id="60e4a-117">While configuring the topology, select the dial-in conferencing option.</span></span></p></li>
+<li><p><span data-ttu-id="60e4a-118">发布拓扑并部署前端池或标准版服务器。</span><span class="sxs-lookup"><span data-stu-id="60e4a-118">Publish the topology and deploy the Front End pool or Standard Edition server.</span></span></p></li>
+<li><p><span data-ttu-id="60e4a-119">如有必要，请创建独立的中介服务器，并将其与 PSTN 网关关联。</span><span class="sxs-lookup"><span data-stu-id="60e4a-119">If necessary, create a stand-alone Mediation Server and associate it with a PSTN gateway.</span></span></p>
+<div>
+
+> [!NOTE]  
+> <span data-ttu-id="60e4a-120">仅当你不部署企业语音且不将中介服务器与 Enterprise EditionFront End Server 或 Standard Edition 服务器一起 collocate 时，才需要执行此步骤。</span><span class="sxs-lookup"><span data-stu-id="60e4a-120">This step is required only if you do not deploy Enterprise Voice and do not collocate the Mediation Server with the Enterprise EditionFront End Server or Standard Edition server.</span></span> <span data-ttu-id="60e4a-121">如果部署企业语音，则在企业语音部署中安装并配置中介服务器和 PSTN 网关。</span><span class="sxs-lookup"><span data-stu-id="60e4a-121">If you deploy Enterprise Voice, you install and configure Mediation Servers and PSTN gateways as part of the Enterprise Voice deployment.</span></span> <span data-ttu-id="60e4a-122">如果您 collocate 中介服务器，请将中介服务器作为前端池或标准版服务器部署的一部分进行安装和配置。</span><span class="sxs-lookup"><span data-stu-id="60e4a-122">If you collocate the Mediation Server, you install and configure the Mediation Server as part of the Front End pool or Standard Edition server deployment.</span></span>
+
+
+</div></li>
+</ol></td>
+<td><p><span data-ttu-id="60e4a-123">Domain Admins</span><span class="sxs-lookup"><span data-stu-id="60e4a-123">Domain Admins</span></span></p>
+<p><span data-ttu-id="60e4a-124">RTCUniversalServerAdmins</span><span class="sxs-lookup"><span data-stu-id="60e4a-124">RTCUniversalServerAdmins</span></span></p>
+<p><span data-ttu-id="60e4a-125">Administrator</span><span class="sxs-lookup"><span data-stu-id="60e4a-125">Administrator</span></span></p></td>
+<td><ul>
+<li><p><span data-ttu-id="60e4a-126"><a href="lync-server-2013-deploying-lync-server.md">部署 Lync Server 2013</a></span><span class="sxs-lookup"><span data-stu-id="60e4a-126"><a href="lync-server-2013-deploying-lync-server.md">Deploying Lync Server 2013</a></span></span></p></li>
+<li><p><span data-ttu-id="60e4a-127">创建独立的中介服务器池： <a href="lync-server-2013-deploying-mediation-servers-and-defining-peers.md">在 Lync server 2013 中部署中介服务器和定义对等</a></span><span class="sxs-lookup"><span data-stu-id="60e4a-127">To create a stand-alone Mediation Server pool: <a href="lync-server-2013-deploying-mediation-servers-and-defining-peers.md">Deploying Mediation Servers and defining peers in Lync Server 2013</a></span></span></p></li>
+</ul></td>
+</tr>
+<tr class="even">
+<td><p><span data-ttu-id="60e4a-128"><strong>Configure dial plans</strong></span><span class="sxs-lookup"><span data-stu-id="60e4a-128"><strong>Configure dial plans</strong></span></span></p></td>
+<td><p><span data-ttu-id="60e4a-129">拨号计划是一组电话号码规范化规则，它将从特定位置拨打的电话号码转换为单一的标准 (E.164) 格式，以便进行电话授权和呼叫路由。</span><span class="sxs-lookup"><span data-stu-id="60e4a-129">A dial plan is a set of phone number normalization rules that translate phone numbers dialed from a specific location to a single standard (E.164) format for purposes of phone authorization and call routing.</span></span> <span data-ttu-id="60e4a-130">从不同位置拨打的同一电话号码可以基于各自的拨号计划针对每个具体位置解析为不同的 E.164 号码。</span><span class="sxs-lookup"><span data-stu-id="60e4a-130">The same phone number dialed from different locations can, based on the respective dial plans, resolve to different E.164 numbers, as appropriate to each location.</span></span> <span data-ttu-id="60e4a-131">如果你部署企业语音，请将拨号计划设置为该部署的一部分，并且你需要确保拨号计划还能容纳电话拨入式会议。</span><span class="sxs-lookup"><span data-stu-id="60e4a-131">If you deploy Enterprise Voice, you set up dial plans as part of that deployment, and you need to make sure that the dial plans also accommodate dial-in conferencing.</span></span> <span data-ttu-id="60e4a-132">如果不部署企业语音，则需要设置电话拨入式会议的拨号计划。</span><span class="sxs-lookup"><span data-stu-id="60e4a-132">If you do not deploy Enterprise Voice, you need to set up dial plans for dial-in conferencing.</span></span></p>
+<p><span data-ttu-id="60e4a-133">使用 Lync Server 2013 控制面板或 Lync Server Management Shell 设置拨号计划，如下所示：</span><span class="sxs-lookup"><span data-stu-id="60e4a-133">Use the Lync Server 2013 Control Panel or Lync Server Management Shell to set up dial plans as follows:</span></span></p>
+<ol>
+<li><p><span data-ttu-id="60e4a-134">创建一个或多个用于路由拨入访问电话号码的拨号计划。</span><span class="sxs-lookup"><span data-stu-id="60e4a-134">Create one or more dial plans for routing dial-in access phone numbers.</span></span></p></li>
+<li><p><span data-ttu-id="60e4a-p105">为每个池分配一个默认的拨号计划。将“<strong>电话拨入式会议区域</strong>”设为应用拨号计划的地理位置。该区域会将拨号计划与拨入访问号码相关联。</span><span class="sxs-lookup"><span data-stu-id="60e4a-p105">Assign a default dial plan to each pool. Set the <strong>Dial-in conferencing region</strong> to the geographic location to which the dial plan applies. The region associates the dial plan with dial-in access numbers.</span></span></p></li>
+</ol></td>
+<td><p><span data-ttu-id="60e4a-138">RTCUniversalServerAdmins</span><span class="sxs-lookup"><span data-stu-id="60e4a-138">RTCUniversalServerAdmins</span></span></p>
+<p><span data-ttu-id="60e4a-139">CsVoiceAdministrator</span><span class="sxs-lookup"><span data-stu-id="60e4a-139">CsVoiceAdministrator</span></span></p>
+<p><span data-ttu-id="60e4a-140">CsServerAdministrator</span><span class="sxs-lookup"><span data-stu-id="60e4a-140">CsServerAdministrator</span></span></p>
+<p><span data-ttu-id="60e4a-141">CsAdministrator</span><span class="sxs-lookup"><span data-stu-id="60e4a-141">CsAdministrator</span></span></p></td>
+<td><p><span data-ttu-id="60e4a-142"><a href="lync-server-2013-configure-dial-plans-for-dial-in-conferencing.md">在 Lync Server 2013 中配置电话拨入式会议的拨号计划</a></span><span class="sxs-lookup"><span data-stu-id="60e4a-142"><a href="lync-server-2013-configure-dial-plans-for-dial-in-conferencing.md">Configure dial plans for dial-in conferencing in Lync Server 2013</a></span></span></p></td>
+</tr>
+<tr class="odd">
+<td><p><span data-ttu-id="60e4a-143"><strong>确保已为拨号计划分配区域</strong></span><span class="sxs-lookup"><span data-stu-id="60e4a-143"><strong>Make sure that dial plans are assigned regions</strong></span></span></p></td>
+<td><p><span data-ttu-id="60e4a-144">运行 <strong>Get-CsDialPlan</strong> 和 <strong>Set-CsDialPlan</strong> cmdlet 确保已为所有拨号计划分配区域。</span><span class="sxs-lookup"><span data-stu-id="60e4a-144">Run the <strong>Get-CsDialPlan</strong> and <strong>Set-CsDialPlan</strong> cmdlets to make sure that all dial plans have a region assigned.</span></span></p></td>
+<td><p><span data-ttu-id="60e4a-145">RTCUniversalServerAdmins</span><span class="sxs-lookup"><span data-stu-id="60e4a-145">RTCUniversalServerAdmins</span></span></p>
+<p><span data-ttu-id="60e4a-146">CsVoiceAdministrator</span><span class="sxs-lookup"><span data-stu-id="60e4a-146">CsVoiceAdministrator</span></span></p>
+<p><span data-ttu-id="60e4a-147">CsServerAdministrator</span><span class="sxs-lookup"><span data-stu-id="60e4a-147">CsServerAdministrator</span></span></p>
+<p><span data-ttu-id="60e4a-148">CsAdministrator</span><span class="sxs-lookup"><span data-stu-id="60e4a-148">CsAdministrator</span></span></p></td>
+<td><p><span data-ttu-id="60e4a-149"><a href="lync-server-2013-make-sure-dial-plans-have-assigned-regions.md">确保拨号计划 Lync Server 2013 已分配区域</a></span><span class="sxs-lookup"><span data-stu-id="60e4a-149"><a href="lync-server-2013-make-sure-dial-plans-have-assigned-regions.md">Make sure dial plans Lync Server 2013 have assigned regions</a></span></span></p></td>
+</tr>
+<tr class="even">
+<td><p><span data-ttu-id="60e4a-150"><strong>（可选）验证或修改用户个人标识号 (PIN) 要求</strong></span><span class="sxs-lookup"><span data-stu-id="60e4a-150"><strong>(Optional) Verify or modify user personal identification number (PIN) requirements</strong></span></span></p></td>
+<td><p><span data-ttu-id="60e4a-151">使用 Lync Server 2013 控制面板或 Lync Server Management Shell 查看或修改会议 <strong>PIN 策略</strong>。</span><span class="sxs-lookup"><span data-stu-id="60e4a-151">Use Lync Server 2013 Control Panel or Lync Server Management Shell to view or modify the Conferencing <strong>PIN Policy</strong>.</span></span> <span data-ttu-id="60e4a-152">可以指定最小 PIN 长度、最大登录尝试次数、PIN 到期时间以及是否允许使用通用模式。</span><span class="sxs-lookup"><span data-stu-id="60e4a-152">You can specify minimum PIN length, maximum number of logon attempts, PIN expiration, and whether common patterns are allowable.</span></span></p></td>
+<td><p><span data-ttu-id="60e4a-153">RTCUniversalServerAdmins</span><span class="sxs-lookup"><span data-stu-id="60e4a-153">RTCUniversalServerAdmins</span></span></p>
+<p><span data-ttu-id="60e4a-154">CsServerAdministrator</span><span class="sxs-lookup"><span data-stu-id="60e4a-154">CsServerAdministrator</span></span></p>
+<p><span data-ttu-id="60e4a-155">CsAdministrator</span><span class="sxs-lookup"><span data-stu-id="60e4a-155">CsAdministrator</span></span></p></td>
+<td><p><span data-ttu-id="60e4a-156"><a href="lync-server-2013-optional-verify-pin-policy-settings.md">（可选）在 Lync Server 2013 中验证 PIN 策略设置</a></span><span class="sxs-lookup"><span data-stu-id="60e4a-156"><a href="lync-server-2013-optional-verify-pin-policy-settings.md">(Optional) Verify PIN policy settings in Lync Server 2013</a></span></span></p></td>
+</tr>
+<tr class="odd">
+<td><p><span data-ttu-id="60e4a-157"><strong>配置会议策略以支持电话拨入式会议</strong></span><span class="sxs-lookup"><span data-stu-id="60e4a-157"><strong>Configure conferencing policy to support dial-in conferencing</strong></span></span></p></td>
+<td><p><span data-ttu-id="60e4a-158">使用 Lync Server 2013 控制面板或 Lync Server Management Shell 配置 <strong>会议策略</strong> 设置。</span><span class="sxs-lookup"><span data-stu-id="60e4a-158">Use Lync Server 2013 Control Panel or Lync Server Management Shell to configure <strong>Conferencing Policy</strong> settings.</span></span> <span data-ttu-id="60e4a-159">指定：</span><span class="sxs-lookup"><span data-stu-id="60e4a-159">Specify whether:</span></span></p>
+<ul>
+<li><p><span data-ttu-id="60e4a-160">是否启用 PSTN 会议拨入。</span><span class="sxs-lookup"><span data-stu-id="60e4a-160">PSTN conference dial-in is enabled.</span></span></p></li>
+<li><p><span data-ttu-id="60e4a-161">用户能否邀请匿名参与者。</span><span class="sxs-lookup"><span data-stu-id="60e4a-161">Users can invite anonymous participants.</span></span></p></li>
+<li><p><span data-ttu-id="60e4a-p108">未经身份验证的用户能否通过拨出式电话加入会议。通过拨出式电话，会议服务器会呼叫用户，用户接听电话即可加入会议。</span><span class="sxs-lookup"><span data-stu-id="60e4a-p108">Unauthenticated users can join a conference by using dial-out phoning. With dial-out phoning, the conference server calls the user, and the user answers the phone to join the conference.</span></span></p></li>
+</ul></td>
+<td><p><span data-ttu-id="60e4a-164">RTCUniversalServerAdmins</span><span class="sxs-lookup"><span data-stu-id="60e4a-164">RTCUniversalServerAdmins</span></span></p>
+<p><span data-ttu-id="60e4a-165">CsServerAdministrator</span><span class="sxs-lookup"><span data-stu-id="60e4a-165">CsServerAdministrator</span></span></p>
+<p><span data-ttu-id="60e4a-166">CsAdministrator</span><span class="sxs-lookup"><span data-stu-id="60e4a-166">CsAdministrator</span></span></p></td>
+<td><p><span data-ttu-id="60e4a-167"><a href="lync-server-2013-configure-conferencing-policy-for-dial-in.md">在 Lync Server 2013 中配置电话拨入式会议策略</a></span><span class="sxs-lookup"><span data-stu-id="60e4a-167"><a href="lync-server-2013-configure-conferencing-policy-for-dial-in.md">Configure conferencing policy for dial-in in Lync Server 2013</a></span></span></p></td>
+</tr>
+<tr class="even">
+<td><p><span data-ttu-id="60e4a-168"><strong>Configure dial-in access numbers</strong></span><span class="sxs-lookup"><span data-stu-id="60e4a-168"><strong>Configure dial-in access numbers</strong></span></span></p></td>
+<td><p><span data-ttu-id="60e4a-169">使用 Lync Server 2013 控制面板或 Lync Server 命令行管理程序设置拨入访问号码，用户拨打该号码拨入到会议，并指定将访问号码与相应的拨号计划相关联的区域。</span><span class="sxs-lookup"><span data-stu-id="60e4a-169">Use Lync Server 2013 Control Panel or Lync Server Management Shell to set up dial-in access numbers that users call to dial in to a conference, and specify the regions that associate the access number with the appropriate dial plans.</span></span> <span data-ttu-id="60e4a-170">组织者拨号计划指定的区域的前三个访问号码包含在会议邀请中。</span><span class="sxs-lookup"><span data-stu-id="60e4a-170">The first three access numbers for the region specified by the organizer's dial plan are included in the conference invitation.</span></span> <span data-ttu-id="60e4a-171">"电话拨入式会议设置" 页面上提供了 "所有访问号码"。</span><span class="sxs-lookup"><span data-stu-id="60e4a-171">All access numbers are available on the Dial-in Conferencing Settings page.</span></span></p>
+<div>
+
+> [!NOTE]  
+> <span data-ttu-id="60e4a-172">创建拨入访问号码后，您可以使用 <STRONG>CsDialInConferencingAccessNumber</STRONG> Cmdlet 修改 Active Directory 联系人对象的显示名称，以便用户可以更轻松地识别正确的访问号码。</span><span class="sxs-lookup"><span data-stu-id="60e4a-172">After you create dial-in access numbers, you can use the <STRONG>Set-CsDialInConferencingAccessNumber</STRONG> cmdlet to modify the display name of the Active Directory contact objects so that users can more easily identify the correct access number.</span></span>
+
+
+</div></td>
+<td><p><span data-ttu-id="60e4a-173">RTCUniversalServerAdmins</span><span class="sxs-lookup"><span data-stu-id="60e4a-173">RTCUniversalServerAdmins</span></span></p>
+<p><span data-ttu-id="60e4a-174">CsServerAdministrator</span><span class="sxs-lookup"><span data-stu-id="60e4a-174">CsServerAdministrator</span></span></p>
+<p><span data-ttu-id="60e4a-175">CsAdministrator</span><span class="sxs-lookup"><span data-stu-id="60e4a-175">CsAdministrator</span></span></p></td>
+<td><p><span data-ttu-id="60e4a-176"><a href="lync-server-2013-configure-dial-in-conferencing-access-numbers.md">在 Lync Server 2013 中配置电话拨入式会议访问号码</a></span><span class="sxs-lookup"><span data-stu-id="60e4a-176"><a href="lync-server-2013-configure-dial-in-conferencing-access-numbers.md">Configure dial-in conferencing access numbers in Lync Server 2013</a></span></span></p></td>
+</tr>
+<tr class="odd">
+<td><p><span data-ttu-id="60e4a-177"><strong>（可选）验证电话拨入式会议设置</strong></span><span class="sxs-lookup"><span data-stu-id="60e4a-177"><strong>(Optional) Verify dial-in conferencing settings</strong></span></span></p></td>
+<td><p><span data-ttu-id="60e4a-178">使用 <strong>Get-CsDialinConferencingAccessNumber</strong> cmdlet 搜索具有未被任何访问号码使用的电话拨入式会议区域的拨号计划，以及尚未分配区域的访问号码。</span><span class="sxs-lookup"><span data-stu-id="60e4a-178">Use the <strong>Get-CsDialinConferencingAccessNumber</strong> cmdlet to search for dial plans that have a dial-in conferencing region that is not used by any access number and for access numbers that have no region assigned.</span></span></p></td>
+<td><p><span data-ttu-id="60e4a-179">RTCUniversalServerAdmins</span><span class="sxs-lookup"><span data-stu-id="60e4a-179">RTCUniversalServerAdmins</span></span></p>
+<p><span data-ttu-id="60e4a-180">CsServerAdministrator</span><span class="sxs-lookup"><span data-stu-id="60e4a-180">CsServerAdministrator</span></span></p>
+<p><span data-ttu-id="60e4a-181">CsAdministrator</span><span class="sxs-lookup"><span data-stu-id="60e4a-181">CsAdministrator</span></span></p>
+<p><span data-ttu-id="60e4a-182">CsViewOnlyAdministrator</span><span class="sxs-lookup"><span data-stu-id="60e4a-182">CsViewOnlyAdministrator</span></span></p>
+<p><span data-ttu-id="60e4a-183">CsHelpDesk</span><span class="sxs-lookup"><span data-stu-id="60e4a-183">CsHelpDesk</span></span></p></td>
+<td><p><span data-ttu-id="60e4a-184"><a href="lync-server-2013-optional-verify-dial-in-conferencing-settings.md">（可选）在 Lync Server 2013 中验证电话拨入式会议设置</a></span><span class="sxs-lookup"><span data-stu-id="60e4a-184"><a href="lync-server-2013-optional-verify-dial-in-conferencing-settings.md">(Optional) Verify dial-in conferencing settings in Lync Server 2013</a></span></span></p></td>
+</tr>
+<tr class="even">
+<td><p><span data-ttu-id="60e4a-185"><strong>（可选）修改 DTMF 命令的键映射</strong></span><span class="sxs-lookup"><span data-stu-id="60e4a-185"><strong>(Optional) Modify key mapping of DTMF commands</strong></span></span></p></td>
+<td><p><span data-ttu-id="60e4a-186">使用 <strong>CsDialinConferencingDtmfConfiguration</strong> cmdlet 修改用于双音调 MULTIFREQUENCY (DTMF) 命令的键，参与者可以使用它们控制会议设置 (如静音、取消静音或锁定和解锁) 。</span><span class="sxs-lookup"><span data-stu-id="60e4a-186">Use the <strong>Set-CsDialinConferencingDtmfConfiguration</strong> cmdlet to modify the keys used for dual-tone multifrequency (DTMF) commands, which participants can use to control conference settings (such as mute and unmute or lock and unlock).</span></span></p></td>
+<td><p><span data-ttu-id="60e4a-187">RTCUniversalServerAdmins</span><span class="sxs-lookup"><span data-stu-id="60e4a-187">RTCUniversalServerAdmins</span></span></p>
+<p><span data-ttu-id="60e4a-188">CsServerAdministrator</span><span class="sxs-lookup"><span data-stu-id="60e4a-188">CsServerAdministrator</span></span></p>
+<p><span data-ttu-id="60e4a-189">CsAdministrator</span><span class="sxs-lookup"><span data-stu-id="60e4a-189">CsAdministrator</span></span></p></td>
+<td><p><span data-ttu-id="60e4a-190"><a href="lync-server-2013-optional-modify-key-mapping-for-dtmf-commands.md">（可选）在 Lync Server 2013 中修改 DTMF 命令的键映射</a></span><span class="sxs-lookup"><span data-stu-id="60e4a-190"><a href="lync-server-2013-optional-modify-key-mapping-for-dtmf-commands.md">(Optional) Modify key mapping for DTMF commands in Lync Server 2013</a></span></span></p></td>
+</tr>
+<tr class="odd">
+<td><p><span data-ttu-id="60e4a-191"><strong>（可选）修改会议加入和离开通知行为</strong></span><span class="sxs-lookup"><span data-stu-id="60e4a-191"><strong>(Optional) Modify conference join and leave announcement behavior</strong></span></span></p></td>
+<td><p><span data-ttu-id="60e4a-192">使用 <strong>Set-CsDialinConferencingConfiguration</strong> 更改参与者加入和离开会议时通知的工作方式。</span><span class="sxs-lookup"><span data-stu-id="60e4a-192">Use the <strong>Set-CsDialinConferencingConfiguration</strong> to change how announcements work when participants join and leave conferences.</span></span></p></td>
+<td><p><span data-ttu-id="60e4a-193">RTCUniversalServerAdmins</span><span class="sxs-lookup"><span data-stu-id="60e4a-193">RTCUniversalServerAdmins</span></span></p>
+<p><span data-ttu-id="60e4a-194">CsServerAdministrator</span><span class="sxs-lookup"><span data-stu-id="60e4a-194">CsServerAdministrator</span></span></p>
+<p><span data-ttu-id="60e4a-195">CsAdministrator</span><span class="sxs-lookup"><span data-stu-id="60e4a-195">CsAdministrator</span></span></p></td>
+<td><p><span data-ttu-id="60e4a-196"><a href="lync-server-2013-optional-enable-and-disable-conference-join-and-leave-announcements.md">（可选）在 Lync Server 2013 中启用和禁用会议加入和离开通知</a></span><span class="sxs-lookup"><span data-stu-id="60e4a-196"><a href="lync-server-2013-optional-enable-and-disable-conference-join-and-leave-announcements.md">(Optional) Enable and disable conference join and leave announcements in Lync Server 2013</a></span></span></p></td>
+</tr>
+<tr class="even">
+<td><p><span data-ttu-id="60e4a-197"><strong>（可选）验证电话拨入式会议</strong></span><span class="sxs-lookup"><span data-stu-id="60e4a-197"><strong>(Optional) Verify dial-in conferencing</strong></span></span></p></td>
+<td><p><span data-ttu-id="60e4a-198">使用 <strong>Test-CsDialInConferencing</strong> cmdlet 测试指定池的访问号码是否正常工作。</span><span class="sxs-lookup"><span data-stu-id="60e4a-198">Use the <strong>Test-CsDialInConferencing</strong> cmdlet to test that the access numbers for the specified pool work correctly.</span></span></p></td>
+<td><p><span data-ttu-id="60e4a-199">RTCUniversalServerAdmins</span><span class="sxs-lookup"><span data-stu-id="60e4a-199">RTCUniversalServerAdmins</span></span></p>
+<p><span data-ttu-id="60e4a-200">CsServerAdministrator</span><span class="sxs-lookup"><span data-stu-id="60e4a-200">CsServerAdministrator</span></span></p>
+<p><span data-ttu-id="60e4a-201">CsAdministrator</span><span class="sxs-lookup"><span data-stu-id="60e4a-201">CsAdministrator</span></span></p></td>
+<td><p><span data-ttu-id="60e4a-202"><a href="lync-server-2013-optional-verify-dial-in-conferencing.md">（可选）在 Lync Server 2013 中验证电话拨入式会议</a></span><span class="sxs-lookup"><span data-stu-id="60e4a-202"><a href="lync-server-2013-optional-verify-dial-in-conferencing.md">(Optional) Verify dial-in conferencing in Lync Server 2013</a></span></span></p></td>
+</tr>
+<tr class="odd">
+<td><p><span data-ttu-id="60e4a-203"><strong>部署 Lync 2013 的联机会议加载项</strong></span><span class="sxs-lookup"><span data-stu-id="60e4a-203"><strong>Deploy the Online Meeting Add-in for Lync 2013</strong></span></span></p></td>
+<td><p><span data-ttu-id="60e4a-204">为 Lync 2013 部署联机会议加载项，以便用户可以安排支持电话拨入式会议的会议。</span><span class="sxs-lookup"><span data-stu-id="60e4a-204">Deploy the Online Meeting Add-in for Lync 2013 so that users can schedule conferences that support dial-in conferencing.</span></span> <span data-ttu-id="60e4a-205">安装 Lync 2013 时，将自动安装适用于 Lync 2013 的联机会议加载项。</span><span class="sxs-lookup"><span data-stu-id="60e4a-205">The Online Meeting Add-in for Lync 2013 is installed automatically when you install Lync 2013.</span></span></p></td>
+<td><p><span data-ttu-id="60e4a-206">管理员</span><span class="sxs-lookup"><span data-stu-id="60e4a-206">Administrators</span></span></p></td>
+<td><p><span data-ttu-id="60e4a-207"><a href="lync-server-2013-deploy-the-online-meeting-add-in-for-lync-2013.md">部署 Lync 2013 的联机会议加载项</a></span><span class="sxs-lookup"><span data-stu-id="60e4a-207"><a href="lync-server-2013-deploy-the-online-meeting-add-in-for-lync-2013.md">Deploy the Online Meeting Add-in for Lync 2013</a></span></span></p></td>
+</tr>
+<tr class="even">
+<td><p><span data-ttu-id="60e4a-208"><strong>配置用户帐户设置</strong></span><span class="sxs-lookup"><span data-stu-id="60e4a-208"><strong>Configure user account settings</strong></span></span></p></td>
+<td><p><span data-ttu-id="60e4a-209">使用 Lync Server 2013 控制面板或 Lync Server Management Shell 将电话服务 <strong>线路 URI</strong> 配置为唯一的、标准化的电话号码 (例如，电话： + 14255550200) 。</span><span class="sxs-lookup"><span data-stu-id="60e4a-209">Use Lync Server 2013 Control Panel or Lync Server Management Shell to configure the telephony <strong>Line URI</strong> as a unique, normalized phone number (for example, tel:+14255550200).</span></span></p></td>
+<td><p><span data-ttu-id="60e4a-210">RTCUniversalServerAdmins</span><span class="sxs-lookup"><span data-stu-id="60e4a-210">RTCUniversalServerAdmins</span></span></p>
+<p><span data-ttu-id="60e4a-211">CsAdministrator</span><span class="sxs-lookup"><span data-stu-id="60e4a-211">CsAdministrator</span></span></p>
+<p><span data-ttu-id="60e4a-212">CsUserAdministrator</span><span class="sxs-lookup"><span data-stu-id="60e4a-212">CsUserAdministrator</span></span></p></td>
+<td><p><span data-ttu-id="60e4a-213"><a href="lync-server-2013-configure-user-account-settings.md">在 Lync Server 2013 中配置用户帐户设置</a></span><span class="sxs-lookup"><span data-stu-id="60e4a-213"><a href="lync-server-2013-configure-user-account-settings.md">Configure user account settings in Lync Server 2013</a></span></span></p></td>
+</tr>
+<tr class="odd">
+<td><p><span data-ttu-id="60e4a-214">（推荐）配置会议目录</span><span class="sxs-lookup"><span data-stu-id="60e4a-214">(Recommended) Configure conference directories</span></span></p></td>
+<td><p><span data-ttu-id="60e4a-215">使用 <strong>New-CsConferenceDirectory</strong> cmdlet 为池中的每 999 个用户创建一个会议目录。</span><span class="sxs-lookup"><span data-stu-id="60e4a-215">Use the <strong>New-CsConferenceDirectory</strong> cmdlet to create one conference directory for every 999 users in the pool.</span></span></p></td>
+<td><p><span data-ttu-id="60e4a-216">RTCUniversalServerAdmins</span><span class="sxs-lookup"><span data-stu-id="60e4a-216">RTCUniversalServerAdmins</span></span></p></td>
+<td><p><span data-ttu-id="60e4a-217"><a href="lync-server-2013-dial-in-conferencing-requirements.md">Lync Server 2013 中的电话拨入式会议要求</a> <a href="recommended-create-conference-directories.md"> (推荐) 创建会议目录</a></span><span class="sxs-lookup"><span data-stu-id="60e4a-217"><a href="lync-server-2013-dial-in-conferencing-requirements.md">Dial-in conferencing requirements in Lync Server 2013</a> <a href="recommended-create-conference-directories.md">(Recommended) Create Conference Directories</a></span></span></p></td>
+</tr>
+<tr class="even">
+<td><p><span data-ttu-id="60e4a-218"><strong>（可选）欢迎用户参加电话拨入式会议并设置初始 PIN</strong></span><span class="sxs-lookup"><span data-stu-id="60e4a-218"><strong>(Optional) Welcome users to dial-in conferencing and set the initial PIN</strong></span></span></p></td>
+<td><p><span data-ttu-id="60e4a-219">使用 <strong>CsPinSendCAWelcomeMail</strong> 脚本设置用户的初始引脚，并发送包含初始 PIN 和指向电话拨入式会议设置页面的链接的欢迎电子邮件。</span><span class="sxs-lookup"><span data-stu-id="60e4a-219">Use the <strong>Set-CsPinSendCAWelcomeMail</strong> script to set users' initial PINs and send a welcome email that contains the initial PIN and a link to the Dial-in Conferencing Settings page.</span></span></p></td>
+<td><p><span data-ttu-id="60e4a-220">RTCUniversalServerAdmins</span><span class="sxs-lookup"><span data-stu-id="60e4a-220">RTCUniversalServerAdmins</span></span></p></td>
+<td><p><span data-ttu-id="60e4a-221"><a href="lync-server-2013-optional-welcome-users-to-dial-in-conferencing.md">（可选）在 Lync Server 2013 中欢迎用户参加电话拨入式会议</a></span><span class="sxs-lookup"><span data-stu-id="60e4a-221"><a href="lync-server-2013-optional-welcome-users-to-dial-in-conferencing.md">(Optional) Welcome users to dial-in conferencing in Lync Server 2013</a></span></span></p></td>
+</tr><span data-ttu-id="60e4a-222">
+</tbody>
+</table>
+
+
+</div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</span><span class="sxs-lookup"><span data-stu-id="60e4a-222">
+</tbody>
+</table>
+
+
+</div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</span></span></div>
+
