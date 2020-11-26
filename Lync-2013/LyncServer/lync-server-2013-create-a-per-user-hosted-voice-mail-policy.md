@@ -1,0 +1,94 @@
+---
+title: Lync Server 2013：创建每用户托管的语音邮件策略
+description: Lync Server 2013：创建每用户托管的语音邮件策略。
+ms.reviewer: ''
+ms.author: v-lanac
+author: lanachin
+f1.keywords:
+- NOCSH
+TOCTitle: Create a per-user hosted voice mail policy
+ms:assetid: 39018a7c-e0c3-46a2-be4e-05604ec67a50
+ms:mtpsurl: https://technet.microsoft.com/en-us/library/Gg425867(v=OCS.15)
+ms:contentKeyID: 48183902
+ms.date: 07/23/2014
+manager: serdars
+mtps_version: v=OCS.15
+ms.openlocfilehash: de528ceb9bc01114948c276c27f99039658aee38
+ms.sourcegitcommit: 36fee89bb887bea4f18b19f17a8c69daf5bc423d
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "49432126"
+---
+# <a name="create-a-per-user-hosted-voice-mail-policy-in-lync-server-2013"></a>在 Lync Server 2013 中创建每用户托管语音邮件策略
+
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+
+<div class="topic" data-xmlns="http://www.w3.org/1999/xhtml" data-msxsl="urn:schemas-microsoft-com:xslt" data-cs="https://msdn.microsoft.com/">
+
+<div data-asp="https://msdn2.microsoft.com/asp">
+
+
+
+</div>
+
+<div id="mainSection">
+
+<div id="mainBody">
+
+<span> </span>
+
+_**主题上次修改时间：** 2012-09-24_
+
+*每用户* 策略只能影响单个用户、组和联系人对象。 若要部署每用户策略，必须将策略显式分配给一个或多个用户、组或联系人对象。 有关详细信息，请参阅 [在 Lync Server 2013 中分配每用户托管语音邮件策略](lync-server-2013-assign-a-per-user-hosted-voice-mail-policy.md)。
+
+有关使用每用户托管语音邮件策略的详细信息，请参阅以下 cmdlet 的 Lync Server Management Shell 文档：
+
+  - [新-CsHostedVoicemailPolicy](https://docs.microsoft.com/powershell/module/skype/New-CsHostedVoicemailPolicy)
+
+  - [Set-CsHostedVoicemailPolicy](https://docs.microsoft.com/powershell/module/skype/Set-CsHostedVoicemailPolicy)
+
+  - [CsHostedVoicemailPolicy](https://docs.microsoft.com/powershell/module/skype/Get-CsHostedVoicemailPolicy)
+
+<div>
+
+## <a name="to-create-a-per-user-hosted-voice-mail-policy"></a>创建每用户托管的语音邮件策略
+
+1.  启动 Lync Server 命令行管理程序：依次单击 " **开始**"、" **所有程序**"、" **Microsoft Lync server 2013**"，然后单击 " **Lync server Management shell**"。
+
+2.  运行 New-CsHostedVoicemailPolicy cmdlet 以创建策略。 例如，运行：
+    
+        New-CsHostedVoicemailPolicy -Identity ExRedmond -Destination ExUM.fabrikam.com -Description "Hosted voice mail policy for Redmond users." -Organization "corp1.litwareinc.com, corp2.litwareinc.com"
+    
+    前面的示例将创建具有每用户作用域的托管语音邮件策略，并设置以下参数：
+    
+      - **标识** 指定策略的唯一标识符，其中包括范围。 对于具有每用户范围的策略，此参数值指定为一个简单的字符串，例如 ExRedmond。
+    
+      - **Destination** 指定托管 Exchange UM 服务 (FQDN) 的完全限定的域名。 此参数是可选的，但如果你尝试为托管语音邮件启用用户，并且用户分配的策略没有目标值，则 enable 将失败。
+    
+      - **说明** 提供有关策略的可选描述性信息。
+    
+      - **组织** 指定用于家庭 Lync Server 2013 用户的 Exchange 租户的逗号分隔列表。 必须在托管 Exchange UM 服务上将每个租户指定为该租户的 FQDN。
+
+</div>
+
+<div>
+
+## <a name="see-also"></a>另请参阅
+
+
+[在 Lync Server 2013 中分配每用户托管语音邮件策略](lync-server-2013-assign-a-per-user-hosted-voice-mail-policy.md)  
+  
+
+</div>
+
+</div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</div>
+

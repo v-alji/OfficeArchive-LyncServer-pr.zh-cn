@@ -1,0 +1,86 @@
+---
+title: 将 Lync Server 2013 配置为使用 Office Web Apps 服务器
+description: 将 Lync Server 2013 配置为使用 Office Web Apps 服务器。
+ms.reviewer: ''
+ms.author: v-lanac
+author: lanachin
+f1.keywords:
+- NOCSH
+TOCTitle: Configuring Lync Server 2013 to work with Office Web Apps Server
+ms:assetid: 6231e519-9010-4ff9-b5a6-b5859c2b3e11
+ms:mtpsurl: https://technet.microsoft.com/en-us/library/JJ204944(v=OCS.15)
+ms:contentKeyID: 48184288
+ms.date: 07/23/2014
+manager: serdars
+mtps_version: v=OCS.15
+ms.openlocfilehash: 07e53500e0ad272c81340c25946f5b7f8e72a121
+ms.sourcegitcommit: 36fee89bb887bea4f18b19f17a8c69daf5bc423d
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "49433009"
+---
+# <a name="configuring-lync-server-2013-to-work-with-office-web-apps-server"></a>将 Lync Server 2013 配置为使用 Office Web Apps 服务器
+
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+
+<div class="topic" data-xmlns="http://www.w3.org/1999/xhtml" data-msxsl="urn:schemas-microsoft-com:xslt" data-cs="https://msdn.microsoft.com/">
+
+<div data-asp="https://msdn2.microsoft.com/asp">
+
+
+
+</div>
+
+<div id="mainSection">
+
+<div id="mainBody">
+
+<span> </span>
+
+_**主题上次修改时间：** 2013-04-22_
+
+必须先部署和配置 Office Web Apps 服务器，然后才能将 Lync Server 2013 配置为使用 Office Web Apps 服务器。 有关如何安装和配置单个 Office Web Apps 服务器的详细信息，请参阅文档指南，有关如何安装和配置 Office Web Apps 服务器场以获得高可用性的详细信息，请参阅文档 **指南** 。
+
+成功安装 Office Web Apps 服务器并正确配置 Web 场后，必须配置 Lync 服务器才能与新服务器通信;可通过将 Office Web Apps 服务器发现 URL 添加到 Lync Server 拓扑来完成此操作。 若要向拓扑中添加 Office Web Apps 服务器，请完成下列步骤：
+
+1.  单击 " **开始**"，单击 " **所有程序**"，单击 " **Microsoft Lync server 2013**"，然后单击 " **Lync server 拓扑生成器**"。
+
+2.  在“**拓扑生成器**”对话框中，选择“**从现有部署下载拓扑**”，然后单击“**确定**”。
+
+3.  在“**将拓扑另存为**”对话框的“**文件名**”框中为拓扑文档键入一个名称（例如“**PreWebAppsServerTopology**”），然后单击“**保存**”。如果之后你的新拓扑遇到问题，则可检索和重新发布此拓扑。
+
+4.  在拓扑生成器中，展开 " **Lync Server 2013**"，展开您的网站的名称，展开 " **企业版前端池**"，右键单击其中一个池的名称，然后单击 " **编辑属性**"。
+
+5.  在“**编辑属性**”对话框的“**常规**”选项卡上，查找标题“**关联 Office Web Apps 服务器**”，然后单击“**新建**”（或从下拉列表中选择现有 Office Web Apps 服务器）。
+
+6.  在“**定义新的 Office Web Apps 服务器**”对话框的“**Office Web Apps 服务器 FQDN**”框中，键入你的 Office Web Apps 服务器计算机的完全限定域名 (FQDN)；执行此操作时，你的 Office Web Apps 服务器搜索 URL 应自动输入到“**Office Web Apps 服务器搜索 URL**”框中。
+    
+    如果 Office Web Apps 服务器在本地安装，并且在与 Lync Server 2013 相同的网络区域中安装，则会在 **外部网络中部署 "Office Web apps" 服务器 (也就是说，不应选择 "外围/Internet) "** 。
+    
+    如果 Office Web Apps 服务器部署在内部防火墙之外，则请选择选项“**在外部网络(即，外围/Internet)中部署 Office Web Apps 服务器**”。
+
+7.  在“**定义新的 Office Web Apps Server**”对话框中，单击“**确定**”，然后在“**编辑属性**”对话框中单击“**确定**”。 Office Web Apps 发现 URL 随后将作为该池的关联之一列出。
+
+您必须对需要与您的 Office Web Apps 服务器关联的每个池重复此过程。
+
+将发现 URL 添加到拓扑后，必须随后发布此更新后的拓扑。 若要在拓扑生成器中执行此操作：
+
+1.  单击“**操作**”，然后单击“**发布拓扑**”。
+
+2.  在发布拓扑向导的“**发布拓扑**”页上，单击“**下一步**”。
+
+3.  在“**发布向导完成**”页上，单击“**完成**”。
+
+4.  关闭拓扑生成器。
+
+</div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</div>
+
