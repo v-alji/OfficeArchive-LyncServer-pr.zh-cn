@@ -1,0 +1,79 @@
+---
+title: Lync Server 2013：为 E9 启用用户-1-1
+description: Lync Server 2013：为 E9 启用用户-1-1。
+ms.reviewer: ''
+ms.author: v-lanac
+author: lanachin
+f1.keywords:
+- NOCSH
+TOCTitle: Enabling users for E9-1-1
+ms:assetid: 3cc64f5b-492e-4c47-9713-3c376f2aad02
+ms:mtpsurl: https://technet.microsoft.com/en-us/library/Gg425892(v=OCS.15)
+ms:contentKeyID: 48183884
+ms.date: 07/23/2014
+manager: serdars
+mtps_version: v=OCS.15
+ms.openlocfilehash: 6ba29406dc0d7a1140c83a1a9d271afca5d6b0c7
+ms.sourcegitcommit: 36fee89bb887bea4f18b19f17a8c69daf5bc423d
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "49428704"
+---
+# <a name="enabling-users-for-e9-1-1-in-lync-server-2013"></a><span data-ttu-id="4e256-103">在 Lync Server 2013 中启用 E9-1 的用户</span><span class="sxs-lookup"><span data-stu-id="4e256-103">Enabling users for E9-1-1 in Lync Server 2013</span></span>
+
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+
+<div class="topic" data-xmlns="http://www.w3.org/1999/xhtml" data-msxsl="urn:schemas-microsoft-com:xslt" data-cs="https://msdn.microsoft.com/">
+
+<div data-asp="https://msdn2.microsoft.com/asp">
+
+
+
+</div>
+
+<div id="mainSection">
+
+<div id="mainBody"><span data-ttu-id="4e256-104">
+
+<span> </span></span><span class="sxs-lookup"><span data-stu-id="4e256-104">
+
+<span> </span></span></span>
+
+<span data-ttu-id="4e256-105">_**主题上次修改时间：** 2012-06-06_</span><span class="sxs-lookup"><span data-stu-id="4e256-105">_**Topic Last Modified:** 2012-06-06_</span></span>
+
+<span data-ttu-id="4e256-106">在客户端注册期间，Lync Server 使用一个位置策略来配置适用于企业语音的用户的 E9 属性。</span><span class="sxs-lookup"><span data-stu-id="4e256-106">During client registration, Lync Server uses a location policy to configure the E9-1-1 properties for Enterprise Voice-enabled users.</span></span> <span data-ttu-id="4e256-107">此策略包含定义 E9-1-1 实现方式的设置。</span><span class="sxs-lookup"><span data-stu-id="4e256-107">This policy contains the settings that define how E9-1-1 is implemented.</span></span> <span data-ttu-id="4e256-108">例如，位置策略包含 "紧急拨号" 字符串之类的信息，以及是否需要用户手动输入一个位置（如果位置信息服务不会自动提供）。</span><span class="sxs-lookup"><span data-stu-id="4e256-108">For example, the location policy contains information such as the emergency dial string, and whether or not a user is required to manually enter a location if the Location Information service does not automatically provide one.</span></span> <span data-ttu-id="4e256-109">有关位置策略的完整定义，请参阅 [定义 Lync Server 2013 的位置策略](lync-server-2013-defining-the-location-policy.md)。</span><span class="sxs-lookup"><span data-stu-id="4e256-109">For a complete definition of a location policy, see [Defining the location policy for Lync Server 2013](lync-server-2013-defining-the-location-policy.md).</span></span>
+
+<span data-ttu-id="4e256-110">Lync Server 可以基于子网将位置策略分配给客户，或者根据全局、每网站或每用户策略向用户分配位置策略。</span><span class="sxs-lookup"><span data-stu-id="4e256-110">Lync Server can assign a location policy to clients based on subnet, or to users based on a global, per-site, or per-user policy.</span></span> <span data-ttu-id="4e256-111">为帮助确定启用用户的方式，应首先回答以下问题。</span><span class="sxs-lookup"><span data-stu-id="4e256-111">To help decide how you will enable users, you should first answer the following questions.</span></span>
+
+  - <span data-ttu-id="4e256-112">**你计划启用所有用户还是限制为对企业的特定地理区域的支持？**</span><span class="sxs-lookup"><span data-stu-id="4e256-112">**Do you plan to enable all users, or limit support to specific geographic areas of the enterprise?**</span></span>  
+    <span data-ttu-id="4e256-113">可以使用全局位置策略为企业中的所有用户分配位置。</span><span class="sxs-lookup"><span data-stu-id="4e256-113">You can assign a location to all users in your enterprise by using a global location policy.</span></span> <span data-ttu-id="4e256-114">但是，通过将位置策略分配给 Lync 服务器网络网站，然后将子网添加到该网站，你可以将 E9 支持限制到企业内选定的位置，并以每个站点为基础指定 E9 路由行为。</span><span class="sxs-lookup"><span data-stu-id="4e256-114">However, by assigning a location policy to a Lync Server network site and then adding subnets to the site, you can limit E9-1-1 support to selected locations within the enterprise and specify E9-1-1 routing behavior on a per-site basis.</span></span>
+
+<!-- end list -->
+
+  - <span data-ttu-id="4e256-115">**你是否计划通过用户策略启用单个用户？**</span><span class="sxs-lookup"><span data-stu-id="4e256-115">**Do you plan to enable individual users through a user policy?**</span></span>  
+    <span data-ttu-id="4e256-116">如果要自定义 E9-1-1 支持，您可以直接向特定用户或公共区域电话联系人对象分配位置策略。</span><span class="sxs-lookup"><span data-stu-id="4e256-116">You can assign location policies directly to specific users or common area phone contact objects if you want to customize their E9-1-1 support.</span></span>
+
+<!-- end list -->
+
+  - <span data-ttu-id="4e256-117">**当客户端在网络外漫游或从未定义的子网连接时，是否仍然应该为客户端启用 E9-1-1？**</span><span class="sxs-lookup"><span data-stu-id="4e256-117">**When clients roam outside the network or connect from an undefined subnet, should the clients still be enabled for E9-1-1?**</span></span>  
+    <span data-ttu-id="4e256-118">如果为用户分配了全局、网站或每用户位置策略，则可以在客户端不在定义的子网中或未找到位置信息服务的位置时，将其手动输入到客户端的位置。</span><span class="sxs-lookup"><span data-stu-id="4e256-118">If users are assigned a global, site, or per-user location policy, they can be required to manually enter a location into the client if the client is not located within a defined subnet or no location has been found by the Location Information service.</span></span> <span data-ttu-id="4e256-119">有关详细信息，请参阅 [定义在 Lync Server 2013 中手动获取位置的用户体验](lync-server-2013-defining-the-user-experience-for-manually-acquiring-a-location.md)。</span><span class="sxs-lookup"><span data-stu-id="4e256-119">For details, see [Defining the user experience for manually acquiring a location in Lync Server 2013](lync-server-2013-defining-the-user-experience-for-manually-acquiring-a-location.md).</span></span>
+
+<span data-ttu-id="4e256-120"></div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</span><span class="sxs-lookup"><span data-stu-id="4e256-120"></div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</span></span></div>
+

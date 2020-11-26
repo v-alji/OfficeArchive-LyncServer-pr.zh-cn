@@ -1,0 +1,126 @@
+---
+title: Lync Server 2013：为用户启用呼叫寄存
+description: Lync Server 2013：为用户启用呼叫寄存。
+ms.reviewer: ''
+ms.author: v-lanac
+author: lanachin
+f1.keywords:
+- NOCSH
+TOCTitle: Enable Call Park for users
+ms:assetid: 9430763f-3394-467c-9c6d-426bf761604e
+ms:mtpsurl: https://technet.microsoft.com/en-us/library/Gg398753(v=OCS.15)
+ms:contentKeyID: 48184814
+ms.date: 07/23/2014
+manager: serdars
+mtps_version: v=OCS.15
+ms.openlocfilehash: c7f9ab23b9fa71943efafd588b8c57a2af781b08
+ms.sourcegitcommit: 36fee89bb887bea4f18b19f17a8c69daf5bc423d
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "49428935"
+---
+# <a name="enable-call-park-for-users-in-lync-server-2013"></a><span data-ttu-id="70714-103">在 Lync Server 2013 中为用户启用呼叫寄存</span><span class="sxs-lookup"><span data-stu-id="70714-103">Enable Call Park for users in Lync Server 2013</span></span>
+
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+
+<div class="topic" data-xmlns="http://www.w3.org/1999/xhtml" data-msxsl="urn:schemas-microsoft-com:xslt" data-cs="https://msdn.microsoft.com/">
+
+<div data-asp="https://msdn2.microsoft.com/asp">
+
+
+
+</div>
+
+<div id="mainSection">
+
+<div id="mainBody"><span data-ttu-id="70714-104">
+
+<span> </span></span><span class="sxs-lookup"><span data-stu-id="70714-104">
+
+<span> </span></span></span>
+
+<span data-ttu-id="70714-105">_**主题上次修改时间：** 2012-09-11_</span><span class="sxs-lookup"><span data-stu-id="70714-105">_**Topic Last Modified:** 2012-09-11_</span></span>
+
+<span data-ttu-id="70714-106">用户不能寄存通话或检索寄存的呼叫，直到它们在语音策略中被启用呼叫寄存。</span><span class="sxs-lookup"><span data-stu-id="70714-106">Users cannot park calls or retrieve parked calls until they are enabled for Call Park in voice policy.</span></span>
+
+<div>
+
+
+> [!NOTE]  
+> <span data-ttu-id="70714-107">默认情况下，将对所有用户禁用 "呼叫寄存"。</span><span class="sxs-lookup"><span data-stu-id="70714-107">By default, Call Park is disabled for all users.</span></span>
+
+
+
+</div>
+
+<span data-ttu-id="70714-108">你可以在全局范围内或在网站范围或用户范围内启用呼叫寄存。</span><span class="sxs-lookup"><span data-stu-id="70714-108">You can enable Call Park at the global scope, or at the site scope or user scope.</span></span> <span data-ttu-id="70714-109">用户作用域优先于站点作用域，而站点作用域又优先于全局作用域。</span><span class="sxs-lookup"><span data-stu-id="70714-109">User scope takes precedence over site scope, and site scope takes precedence over global scope.</span></span> <span data-ttu-id="70714-110">如果你有多个语音策略，请查看所有策略以启用呼叫寄存，而不仅仅是全局策略。</span><span class="sxs-lookup"><span data-stu-id="70714-110">If you have multiple voice policies, review all the policies to enable Call Park, not just the global policy.</span></span>
+
+<div>
+
+## <a name="to-use-lync-server-control-panel-to-enable-call-park-for-users"></a><span data-ttu-id="70714-111">使用 Lync Server "控制面板" 为用户启用呼叫寄存</span><span class="sxs-lookup"><span data-stu-id="70714-111">To Use Lync Server Control Panel to Enable Call Park for Users</span></span>
+
+1.  <span data-ttu-id="70714-112">以 **RTCUniversalServerAdmins** 组成员或者 **CsVoiceAdministrator**、**CsServerAdministrator** 或 **CsAdministrator** 管理角色成员的身份登录计算机。</span><span class="sxs-lookup"><span data-stu-id="70714-112">Log on to the computer as a member of the **RTCUniversalServerAdmins** group, or as a member of the **CsVoiceAdministrator**, **CsServerAdministrator**, or **CsAdministrator** administrative role.</span></span>
+
+2.  <span data-ttu-id="70714-113">打开一个浏览器窗口，然后输入 "管理员" URL 以打开 Lync Server "控制面板"。</span><span class="sxs-lookup"><span data-stu-id="70714-113">Open a browser window, and then enter the Admin URL to open the Lync Server Control Panel.</span></span> <span data-ttu-id="70714-114">有关可用于启动 Lync Server "控制面板" 的不同方法的详细信息，请参阅 [打开 Lync server 2013 管理工具](lync-server-2013-open-lync-server-administrative-tools.md)。</span><span class="sxs-lookup"><span data-stu-id="70714-114">For details about the different methods you can use to start Lync Server Control Panel, see [Open Lync Server 2013 administrative tools](lync-server-2013-open-lync-server-administrative-tools.md).</span></span>
+
+3.  <span data-ttu-id="70714-115">在左侧导航栏中，单击“语音路由”。</span><span class="sxs-lookup"><span data-stu-id="70714-115">In the left navigation bar, click **Voice Routing**.</span></span>
+
+4.  <span data-ttu-id="70714-116">单击“语音策略”选项卡。</span><span class="sxs-lookup"><span data-stu-id="70714-116">Click the **Voice Policy** tab.</span></span>
+
+5.  <span data-ttu-id="70714-117">双击现有语音策略以打开“编辑语音策略”对话框。</span><span class="sxs-lookup"><span data-stu-id="70714-117">Double-click an existing voice policy to open the **Edit Voice Policy** dialog box.</span></span>
+
+6.  <span data-ttu-id="70714-118">在“呼叫功能”下，选择“启用呼叫寄存”。</span><span class="sxs-lookup"><span data-stu-id="70714-118">Under **Calling features**, select **Enable call park**.</span></span>
+
+7.  <span data-ttu-id="70714-119">单击“确定”保存语音策略。</span><span class="sxs-lookup"><span data-stu-id="70714-119">Click **OK** to save the voice policy</span></span>
+
+</div>
+
+<div>
+
+## <a name="to-use-cmdlets-to-enable-call-park-for-users"></a><span data-ttu-id="70714-120">使用 Cmdlet 为用户启用呼叫寄存</span><span class="sxs-lookup"><span data-stu-id="70714-120">To Use Cmdlets to Enable Call Park for Users</span></span>
+
+1.  <span data-ttu-id="70714-121">以 RTCUniversalServerAdmins 组成员或 CsVoiceAdministrator、CsServerAdministrator 或 CsAdministrator 管理角色成员的身份登录计算机。</span><span class="sxs-lookup"><span data-stu-id="70714-121">Log on to the computer as a member of the RTCUniversalServerAdmins group, or as a member of the CsVoiceAdministrator, CsServerAdministrator, or CsAdministrator administrative role.</span></span>
+
+2.  <span data-ttu-id="70714-122">启动 Lync Server 命令行管理程序：依次单击 " **开始**"、" **所有程序**"、" **Microsoft Lync server 2013**"，然后单击 " **Lync server Management shell**"。</span><span class="sxs-lookup"><span data-stu-id="70714-122">Start the Lync Server Management Shell: Click **Start**, click **All Programs**, click **Microsoft Lync Server 2013**, and then click **Lync Server Management Shell**.</span></span>
+
+3.  <span data-ttu-id="70714-123">运行：</span><span class="sxs-lookup"><span data-stu-id="70714-123">Run:</span></span>
+    
+        Set-CsVoicePolicy -Identity <VoicePolicy> -EnableCallPark $true
+    
+    <span data-ttu-id="70714-124">例如，若要为默认全局语音策略启用呼叫寄存，请执行以下操作：</span><span class="sxs-lookup"><span data-stu-id="70714-124">For example, to enable Call Park for the default global voice policy:</span></span>
+    
+        Set-CsVoicePolicy -EnableCallPark $true
+
+</div>
+
+<div>
+
+## <a name="see-also"></a><span data-ttu-id="70714-125">另请参阅</span><span class="sxs-lookup"><span data-stu-id="70714-125">See Also</span></span>
+
+
+[<span data-ttu-id="70714-126">在 Lync Server 2013 中创建语音策略和配置 PSTN 使用记录</span><span class="sxs-lookup"><span data-stu-id="70714-126">Create a voice policy and configure PSTN usage records in Lync Server 2013</span></span>](lync-server-2013-create-a-voice-policy-and-configure-pstn-usage-records.md)  
+  
+
+<span data-ttu-id="70714-127"></div>
+
+</div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</span><span class="sxs-lookup"><span data-stu-id="70714-127"></div>
+
+</div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</span></span></div>
+
