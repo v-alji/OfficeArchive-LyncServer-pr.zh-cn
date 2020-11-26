@@ -1,0 +1,270 @@
+---
+title: Lync Server 2013：备份和还原要求：数据
+description: Lync Server 2013：备份和还原要求：数据。
+ms.reviewer: ''
+ms.author: v-lanac
+author: lanachin
+f1.keywords:
+- NOCSH
+TOCTitle: 'Backup and restoration requirements: data'
+ms:assetid: ecfb8e4d-cb4f-476d-9772-4486bd683c04
+ms:mtpsurl: https://technet.microsoft.com/en-us/library/Hh202194(v=OCS.15)
+ms:contentKeyID: 51541526
+ms.date: 07/23/2014
+manager: serdars
+mtps_version: v=OCS.15
+ms.openlocfilehash: 7e135f09706d31ff3f0efa54c8687546de9fab78
+ms.sourcegitcommit: 36fee89bb887bea4f18b19f17a8c69daf5bc423d
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "49437985"
+---
+# <a name="backup-and-restoration-requirements-in-lync-server-2013-data"></a><span data-ttu-id="a67c0-103">Lync Server 2013 中的备份和还原要求：数据</span><span class="sxs-lookup"><span data-stu-id="a67c0-103">Backup and restoration requirements in Lync Server 2013: data</span></span>
+
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+
+<div class="topic" data-xmlns="http://www.w3.org/1999/xhtml" data-msxsl="urn:schemas-microsoft-com:xslt" data-cs="https://msdn.microsoft.com/">
+
+<div data-asp="https://msdn2.microsoft.com/asp">
+
+
+
+</div>
+
+<div id="mainSection">
+
+<div id="mainBody"><span data-ttu-id="a67c0-104">
+
+<span> </span></span><span class="sxs-lookup"><span data-stu-id="a67c0-104">
+
+<span> </span></span></span>
+
+<span data-ttu-id="a67c0-105">_**主题上次修改时间：** 2013-03-26_</span><span class="sxs-lookup"><span data-stu-id="a67c0-105">_**Topic Last Modified:** 2013-03-26_</span></span>
+
+<span data-ttu-id="a67c0-106">Lync 服务器使用存储在数据库中的设置和配置信息，以及存储在数据库和文件存储中的数据。</span><span class="sxs-lookup"><span data-stu-id="a67c0-106">Lync Server uses settings and configuration information that are stored in databases, and data that is stored in databases and file stores.</span></span> <span data-ttu-id="a67c0-107">本主题介绍了需要备份才能还原服务的数据（如果你的组织遇到故障或中断），并且还标识 Lync Server 用于你需要单独备份的数据和组件。</span><span class="sxs-lookup"><span data-stu-id="a67c0-107">This topic describes the data that you need to back up to be able to restore service if your organization experiences a failure or outage, and also identifies the data and components used by Lync Server that you need to back up separately.</span></span>
+
+<div>
+
+## <a name="settings-and-configuration-requirements"></a><span data-ttu-id="a67c0-108">设置和配置要求</span><span class="sxs-lookup"><span data-stu-id="a67c0-108">Settings and Configuration Requirements</span></span>
+
+<span data-ttu-id="a67c0-109">本主题包括备份和还原 Lync Server 服务恢复所需的设置和配置信息的过程。</span><span class="sxs-lookup"><span data-stu-id="a67c0-109">This topic includes procedures for backing up and restoring the settings and configuration information that is required for recovery of Lync Server service.</span></span> <span data-ttu-id="a67c0-110">配置信息位于中央管理存储或其他后端数据库或标准版服务器上。</span><span class="sxs-lookup"><span data-stu-id="a67c0-110">The configuration information is located in the Central Management store or on another back-end database or on Standard Edition server.</span></span>
+
+<span data-ttu-id="a67c0-111">下表标识了备份和还原所需的设置和配置信息。</span><span class="sxs-lookup"><span data-stu-id="a67c0-111">The following table identifies the settings and configuration information that you need to back up and restore.</span></span>
+
+### <a name="settings-and-configuration-data"></a><span data-ttu-id="a67c0-112">设置和配置数据</span><span class="sxs-lookup"><span data-stu-id="a67c0-112">Settings and Configuration Data</span></span>
+
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><span data-ttu-id="a67c0-113">数据类型</span><span class="sxs-lookup"><span data-stu-id="a67c0-113">Type of data</span></span></th>
+<th><span data-ttu-id="a67c0-114">存储位置</span><span class="sxs-lookup"><span data-stu-id="a67c0-114">Where stored</span></span></th>
+<th><span data-ttu-id="a67c0-115">说明/要备份的时间</span><span class="sxs-lookup"><span data-stu-id="a67c0-115">Description / When to back up</span></span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><p><span data-ttu-id="a67c0-116">拓扑配置信息</span><span class="sxs-lookup"><span data-stu-id="a67c0-116">Topology configuration information</span></span></p></td>
+<td><p><span data-ttu-id="a67c0-117">中央管理存储 (数据库： Xds) </span><span class="sxs-lookup"><span data-stu-id="a67c0-117">Central Management store (database: Xds.mdf)</span></span></p></td>
+<td><p><span data-ttu-id="a67c0-118">拓扑、策略和配置设置。</span><span class="sxs-lookup"><span data-stu-id="a67c0-118">Topology, policy, and configuration settings.</span></span></p>
+<p><span data-ttu-id="a67c0-119">使用您的常规备份和使用 Lync Server 控制面板或 cmdlet 修改配置或策略后，进行备份。</span><span class="sxs-lookup"><span data-stu-id="a67c0-119">Back up with your regular backups and after you use Lync Server Control Panel or cmdlets to modify your configuration or policies.</span></span></p></td>
+</tr>
+<tr class="even">
+<td><p><span data-ttu-id="a67c0-120">位置信息</span><span class="sxs-lookup"><span data-stu-id="a67c0-120">Location information</span></span></p></td>
+<td><p><span data-ttu-id="a67c0-121">中央管理存储 (数据库： .Lis) </span><span class="sxs-lookup"><span data-stu-id="a67c0-121">Central Management store (database: Lis.mdf)</span></span></p></td>
+<td><p><span data-ttu-id="a67c0-122">企业语音增强 9-1-1 (E9-1-1) 配置信息。</span><span class="sxs-lookup"><span data-stu-id="a67c0-122">Enterprise Voice Enhanced 9-1-1 (E9-1-1) configuration information.</span></span> <span data-ttu-id="a67c0-123">此信息通常是静态的。</span><span class="sxs-lookup"><span data-stu-id="a67c0-123">This information is generally static.</span></span></p>
+<p><span data-ttu-id="a67c0-124">备份您的常规备份。</span><span class="sxs-lookup"><span data-stu-id="a67c0-124">Back up with your regular backups.</span></span></p></td>
+</tr>
+<tr class="odd">
+<td><p><span data-ttu-id="a67c0-125">响应组配置信息</span><span class="sxs-lookup"><span data-stu-id="a67c0-125">Response Group configuration information</span></span></p></td>
+<td><p><span data-ttu-id="a67c0-126"> (数据库： RgsConfig) 的后端服务器或标准版服务器</span><span class="sxs-lookup"><span data-stu-id="a67c0-126">Back End Server or Standard Edition server (database: RgsConfig.mdf)</span></span></p></td>
+<td><p><span data-ttu-id="a67c0-127">响应组代理组、队列和工作流。</span><span class="sxs-lookup"><span data-stu-id="a67c0-127">Response Group agent groups, queues, and workflows.</span></span></p>
+<p><span data-ttu-id="a67c0-128">备份您的常规备份以及添加或更改代理组、队列或工作流后。</span><span class="sxs-lookup"><span data-stu-id="a67c0-128">Back up with your regular backups and after you add or change agent groups, queues, or workflows.</span></span></p></td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+
+<div>
+
+## <a name="data-requirements"></a><span data-ttu-id="a67c0-129">数据要求</span><span class="sxs-lookup"><span data-stu-id="a67c0-129">Data Requirements</span></span>
+
+<span data-ttu-id="a67c0-130">下面是您需要备份的 Lync 服务器数据的列表，以便您可以在出现故障时还原 Lync Server 服务。</span><span class="sxs-lookup"><span data-stu-id="a67c0-130">Here is a list of the Lync Server data that you need to back up so that you can restore Lync Server service in the event of a failure.</span></span>
+
+<span data-ttu-id="a67c0-131">请注意，恢复时不需要某些类型的数据。</span><span class="sxs-lookup"><span data-stu-id="a67c0-131">Note that some types of data are not required for recovery.</span></span> <span data-ttu-id="a67c0-132">本主题不包含备份这些类型的数据的过程，包括以下内容：</span><span class="sxs-lookup"><span data-stu-id="a67c0-132">This topic does not contain procedures for backing up these types of data, which include the following:</span></span>
+
+  - <span data-ttu-id="a67c0-133">临时用户数据，例如终结点和订阅、活动会议服务器和暂时性的会议状态 (数据库： RtcDyn) </span><span class="sxs-lookup"><span data-stu-id="a67c0-133">Transient user data, such as endpoints and subscriptions, active conferencing servers, and transient conferencing states (database: RtcDyn.mdf)</span></span>
+
+  - <span data-ttu-id="a67c0-134">通讯簿数据 (数据库： Rtcab 和 Rtcab1) 。</span><span class="sxs-lookup"><span data-stu-id="a67c0-134">Address Book data (databases: Rtcab.mdf and Rtcab1.mdf).</span></span> <span data-ttu-id="a67c0-135">通讯簿数据库将从 Active Directory 域服务自动重新生成。</span><span class="sxs-lookup"><span data-stu-id="a67c0-135">The Address Book database is regenerated automatically from Active Directory Domain Services.</span></span>
+
+  - <span data-ttu-id="a67c0-136"> (数据库： CpsDyn 的调用寄存应用程序的动态信息) </span><span class="sxs-lookup"><span data-stu-id="a67c0-136">Dynamic information for the Call Park application (database: CpsDyn.mdf)</span></span>
+
+  - <span data-ttu-id="a67c0-137">暂时性的响应组数据，如代理登录状态和呼叫等待信息 (数据库： RgsDyn) </span><span class="sxs-lookup"><span data-stu-id="a67c0-137">Transient Response Group data, such as agent sign-in state and call waiting information (database: RgsDyn.mdf)</span></span>
+
+  - <span data-ttu-id="a67c0-138">持久聊天 (数据库： MgcComp) 的合规性数据库。</span><span class="sxs-lookup"><span data-stu-id="a67c0-138">The compliance database for Persistent Chat (database: MgcComp.mdf).</span></span> <span data-ttu-id="a67c0-139">如果你启用了持久的聊天合规性，则只要你拥有配置为从数据库读取信息并将其转换为备用格式的适配器，持久聊天合规性数据库中的信息就会暂时性。</span><span class="sxs-lookup"><span data-stu-id="a67c0-139">If you have Persistent Chat compliance enabled, the information in the Persistent Chat Compliance database is transient as long as you have an adapter configured to read information from the database and convert it to an alternate format.</span></span> <span data-ttu-id="a67c0-140">因此，持久聊天的合规性数据库被认为是暂时性的。</span><span class="sxs-lookup"><span data-stu-id="a67c0-140">Hence the compliance database for Persistent Chat is considered transient.</span></span>
+    
+    <span data-ttu-id="a67c0-141">Lync Server 2013 持久聊天服务器随附有一个 XML 适配器。</span><span class="sxs-lookup"><span data-stu-id="a67c0-141">Lync Server 2013 Persistent Chat Server ships with an XML adapter.</span></span> <span data-ttu-id="a67c0-142">你还可以安装接受此数据并将其移动到其他源（如 Exchange 托管的存档）的自定义适配器。</span><span class="sxs-lookup"><span data-stu-id="a67c0-142">You can also install custom adapters that take this data and move it to other sources, such as Exchange Hosted Archives.</span></span>
+
+<span data-ttu-id="a67c0-143">下表标识了备份和还原所需的数据。</span><span class="sxs-lookup"><span data-stu-id="a67c0-143">The following table identifies the data that you need to back up and restore.</span></span>
+
+### <a name="data-stored-in-databases"></a><span data-ttu-id="a67c0-144">数据库中存储的数据</span><span class="sxs-lookup"><span data-stu-id="a67c0-144">Data Stored in Databases</span></span>
+
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><span data-ttu-id="a67c0-145">数据类型</span><span class="sxs-lookup"><span data-stu-id="a67c0-145">Type of data</span></span></th>
+<th><span data-ttu-id="a67c0-146">存储位置</span><span class="sxs-lookup"><span data-stu-id="a67c0-146">Where stored</span></span></th>
+<th><span data-ttu-id="a67c0-147">说明/要备份的时间</span><span class="sxs-lookup"><span data-stu-id="a67c0-147">Description / When to back up</span></span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><p><span data-ttu-id="a67c0-148">永久性用户数据</span><span class="sxs-lookup"><span data-stu-id="a67c0-148">Persistent user data</span></span></p></td>
+<td><p><span data-ttu-id="a67c0-149"> (数据库： RTCXDS) 的后端服务器或标准版服务器</span><span class="sxs-lookup"><span data-stu-id="a67c0-149">Back End Server or Standard Edition server (database: RTCXDS.mdf)</span></span></p></td>
+<td><p><span data-ttu-id="a67c0-150">用户权限、用户联系人列表、服务器或池数据、计划的会议等。</span><span class="sxs-lookup"><span data-stu-id="a67c0-150">User rights, user Contacts lists, server or pool data, scheduled conferences, and so on.</span></span> <span data-ttu-id="a67c0-151">此用户数据不包括上载到会议的内容。</span><span class="sxs-lookup"><span data-stu-id="a67c0-151">This user data does not include content uploaded to a conference.</span></span></p>
+<p><span data-ttu-id="a67c0-152">备份您的常规备份。</span><span class="sxs-lookup"><span data-stu-id="a67c0-152">Back up with your regular backups.</span></span> <span data-ttu-id="a67c0-153">此信息是动态的，但更新丢失对于 Lync 服务器来说不是严重的，前提是您需要还原到上一次常规备份。</span><span class="sxs-lookup"><span data-stu-id="a67c0-153">This information is dynamic, but the loss of updates is not catastrophic to Lync Server if you need to restore to your last regular backup.</span></span> <span data-ttu-id="a67c0-154">如果联系人列表对您的组织非常重要，则您可以更频繁地备份此数据。</span><span class="sxs-lookup"><span data-stu-id="a67c0-154">If Contacts lists are critical to your organization, you can back up this data more frequently.</span></span></p></td>
+</tr>
+<tr class="even">
+<td><p><span data-ttu-id="a67c0-155">存档数据</span><span class="sxs-lookup"><span data-stu-id="a67c0-155">Archiving data</span></span></p></td>
+<td><p><span data-ttu-id="a67c0-156">将数据库存档 (数据库： LcsLog) </span><span class="sxs-lookup"><span data-stu-id="a67c0-156">Archiving database (database: LcsLog.mdf)</span></span></p>
+<p><span data-ttu-id="a67c0-157">如果已启用 "Microsoft Exchange 集成" 选项，则此数据可能存储在 Exchange 2013 上。</span><span class="sxs-lookup"><span data-stu-id="a67c0-157">This data may be stored on Exchange 2013, if you have enabled the Microsoft Exchange integration option.</span></span> <span data-ttu-id="a67c0-158">否则，此数据将保留在 Lync Server 存档数据库中，该数据库可能与另一个 Lync Server 数据库 collocated，或者在单独的数据库服务器上独立。</span><span class="sxs-lookup"><span data-stu-id="a67c0-158">Otherwise, this data is kept in a Lync Server Archiving database, which may be collocated with another Lync Server database, or stand-alone on a separate database server.</span></span></p></td>
+<td><p><span data-ttu-id="a67c0-159">即时消息 (IM) 和会议内容。</span><span class="sxs-lookup"><span data-stu-id="a67c0-159">Instant messaging (IM) and meeting content.</span></span></p>
+<p><span data-ttu-id="a67c0-160">对于 Lync Server 而言，此数据并不重要，但对您的组织而言可能至关重要。</span><span class="sxs-lookup"><span data-stu-id="a67c0-160">This data is not critical to Lync Server, but it may be critical to your organization for regulatory purposes.</span></span> <span data-ttu-id="a67c0-161">请相应地确定您的备份计划。</span><span class="sxs-lookup"><span data-stu-id="a67c0-161">Determine your back up schedule accordingly.</span></span></p></td>
+</tr>
+<tr class="odd">
+<td><p><span data-ttu-id="a67c0-162">监视数据</span><span class="sxs-lookup"><span data-stu-id="a67c0-162">Monitoring data</span></span></p></td>
+<td><p><span data-ttu-id="a67c0-163">监视数据库 (LcsCDR 和 QoeMetrics) </span><span class="sxs-lookup"><span data-stu-id="a67c0-163">Monitoring databases (LcsCDR.mdf and QoeMetrics.mdf)</span></span></p>
+<p><span data-ttu-id="a67c0-164">这些数据库可能与另一个 Lync Server 数据库 collocated，也可能独立于单独的数据库服务器。</span><span class="sxs-lookup"><span data-stu-id="a67c0-164">These databases may be collocated with another Lync Server database, or stand-alone on a separate database server.</span></span></p></td>
+<td><p><span data-ttu-id="a67c0-165"> (LcsCDR) 和体验质量 (QoE) 指标 (QoeMetrics) ）通话详细记录。</span><span class="sxs-lookup"><span data-stu-id="a67c0-165">Call detail records (LcsCDR.mdf) and Quality of Experience (QoE) metrics (QoeMetrics.mdf).</span></span></p>
+<p><span data-ttu-id="a67c0-166">通话详细记录是动态的，可能对您的企业至关重要。</span><span class="sxs-lookup"><span data-stu-id="a67c0-166">Call detail records are dynamic and may be critical to your business.</span></span> <span data-ttu-id="a67c0-167">通过考虑是否需要这些记录来确定备份计划，以确定其合规性。</span><span class="sxs-lookup"><span data-stu-id="a67c0-167">Determine your back up schedule by considering whether you need these records for regulatory reasons.</span></span></p>
+<p><span data-ttu-id="a67c0-168">体验信息的质量是动态的。</span><span class="sxs-lookup"><span data-stu-id="a67c0-168">Quality of experience information is dynamic.</span></span> <span data-ttu-id="a67c0-169">QoE 数据的损失对于 Lync Server 的操作并不重要，但对您的业务来说可能至关重要。</span><span class="sxs-lookup"><span data-stu-id="a67c0-169">Loss of QoE data is not critical for the operation of Lync Server, but it may be critical to your business.</span></span> <span data-ttu-id="a67c0-170">根据你的组织的这些信息的重要程度确定你的备份计划。</span><span class="sxs-lookup"><span data-stu-id="a67c0-170">Determine your back up schedule based on how critical this information is to your organization.</span></span></p></td>
+</tr>
+<tr class="even">
+<td><p><span data-ttu-id="a67c0-171">持久聊天数据</span><span class="sxs-lookup"><span data-stu-id="a67c0-171">Persistent Chat data</span></span></p></td>
+<td><p><span data-ttu-id="a67c0-172">持久聊天数据库 (mgd) 。</span><span class="sxs-lookup"><span data-stu-id="a67c0-172">Persistent Chat database (mgd.mdf).</span></span></p>
+<p><span data-ttu-id="a67c0-173">此数据库可以与另一个 Lync Server 数据库 collocated，也可以独立于单独的数据库服务器。</span><span class="sxs-lookup"><span data-stu-id="a67c0-173">This database may be collocated with another Lync Server database, or stand-alone on a separate database server.</span></span></p></td>
+<td><p><span data-ttu-id="a67c0-174">持久聊天数据是在聊天室中发布的实际聊天内容。</span><span class="sxs-lookup"><span data-stu-id="a67c0-174">Persistent Chat Data is actual chat content being posted in chat rooms.</span></span> <span data-ttu-id="a67c0-175">此数据通常是业务关键型的。</span><span class="sxs-lookup"><span data-stu-id="a67c0-175">This data is often business critical.</span></span></p>
+<p><span data-ttu-id="a67c0-176">你可以选择使用 SQL Server 备份，或使用 Lync Server 中提供的 <strong>CsPersistentChatData</strong> cmdlet 导出数据库。</span><span class="sxs-lookup"><span data-stu-id="a67c0-176">You can choose to use SQL Server backup, or export the database by using the <strong>Export-CsPersistentChatData</strong> cmdlet that is provided in Lync Server.</span></span> <span data-ttu-id="a67c0-177">若要恢复数据，可以将数据库导入和还原到上次完全备份的位置，这意味着无法将数据库还原到故障点。</span><span class="sxs-lookup"><span data-stu-id="a67c0-177">For recovery of the data, you can import and restore the database to the point of the last full backup, which means you cannot restore the database to the point of failure.</span></span></p></td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+
+<div>
+
+## <a name="file-store-data-requirements"></a><span data-ttu-id="a67c0-178">文件存储数据要求</span><span class="sxs-lookup"><span data-stu-id="a67c0-178">File Store Data Requirements</span></span>
+
+<span data-ttu-id="a67c0-179">在企业版部署中，Lync Server 文件存储通常位于文件服务器上。</span><span class="sxs-lookup"><span data-stu-id="a67c0-179">In an Enterprise Edition deployment, the Lync Server file store is typically located on a file server.</span></span> <span data-ttu-id="a67c0-180">在标准版部署中，Lync Server 文件存储在默认情况下位于标准版服务器上。</span><span class="sxs-lookup"><span data-stu-id="a67c0-180">In a Standard Edition deployment, the Lync Server file store is located by default on the Standard Edition server.</span></span> <span data-ttu-id="a67c0-181">通常情况下，网站会共享一个 Lync Server 文件存储。</span><span class="sxs-lookup"><span data-stu-id="a67c0-181">Typically, there is one Lync Server file store that is shared for a site.</span></span> <span data-ttu-id="a67c0-182">持久聊天文件存储使用与 Lync Server 文件存储相同的文件共享。</span><span class="sxs-lookup"><span data-stu-id="a67c0-182">The Persistent Chat file store uses the same file share as the Lync Server file store.</span></span>
+
+<span data-ttu-id="a67c0-183">文件存储位置标识为 \\ \\ 服务器 \\ 共享名称。</span><span class="sxs-lookup"><span data-stu-id="a67c0-183">File store locations are identified as \\\\server\\share name.</span></span> <span data-ttu-id="a67c0-184">若要查找文件存储的特定位置，请打开拓扑生成器并查看 " **文件存储** " 节点。</span><span class="sxs-lookup"><span data-stu-id="a67c0-184">To find the specific locations of your file stores, open Topology Builder and look in the **File stores** node.</span></span>
+
+<span data-ttu-id="a67c0-185">下表标识了需要备份和还原的文件存储。</span><span class="sxs-lookup"><span data-stu-id="a67c0-185">The following table identifies the file stores you need to back up and restore.</span></span>
+
+### <a name="file-stores"></a><span data-ttu-id="a67c0-186">文件存储</span><span class="sxs-lookup"><span data-stu-id="a67c0-186">File Stores</span></span>
+
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><span data-ttu-id="a67c0-187">数据类型</span><span class="sxs-lookup"><span data-stu-id="a67c0-187">Type of data</span></span></th>
+<th><span data-ttu-id="a67c0-188">存储位置</span><span class="sxs-lookup"><span data-stu-id="a67c0-188">Where stored</span></span></th>
+<th><span data-ttu-id="a67c0-189">说明/要备份的时间</span><span class="sxs-lookup"><span data-stu-id="a67c0-189">Description / when to back up</span></span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><p><span data-ttu-id="a67c0-190">Lync Server 文件存储</span><span class="sxs-lookup"><span data-stu-id="a67c0-190">Lync Server file store</span></span></p></td>
+<td><p><span data-ttu-id="a67c0-191">通常在文件服务器、文件群集或标准版服务器上</span><span class="sxs-lookup"><span data-stu-id="a67c0-191">Typically on a file server, file cluster, or a Standard Edition server</span></span></p></td>
+<td><p><span data-ttu-id="a67c0-192">会议内容、会议内容元数据、会议合规性日志、应用程序数据文件、为设备更新更新文件、响应组的音频文件、呼叫寄存和发布应用程序，以及发布到持久聊天室的文件。</span><span class="sxs-lookup"><span data-stu-id="a67c0-192">Meeting content, meeting content metadata, meeting compliance logs, application data files, update files for device updates, audio files for Response Group, Call Park, and Announcement applications, and files posted into Persistent Chat rooms.</span></span></p>
+<p><span data-ttu-id="a67c0-193">备份您的常规备份。</span><span class="sxs-lookup"><span data-stu-id="a67c0-193">Back up with your regular backups.</span></span></p></td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+
+<div>
+
+## <a name="additional-backup-requirements"></a><span data-ttu-id="a67c0-194">其他备份要求</span><span class="sxs-lookup"><span data-stu-id="a67c0-194">Additional Backup Requirements</span></span>
+
+<span data-ttu-id="a67c0-195">为了帮助确保在发生故障时还原 Lync Server 服务的能力，您必须备份不属于 Lync Server 本身的一些必要组件。</span><span class="sxs-lookup"><span data-stu-id="a67c0-195">To help ensure your ability to restore Lync Server services in the event of a failure, you must back up some necessary components that are not part of Lync Server itself.</span></span> <span data-ttu-id="a67c0-196">以下组件不会作为本文档中所述 Lync Server 备份和还原过程的一部分进行备份或还原：</span><span class="sxs-lookup"><span data-stu-id="a67c0-196">The following components are not backed up or restored as part of the Lync Server backup and restoration process described in this document:</span></span>
+
+  - <span data-ttu-id="a67c0-197">**Active Directory 域服务**   您需要在备份 Lync Server 时使用 Active Directory 工具备份 AD DS。</span><span class="sxs-lookup"><span data-stu-id="a67c0-197">**Active Directory Domain Services**   You need to back up AD DS by using Active Directory tools at the same time that you back up Lync Server.</span></span> <span data-ttu-id="a67c0-198">将 AD DS 与 Lync Server 保持同步，以避免当 Lync Server 预期与 AD DS 中的联系人对象不匹配时可能出现的问题是非常重要的。</span><span class="sxs-lookup"><span data-stu-id="a67c0-198">It is important to keep AD DS synchronized with Lync Server, to avoid problems that can occur when Lync Server expects contact objects that do not match those in AD DS.</span></span> <span data-ttu-id="a67c0-199">AD DS 存储由 Lync Server 使用的以下设置：</span><span class="sxs-lookup"><span data-stu-id="a67c0-199">AD DS stores the following settings which are used by Lync Server:</span></span>
+    
+      - <span data-ttu-id="a67c0-200">用户 SIP URI 和其他用户设置。</span><span class="sxs-lookup"><span data-stu-id="a67c0-200">User SIP URI and other user settings.</span></span>
+    
+      - <span data-ttu-id="a67c0-201">响应组和会议助理等应用程序的联系人对象。</span><span class="sxs-lookup"><span data-stu-id="a67c0-201">Contact objects for applications such as Response Group and Conferencing Attendant.</span></span>
+    
+      - <span data-ttu-id="a67c0-202">指向中央管理存储的指针。</span><span class="sxs-lookup"><span data-stu-id="a67c0-202">A pointer to the Central Management Store.</span></span>
+    
+      - <span data-ttu-id="a67c0-203">Kerberos 身份验证帐户 (一个可选的计算机对象) 和 Lync Server 安全组。</span><span class="sxs-lookup"><span data-stu-id="a67c0-203">Kerberos Authentication Account (an optional computer object) and Lync Server security groups.</span></span>
+    
+    <span data-ttu-id="a67c0-204">有关在 Windows Server 2008 中备份和还原 AD DS 的详细信息，请参阅 "AD DS 备份和恢复分步指南" [https://go.microsoft.com/fwlink/p/?linkId=209105](https://go.microsoft.com/fwlink/p/?linkid=209105) 。</span><span class="sxs-lookup"><span data-stu-id="a67c0-204">For details about backing up and restoring AD DS in Windows Server 2008, see "AD DS Backup and Recovery Step-by-Step Guide" at [https://go.microsoft.com/fwlink/p/?linkId=209105](https://go.microsoft.com/fwlink/p/?linkid=209105).</span></span>
+
+  - <span data-ttu-id="a67c0-205">**证书颁发机构和证书**   使用组织的策略来备份证书颁发机构 (CA) 和证书。</span><span class="sxs-lookup"><span data-stu-id="a67c0-205">**Certification authority and certificates**   Use your organization's policy for backing up your certification authority (CA) and certificates.</span></span> <span data-ttu-id="a67c0-206">如果使用可导出私钥，则可以备份证书和私钥，如果使用本文档中的过程还原 Lync Server，则可以将其导出。</span><span class="sxs-lookup"><span data-stu-id="a67c0-206">If you use exportable private keys, you can back up the certificate and the private key, and then export them if you use the procedures in this document to restore Lync Server.</span></span> <span data-ttu-id="a67c0-207">如果你使用内部 CA，则可以重新注册（如果你需要还原 Lync 服务器）。</span><span class="sxs-lookup"><span data-stu-id="a67c0-207">If you use an internal CA, you can re-enroll if you need to restore Lync Server.</span></span> <span data-ttu-id="a67c0-208">请务必将私钥保留在一个安全的位置，以便在计算机出现故障时使用该私钥。</span><span class="sxs-lookup"><span data-stu-id="a67c0-208">It is important that you retain the private key in a secure location where it will be available if a computer fails.</span></span>
+
+  - <span data-ttu-id="a67c0-209">**System Center Operations Manager**   如果使用 Microsoft System Center Operations Manager (以前的 Microsoft Operations Manager) 监视 Lync Server 部署，则可以选择在监视 Lync 服务器时备份它所创建的数据。</span><span class="sxs-lookup"><span data-stu-id="a67c0-209">**System Center Operations Manager**   If you use Microsoft System Center Operations Manager (formerly Microsoft Operations Manager) to monitor your Lync Server deployment, you can optionally back up the data it creates while it is monitoring Lync Server.</span></span> <span data-ttu-id="a67c0-210">使用您的标准 SQL Server 备份过程备份 System Center Operations Manager 文件。</span><span class="sxs-lookup"><span data-stu-id="a67c0-210">Use your standard SQL Server backup process to back up System Center Operations Manager files.</span></span> <span data-ttu-id="a67c0-211">这些文件在恢复期间不会还原。</span><span class="sxs-lookup"><span data-stu-id="a67c0-211">These files are not restored during recovery.</span></span>
+
+  - <span data-ttu-id="a67c0-212">**公共交换电话网络 (PSTN) 网关配置**   如果您使用企业语音或 Survivable 分支装置，则需要备份 PSTN 网关配置。</span><span class="sxs-lookup"><span data-stu-id="a67c0-212">**Public switched telephone network (PSTN) gateway configuration**   If you use Enterprise Voice or Survivable Branch Appliances, you need to back up the PSTN gateway configuration.</span></span> <span data-ttu-id="a67c0-213">有关备份和还原 PSTN 网关配置的详细信息，请参阅您的供应商。</span><span class="sxs-lookup"><span data-stu-id="a67c0-213">See your vendor for details about backing up and restoring PSTN gateway configurations.</span></span>
+
+  - <span data-ttu-id="a67c0-214">**Lync server 或 Office 通信服务器的版本已共存**   如果您的 Lync Server 2013 部署与 Lync Server 2010 或早期版本的 Office 通信服务器 coexists，则不能使用本文档中的步骤备份或还原早期版本。</span><span class="sxs-lookup"><span data-stu-id="a67c0-214">**Coexisting versions of Lync Server or Office Communications Server**   If your Lync Server 2013 deployment coexists with Lync Server 2010 or an earlier version of Office Communications Server, you can’t use the procedures in this document for backing up or restoring the earlier version.</span></span> <span data-ttu-id="a67c0-215">而是必须使用专为早期版本记录的备份和还原过程。</span><span class="sxs-lookup"><span data-stu-id="a67c0-215">Instead, you must use the backup and restoration procedures documented specifically for your earlier version.</span></span> <span data-ttu-id="a67c0-216">有关备份和还原 Lync Server 2010 的详细信息，请参阅 [https://go.microsoft.com/fwlink/p/?linkId=265417](https://go.microsoft.com/fwlink/p/?linkid=265417) 。</span><span class="sxs-lookup"><span data-stu-id="a67c0-216">For details about backing up and restoring Lync Server 2010, see [https://go.microsoft.com/fwlink/p/?linkId=265417](https://go.microsoft.com/fwlink/p/?linkid=265417) .</span></span> <span data-ttu-id="a67c0-217">有关备份和还原 Microsoft Office 通信服务器 2007 R2 的详细信息，请参阅 [https://go.microsoft.com/fwlink/p/?linkId=168162](https://go.microsoft.com/fwlink/p/?linkid=168162) 。</span><span class="sxs-lookup"><span data-stu-id="a67c0-217">For details about backing up and restoring Microsoft Office Communications Server 2007 R2, see [https://go.microsoft.com/fwlink/p/?linkId=168162](https://go.microsoft.com/fwlink/p/?linkid=168162).</span></span>
+
+  - <span data-ttu-id="a67c0-218">**基础结构信息**   你需要备份有关你的基础结构的信息，例如防火墙配置、负载平衡配置、Internet 信息服务 (IIS) 配置、域名系统 (DNS) 记录和 IP 地址以及动态主机配置协议 (DHCP) 配置。</span><span class="sxs-lookup"><span data-stu-id="a67c0-218">**Infrastructure information**   You need to back up information about your infrastructure, such as your firewall configuration, load balancing configuration, Internet Information Services (IIS) configuration, Domain Name System (DNS) records and IP addresses, and Dynamic Host Configuration Protocol (DHCP) configuration.</span></span> <span data-ttu-id="a67c0-219">有关备份这些组件的详细信息，请咨询其各自的供应商。</span><span class="sxs-lookup"><span data-stu-id="a67c0-219">For details about backing up these components, check with their respective vendors.</span></span>
+
+  - <span data-ttu-id="a67c0-220">**Microsoft Exchange 和 Exchange 统一消息 (UM)**   如 Microsoft Exchange 文档中所述，备份和还原 Microsoft Exchange 和 Exchange UM。</span><span class="sxs-lookup"><span data-stu-id="a67c0-220">**Microsoft Exchange and Exchange Unified Messaging (UM)**   Backup and restore Microsoft Exchange and Exchange UM as described in the Microsoft Exchange documentation.</span></span> <span data-ttu-id="a67c0-221">有关备份和还原 Exchange Server 2013 的详细信息，请参阅 [https://go.microsoft.com/fwlink/?LinkId=285384](https://go.microsoft.com/fwlink/?linkid=285384) 。</span><span class="sxs-lookup"><span data-stu-id="a67c0-221">For details about backing up and restoring Exchange Server 2013, see [https://go.microsoft.com/fwlink/?LinkId=285384](https://go.microsoft.com/fwlink/?linkid=285384).</span></span> <span data-ttu-id="a67c0-222">有关备份和还原 Exchange Server 2010 的详细信息，请参阅 [https://go.microsoft.com/fwlink/p/?linkId=209179](https://go.microsoft.com/fwlink/p/?linkid=209179) 。</span><span class="sxs-lookup"><span data-stu-id="a67c0-222">For details about backing up and restoring Exchange Server 2010, see [https://go.microsoft.com/fwlink/p/?linkId=209179](https://go.microsoft.com/fwlink/p/?linkid=209179).</span></span>
+    
+    <span data-ttu-id="a67c0-223">请注意，Lync Server 2013 引入了具有用户联系人列表、高清晰度用户照片和存档 Exchange 2013 中存储的数据的功能。</span><span class="sxs-lookup"><span data-stu-id="a67c0-223">Note that Lync Server 2013 introduces the ability to have user contact lists, high definition user photos, and archiving data stored in Exchange 2013.</span></span> <span data-ttu-id="a67c0-224">请参阅以下列表，了解如何备份这些类型的数据：</span><span class="sxs-lookup"><span data-stu-id="a67c0-224">See the following list to see how to back up these types of data:</span></span>
+    
+      - <span data-ttu-id="a67c0-225">**高清晰度照片** 作为 Exchange Server 备份的一部分进行备份。</span><span class="sxs-lookup"><span data-stu-id="a67c0-225">**High definition photos** are backed up as part of the Exchange Server backup.</span></span>
+    
+      - <span data-ttu-id="a67c0-226">在 Lync Server 2013 中引入了 "**统一联系人存储**"。</span><span class="sxs-lookup"><span data-stu-id="a67c0-226">**Unified contact store** is introduced in Lync Server 2013.</span></span> <span data-ttu-id="a67c0-227">"统一联系人存储" 使用户能够在 Exchange 2013 中保留其所有联系人信息。</span><span class="sxs-lookup"><span data-stu-id="a67c0-227">Unified contact store enables users to keep all their contact information in Exchange 2013.</span></span>
+        
+        <span data-ttu-id="a67c0-228">你应该确保对用户而言，用户的联系人存储在 "统一联系人存储" 还是 "Lync 后端服务器" 中。</span><span class="sxs-lookup"><span data-stu-id="a67c0-228">You should make sure that backups are up-to-date for users in terms of whether their user contacts are stored in the unified contact store or on the Lync Back End Server.</span></span> <span data-ttu-id="a67c0-229">以下方案说明将用户联系人迁移到 "统一联系人存储" 的位置可能会导致备份和还原过程中出现问题。</span><span class="sxs-lookup"><span data-stu-id="a67c0-229">The following scenarios illustrate where migrating user contacts to the unified contact store can cause issues for the backup and restore process.</span></span>
+        
+        <span data-ttu-id="a67c0-230">**情形1：** 用户联系人将迁移到 "统一联系人存储区"，从迁移用户联系人之前所执行的 Lync 服务器备份执行还原。</span><span class="sxs-lookup"><span data-stu-id="a67c0-230">**Scenario 1:** User contacts are migrated to the unified contact store, and a restore is performed from a Lync Server backup taken prior to the migration of user contacts.</span></span> <span data-ttu-id="a67c0-231">在此方案中，用户将在最长一天内有过时的联系人状态，直到 Lync Server 迁移任务开始将用户联系人迁移到 Exchange。</span><span class="sxs-lookup"><span data-stu-id="a67c0-231">In this scenario, the user will have a state of outdated contacts for up to one day until Lync Server Migration Task begins migrating user contacts to Exchange.</span></span> <span data-ttu-id="a67c0-232"> (请注意，由于用户联系人之前已迁移到 "统一联系人" 存储，因此将使用) 的 Exchange 联系人信息。</span><span class="sxs-lookup"><span data-stu-id="a67c0-232">(Note that because the user contacts were previously migrated to the unified contact store, the Exchange contact information will be used).</span></span> <span data-ttu-id="a67c0-233">此方案中不需要管理员干预。</span><span class="sxs-lookup"><span data-stu-id="a67c0-233">No administrator intervention is needed in this scenario.</span></span>
+        
+        <span data-ttu-id="a67c0-234">**方案2：** 用户联系人之前已存储在 "统一联系人存储" 中，但随后会回退。</span><span class="sxs-lookup"><span data-stu-id="a67c0-234">**Scenario 2:** User contacts were previously stored in the unified contact store, but then rolled back.</span></span> <span data-ttu-id="a67c0-235">当用户联系人存储在 "统一联系人存储" 中时，将从 Lync Server 备份执行还原。</span><span class="sxs-lookup"><span data-stu-id="a67c0-235">A restore is performed from a Lync Server backup taken when the user contacts were stored in the unified contact store.</span></span> <span data-ttu-id="a67c0-236">在这种情况下， `Error: Incorrect Exchange Version` 客户端或 Lyss 服务器日志中的一条错误消息可能会指示此问题。</span><span class="sxs-lookup"><span data-stu-id="a67c0-236">In this scenario, an error message of `Error: Incorrect Exchange Version` in the client or Lyss server logs may indicate this as an issue.</span></span> <span data-ttu-id="a67c0-237">用户将能够直接从 Exchange 访问 Lync 2013 中的联系人列表，但客户端的状态将与 Lync Server 状态不匹配。</span><span class="sxs-lookup"><span data-stu-id="a67c0-237">The user will be able to access their contact list in Lync 2013 directly from Exchange, but client’s state will not match the Lync Server state.</span></span> <span data-ttu-id="a67c0-238">若要解决此问题，管理员需要针对受影响的用户运行 **CsUCSRollback** cmdlet。</span><span class="sxs-lookup"><span data-stu-id="a67c0-238">To fix this, an administrator will need to run the **Invoke-CsUCSRollback** cmdlets for the affected users.</span></span>
+    
+      - <span data-ttu-id="a67c0-239">**存档数据** 可以存储在 Exchange 2013 中。</span><span class="sxs-lookup"><span data-stu-id="a67c0-239">**Archiving Data** can be stored in Exchange 2013.</span></span> <span data-ttu-id="a67c0-240">对于 Lync Server 而言，此数据并不重要，但对您的组织而言可能至关重要。</span><span class="sxs-lookup"><span data-stu-id="a67c0-240">This data is not critical to Lync Server, but it may be critical to your organization for regulatory purposes.</span></span> <span data-ttu-id="a67c0-241">如果存档数据存储在 Exchange 中且对您的组织非常重要，请按照 Exchange 备份和还原过程操作。</span><span class="sxs-lookup"><span data-stu-id="a67c0-241">If archiving data is stored in Exchange and is critical to your organization, then follow Exchange backup and restore procedures.</span></span> <span data-ttu-id="a67c0-242">请注意，存储在 Exchange 中的存档数据不能移回 Lync 服务器。</span><span class="sxs-lookup"><span data-stu-id="a67c0-242">Note that archiving data stored in Exchange cannot be moved back to Lync Server.</span></span> <span data-ttu-id="a67c0-243">此外，无法将已存储在 Lync 存档数据库中的数据移动到 Exchange。</span><span class="sxs-lookup"><span data-stu-id="a67c0-243">Additionally, there is no way to move data already stored in the Lync archiving database to Exchange.</span></span>
+
+<span data-ttu-id="a67c0-244"></div>
+
+</div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</span><span class="sxs-lookup"><span data-stu-id="a67c0-244"></div>
+
+</div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</span></span></div>
+
