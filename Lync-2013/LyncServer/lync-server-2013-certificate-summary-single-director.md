@@ -1,0 +1,102 @@
+---
+title: Lync Server 2013：证书摘要 - 单一控制器
+description: Lync Server 2013：证书摘要-单控制器。
+ms.reviewer: ''
+ms.author: v-lanac
+author: lanachin
+f1.keywords:
+- NOCSH
+TOCTitle: Certificate summary - Single Director
+ms:assetid: 1b769a76-cbf3-46e9-a955-f6cde5faff93
+ms:mtpsurl: https://technet.microsoft.com/en-us/library/JJ204720(v=OCS.15)
+ms:contentKeyID: 48183546
+ms.date: 07/23/2014
+manager: serdars
+mtps_version: v=OCS.15
+ms.openlocfilehash: 4cf930a73d9989ec44f52f1d70ee9e0f900e4d6f
+ms.sourcegitcommit: 36fee89bb887bea4f18b19f17a8c69daf5bc423d
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "49435192"
+---
+# <a name="certificate-summary---single-director-in-lync-server-2013"></a>Lync Server 2013 中的证书摘要 - 单一控制器
+
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+
+<div class="topic" data-xmlns="http://www.w3.org/1999/xhtml" data-msxsl="urn:schemas-microsoft-com:xslt" data-cs="https://msdn.microsoft.com/">
+
+<div data-asp="https://msdn2.microsoft.com/asp">
+
+
+
+</div>
+
+<div id="mainSection">
+
+<div id="mainBody">
+
+<span> </span>
+
+_**主题上次修改时间：** 2012-09-08_
+
+单个控制器的证书要求包括一个默认证书，该证书为 Director 可以接收的服务提供了主题名称和使用者备用名称。 此外，还有一个用于服务器到服务器身份验证的 OAuth 令牌证书。
+
+### <a name="certificates-for-director"></a>Director 的证书
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>组件</th>
+<th>使用者名称 (SN)</th>
+<th> (SAN) 的使用者备用名称</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><p>默认</p></td>
+<td><p>dir01.contoso.net</p></td>
+<td><p>dir01.contoso.net</p>
+<p>dialin.contoso.com</p>
+<p>meet.contoso.com</p>
+<p>lyncdiscoverinternal.contoso.com</p>
+<p>lyncdiscover.contoso.com</p>
+<p> (（可选）) * contoso.com</p></td>
+<td><p>可以从内部托管的证书颁发机构 (CA) 或公共 CA 请求控制器证书。</p>
+<p>控制器在来自外围服务器或从边缘服务器中响应来自反向代理的请求。 内部客户端将不使用 Director。</p>
+<p>或者是简单 Url 的通配符条目</p></td>
+</tr>
+<tr class="even">
+<td><p>OAuthTokenIssuer</p></td>
+<td><p>dir01.contoso.net</p></td>
+<td><p>无条目</p></td>
+<td><div>
+
+> [!IMPORTANT]  
+> 请注意，最小键长度为1024，但你可能会收到一条警告，指出推荐的最小密钥长度为2048位。
+
+
+</div>
+<p>OAuthTokenIssuer 证书是单一用途的证书，用于在大规模环境中验证服务器，并且可以从内部 CA 或公共 CA 请求。 证书是必需的。</p></td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</div>
+
