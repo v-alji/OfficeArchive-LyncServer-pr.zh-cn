@@ -1,0 +1,336 @@
+---
+title: Lync Server 2013：会议摘要报告
+description: Lync Server 2013：会议摘要报告。
+ms.reviewer: ''
+ms.author: v-lanac
+author: lanachin
+f1.keywords:
+- NOCSH
+TOCTitle: Conference Summary Report
+ms:assetid: 62f54812-5700-45a3-8526-8f58b0f77fbc
+ms:mtpsurl: https://technet.microsoft.com/en-us/library/Gg558656(v=OCS.15)
+ms:contentKeyID: 48184299
+ms.date: 09/03/2014
+manager: serdars
+mtps_version: v=OCS.15
+ms.openlocfilehash: 2d9c0b8ad7280d2c7336282c14f46e6b5d6a1aec
+ms.sourcegitcommit: 36fee89bb887bea4f18b19f17a8c69daf5bc423d
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "49434492"
+---
+# <a name="conference-summary-report-in-lync-server-2013"></a><span data-ttu-id="ecff1-103">Lync Server 2013 中的 "会议摘要" 报表</span><span class="sxs-lookup"><span data-stu-id="ecff1-103">Conference Summary Report in Lync Server 2013</span></span>
+
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+
+<div class="topic" data-xmlns="http://www.w3.org/1999/xhtml" data-msxsl="urn:schemas-microsoft-com:xslt" data-cs="https://msdn.microsoft.com/">
+
+<div data-asp="https://msdn2.microsoft.com/asp">
+
+
+
+</div>
+
+<div id="mainSection">
+
+<div id="mainBody"><span data-ttu-id="ecff1-104">
+
+<span> </span></span><span class="sxs-lookup"><span data-stu-id="ecff1-104">
+
+<span> </span></span></span>
+
+<span data-ttu-id="ecff1-105">_**主题上次修改时间：** 2014-09-03_</span><span class="sxs-lookup"><span data-stu-id="ecff1-105">_**Topic Last Modified:** 2014-09-03_</span></span>
+
+<span data-ttu-id="ecff1-106">会议摘要报告提供了联机会议会话的整体视图。</span><span class="sxs-lookup"><span data-stu-id="ecff1-106">The Conference Summary Report provides an overall view of your online conferencing sessions.</span></span> <span data-ttu-id="ecff1-107">会议通常涉及超过2个用户，并且需要使用 Microsoft Lync Server 2013 会议服务。</span><span class="sxs-lookup"><span data-stu-id="ecff1-107">A conference typically involves more than 2 users and requires the use of Microsoft Lync Server 2013 conferencing services.</span></span> <span data-ttu-id="ecff1-108">通过比较，对等会话通常只涉及2个用户，不需要使用 Lync 服务器的会议服务。</span><span class="sxs-lookup"><span data-stu-id="ecff1-108">By comparison, a peer-to-peer session typically involves just 2 users and does not require the use of Lync Server's conferencing services.</span></span> <span data-ttu-id="ecff1-109">对等活动报告在 [Lync Server 2013 中的对等活动摘要报表](lync-server-2013-peer-to-peer-activity-summary-report.md)上。</span><span class="sxs-lookup"><span data-stu-id="ecff1-109">Peer-to-peer activities are reported on the [Peer-to-Peer Activity Summary Report in Lync Server 2013](lync-server-2013-peer-to-peer-activity-summary-report.md).</span></span>
+
+<span data-ttu-id="ecff1-110">"会议摘要" 报表不仅告诉你在给定时间段内的多少个会议 (每小时、每天、每周、每月) ，还会告诉你参与这些会议的人数以及唯一会议组织者的总数。</span><span class="sxs-lookup"><span data-stu-id="ecff1-110">The Conference Summary Report not only tells you how many conferences were held during a given time period (hourly, daily, weekly, monthly) but also tells you the total number of people who took part in those conferences, and the total number of unique conference organizers.</span></span>
+
+<span data-ttu-id="ecff1-111">“唯一”组织者是计划了至少一场会议的任何人。</span><span class="sxs-lookup"><span data-stu-id="ecff1-111">A "unique” organizer is anyone who schedules at least one conference.</span></span> <span data-ttu-id="ecff1-112">例如，如果 Pilar Ackerman 计划了一场会议，则她将算为一个唯一组织者。</span><span class="sxs-lookup"><span data-stu-id="ecff1-112">For example, if Pilar Ackerman schedules one conference she counts as one unique organizer.</span></span> <span data-ttu-id="ecff1-113">如果 Ken Myer 计划了 148 场会议，则他也将算为一个唯一组织者。</span><span class="sxs-lookup"><span data-stu-id="ecff1-113">If Ken Myer schedules 148 conferences he, too counts as one unique organizer.</span></span> <span data-ttu-id="ecff1-114">例如，下表显示计划的8个会议，但仅有三个唯一的组织者 (Ken Myer、Pilar Ackerman 和 David Ahs) 。</span><span class="sxs-lookup"><span data-stu-id="ecff1-114">For example, the table below shows 8 conferences scheduled, but just three unique organizers (Ken Myer, Pilar Ackerman, and David Ahs).</span></span>
+
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><span data-ttu-id="ecff1-115">会议组织者</span><span class="sxs-lookup"><span data-stu-id="ecff1-115">Conference Organizer</span></span></th>
+<th><span data-ttu-id="ecff1-116">会议日期</span><span class="sxs-lookup"><span data-stu-id="ecff1-116">Conference Date</span></span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><p><span data-ttu-id="ecff1-117">Ken Myer</span><span class="sxs-lookup"><span data-stu-id="ecff1-117">Ken Myer</span></span></p></td>
+<td><p><span data-ttu-id="ecff1-118">7/7/2012 10:00 AM</span><span class="sxs-lookup"><span data-stu-id="ecff1-118">7/7/2012 10:00 AM</span></span></p></td>
+</tr>
+<tr class="even">
+<td><p><span data-ttu-id="ecff1-119">David Ahs</span><span class="sxs-lookup"><span data-stu-id="ecff1-119">David Ahs</span></span></p></td>
+<td><p><span data-ttu-id="ecff1-120">7/7/2012 10:00 AM</span><span class="sxs-lookup"><span data-stu-id="ecff1-120">7/7/2012 10:00 AM</span></span></p></td>
+</tr>
+<tr class="odd">
+<td><p><span data-ttu-id="ecff1-121">Ken Myer</span><span class="sxs-lookup"><span data-stu-id="ecff1-121">Ken Myer</span></span></p></td>
+<td><p><span data-ttu-id="ecff1-122">7/7/2012 11:00 AM</span><span class="sxs-lookup"><span data-stu-id="ecff1-122">7/7/2012 11:00 AM</span></span></p></td>
+</tr>
+<tr class="even">
+<td><p><span data-ttu-id="ecff1-123">Pilar Ackerman</span><span class="sxs-lookup"><span data-stu-id="ecff1-123">Pilar Ackerman</span></span></p></td>
+<td><p><span data-ttu-id="ecff1-124">7/7/2012 11:00 AM</span><span class="sxs-lookup"><span data-stu-id="ecff1-124">7/7/2012 11:00 AM</span></span></p></td>
+</tr>
+<tr class="odd">
+<td><p><span data-ttu-id="ecff1-125">Ken Myer</span><span class="sxs-lookup"><span data-stu-id="ecff1-125">Ken Myer</span></span></p></td>
+<td><p><span data-ttu-id="ecff1-126">7/7/2012 1:00 PM</span><span class="sxs-lookup"><span data-stu-id="ecff1-126">7/7/2012 1:00 PM</span></span></p></td>
+</tr>
+<tr class="even">
+<td><p><span data-ttu-id="ecff1-127">Pilar Ackerman</span><span class="sxs-lookup"><span data-stu-id="ecff1-127">Pilar Ackerman</span></span></p></td>
+<td><p><span data-ttu-id="ecff1-128">7/7/2012 2:00 PM</span><span class="sxs-lookup"><span data-stu-id="ecff1-128">7/7/2012 2:00 PM</span></span></p></td>
+</tr>
+<tr class="odd">
+<td><p><span data-ttu-id="ecff1-129">Ken Myer</span><span class="sxs-lookup"><span data-stu-id="ecff1-129">Ken Myer</span></span></p></td>
+<td><p><span data-ttu-id="ecff1-130">7/2/2012 10:00 AM</span><span class="sxs-lookup"><span data-stu-id="ecff1-130">7/2/2012 10:00 AM</span></span></p></td>
+</tr>
+<tr class="even">
+<td><p><span data-ttu-id="ecff1-131">Pilar Ackerman</span><span class="sxs-lookup"><span data-stu-id="ecff1-131">Pilar Ackerman</span></span></p></td>
+<td><p><span data-ttu-id="ecff1-132">7/2/2012 10:00 AM</span><span class="sxs-lookup"><span data-stu-id="ecff1-132">7/2/2012 10:00 AM</span></span></p></td>
+</tr>
+</tbody>
+</table>
+
+
+<span data-ttu-id="ecff1-133">会议摘要报告还指示了包含音频和/或视频的会议数量。</span><span class="sxs-lookup"><span data-stu-id="ecff1-133">The Conference Summary Report also indicates how many conferences included audio and/or video.</span></span>
+
+<div>
+
+## <a name="accessing-the-conference-summary-report"></a><span data-ttu-id="ecff1-134">访问会议摘要报告</span><span class="sxs-lookup"><span data-stu-id="ecff1-134">Accessing the Conference Summary Report</span></span>
+
+<span data-ttu-id="ecff1-p103">会议摘要报告是通过“监控报告”主页进行访问的。您可通过单击下列任一指标向下钻取至会议活动报告：</span><span class="sxs-lookup"><span data-stu-id="ecff1-p103">The Conference Summary Report is accessed from the Monitoring Reports home page. You can drill down to the Conference Activity report by clicking either of the following metrics:</span></span>
+
+  - <span data-ttu-id="ecff1-137">会议总数</span><span class="sxs-lookup"><span data-stu-id="ecff1-137">Total conferences</span></span>
+
+  - <span data-ttu-id="ecff1-138">参与者总数</span><span class="sxs-lookup"><span data-stu-id="ecff1-138">Total participants</span></span>
+
+</div>
+
+<div>
+
+## <a name="making-the-best-use-of-the-conference-summary-report"></a><span data-ttu-id="ecff1-139">充分利用会议摘要报告</span><span class="sxs-lookup"><span data-stu-id="ecff1-139">Making the Best Use of the Conference Summary Report</span></span>
+
+<span data-ttu-id="ecff1-140">会议摘要报告上使用的大部分指标的合计值都可在此报告的底部找到；向下滚动可看到指定时间段内举行的会议总数以及参与这些会议的总人数等值。</span><span class="sxs-lookup"><span data-stu-id="ecff1-140">Total values for most of the metrics used on the Conference Summary Report can be found at the bottom of the report; scroll down to see values such as the total number of conferences held during the specified time period, and the total number of people who participated in those conferences.</span></span> <span data-ttu-id="ecff1-141">此报告底部未进行合计的一个指标是唯一会议组织者的总数。</span><span class="sxs-lookup"><span data-stu-id="ecff1-141">One metric that is not totaled at the bottom of the report is Total unique conference organizers.</span></span> <span data-ttu-id="ecff1-142">为什么不进行合计？</span><span class="sxs-lookup"><span data-stu-id="ecff1-142">Why not?</span></span> <span data-ttu-id="ecff1-143">以下是一个理由。</span><span class="sxs-lookup"><span data-stu-id="ecff1-143">Here’s one reason.</span></span> <span data-ttu-id="ecff1-144">假如您正查看一个月的数据。</span><span class="sxs-lookup"><span data-stu-id="ecff1-144">Suppose you are looking at a month's worth of data.</span></span> <span data-ttu-id="ecff1-145">第 1 天，您有 34 个唯一会议组织者；第 2 天，您有 27 个唯一会议组织者。</span><span class="sxs-lookup"><span data-stu-id="ecff1-145">On day 1 you had 34 unique conference organizers; on day 2 you had 27 unique conference organizers.</span></span> <span data-ttu-id="ecff1-146">这是否意味着您在这两天有 61 个唯一会议组织者？</span><span class="sxs-lookup"><span data-stu-id="ecff1-146">Does that mean you had 61 unique conference organizers for those two days?</span></span> <span data-ttu-id="ecff1-147">不一定。</span><span class="sxs-lookup"><span data-stu-id="ecff1-147">Not necessarily.</span></span> <span data-ttu-id="ecff1-148">毕竟第 2 天组织了会议的所有 27 个人可能就在第 1 天组织了会议的 34 个人中。</span><span class="sxs-lookup"><span data-stu-id="ecff1-148">After all, all 27 people who organized conferences on day 2 might be among the 34 people who organized conferences on day 1.</span></span> <span data-ttu-id="ecff1-149">例如，在此简单报表中，注意 Ken Myer 和 Pilar Ackerman 在7/7/2012 和7/2/2012 上安排的会议：</span><span class="sxs-lookup"><span data-stu-id="ecff1-149">For example, in this simple report, note that Ken Myer and Pilar Ackerman scheduled conferences both on 7/7/2012 and on 7/2/2012:</span></span>
+
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><span data-ttu-id="ecff1-150">会议组织者</span><span class="sxs-lookup"><span data-stu-id="ecff1-150">Conference Organizer</span></span></th>
+<th><span data-ttu-id="ecff1-151">会议日期</span><span class="sxs-lookup"><span data-stu-id="ecff1-151">Conference Date</span></span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><p><span data-ttu-id="ecff1-152">Ken Myer</span><span class="sxs-lookup"><span data-stu-id="ecff1-152">Ken Myer</span></span></p></td>
+<td><p><span data-ttu-id="ecff1-153">7/7/2012 10:00 AM</span><span class="sxs-lookup"><span data-stu-id="ecff1-153">7/7/2012 10:00 AM</span></span></p></td>
+</tr>
+<tr class="even">
+<td><p><span data-ttu-id="ecff1-154">David Ahs</span><span class="sxs-lookup"><span data-stu-id="ecff1-154">David Ahs</span></span></p></td>
+<td><p><span data-ttu-id="ecff1-155">7/7/2012 10:00 AM</span><span class="sxs-lookup"><span data-stu-id="ecff1-155">7/7/2012 10:00 AM</span></span></p></td>
+</tr>
+<tr class="odd">
+<td><p><span data-ttu-id="ecff1-156">Ken Myer</span><span class="sxs-lookup"><span data-stu-id="ecff1-156">Ken Myer</span></span></p></td>
+<td><p><span data-ttu-id="ecff1-157">7/7/2012 11:00 AM</span><span class="sxs-lookup"><span data-stu-id="ecff1-157">7/7/2012 11:00 AM</span></span></p></td>
+</tr>
+<tr class="even">
+<td><p><span data-ttu-id="ecff1-158">Pilar Ackerman</span><span class="sxs-lookup"><span data-stu-id="ecff1-158">Pilar Ackerman</span></span></p></td>
+<td><p><span data-ttu-id="ecff1-159">7/7/2012 11:00 AM</span><span class="sxs-lookup"><span data-stu-id="ecff1-159">7/7/2012 11:00 AM</span></span></p></td>
+</tr>
+<tr class="odd">
+<td><p><span data-ttu-id="ecff1-160">Ken Myer</span><span class="sxs-lookup"><span data-stu-id="ecff1-160">Ken Myer</span></span></p></td>
+<td><p><span data-ttu-id="ecff1-161">7/7/2012 1:00 PM</span><span class="sxs-lookup"><span data-stu-id="ecff1-161">7/7/2012 1:00 PM</span></span></p></td>
+</tr>
+<tr class="even">
+<td><p><span data-ttu-id="ecff1-162">Pilar Ackerman</span><span class="sxs-lookup"><span data-stu-id="ecff1-162">Pilar Ackerman</span></span></p></td>
+<td><p><span data-ttu-id="ecff1-163">7/7/2012 2:00 PM</span><span class="sxs-lookup"><span data-stu-id="ecff1-163">7/7/2012 2:00 PM</span></span></p></td>
+</tr>
+<tr class="odd">
+<td><p><span data-ttu-id="ecff1-164">Ken Myer</span><span class="sxs-lookup"><span data-stu-id="ecff1-164">Ken Myer</span></span></p></td>
+<td><p><span data-ttu-id="ecff1-165">7/2/2012 10:00 AM</span><span class="sxs-lookup"><span data-stu-id="ecff1-165">7/2/2012 10:00 AM</span></span></p></td>
+</tr>
+<tr class="even">
+<td><p><span data-ttu-id="ecff1-166">Pilar Ackerman</span><span class="sxs-lookup"><span data-stu-id="ecff1-166">Pilar Ackerman</span></span></p></td>
+<td><p><span data-ttu-id="ecff1-167">7/2/2012 10:00 AM</span><span class="sxs-lookup"><span data-stu-id="ecff1-167">7/2/2012 10:00 AM</span></span></p></td>
+</tr>
+</tbody>
+</table>
+
+
+<span data-ttu-id="ecff1-168">若要更好地了解组织了会议的唯一用户的总数，请更改您的时间间隔；例如，按月而不是按天查看数据。</span><span class="sxs-lookup"><span data-stu-id="ecff1-168">To get a better idea of the total number of unique users who organized conferences, change your time interval; for example, look at the data by month instead of by day.</span></span>
+
+</div>
+
+<div>
+
+## <a name="filters"></a><span data-ttu-id="ecff1-169">筛选器</span><span class="sxs-lookup"><span data-stu-id="ecff1-169">Filters</span></span>
+
+<span data-ttu-id="ecff1-p105">利用筛选器，您可以返回一组针对性更强的数据或通过不同的方式查看返回的数据。例如，会议摘要报告允许您选择数据的分组方式。在此示例中，将按小时、日、周或月对会议进行分组。</span><span class="sxs-lookup"><span data-stu-id="ecff1-p105">Filters provide a way for you to return a more finely-targeted set of data or to view the returned data in different ways. For example, the Conference Summary Report enables you to choose how data should be grouped. In this case, conferences grouped by hour, day, week, or month.</span></span>
+
+<span data-ttu-id="ecff1-173">下表列出了可用于会议摘要报告的筛选器。</span><span class="sxs-lookup"><span data-stu-id="ecff1-173">The following table lists the filters that you can use with the Conference Summary Report.</span></span>
+
+### <a name="conference-summary-report-filters"></a><span data-ttu-id="ecff1-174">会议摘要报告筛选器</span><span class="sxs-lookup"><span data-stu-id="ecff1-174">Conference Summary Report Filters</span></span>
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><span data-ttu-id="ecff1-175">名称</span><span class="sxs-lookup"><span data-stu-id="ecff1-175">Name</span></span></th>
+<th><span data-ttu-id="ecff1-176">描述</span><span class="sxs-lookup"><span data-stu-id="ecff1-176">Description</span></span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><p><span data-ttu-id="ecff1-177"><strong>从</strong></span><span class="sxs-lookup"><span data-stu-id="ecff1-177"><strong>From</strong></span></span></p></td>
+<td><p><span data-ttu-id="ecff1-p106">时间范围的开始日期/时间。若要按小时查看数据，请输入开始日期和时间，如下所示：</span><span class="sxs-lookup"><span data-stu-id="ecff1-p106">Start date/time for the time range. To view data by hours, enter both the start date and time as follows:</span></span></p>
+<p><span data-ttu-id="ecff1-180">7/7/2012 1:00 PM</span><span class="sxs-lookup"><span data-stu-id="ecff1-180">7/7/2012 1:00 PM</span></span></p>
+<p><span data-ttu-id="ecff1-p107">如果您未输入开始时间，该报告会自动将将某个特定日期的上午 12:00 作为开始时间。若要按日查看数据，请只输入日期：</span><span class="sxs-lookup"><span data-stu-id="ecff1-p107">If you do not enter a start time, the report automatically begins at 12:00 AM on the specified day. To view data by day, enter just the date:</span></span></p>
+<p><span data-ttu-id="ecff1-183">7/7/2012</span><span class="sxs-lookup"><span data-stu-id="ecff1-183">7/7/2012</span></span></p>
+<p><span data-ttu-id="ecff1-184">若要按周或按月查看，请输入您要查看的周或月中的任一日期（您不必输入周或月的第一天）：</span><span class="sxs-lookup"><span data-stu-id="ecff1-184">To view by week or by month, enter a date that falls anywhere within the week or month that you want to view (you do not have to enter the first day of the week or month):</span></span></p>
+<p><span data-ttu-id="ecff1-185">7/3/2012</span><span class="sxs-lookup"><span data-stu-id="ecff1-185">7/3/2012</span></span></p>
+<p><span data-ttu-id="ecff1-186">一周始终是从星期日开始至星期六结束。</span><span class="sxs-lookup"><span data-stu-id="ecff1-186">Weeks always run from Sunday through Saturday.</span></span></p></td>
+</tr>
+<tr class="even">
+<td><p><span data-ttu-id="ecff1-187"><strong>到</strong></span><span class="sxs-lookup"><span data-stu-id="ecff1-187"><strong>To</strong></span></span></p></td>
+<td><p><span data-ttu-id="ecff1-p108">时间范围的结束日期/时间。若要按小时查看数据，请输入结束日期和时间，如下所示：</span><span class="sxs-lookup"><span data-stu-id="ecff1-p108">End date/time for the time range. To view data by hours, enter both the end date and time as follows:</span></span></p>
+<p><span data-ttu-id="ecff1-190">7/7/2012 1:00 PM</span><span class="sxs-lookup"><span data-stu-id="ecff1-190">7/7/2012 1:00 PM</span></span></p>
+<p><span data-ttu-id="ecff1-p109">如果您未输入结束时间，该报告会自动将某个特定日期的上午 12:00 作为结束时间。若要按日查看数据，请只输入日期：</span><span class="sxs-lookup"><span data-stu-id="ecff1-p109">If you do not enter an end time, the report automatically ends at 12:00 AM on the specified day. To view data by day, enter just the date:</span></span></p>
+<p><span data-ttu-id="ecff1-193">7/7/2012</span><span class="sxs-lookup"><span data-stu-id="ecff1-193">7/7/2012</span></span></p>
+<p><span data-ttu-id="ecff1-194">若要按周或按月查看，请输入您要查看的周或月中的任一日期（您不必输入周或月的第一天）：</span><span class="sxs-lookup"><span data-stu-id="ecff1-194">To view by week or by month, enter a date that falls anywhere within the week or month that you want to view (you do not have to enter the first day of the week or month):</span></span></p>
+<p><span data-ttu-id="ecff1-195">7/3/2012</span><span class="sxs-lookup"><span data-stu-id="ecff1-195">7/3/2012</span></span></p>
+<p><span data-ttu-id="ecff1-196">一周始终是从星期日开始至星期六结束。</span><span class="sxs-lookup"><span data-stu-id="ecff1-196">Weeks always run from Sunday through Saturday.</span></span></p></td>
+</tr>
+<tr class="odd">
+<td><p><span data-ttu-id="ecff1-197"><strong>间隔</strong></span><span class="sxs-lookup"><span data-stu-id="ecff1-197"><strong>Interval</strong></span></span></p></td>
+<td><p><span data-ttu-id="ecff1-p110">时间间隔。选择下列选项之一：</span><span class="sxs-lookup"><span data-stu-id="ecff1-p110">Time interval. Select one of the following:</span></span></p>
+<ul>
+<li><p><span data-ttu-id="ecff1-200">每小时（最多可显示 25 个小时）</span><span class="sxs-lookup"><span data-stu-id="ecff1-200">Hourly (a maximum of 25 hours can be displayed)</span></span></p></li>
+<li><p><span data-ttu-id="ecff1-201">每天（最多可显示 31 天）</span><span class="sxs-lookup"><span data-stu-id="ecff1-201">Daily (a maximum of 31 days can be displayed)</span></span></p></li>
+<li><p><span data-ttu-id="ecff1-202">每周（最多可显示 12 周）</span><span class="sxs-lookup"><span data-stu-id="ecff1-202">Weekly (a maximum of 12 weeks can be displayed)</span></span></p></li>
+<li><p><span data-ttu-id="ecff1-203">每月（最多可显示 12 个月）</span><span class="sxs-lookup"><span data-stu-id="ecff1-203">Monthly (a maximum of 12 months can be displayed)</span></span></p></li>
+</ul>
+<p><span data-ttu-id="ecff1-204">如果开始日期和结束日期超出了所选间隔允许的最长时间，则仅显示最长时间（从开始日期开始）。</span><span class="sxs-lookup"><span data-stu-id="ecff1-204">If the start and end dates exceed the maximum number of values allowed for the selected interval, only the maximum number of values (starting from the start date) are displayed.</span></span> <span data-ttu-id="ecff1-205">例如，如果选择 "开始日期 7/7/2012" 和 "结束日期 2/28/2012" 的 "每日间隔"，则会显示 8/7/2012 12:00 AM 至 9/7/2012 12:00 AM (的数据，即，总数据) 31 天。</span><span class="sxs-lookup"><span data-stu-id="ecff1-205">For example, if you select the Daily interval with a start date of 7/7/2012 and an end date of 2/28/2012, data is displayed for the days 8/7/2012 12:00 AM to 9/7/2012 12:00 AM (that is, a total of 31 days' worth of data).</span></span></p></td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+
+<div>
+
+## <a name="metrics"></a><span data-ttu-id="ecff1-206">指标</span><span class="sxs-lookup"><span data-stu-id="ecff1-206">Metrics</span></span>
+
+<span data-ttu-id="ecff1-207">下表列出了由会议摘要报告提供的信息。</span><span class="sxs-lookup"><span data-stu-id="ecff1-207">The following table the information provided by the Conferences Summary Report.</span></span>
+
+### <a name="conference-summary-report-metrics"></a><span data-ttu-id="ecff1-208">会议摘要报告指标</span><span class="sxs-lookup"><span data-stu-id="ecff1-208">Conference Summary Report Metrics</span></span>
+
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><span data-ttu-id="ecff1-209">名称</span><span class="sxs-lookup"><span data-stu-id="ecff1-209">Name</span></span></th>
+<th><span data-ttu-id="ecff1-210">是否可按此项排序？</span><span class="sxs-lookup"><span data-stu-id="ecff1-210">Can you sort on this item?</span></span></th>
+<th><span data-ttu-id="ecff1-211">描述</span><span class="sxs-lookup"><span data-stu-id="ecff1-211">Description</span></span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><p><span data-ttu-id="ecff1-212"><strong>每小时</strong></span><span class="sxs-lookup"><span data-stu-id="ecff1-212"><strong>Hourly</strong></span></span></p>
+<p><span data-ttu-id="ecff1-213"><strong>每天</strong></span><span class="sxs-lookup"><span data-stu-id="ecff1-213"><strong>Daily</strong></span></span></p>
+<p><span data-ttu-id="ecff1-214"><strong>每周</strong></span><span class="sxs-lookup"><span data-stu-id="ecff1-214"><strong>Weekly</strong></span></span></p>
+<p><span data-ttu-id="ecff1-215"><strong>每月</strong></span><span class="sxs-lookup"><span data-stu-id="ecff1-215"><strong>Monthly</strong></span></span></p></td>
+<td><p><span data-ttu-id="ecff1-216">否</span><span class="sxs-lookup"><span data-stu-id="ecff1-216">No</span></span></p></td>
+<td><p><span data-ttu-id="ecff1-217">指示在筛选器工具栏上选择的时间间隔。</span><span class="sxs-lookup"><span data-stu-id="ecff1-217">Indicates the time interval that you selected on the filter toolbar.</span></span> <span data-ttu-id="ecff1-218">如果适用，可单击某一给定的时间间隔以查看该间隔的详细信息。</span><span class="sxs-lookup"><span data-stu-id="ecff1-218">Where applicable, you can click a given time interval to view detailed information for that interval.</span></span> <span data-ttu-id="ecff1-219">例如，如果你使用的是每日间隔，并且单击 "7/7/2012"，你将看到该日期的用户注册活动的每小时细目。</span><span class="sxs-lookup"><span data-stu-id="ecff1-219">For example, if you are using the Daily interval and you click 7/7/2012, you see an hourly breakdown of user registration activity for that date.</span></span></p></td>
+</tr>
+<tr class="even">
+<td><p><span data-ttu-id="ecff1-220"><strong>会议总数</strong></span><span class="sxs-lookup"><span data-stu-id="ecff1-220"><strong>Total conferences</strong></span></span></p></td>
+<td><p><span data-ttu-id="ecff1-221">否</span><span class="sxs-lookup"><span data-stu-id="ecff1-221">No</span></span></p></td>
+<td><p><span data-ttu-id="ecff1-p113">举行的会议总数（不考虑会议类型）。单击此项时，报告将显示所选时间段的会议活动报告。</span><span class="sxs-lookup"><span data-stu-id="ecff1-p113">Total number of conferences (regardless of conference type) that were held. When you click this item, the report shows you the Conference Activity Report for the selected time period.</span></span></p></td>
+</tr>
+<tr class="odd">
+<td><p><span data-ttu-id="ecff1-224"><strong>参与者总数</strong></span><span class="sxs-lookup"><span data-stu-id="ecff1-224"><strong>Total participants</strong></span></span></p></td>
+<td><p><span data-ttu-id="ecff1-225">否</span><span class="sxs-lookup"><span data-stu-id="ecff1-225">No</span></span></p></td>
+<td><p><span data-ttu-id="ecff1-p114">参与会议的总人数。单击此项时，报告将显示所选时间段的会议活动报告。</span><span class="sxs-lookup"><span data-stu-id="ecff1-p114">Total number of people who took part in the conferences. When you click this item, the report shows you the Conference Activity Report for the selected time period.</span></span></p></td>
+</tr>
+<tr class="even">
+<td><p><span data-ttu-id="ecff1-228"><strong>每个会议的平均参与者数</strong></span><span class="sxs-lookup"><span data-stu-id="ecff1-228"><strong>Average participants per conference</strong></span></span></p></td>
+<td><p><span data-ttu-id="ecff1-229">否</span><span class="sxs-lookup"><span data-stu-id="ecff1-229">No</span></span></p></td>
+<td><p><span data-ttu-id="ecff1-p115">参与给定会议的平均人数。计算方法是参与者总数除以会议总数。</span><span class="sxs-lookup"><span data-stu-id="ecff1-p115">Average number of people who took part in a given conference. Determined by dividing the total conferences by the total participants.</span></span></p></td>
+</tr>
+<tr class="odd">
+<td><p><span data-ttu-id="ecff1-232"><strong>A/V 会议总数</strong></span><span class="sxs-lookup"><span data-stu-id="ecff1-232"><strong>Total A/V conferences</strong></span></span></p></td>
+<td><p><span data-ttu-id="ecff1-233">否</span><span class="sxs-lookup"><span data-stu-id="ecff1-233">No</span></span></p></td>
+<td><p><span data-ttu-id="ecff1-234">使用了音频或视频的会议总数。</span><span class="sxs-lookup"><span data-stu-id="ecff1-234">Total number of conferences that included audio or video.</span></span></p></td>
+</tr>
+<tr class="even">
+<td><p><span data-ttu-id="ecff1-235"><strong>A/V 会议总分钟数</strong></span><span class="sxs-lookup"><span data-stu-id="ecff1-235"><strong>Total A/V conference minutes</strong></span></span></p></td>
+<td><p><span data-ttu-id="ecff1-236">否</span><span class="sxs-lookup"><span data-stu-id="ecff1-236">No</span></span></p></td>
+<td><p><span data-ttu-id="ecff1-237">音频/视频会议的总分钟数。</span><span class="sxs-lookup"><span data-stu-id="ecff1-237">Total number of minutes devoted to audio/video conferencing.</span></span></p>
+<p><span data-ttu-id="ecff1-238">Total A/V 会议分钟跃点数汇总了所有音频/视频会议类型，包括： A/V 会议;IM 会议;应用程序共享会议;数据会议;和 PSTN 会议。</span><span class="sxs-lookup"><span data-stu-id="ecff1-238">The Total A/V conference minutes metric summarizes all the audio/visual conference types, including: A/V conferences; IM conferences; app sharing conferences; data conferences; and PSTN conferences.</span></span></p></td>
+</tr>
+<tr class="odd">
+<td><p><span data-ttu-id="ecff1-239"><strong>A/V 会议参与者总分钟数</strong></span><span class="sxs-lookup"><span data-stu-id="ecff1-239"><strong>Total A/V conference participant minutes</strong></span></span></p></td>
+<td><p><span data-ttu-id="ecff1-240">否</span><span class="sxs-lookup"><span data-stu-id="ecff1-240">No</span></span></p></td>
+<td><p><span data-ttu-id="ecff1-p116">音频/视频会议的参与者总分钟数。例如，假定一个用户在音频/视频会议中花费了 5 分钟时间，另一个用户在同一会议中花费了 3 分钟时间，则参与者总分钟数为 8：5 分钟加上 3 分钟。</span><span class="sxs-lookup"><span data-stu-id="ecff1-p116">Total number of participant minutes devoted to audio/video conferencing. For example, suppose one user spends 5 minutes in an audio/video conference and a second user spends 3 minutes in that same conference. That makes a total of 8 participant minutes: 5 minutes plus 3 minutes.</span></span></p></td>
+</tr>
+<tr class="even">
+<td><p><span data-ttu-id="ecff1-244"><strong>A/V 会议平均分钟数</strong></span><span class="sxs-lookup"><span data-stu-id="ecff1-244"><strong>Average A/V conference minutes</strong></span></span></p></td>
+<td><p><span data-ttu-id="ecff1-245">否</span><span class="sxs-lookup"><span data-stu-id="ecff1-245">No</span></span></p></td>
+<td><p><span data-ttu-id="ecff1-246">每个音频/视频会议的平均分钟数。</span><span class="sxs-lookup"><span data-stu-id="ecff1-246">Average number of minutes per audio/video conference.</span></span></p></td>
+</tr>
+<tr class="odd">
+<td><p><span data-ttu-id="ecff1-247"><strong>唯一会议组织者总数</strong></span><span class="sxs-lookup"><span data-stu-id="ecff1-247"><strong>Total number of unique organizers of conferences</strong></span></span></p></td>
+<td><p><span data-ttu-id="ecff1-248">否</span><span class="sxs-lookup"><span data-stu-id="ecff1-248">No</span></span></p></td>
+<td><p><span data-ttu-id="ecff1-p117">至少组织过一次会议的用户总数。与仅组织过一次会议的用户一样，组织过多次会议的用户算作一个唯一组织者。</span><span class="sxs-lookup"><span data-stu-id="ecff1-p117">Total number of users who organized at least one conference. Users who organized more than one conference are counted as one unique organizer, just like users who only organized a single conference.</span></span></p></td>
+</tr>
+<tr class="even">
+<td><p><span data-ttu-id="ecff1-251"><strong>会议消息总数</strong></span><span class="sxs-lookup"><span data-stu-id="ecff1-251"><strong>Total conference messages</strong></span></span></p></td>
+<td><p><span data-ttu-id="ecff1-252">否</span><span class="sxs-lookup"><span data-stu-id="ecff1-252">No</span></span></p></td>
+<td><p><span data-ttu-id="ecff1-253">会议期间发送的即时消息总数。</span><span class="sxs-lookup"><span data-stu-id="ecff1-253">Total number of instant messages sent during the conferences.</span></span></p></td>
+</tr>
+</tbody>
+</table><span data-ttu-id="ecff1-254">
+
+
+</div>
+
+</div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</span><span class="sxs-lookup"><span data-stu-id="ecff1-254">
+
+
+</div>
+
+</div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</span></span></div>
+
