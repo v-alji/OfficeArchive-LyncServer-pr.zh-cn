@@ -1,0 +1,114 @@
+---
+title: Lync Server 2013 电话拨入式会议概述
+description: Lync Server 2013 电话拨入式会议概述。
+ms.reviewer: ''
+ms.author: v-lanac
+author: lanachin
+f1.keywords:
+- NOCSH
+TOCTitle: Dial-in conferencing overview
+ms:assetid: 6e581cef-960a-4730-8b22-91b2129d34e3
+ms:mtpsurl: https://technet.microsoft.com/en-us/library/Gg398524(v=OCS.15)
+ms:contentKeyID: 48184436
+ms.date: 07/23/2014
+manager: serdars
+mtps_version: v=OCS.15
+ms.openlocfilehash: fa9418c13b56faab747d2c92df3301fe15d722eb
+ms.sourcegitcommit: 36fee89bb887bea4f18b19f17a8c69daf5bc423d
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "49429239"
+---
+# <a name="overview-of-dial-in-conferencing-in-lync-server-2013"></a>Lync Server 2013 中的电话拨入式会议概述
+
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+
+<div class="topic" data-xmlns="http://www.w3.org/1999/xhtml" data-msxsl="urn:schemas-microsoft-com:xslt" data-cs="https://msdn.microsoft.com/">
+
+<div data-asp="https://msdn2.microsoft.com/asp">
+
+
+
+</div>
+
+<div id="mainSection">
+
+<div id="mainBody">
+
+<span> </span>
+
+_**主题上次修改时间：** 2012-09-30_
+
+如果你的组织有用户在外出时需要出席 Lync Server 2013 本地会议或无法访问计算机，则可以部署电话拨入式会议，以便他们可以通过使用公共交换电话网络 (PSTN) 电话加入会议。
+
+电话拨入式会议是一项可选功能，您可以在部署 Lync Server 2013 会议时进行配置。 虽然电话拨入式会议使用企业语音使用的某些 Lync Server 2013 组件，但即使不部署企业语音，也可以部署拨入式会议。
+
+<div>
+
+
+> [!NOTE]  
+> 如果你部署电话拨入式会议，则必须在部署 Lync Server 2013 会议的每个池中部署它。 无需在每个池中分配访问号码，但必须在每个池中部署拨入功能。 当用户从一个池中调用访问号码以在其他池中加入 Lync Server 2013 会议时，此要求支持录制的名称功能。
+
+
+
+</div>
+
+必须为会议策略中的拨入访问启用会议。 默认情况下，允许拨入访问的会议会在会议邀请中包括以下信息：
+
+  - 标识会议的数字会议 ID。
+
+  - 一个或多个 PSTN 访问号码。
+
+  - 指向 "电话拨入式会议设置" 页面的链接，其中包含具有相关语言的访问号码的完整列表;用于创建、重置或取消阻止个人识别码 (引脚) 的位置;和其他信息，如双音调多频率 (DTMF) 控件。
+
+电话拨入式会议支持企业用户和匿名用户。 企业用户在其组织内具有 Active Directory 域服务凭据和 Lync Server 2013 帐户。 匿名用户在组织内不具有企业凭据。 在电话拨入式会议环境中，联盟伙伴组织中使用 PSTN 连接至会议的用户被视为匿名用户。 对于电话拨入式会议（不同于其他环境），联盟用户都未经过身份验证。
+
+参加允许拨入访问会议的企业用户或会议主持人拨打一个会议访问号码后，系统会提示他们输入会议 ID。如果主持人尚未参加会议，则用户可以输入其统一通信 (UC) 分机号（或完整电话号码）和 PIN，或者等待主持人准许其参加会议。通过只输入其 PIN，会议组织者就可以以主持人身份参加会议。前端服务器使用完整电话号码或分机号与 PIN 的组合唯一地将企业用户映射到其 Active Directory 凭据。因此，在会议中是按名称对企业用户进行身份验证和标识的。企业用户还可以担任由组织者预定义的会议角色。
+
+<div>
+
+
+> [!NOTE]  
+> 通过 office IP 手机或从 Lync Server 2013 或 Lync 2010 助理拨入的企业用户将不会收到其电话号码的提示，因为他们已经过身份验证。
+
+
+
+</div>
+
+要参加电话拨入式会议的匿名用户拨打一个会议接入号码后，系统会提示他们输入会议 ID。还会提示未经身份验证的匿名用户记录其名称。记录的名称用于在会议中标识未经身份验证的用户。除非至少一个主持人或经过身份验证的用户已参加会议，否则不允许匿名用户参加会议，且无法向其分配预定义角色。
+
+<div>
+
+
+> [!NOTE]  
+> 选择不输入其电话号码和 PIN 的企业用户未经过身份验证。系统会提示他们记录其名称，并在会议中将他们视为匿名用户。
+
+
+
+</div>
+
+在计划时间，会议组织者可以通过使会议关闭或锁定来选择限制对会议的访问。 这种情况下，会请求拨入用户进行身份验证。 如果拨入用户失败或选择不进行身份验证，则会将其转移到大厅。 他们在大厅中等待，直到组长接受或拒绝他们，或者他们超时且断开连接。 拨入用户在等待会议时将听到音乐。 一旦被允许加入会议，电话拨入用户就可以参与会议的音频部分，并可使用电话键盘执行双音多频 (DTMF) 命令。 电话拨入主持人可以使用 DTMF 命令打开或关闭参与者的取消静音功能、锁定或解锁会议、允许会议厅中的人加入会议、打开或关闭进入和退出通知。 主持人还可以使用 DTMF 命令允许会议厅中的每个人加入会议，从而更改会议的权限以允许随后的任何人加入会议。 所有电话拨入参与者都可以使用 DTMF 命令收听帮助，收听会议名单，以及使自己静音。
+
+电话拨入式参与者 (即从 PSTN) 拨出，无论他们是否已被静音或已取消静音、是否已被录制，或者其他人正在大厅中等待，都可以在会议期间听到个人公告。
+
+<div>
+
+
+> [!NOTE]  
+> 通过单击链接（而不是电话拨入）参加会议的与会者不会听到个人通知。
+
+
+
+</div>
+
+</div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</div>
+
