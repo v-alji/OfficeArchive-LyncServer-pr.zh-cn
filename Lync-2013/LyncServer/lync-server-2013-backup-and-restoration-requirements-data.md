@@ -1,0 +1,258 @@
+---
+title: Lync Server 2013：备份和还原要求：数据
+description: Lync Server 2013：备份和还原要求：数据。
+ms.reviewer: ''
+ms.author: v-lanac
+author: lanachin
+f1.keywords:
+- NOCSH
+TOCTitle: 'Backup and restoration requirements: data'
+ms:assetid: ecfb8e4d-cb4f-476d-9772-4486bd683c04
+ms:mtpsurl: https://technet.microsoft.com/en-us/library/Hh202194(v=OCS.15)
+ms:contentKeyID: 51541526
+ms.date: 07/23/2014
+manager: serdars
+mtps_version: v=OCS.15
+ms.openlocfilehash: 7e135f09706d31ff3f0efa54c8687546de9fab78
+ms.sourcegitcommit: 36fee89bb887bea4f18b19f17a8c69daf5bc423d
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "49437985"
+---
+# <a name="backup-and-restoration-requirements-in-lync-server-2013-data"></a>Lync Server 2013 中的备份和还原要求：数据
+
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+
+<div class="topic" data-xmlns="http://www.w3.org/1999/xhtml" data-msxsl="urn:schemas-microsoft-com:xslt" data-cs="https://msdn.microsoft.com/">
+
+<div data-asp="https://msdn2.microsoft.com/asp">
+
+
+
+</div>
+
+<div id="mainSection">
+
+<div id="mainBody">
+
+<span> </span>
+
+_**主题上次修改时间：** 2013-03-26_
+
+Lync 服务器使用存储在数据库中的设置和配置信息，以及存储在数据库和文件存储中的数据。 本主题介绍了需要备份才能还原服务的数据（如果你的组织遇到故障或中断），并且还标识 Lync Server 用于你需要单独备份的数据和组件。
+
+<div>
+
+## <a name="settings-and-configuration-requirements"></a>设置和配置要求
+
+本主题包括备份和还原 Lync Server 服务恢复所需的设置和配置信息的过程。 配置信息位于中央管理存储或其他后端数据库或标准版服务器上。
+
+下表标识了备份和还原所需的设置和配置信息。
+
+### <a name="settings-and-configuration-data"></a>设置和配置数据
+
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>数据类型</th>
+<th>存储位置</th>
+<th>说明/要备份的时间</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><p>拓扑配置信息</p></td>
+<td><p>中央管理存储 (数据库： Xds) </p></td>
+<td><p>拓扑、策略和配置设置。</p>
+<p>使用您的常规备份和使用 Lync Server 控制面板或 cmdlet 修改配置或策略后，进行备份。</p></td>
+</tr>
+<tr class="even">
+<td><p>位置信息</p></td>
+<td><p>中央管理存储 (数据库： .Lis) </p></td>
+<td><p>企业语音增强 9-1-1 (E9-1-1) 配置信息。 此信息通常是静态的。</p>
+<p>备份您的常规备份。</p></td>
+</tr>
+<tr class="odd">
+<td><p>响应组配置信息</p></td>
+<td><p> (数据库： RgsConfig) 的后端服务器或标准版服务器</p></td>
+<td><p>响应组代理组、队列和工作流。</p>
+<p>备份您的常规备份以及添加或更改代理组、队列或工作流后。</p></td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+
+<div>
+
+## <a name="data-requirements"></a>数据要求
+
+下面是您需要备份的 Lync 服务器数据的列表，以便您可以在出现故障时还原 Lync Server 服务。
+
+请注意，恢复时不需要某些类型的数据。 本主题不包含备份这些类型的数据的过程，包括以下内容：
+
+  - 临时用户数据，例如终结点和订阅、活动会议服务器和暂时性的会议状态 (数据库： RtcDyn) 
+
+  - 通讯簿数据 (数据库： Rtcab 和 Rtcab1) 。 通讯簿数据库将从 Active Directory 域服务自动重新生成。
+
+  -  (数据库： CpsDyn 的调用寄存应用程序的动态信息) 
+
+  - 暂时性的响应组数据，如代理登录状态和呼叫等待信息 (数据库： RgsDyn) 
+
+  - 持久聊天 (数据库： MgcComp) 的合规性数据库。 如果你启用了持久的聊天合规性，则只要你拥有配置为从数据库读取信息并将其转换为备用格式的适配器，持久聊天合规性数据库中的信息就会暂时性。 因此，持久聊天的合规性数据库被认为是暂时性的。
+    
+    Lync Server 2013 持久聊天服务器随附有一个 XML 适配器。 你还可以安装接受此数据并将其移动到其他源（如 Exchange 托管的存档）的自定义适配器。
+
+下表标识了备份和还原所需的数据。
+
+### <a name="data-stored-in-databases"></a>数据库中存储的数据
+
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>数据类型</th>
+<th>存储位置</th>
+<th>说明/要备份的时间</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><p>永久性用户数据</p></td>
+<td><p> (数据库： RTCXDS) 的后端服务器或标准版服务器</p></td>
+<td><p>用户权限、用户联系人列表、服务器或池数据、计划的会议等。 此用户数据不包括上载到会议的内容。</p>
+<p>备份您的常规备份。 此信息是动态的，但更新丢失对于 Lync 服务器来说不是严重的，前提是您需要还原到上一次常规备份。 如果联系人列表对您的组织非常重要，则您可以更频繁地备份此数据。</p></td>
+</tr>
+<tr class="even">
+<td><p>存档数据</p></td>
+<td><p>将数据库存档 (数据库： LcsLog) </p>
+<p>如果已启用 "Microsoft Exchange 集成" 选项，则此数据可能存储在 Exchange 2013 上。 否则，此数据将保留在 Lync Server 存档数据库中，该数据库可能与另一个 Lync Server 数据库 collocated，或者在单独的数据库服务器上独立。</p></td>
+<td><p>即时消息 (IM) 和会议内容。</p>
+<p>对于 Lync Server 而言，此数据并不重要，但对您的组织而言可能至关重要。 请相应地确定您的备份计划。</p></td>
+</tr>
+<tr class="odd">
+<td><p>监视数据</p></td>
+<td><p>监视数据库 (LcsCDR 和 QoeMetrics) </p>
+<p>这些数据库可能与另一个 Lync Server 数据库 collocated，也可能独立于单独的数据库服务器。</p></td>
+<td><p> (LcsCDR) 和体验质量 (QoE) 指标 (QoeMetrics) ）通话详细记录。</p>
+<p>通话详细记录是动态的，可能对您的企业至关重要。 通过考虑是否需要这些记录来确定备份计划，以确定其合规性。</p>
+<p>体验信息的质量是动态的。 QoE 数据的损失对于 Lync Server 的操作并不重要，但对您的业务来说可能至关重要。 根据你的组织的这些信息的重要程度确定你的备份计划。</p></td>
+</tr>
+<tr class="even">
+<td><p>持久聊天数据</p></td>
+<td><p>持久聊天数据库 (mgd) 。</p>
+<p>此数据库可以与另一个 Lync Server 数据库 collocated，也可以独立于单独的数据库服务器。</p></td>
+<td><p>持久聊天数据是在聊天室中发布的实际聊天内容。 此数据通常是业务关键型的。</p>
+<p>你可以选择使用 SQL Server 备份，或使用 Lync Server 中提供的 <strong>CsPersistentChatData</strong> cmdlet 导出数据库。 若要恢复数据，可以将数据库导入和还原到上次完全备份的位置，这意味着无法将数据库还原到故障点。</p></td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+
+<div>
+
+## <a name="file-store-data-requirements"></a>文件存储数据要求
+
+在企业版部署中，Lync Server 文件存储通常位于文件服务器上。 在标准版部署中，Lync Server 文件存储在默认情况下位于标准版服务器上。 通常情况下，网站会共享一个 Lync Server 文件存储。 持久聊天文件存储使用与 Lync Server 文件存储相同的文件共享。
+
+文件存储位置标识为 \\ \\ 服务器 \\ 共享名称。 若要查找文件存储的特定位置，请打开拓扑生成器并查看 " **文件存储** " 节点。
+
+下表标识了需要备份和还原的文件存储。
+
+### <a name="file-stores"></a>文件存储
+
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>数据类型</th>
+<th>存储位置</th>
+<th>说明/要备份的时间</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><p>Lync Server 文件存储</p></td>
+<td><p>通常在文件服务器、文件群集或标准版服务器上</p></td>
+<td><p>会议内容、会议内容元数据、会议合规性日志、应用程序数据文件、为设备更新更新文件、响应组的音频文件、呼叫寄存和发布应用程序，以及发布到持久聊天室的文件。</p>
+<p>备份您的常规备份。</p></td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+
+<div>
+
+## <a name="additional-backup-requirements"></a>其他备份要求
+
+为了帮助确保在发生故障时还原 Lync Server 服务的能力，您必须备份不属于 Lync Server 本身的一些必要组件。 以下组件不会作为本文档中所述 Lync Server 备份和还原过程的一部分进行备份或还原：
+
+  - **Active Directory 域服务**   您需要在备份 Lync Server 时使用 Active Directory 工具备份 AD DS。 将 AD DS 与 Lync Server 保持同步，以避免当 Lync Server 预期与 AD DS 中的联系人对象不匹配时可能出现的问题是非常重要的。 AD DS 存储由 Lync Server 使用的以下设置：
+    
+      - 用户 SIP URI 和其他用户设置。
+    
+      - 响应组和会议助理等应用程序的联系人对象。
+    
+      - 指向中央管理存储的指针。
+    
+      - Kerberos 身份验证帐户 (一个可选的计算机对象) 和 Lync Server 安全组。
+    
+    有关在 Windows Server 2008 中备份和还原 AD DS 的详细信息，请参阅 "AD DS 备份和恢复分步指南" [https://go.microsoft.com/fwlink/p/?linkId=209105](https://go.microsoft.com/fwlink/p/?linkid=209105) 。
+
+  - **证书颁发机构和证书**   使用组织的策略来备份证书颁发机构 (CA) 和证书。 如果使用可导出私钥，则可以备份证书和私钥，如果使用本文档中的过程还原 Lync Server，则可以将其导出。 如果你使用内部 CA，则可以重新注册（如果你需要还原 Lync 服务器）。 请务必将私钥保留在一个安全的位置，以便在计算机出现故障时使用该私钥。
+
+  - **System Center Operations Manager**   如果使用 Microsoft System Center Operations Manager (以前的 Microsoft Operations Manager) 监视 Lync Server 部署，则可以选择在监视 Lync 服务器时备份它所创建的数据。 使用您的标准 SQL Server 备份过程备份 System Center Operations Manager 文件。 这些文件在恢复期间不会还原。
+
+  - **公共交换电话网络 (PSTN) 网关配置**   如果您使用企业语音或 Survivable 分支装置，则需要备份 PSTN 网关配置。 有关备份和还原 PSTN 网关配置的详细信息，请参阅您的供应商。
+
+  - **Lync server 或 Office 通信服务器的版本已共存**   如果您的 Lync Server 2013 部署与 Lync Server 2010 或早期版本的 Office 通信服务器 coexists，则不能使用本文档中的步骤备份或还原早期版本。 而是必须使用专为早期版本记录的备份和还原过程。 有关备份和还原 Lync Server 2010 的详细信息，请参阅 [https://go.microsoft.com/fwlink/p/?linkId=265417](https://go.microsoft.com/fwlink/p/?linkid=265417) 。 有关备份和还原 Microsoft Office 通信服务器 2007 R2 的详细信息，请参阅 [https://go.microsoft.com/fwlink/p/?linkId=168162](https://go.microsoft.com/fwlink/p/?linkid=168162) 。
+
+  - **基础结构信息**   你需要备份有关你的基础结构的信息，例如防火墙配置、负载平衡配置、Internet 信息服务 (IIS) 配置、域名系统 (DNS) 记录和 IP 地址以及动态主机配置协议 (DHCP) 配置。 有关备份这些组件的详细信息，请咨询其各自的供应商。
+
+  - **Microsoft Exchange 和 Exchange 统一消息 (UM)**   如 Microsoft Exchange 文档中所述，备份和还原 Microsoft Exchange 和 Exchange UM。 有关备份和还原 Exchange Server 2013 的详细信息，请参阅 [https://go.microsoft.com/fwlink/?LinkId=285384](https://go.microsoft.com/fwlink/?linkid=285384) 。 有关备份和还原 Exchange Server 2010 的详细信息，请参阅 [https://go.microsoft.com/fwlink/p/?linkId=209179](https://go.microsoft.com/fwlink/p/?linkid=209179) 。
+    
+    请注意，Lync Server 2013 引入了具有用户联系人列表、高清晰度用户照片和存档 Exchange 2013 中存储的数据的功能。 请参阅以下列表，了解如何备份这些类型的数据：
+    
+      - **高清晰度照片** 作为 Exchange Server 备份的一部分进行备份。
+    
+      - 在 Lync Server 2013 中引入了 "**统一联系人存储**"。 "统一联系人存储" 使用户能够在 Exchange 2013 中保留其所有联系人信息。
+        
+        你应该确保对用户而言，用户的联系人存储在 "统一联系人存储" 还是 "Lync 后端服务器" 中。 以下方案说明将用户联系人迁移到 "统一联系人存储" 的位置可能会导致备份和还原过程中出现问题。
+        
+        **情形1：** 用户联系人将迁移到 "统一联系人存储区"，从迁移用户联系人之前所执行的 Lync 服务器备份执行还原。 在此方案中，用户将在最长一天内有过时的联系人状态，直到 Lync Server 迁移任务开始将用户联系人迁移到 Exchange。  (请注意，由于用户联系人之前已迁移到 "统一联系人" 存储，因此将使用) 的 Exchange 联系人信息。 此方案中不需要管理员干预。
+        
+        **方案2：** 用户联系人之前已存储在 "统一联系人存储" 中，但随后会回退。 当用户联系人存储在 "统一联系人存储" 中时，将从 Lync Server 备份执行还原。 在这种情况下， `Error: Incorrect Exchange Version` 客户端或 Lyss 服务器日志中的一条错误消息可能会指示此问题。 用户将能够直接从 Exchange 访问 Lync 2013 中的联系人列表，但客户端的状态将与 Lync Server 状态不匹配。 若要解决此问题，管理员需要针对受影响的用户运行 **CsUCSRollback** cmdlet。
+    
+      - **存档数据** 可以存储在 Exchange 2013 中。 对于 Lync Server 而言，此数据并不重要，但对您的组织而言可能至关重要。 如果存档数据存储在 Exchange 中且对您的组织非常重要，请按照 Exchange 备份和还原过程操作。 请注意，存储在 Exchange 中的存档数据不能移回 Lync 服务器。 此外，无法将已存储在 Lync 存档数据库中的数据移动到 Exchange。
+
+</div>
+
+</div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</div>
+
