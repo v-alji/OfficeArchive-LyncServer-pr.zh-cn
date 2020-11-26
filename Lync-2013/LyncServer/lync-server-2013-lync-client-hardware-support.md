@@ -1,0 +1,118 @@
+---
+title: Lync Server 2013：Lync 客户端硬件支持
+description: Lync Server 2013： Lync 客户端硬件支持。
+ms.reviewer: ''
+ms.author: v-lanac
+author: lanachin
+f1.keywords:
+- NOCSH
+TOCTitle: Lync client hardware support
+ms:assetid: 91b84b67-965c-45c0-808c-bab680a5e10a
+ms:mtpsurl: https://technet.microsoft.com/en-us/library/JJ688134(v=OCS.15)
+ms:contentKeyID: 49733734
+ms.date: 07/23/2014
+manager: serdars
+mtps_version: v=OCS.15
+ms.openlocfilehash: cf672738ce1a6093362d2bb006dbbd513a30a214
+ms.sourcegitcommit: 36fee89bb887bea4f18b19f17a8c69daf5bc423d
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "49426443"
+---
+# <a name="lync-client-hardware-support-in-lync-server-2013"></a>Lync Server 2013 中的 Lync 客户端硬件支持
+
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+
+<div class="topic" data-xmlns="http://www.w3.org/1999/xhtml" data-msxsl="urn:schemas-microsoft-com:xslt" data-cs="https://msdn.microsoft.com/">
+
+<div data-asp="https://msdn2.microsoft.com/asp">
+
+
+
+</div>
+
+<div id="mainSection">
+
+<div id="mainBody">
+
+<span> </span>
+
+_**主题上次修改时间：** 2012-12-14_
+
+本部分介绍了适用于 lync 2013 的推荐硬件和适用于 Lync 2013 的联机会议加载项。
+
+### <a name="recommended-hardware-for-lync-2013-and-the-online-meeting-add-in-for-lync-2013"></a>Lync 2013 的推荐硬件和 Lync 2013 的联机会议加载项
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>系统组件</th>
+<th>最低要求</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><p>计算机/处理器</p></td>
+<td><p>英特尔奔腾4、AMD 速龙64或同等</p></td>
+</tr>
+<tr class="even">
+<td><p>内存</p></td>
+<td><p>2 gb (GB) RAM</p></td>
+</tr>
+<tr class="odd">
+<td><p>数据和语音</p></td>
+<td><p>最低1.6 千兆赫兹 (GHz) 或更快的处理器。 我们建议2.0 千赫兹 (32 位或64位) 。</p></td>
+</tr>
+<tr class="even">
+<td><p>视频</p></td>
+<td><p>请参阅 <a href="lync-server-2013-lync-client-video-requirements.md">Lync Server 2013 的 lync 客户端视频要求</a></p></td>
+</tr>
+<tr class="odd">
+<td><p>显示分辨率</p></td>
+<td><p>需要1024x768</p></td>
+</tr>
+<tr class="even">
+<td><p>图形硬件</p></td>
+<td><ul>
+<li><p>Microsoft DirectX 9 应用程序编程接口的支持</p></li>
+<li><p>128 mb () 的图形内存 (最低) 。 我们建议 256 MB 的图形内存。</p></li>
+<li><p>Windows 显示驱动程序模型驱动程序</p></li>
+<li><p>硬件中的像素着色器2。0</p></li>
+<li><p>每像素32位</p></li>
+</ul></td>
+</tr>
+<tr class="odd">
+<td><p>电话</p></td>
+<td><p>麦克风和扬声器、耳机和麦克风或等效设备 (s) 。 推荐的设备：</p>
+<ul>
+<li><p>带有 "已针对 Microsoft Lync 进行优化" 标志的手机 (查看适用于 Microsoft Lync 的电话和设备 <a href="https://go.microsoft.com/fwlink/p/?linkid=208938">https://go.microsoft.com/fwlink/p/?LinkID=208938</a> ，) 列表</p></li>
+<li><p>运行 Lync Phone Edition 的电话</p></li>
+</ul></td>
+</tr>
+<tr class="even">
+<td><p>视频源</p></td>
+<td><p>USB 2.0 视频摄像头或 Polycom CX5000 HD 设备 (圆桌会议设备) </p></td>
+</tr>
+<tr class="odd">
+<td><p>带宽要求</p></td>
+<td><p>请参阅 <a href="lync-server-2013-network-bandwidth-requirements-for-media-traffic.md">Lync Server 2013 中媒体流量的网络带宽要求</a></p></td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</div>
+

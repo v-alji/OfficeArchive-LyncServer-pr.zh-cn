@@ -1,0 +1,76 @@
+---
+title: Lync Server 2013：将用户迁移到统一联系人存储
+description: Lync Server 2013：将用户迁移到统一联系人存储。
+ms.reviewer: ''
+ms.author: v-lanac
+author: lanachin
+f1.keywords:
+- NOCSH
+TOCTitle: Migrate users to unified contact store
+ms:assetid: 215a8ec1-d63e-4fdf-b73d-75aeb9dddb43
+ms:mtpsurl: https://technet.microsoft.com/en-us/library/JJ204737(v=OCS.15)
+ms:contentKeyID: 48183600
+ms.date: 07/23/2014
+manager: serdars
+mtps_version: v=OCS.15
+ms.openlocfilehash: 9e9ee9850cc723ae132f15d7c0c6b3769e1240ba
+ms.sourcegitcommit: 36fee89bb887bea4f18b19f17a8c69daf5bc423d
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "49425589"
+---
+# <a name="migrate-users-to-unified-contact-store-in-lync-server-2013"></a>在 Lync Server 2013 中将用户迁移到统一联系人存储
+
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+
+<div class="topic" data-xmlns="http://www.w3.org/1999/xhtml" data-msxsl="urn:schemas-microsoft-com:xslt" data-cs="https://msdn.microsoft.com/">
+
+<div data-asp="https://msdn2.microsoft.com/asp">
+
+
+
+</div>
+
+<div id="mainSection">
+
+<div id="mainBody">
+
+<span> </span>
+
+_**主题上次修改时间：** 2012-10-15_
+
+当用户执行以下操作时，用户的联系人会自动迁移到 Exchange 2013 服务器：
+
+  - 为其分配了将 UcsAllowed 设置为 True 的用户服务策略。
+
+  - 已使用 Exchange 2013 邮箱进行了设置，并且至少已登录到邮箱一次。
+
+  - 使用 Lync 2013 胖客户端登录。
+
+如果用户使用 Lync 2010 或早期版本的客户端登录，或者如果用户未连接到 Exchange 2013 服务器，则将忽略用户服务策略，并且用户的联系人保留在 Lync Server 中。
+
+您可以通过以下任一方法来确定是否已迁移用户的联系人：
+
+  - 在客户端计算机上检查以下注册表项：
+    
+    HKEY \_ 当前 \_ 用户 \\ 软件 \\ Microsoft \\ Office \\ 15.0 \\ Lync \\ \<SIP URL\> \\ UCS
+    
+    如果用户的联系人存储在 Exchange 2013 中，则此注册表项包含值为2165的 InUCSMode 值。
+
+  - 运行 **Test-CsUnifiedContactStore** cmdlet。 在 Lync Server Management Shell 命令行中，键入：
+    
+        Test-CsUnifiedContactStore -UserSipAddress "sip:kenmyer@litwareinc.com" -TargetFqdn "atl-cs-001.litwareinc.com"
+    
+    如果 **Test-CsUnifiedContactStore** 成功，表明用户的联系人已迁移到统一联系人存储中。
+
+</div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</div>
+
