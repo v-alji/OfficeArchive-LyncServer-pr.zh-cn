@@ -1,0 +1,226 @@
+---
+title: Lync Server 2013 服务器角色
+description: Lync Server 2013 服务器角色。
+ms.reviewer: ''
+ms.author: v-lanac
+author: lanachin
+f1.keywords:
+- NOCSH
+TOCTitle: Server roles
+ms:assetid: 7137fc06-fca2-4e5f-9db5-10c7c29a788c
+ms:mtpsurl: https://technet.microsoft.com/en-us/library/Gg398536(v=OCS.15)
+ms:contentKeyID: 48184456
+ms.date: 07/23/2014
+manager: serdars
+mtps_version: v=OCS.15
+ms.openlocfilehash: 7ee4636e602e5bfb8ce6eacdccb3d190f5728d1c
+ms.sourcegitcommit: 36fee89bb887bea4f18b19f17a8c69daf5bc423d
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "49441856"
+---
+# <a name="server-roles-in-lync-server-2013"></a><span data-ttu-id="6325b-103">Lync Server 2013 中的服务器角色</span><span class="sxs-lookup"><span data-stu-id="6325b-103">Server roles in Lync Server 2013</span></span>
+
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+
+<div class="topic" data-xmlns="http://www.w3.org/1999/xhtml" data-msxsl="urn:schemas-microsoft-com:xslt" data-cs="https://msdn.microsoft.com/">
+
+<div data-asp="https://msdn2.microsoft.com/asp">
+
+
+
+</div>
+
+<div id="mainSection">
+
+<div id="mainBody"><span data-ttu-id="6325b-104">
+
+<span> </span></span><span class="sxs-lookup"><span data-stu-id="6325b-104">
+
+<span> </span></span></span>
+
+<span data-ttu-id="6325b-105">_**主题上次修改时间：** 2013-10-07_</span><span class="sxs-lookup"><span data-stu-id="6325b-105">_**Topic Last Modified:** 2013-10-07_</span></span>
+
+<span data-ttu-id="6325b-106">运行 Lync 服务器的每台服务器都运行一个或多个 *服务器角色*。</span><span class="sxs-lookup"><span data-stu-id="6325b-106">Each server running Lync Server runs one or more *server roles*.</span></span> <span data-ttu-id="6325b-107">服务器角色是由该服务器提供的一组已定义的 Lync Server 功能。</span><span class="sxs-lookup"><span data-stu-id="6325b-107">A server role is a defined set of Lync Server functionalities provided by that server.</span></span> <span data-ttu-id="6325b-108">您无需在您的网络中部署所有可用的服务器角色。</span><span class="sxs-lookup"><span data-stu-id="6325b-108">You do not need to deploy all available server roles in your network.</span></span> <span data-ttu-id="6325b-109">只安装包含您想要的功能的服务器角色。</span><span class="sxs-lookup"><span data-stu-id="6325b-109">Install only the server roles that contain the functionality that you want.</span></span>
+
+<span data-ttu-id="6325b-110">即使你不熟悉 Lync Server 中的服务器角色，规划工具也可以根据你所需的功能为你提供针对你需要部署的服务器的最佳解决方案。</span><span class="sxs-lookup"><span data-stu-id="6325b-110">Even if you are not familiar with server roles in Lync Server, the Planning Tool can guide you to the best solution for the servers that you need to deploy, based on the features that you want.</span></span> <span data-ttu-id="6325b-111">本部分简要概述了服务器角色及其提供的常规功能：</span><span class="sxs-lookup"><span data-stu-id="6325b-111">This section provides a brief overview of the server roles and the general features that they provide:</span></span>
+
+  - <span data-ttu-id="6325b-112">Standard Edition Server</span><span class="sxs-lookup"><span data-stu-id="6325b-112">Standard Edition Server</span></span>
+
+  - <span data-ttu-id="6325b-113">前端服务器和后端服务器</span><span class="sxs-lookup"><span data-stu-id="6325b-113">Front End Server and Back End Server</span></span>
+
+  - <span data-ttu-id="6325b-114">边缘服务器</span><span class="sxs-lookup"><span data-stu-id="6325b-114">Edge Server</span></span>
+
+  - <span data-ttu-id="6325b-115">中介服务器</span><span class="sxs-lookup"><span data-stu-id="6325b-115">Mediation Server</span></span>
+
+  - <span data-ttu-id="6325b-116">控制器</span><span class="sxs-lookup"><span data-stu-id="6325b-116">Director</span></span>
+
+  - <span data-ttu-id="6325b-117">持久聊天前端服务器</span><span class="sxs-lookup"><span data-stu-id="6325b-117">Persistent Chat Front End Server</span></span>
+
+  - <span data-ttu-id="6325b-118">持久聊天存储 (持久的聊天后端服务器) </span><span class="sxs-lookup"><span data-stu-id="6325b-118">Persistent Chat Store (Persistent Chat Back End Server)</span></span>
+
+  - <span data-ttu-id="6325b-119">持久聊天合规性存储 (持久聊天合规性后端服务器) </span><span class="sxs-lookup"><span data-stu-id="6325b-119">Persistent Chat Compliance Store (Persistent Chat Compliance Back End Server)</span></span>
+
+<span data-ttu-id="6325b-120">对于大多数的服务器角色，要获得可伸缩性和高可用性，可部署全部运行同一服务器角色的多台服务器的“*池*”。</span><span class="sxs-lookup"><span data-stu-id="6325b-120">For most server roles, for scalability and high availability you can deploy *pools* of multiple servers all running the same server role.</span></span> <span data-ttu-id="6325b-121">池中的每台服务器必须运行一个或多个相同的服务器角色。</span><span class="sxs-lookup"><span data-stu-id="6325b-121">Each server in a pool must run an identical server role or roles.</span></span> <span data-ttu-id="6325b-122">对于 Lync Server 中的大多数类型的池，必须部署负载平衡器以在池中的各种服务器之间传播流量。</span><span class="sxs-lookup"><span data-stu-id="6325b-122">For most types of pools in Lync Server, you must deploy a load balancer to spread traffic between the various servers in the pool.</span></span> <span data-ttu-id="6325b-123">Lync Server 支持域名系统 (DNS) 负载平衡和硬件负载平衡器。</span><span class="sxs-lookup"><span data-stu-id="6325b-123">Lync Server supports both Domain Name System (DNS) load balancing and hardware load balancers.</span></span>
+
+<div>
+
+## <a name="standard-edition-server"></a><span data-ttu-id="6325b-124">Standard Edition Server</span><span class="sxs-lookup"><span data-stu-id="6325b-124">Standard Edition Server</span></span>
+
+<span data-ttu-id="6325b-125">标准版服务器专为小型组织设计，适用于大型组织的试点项目。</span><span class="sxs-lookup"><span data-stu-id="6325b-125">The Standard Edition server is designed for small organizations, and for pilot projects of large organizations.</span></span> <span data-ttu-id="6325b-126">它支持 Lync 服务器的许多功能，包括必要的数据库，以在单个服务器上运行。</span><span class="sxs-lookup"><span data-stu-id="6325b-126">It enables many of the features of Lync Server, including the necessary databases, to run on a single server.</span></span> <span data-ttu-id="6325b-127">这使你能够以更低的成本获得 Lync Server 功能，但不提供真正的高可用性解决方案。</span><span class="sxs-lookup"><span data-stu-id="6325b-127">This enables you to have Lync Server functionality for a lower cost, but does not provide a true high-availability solution.</span></span>
+
+<span data-ttu-id="6325b-128">标准版服务器使你能够使用即时消息 (IM) 、状态、会议和企业语音，所有运行在一台服务器上。</span><span class="sxs-lookup"><span data-stu-id="6325b-128">Standard Edition server enables you to use instant messaging (IM), presence, conferencing, and Enterprise Voice, all running on one server.</span></span>
+
+<span data-ttu-id="6325b-129">对于高可用性解决方案，请使用 Lync Server 企业版。</span><span class="sxs-lookup"><span data-stu-id="6325b-129">For a high-availability solution, use Lync Server Enterprise Edition.</span></span>
+
+</div>
+
+<div>
+
+## <a name="front-end-server-and-back-end-server"></a><span data-ttu-id="6325b-130">前端服务器和后端服务器</span><span class="sxs-lookup"><span data-stu-id="6325b-130">Front End Server and Back End Server</span></span>
+
+<span data-ttu-id="6325b-131">在 Lync Server 企业版中，前端服务器是核心服务器角色，并且运行许多基本的 Lync 服务器功能。</span><span class="sxs-lookup"><span data-stu-id="6325b-131">In Lync Server Enterprise Edition, the Front End Server is the core server role, and runs many basic Lync Server functions.</span></span> <span data-ttu-id="6325b-132">前端服务器和后端服务器是在任何 Lync Server 企业版部署中唯一需要的服务器角色。</span><span class="sxs-lookup"><span data-stu-id="6325b-132">The Front End Server, along with the Back End Servers, are the only server roles required to be in any Lync Server Enterprise Edition deployment.</span></span>
+
+<span data-ttu-id="6325b-133">*前端池* 是一组前端服务器（配置相同），它们协同工作以为一组常见用户提供服务。</span><span class="sxs-lookup"><span data-stu-id="6325b-133">A *Front End pool* is a set of Front End Servers, configured identically, that work together to provide services for a common group of users.</span></span> <span data-ttu-id="6325b-134">由多个运行同一角色的服务器构成的池提供可伸缩性和故障转移功能。</span><span class="sxs-lookup"><span data-stu-id="6325b-134">A pool of multiple servers running the same role provides scalability and failover capability.</span></span>
+
+<span data-ttu-id="6325b-135">前端服务器包括以下内容：</span><span class="sxs-lookup"><span data-stu-id="6325b-135">The Front End Server includes the following:</span></span>
+
+  - <span data-ttu-id="6325b-136">用户身份验证和注册</span><span class="sxs-lookup"><span data-stu-id="6325b-136">User authentication and registration</span></span>
+
+  - <span data-ttu-id="6325b-137">状态信息和联系人卡片交换</span><span class="sxs-lookup"><span data-stu-id="6325b-137">Presence information and contact card exchange</span></span>
+
+  - <span data-ttu-id="6325b-138">通讯簿服务和通讯组列表展开</span><span class="sxs-lookup"><span data-stu-id="6325b-138">Address book services and distribution list expansion</span></span>
+
+  - <span data-ttu-id="6325b-139">IM 功能，包括多方 IM 会议</span><span class="sxs-lookup"><span data-stu-id="6325b-139">IM functionality, including multiparty IM conferences</span></span>
+
+  - <span data-ttu-id="6325b-140">网络会议、PSTN 电话拨入式会议和 A/V 会议 (（如果已部署）) </span><span class="sxs-lookup"><span data-stu-id="6325b-140">Web conferencing, PSTN Dial-in conferencing and A/V conferencing (if deployed)</span></span>
+
+  - <span data-ttu-id="6325b-141">应用程序托管，适用于 Lync Server 附带的两个应用程序 (例如，会议助理和响应组应用程序) 以及第三方应用程序</span><span class="sxs-lookup"><span data-stu-id="6325b-141">Application hosting, for both applications included with Lync Server (for example, Conferencing Attendant and Response Group application), and third-party applications</span></span>
+
+  - <span data-ttu-id="6325b-142">（可选）监控功能，用于以呼叫详细记录 (CDR) 和呼叫错误记录 (CER) 形式收集使用信息。</span><span class="sxs-lookup"><span data-stu-id="6325b-142">Optionally, Monitoring, to collect usage information in the form of call detail records (CDRs) and call error records (CERs).</span></span> <span data-ttu-id="6325b-143">此信息提供有关媒体质量的指标 (音频和视频) 通过网络进行企业语音通话和 A/V 会议。</span><span class="sxs-lookup"><span data-stu-id="6325b-143">This information provides metrics about the quality of the media (audio and video) traversing your network for both Enterprise Voice calls and A/V conferences.</span></span>
+
+  - <span data-ttu-id="6325b-144">用于支持基于 Web 的任务的 Web 组件，如 Web 计划程序和联接启动器。</span><span class="sxs-lookup"><span data-stu-id="6325b-144">Web components to supported web-based tasks such as web scheduler and join launcher.</span></span>
+
+  - <span data-ttu-id="6325b-145">（可选）存档功能，用于存档 IM 通信和会议内容（出于合规性考虑）。</span><span class="sxs-lookup"><span data-stu-id="6325b-145">Optionally, Archiving, to archive IM communications and meeting content for compliance reasons.</span></span> <span data-ttu-id="6325b-146">有关详细信息，请参阅规划文档中的 [在 Lync Server 2013 中规划存档](lync-server-2013-planning-for-archiving.md) 。</span><span class="sxs-lookup"><span data-stu-id="6325b-146">For details, see [Planning for Archiving in Lync Server 2013](lync-server-2013-planning-for-archiving.md) in the Planning documentation.</span></span>
+    
+    <span data-ttu-id="6325b-147">在 Lync Server 2010 和早期版本中，监视和存档是独立的服务器角色，而不是前端服务器上的 collocated。</span><span class="sxs-lookup"><span data-stu-id="6325b-147">In Lync Server 2010 and prior versions, Monitoring and Archiving were separate server roles, not collocated on Front End Server.</span></span>
+
+  - <span data-ttu-id="6325b-148">（可选）如果启用持久聊天，则包括用于聊天室管理的持久聊天 Web 服务和用于文件上载/下载的持久聊天 Web 服务。</span><span class="sxs-lookup"><span data-stu-id="6325b-148">Optionally, if Persistent chat is enabled, Persistent Chat Web Services for Chat Room Management and Persistent Chat Web Services for File Upload/Download.</span></span>
+
+<span data-ttu-id="6325b-p109">前端池还是用户和会议数据的主存储。每个用户的相关信息将在池中的三个前端服务器之间复制，并将在后端服务器上进行备份。</span><span class="sxs-lookup"><span data-stu-id="6325b-p109">Front End Pools are also the primary store for user and conference data. Information about each user is replicated among three Front End Servers in the pool, and backed up on the Back End Servers.</span></span>
+
+<span data-ttu-id="6325b-151">此外，部署中的一个前端池还运行 *中央管理服务器*，该服务器管理和部署对运行 Lync Server 的所有服务器的基本配置数据。</span><span class="sxs-lookup"><span data-stu-id="6325b-151">Additionally, one Front End pool in the deployment also runs the *Central Management Server*, which manages and deploys basic configuration data to all servers running Lync Server.</span></span> <span data-ttu-id="6325b-152">中央管理服务器还提供 Lync Server 命令行管理程序和文件传输功能。</span><span class="sxs-lookup"><span data-stu-id="6325b-152">The Central Management Server also provides Lync Server Management Shell and file transfer capabilities.</span></span>
+
+<span data-ttu-id="6325b-153">后端服务器是运行 Microsoft SQL Server 的数据库服务器，它为前端池提供数据库服务。</span><span class="sxs-lookup"><span data-stu-id="6325b-153">The Back End Servers are database servers running Microsoft SQL Server that provide the database services for the Front End pool.</span></span> <span data-ttu-id="6325b-154">后端服务器既可用作池的用户和会议数据的备份存储，又可用作其他数据库（如响应组数据库）的主存储。</span><span class="sxs-lookup"><span data-stu-id="6325b-154">The Back End Servers serve as backup stores for the pool’s user and conference data, and are the primary stores for other databases such as the Response Group database.</span></span> <span data-ttu-id="6325b-155">你可以使用一台后端服务器，但建议使用 SQL Server 镜像的解决方案进行故障转移。</span><span class="sxs-lookup"><span data-stu-id="6325b-155">You can have a single Back End Server, but a solution that uses SQL Server mirroring is recommended for failover.</span></span> <span data-ttu-id="6325b-156">后端服务器不运行任何 Lync Server 软件。</span><span class="sxs-lookup"><span data-stu-id="6325b-156">Back End Servers do not run any Lync Server software.</span></span>
+
+<div>
+
+
+> [!IMPORTANT]  
+> <span data-ttu-id="6325b-157">我们不建议将 Lync Server 数据库与其他数据库 collocating。</span><span class="sxs-lookup"><span data-stu-id="6325b-157">We do not recommend collocating Lync Server databases with other databases.</span></span> <span data-ttu-id="6325b-158">如果您这样做，可能会影响可用性和性能。</span><span class="sxs-lookup"><span data-stu-id="6325b-158">If you do so, availability and performance may be affected.</span></span>
+
+
+
+</div>
+
+<span data-ttu-id="6325b-159">存储在后端服务器数据库中的信息包括状态信息、用户的联系人列表、包含所有当前会议状态相关的永久数据的会议数据，以及会议安排数据。</span><span class="sxs-lookup"><span data-stu-id="6325b-159">Information stored in the Back End Server databases includes presence information, users' Contacts lists, conferencing data, including persistent data about the state of all current conferences, and conference scheduling data.</span></span>
+
+</div>
+
+<div>
+
+## <a name="edge-server"></a><span data-ttu-id="6325b-160">边缘服务器</span><span class="sxs-lookup"><span data-stu-id="6325b-160">Edge Server</span></span>
+
+<span data-ttu-id="6325b-161">边缘服务器使用户能够与组织防火墙外的用户进行通信和协作。</span><span class="sxs-lookup"><span data-stu-id="6325b-161">Edge Server enables your users to communicate and collaborate with users outside the organization’s firewalls.</span></span> <span data-ttu-id="6325b-162">这些外部用户可以包括组织的自己的用户，这些用户当前正在进行异地工作、来自联盟合作伙伴组织的用户以及已被邀请加入在 Lync Server 部署上的会议的外部用户。</span><span class="sxs-lookup"><span data-stu-id="6325b-162">These external users can include the organization’s own users who are currently working offsite, users from federated partner organizations, and outside users who have been invited to join conferences hosted on your Lync Server deployment.</span></span> <span data-ttu-id="6325b-163">边缘服务器还支持与公共 IM 连接服务（包括 Windows Live、AOL、Yahoo \! 和 Google 通话）的连接。</span><span class="sxs-lookup"><span data-stu-id="6325b-163">Edge Server also enables connectivity to public IM connectivity services, including Windows Live, AOL, Yahoo\!, and Google Talk.</span></span>
+
+<div>
+
+
+> [!IMPORTANT]  
+> <UL>
+> <LI>
+> <P><span data-ttu-id="6325b-164">从2012年9月1日起，，Microsoft Lync 公共 IM 连接用户订阅许可证 ( "PIC USL" ) 不再可用于购买新的或续订协议。</span><span class="sxs-lookup"><span data-stu-id="6325b-164">As of September 1st, 2012, the Microsoft Lync Public IM Connectivity User Subscription License (“PIC USL”) is no longer available for purchase for new or renewing agreements.</span></span> <span data-ttu-id="6325b-165">具有活动许可证的客户将能够继续与 Yahoo！进行联盟</span><span class="sxs-lookup"><span data-stu-id="6325b-165">Customers with active licenses will be able to continue to federate with Yahoo!</span></span> <span data-ttu-id="6325b-166">Messenger，直到服务关闭日期。</span><span class="sxs-lookup"><span data-stu-id="6325b-166">Messenger until the service shut down date.</span></span> <span data-ttu-id="6325b-167">AOL 和 Yahoo！的有效期结束日期为2014年6月</span><span class="sxs-lookup"><span data-stu-id="6325b-167">An end of life date of June 2014 for AOL and Yahoo!</span></span> <span data-ttu-id="6325b-168">已宣布。</span><span class="sxs-lookup"><span data-stu-id="6325b-168">has been announced.</span></span> <span data-ttu-id="6325b-169">有关详细信息，请参阅 <A href="lync-server-2013-support-for-public-instant-messenger-connectivity.md">Lync Server 2013 中的公共即时消息连接支持</A>。</span><span class="sxs-lookup"><span data-stu-id="6325b-169">For details, see <A href="lync-server-2013-support-for-public-instant-messenger-connectivity.md">Support for public instant messenger connectivity in Lync Server 2013</A>.</span></span></P>
+> <LI>
+> <P><span data-ttu-id="6325b-170">PIC USL 是 Lync Server 或 Office 通信服务器与 Yahoo！联合所需的每个每个用户每月订阅许可证。</span><span class="sxs-lookup"><span data-stu-id="6325b-170">The PIC USL is a per-user per-month subscription license that is required for Lync Server or Office Communications Server to federate with Yahoo!</span></span> <span data-ttu-id="6325b-171">Messenger.</span><span class="sxs-lookup"><span data-stu-id="6325b-171">Messenger.</span></span> <span data-ttu-id="6325b-172">Microsoft 提供此服务的能力已作为对 Yahoo！的支持，它的底层协议被向下缠绕。</span><span class="sxs-lookup"><span data-stu-id="6325b-172">Microsoft’s ability to provide this service has been contingent upon support from Yahoo!, the underlying agreement for which is winding down.</span></span></P>
+> <LI>
+> <P><span data-ttu-id="6325b-173">Lync 比以往更多，是一种强大的工具，用于跨组织和全球各地的人员进行连接。</span><span class="sxs-lookup"><span data-stu-id="6325b-173">More than ever, Lync is a powerful tool for connecting across organizations and with individuals around the world.</span></span> <span data-ttu-id="6325b-174">与 Windows Live Messenger 的联盟不需要除 Lync 标准 CAL 之外的其他用户/设备许可证。</span><span class="sxs-lookup"><span data-stu-id="6325b-174">Federation with Windows Live Messenger requires no additional user/device licenses beyond the Lync Standard CAL.</span></span> <span data-ttu-id="6325b-175">Skype 联盟将添加到此列表，使 Lync 用户可以通过 IM 和语音与成百上千人联系。</span><span class="sxs-lookup"><span data-stu-id="6325b-175">Skype federation will be added to this list, enabling Lync users to reach hundreds of millions of people with IM and voice.</span></span></P></LI></UL>
+
+
+
+</div>
+
+<span data-ttu-id="6325b-176">部署边缘服务器还支持移动服务，这些服务支持移动设备上的 Lync 功能。</span><span class="sxs-lookup"><span data-stu-id="6325b-176">Deploying Edge Server also enables mobility services, which supports Lync functionality on mobile devices.</span></span> <span data-ttu-id="6325b-177">用户可以使用受支持的 Apple iOS、Android、Windows Phone 或 Nokia 移动设备来执行发送和接收即时消息、查看联系人和查看状态等活动。</span><span class="sxs-lookup"><span data-stu-id="6325b-177">Users can use supported Apple iOS, Android, Windows Phone, or Nokia mobile devices to perform activities such as sending and receiving instant messages, viewing contacts, and viewing presence.</span></span> <span data-ttu-id="6325b-178">此外，移动设备支持某些企业语音功能，例如单击加入会议、通过工作、单号码达到、语音邮件和未接来电进行呼叫。</span><span class="sxs-lookup"><span data-stu-id="6325b-178">In addition, mobile devices support some Enterprise Voice features, such as click to join a conference, Call via Work, single number reach, voice mail, and missed calls.</span></span> <span data-ttu-id="6325b-179">移动功能还支持针对不支持在后台运行的应用程序的移动设备的 *推送通知*。</span><span class="sxs-lookup"><span data-stu-id="6325b-179">The mobility feature also supports *push notifications* for mobile devices that do not support applications running in the background.</span></span> <span data-ttu-id="6325b-180">推送通知是一类发送给移动设备的有关当移动设备处于不活动状态时发生的事件的通知。</span><span class="sxs-lookup"><span data-stu-id="6325b-180">A push notification is a notification that is sent to a mobile device about an event that occurs while a mobile application is inactive.</span></span>
+
+<span data-ttu-id="6325b-181">边缘服务器还包括完全集成的可扩展消息传递和状态协议 (XMPP) 代理，以及前端服务器上包含的 XMPP 网关。</span><span class="sxs-lookup"><span data-stu-id="6325b-181">Edge Servers also include a fully-integrated Extensible Messaging and Presence Protocol (XMPP) proxy, with an XMPP gateway included on Front End Servers.</span></span> <span data-ttu-id="6325b-182">你可以将这些 XMPP 组件配置为使 Lync Server 2013 用户能够添加来自基于 XMPP 的合作伙伴的联系人 (例如，Google 谈话) 即时消息和状态。</span><span class="sxs-lookup"><span data-stu-id="6325b-182">You can configure these XMPP components to enable your Lync Server 2013 users to add contacts from XMPP-based partners (such as Google Talk) for instant messaging and presence.</span></span>
+
+<span data-ttu-id="6325b-183">有关详细信息，请参阅规划文档中的 [在 Lync Server 2013 中规划外部用户访问](lync-server-2013-planning-for-external-user-access.md) 。</span><span class="sxs-lookup"><span data-stu-id="6325b-183">For details, see [Planning for external user access in Lync Server 2013](lync-server-2013-planning-for-external-user-access.md) in the Planning documentation.</span></span>
+
+</div>
+
+<div>
+
+## <a name="mediation-server"></a><span data-ttu-id="6325b-184">中介服务器</span><span class="sxs-lookup"><span data-stu-id="6325b-184">Mediation Server</span></span>
+
+<span data-ttu-id="6325b-185">中介服务器是实现企业语音和电话拨入式会议所必需的组件。</span><span class="sxs-lookup"><span data-stu-id="6325b-185">Mediation Server is a necessary component for implementing Enterprise Voice and dial-in conferencing.</span></span> <span data-ttu-id="6325b-186">中介服务器转换信号，在某些配置中，内部 Lync 服务器基础结构和公共交换电话网络之间的媒体 (PSTN) 网关、IP PBX 或会话初始协议 (SIP) 主干。</span><span class="sxs-lookup"><span data-stu-id="6325b-186">Mediation Server translates signaling, and, in some configurations, media between your internal Lync Server infrastructure and a public switched telephone network (PSTN) gateway, IP-PBX, or a Session Initiation Protocol (SIP) trunk.</span></span> <span data-ttu-id="6325b-187">你可以在前端服务器所在的同一台服务器上运行中介服务器 collocated，或将其分到独立的中介服务器池中。</span><span class="sxs-lookup"><span data-stu-id="6325b-187">You can run Mediation Server collocated on the same server as Front End Server, or separated into a stand-alone Mediation Server pool.</span></span>
+
+<span data-ttu-id="6325b-188">有关详细信息，请参阅规划文档中的 [Lync server 2013 中的中介服务器组件](lync-server-2013-mediation-server-component.md) 。</span><span class="sxs-lookup"><span data-stu-id="6325b-188">For details, see [Mediation Server component in Lync Server 2013](lync-server-2013-mediation-server-component.md) in the Planning documentation.</span></span>
+
+</div>
+
+<div>
+
+## <a name="director"></a><span data-ttu-id="6325b-189">控制器</span><span class="sxs-lookup"><span data-stu-id="6325b-189">Director</span></span>
+
+<span data-ttu-id="6325b-190">控制器可以对 Lync Server 用户请求进行身份验证，但它们不是家庭用户帐户或提供状态或会议服务。</span><span class="sxs-lookup"><span data-stu-id="6325b-190">Directors can authenticate Lync Server user requests, but they do not home user accounts or provide presence or conferencing services.</span></span> <span data-ttu-id="6325b-191">控制器对于增强支持外部用户访问的部署中的安全性最有用。</span><span class="sxs-lookup"><span data-stu-id="6325b-191">Directors are most useful to enhance security in deployments that enable external user access.</span></span> <span data-ttu-id="6325b-192">控制器可在将请求发送到内部服务器之前对请求进行身份验证。</span><span class="sxs-lookup"><span data-stu-id="6325b-192">The Director can authenticate requests before sending them on to internal servers.</span></span> <span data-ttu-id="6325b-193">对于拒绝服务攻击，此攻击将终止于控制器且无法到达前端服务器。</span><span class="sxs-lookup"><span data-stu-id="6325b-193">In the case of a denial-of-service attack, the attack ends with the Director and does not reach the Front End servers.</span></span> <span data-ttu-id="6325b-194">有关详细信息，请参阅规划文档中 [Lync Server 2013 中的 Director 的方案](lync-server-2013-scenarios-for-the-director.md) 。</span><span class="sxs-lookup"><span data-stu-id="6325b-194">For details, see [Scenarios for the Director in Lync Server 2013](lync-server-2013-scenarios-for-the-director.md) in the Planning documentation.</span></span>
+
+</div>
+
+<div>
+
+## <a name="persistent-chat-server-roles"></a><span data-ttu-id="6325b-195">持久聊天服务器角色</span><span class="sxs-lookup"><span data-stu-id="6325b-195">Persistent Chat Server Roles</span></span>
+
+<span data-ttu-id="6325b-p121">利用持久聊天，用户可以参加持续进行的、基于主题的多方对话。持久聊天前端服务器可运行持久聊天服务。持久聊天后端服务器可存储聊天历史记录数据以及有关类别和聊天室的信息。可选持久聊天合规性后端服务器可存储聊天内容和合规性事件以实现合规性。</span><span class="sxs-lookup"><span data-stu-id="6325b-p121">Persistent chat enables users to participate in multiparty, topic-based conversations that persist over time. The Persistent Chat Front End Server runs the persistent chat service. The Persistent Chat Back End Server stores the chat history data, and information about categories and chat rooms. The optional Persistent Chat Compliance Back End Server can store the chat content and compliance events for the purpose of compliance.</span></span>
+
+<span data-ttu-id="6325b-200">运行 Lync Server 标准版的服务器也可以在同一台服务器上运行永久聊天 collocated。</span><span class="sxs-lookup"><span data-stu-id="6325b-200">Servers running Lync Server Standard Edition can also run Persistent chat collocated on the same server.</span></span> <span data-ttu-id="6325b-201">不能将持久聊天前端服务器 collocate 到企业版前端服务器。</span><span class="sxs-lookup"><span data-stu-id="6325b-201">You cannot collocate the Persistent Chat Front End Server with Enterprise Edition Front End Server.</span></span>
+
+<span data-ttu-id="6325b-202">有关详细信息，请参阅 [在 Lync server 2013 中规划持久聊天服务器](lync-server-2013-planning-for-persistent-chat-server.md)。</span><span class="sxs-lookup"><span data-stu-id="6325b-202">For details, see [Planning for Persistent Chat Server in Lync Server 2013](lync-server-2013-planning-for-persistent-chat-server.md).</span></span>
+
+</div>
+
+<div>
+
+## <a name="see-also"></a><span data-ttu-id="6325b-203">另请参阅</span><span class="sxs-lookup"><span data-stu-id="6325b-203">See Also</span></span>
+
+
+[<span data-ttu-id="6325b-204">Lync Server 2013 中的中介服务器组件</span><span class="sxs-lookup"><span data-stu-id="6325b-204">Mediation Server component in Lync Server 2013</span></span>](lync-server-2013-mediation-server-component.md)  
+
+
+[<span data-ttu-id="6325b-205">在 Lync Server 2013 中规划存档</span><span class="sxs-lookup"><span data-stu-id="6325b-205">Planning for Archiving in Lync Server 2013</span></span>](lync-server-2013-planning-for-archiving.md)  
+[<span data-ttu-id="6325b-206">在 Lync Server 2013 中规划外部用户访问</span><span class="sxs-lookup"><span data-stu-id="6325b-206">Planning for external user access in Lync Server 2013</span></span>](lync-server-2013-planning-for-external-user-access.md)  
+[<span data-ttu-id="6325b-207">Lync Server 2013 中的控制器方案</span><span class="sxs-lookup"><span data-stu-id="6325b-207">Scenarios for the Director in Lync Server 2013</span></span>](lync-server-2013-scenarios-for-the-director.md)  
+[<span data-ttu-id="6325b-208">在 Lync Server 2013 中规划持久聊天服务器</span><span class="sxs-lookup"><span data-stu-id="6325b-208">Planning for Persistent Chat Server in Lync Server 2013</span></span>](lync-server-2013-planning-for-persistent-chat-server.md)  
+  
+
+<span data-ttu-id="6325b-209"></div>
+
+</div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</span><span class="sxs-lookup"><span data-stu-id="6325b-209"></div>
+
+</div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</span></span></div>
+

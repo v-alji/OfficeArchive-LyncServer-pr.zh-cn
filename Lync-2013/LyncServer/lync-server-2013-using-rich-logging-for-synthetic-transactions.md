@@ -1,0 +1,109 @@
+---
+title: Lync Server 2013：对综合事务使用丰富日志记录
+description: Lync Server 2013：对综合事务使用丰富日志记录。
+ms.reviewer: ''
+ms.author: v-lanac
+author: lanachin
+f1.keywords:
+- NOCSH
+TOCTitle: Using rich logging for synthetic transactions
+ms:assetid: 32714a71-9f42-4d5b-a508-e176d8f08bbf
+ms:mtpsurl: https://technet.microsoft.com/en-us/library/JJ204798(v=OCS.15)
+ms:contentKeyID: 48183812
+ms.date: 07/23/2014
+manager: serdars
+mtps_version: v=OCS.15
+ms.openlocfilehash: 5fd984386985bced64265ebedfd57c56a84a4443
+ms.sourcegitcommit: 36fee89bb887bea4f18b19f17a8c69daf5bc423d
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "49440750"
+---
+# <a name="using-rich-logging-for-synthetic-transactions-in-lync-server-2013"></a><span data-ttu-id="0b43b-103">在 Lync Server 2013 中对综合事务使用丰富日志记录</span><span class="sxs-lookup"><span data-stu-id="0b43b-103">Using rich logging for synthetic transactions in Lync Server 2013</span></span>
+
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+
+<div class="topic" data-xmlns="http://www.w3.org/1999/xhtml" data-msxsl="urn:schemas-microsoft-com:xslt" data-cs="https://msdn.microsoft.com/">
+
+<div data-asp="https://msdn2.microsoft.com/asp">
+
+
+
+</div>
+
+<div id="mainSection">
+
+<div id="mainBody"><span data-ttu-id="0b43b-104">
+
+<span> </span></span><span class="sxs-lookup"><span data-stu-id="0b43b-104">
+
+<span> </span></span></span>
+
+<span data-ttu-id="0b43b-105">_**主题上次修改时间：** 2012-10-22_</span><span class="sxs-lookup"><span data-stu-id="0b43b-105">_**Topic Last Modified:** 2012-10-22_</span></span>
+
+<span data-ttu-id="0b43b-106">在 Microsoft Lync Server 2010 中引入的综合事务 () 为管理员验证用户是否能够成功完成常见任务，如登录到系统、交换即时消息或拨打位于公共交换电话网络 (PSTN) 的电话。</span><span class="sxs-lookup"><span data-stu-id="0b43b-106">Synthetic transactions (introduced in Microsoft Lync Server 2010) provide a way for administrators to verify that users are able to successfully complete common tasks such as logging on to the system, exchanging instant messages, or making calls to a phone located on the public switched telephone network (PSTN).</span></span> <span data-ttu-id="0b43b-107">这些测试 (打包为一组 Lync Server Windows PowerShell cmdlet) 可以由管理员手动执行，也可以由 System Center Operations Manager 等应用程序自动运行。</span><span class="sxs-lookup"><span data-stu-id="0b43b-107">These tests (which are packaged as a set of Lync Server Windows PowerShell cmdlets) can be conducted manually by an administrator, or they can be automatically run by an application such as System Center Operations Manager.</span></span>
+
+<span data-ttu-id="0b43b-108">在 Lync Server 2010 中，合成事务在帮助管理员识别系统问题方面非常有用。</span><span class="sxs-lookup"><span data-stu-id="0b43b-108">In Lync Server 2010, synthetic transactions proved extremely useful in helping administrators to identify problems with the system.</span></span> <span data-ttu-id="0b43b-109">例如， **CsRegistration** cmdlet 可以向管理员发出警报，指出某些用户在注册 Lync Server 时遇到困难。</span><span class="sxs-lookup"><span data-stu-id="0b43b-109">For example, the **Test-CsRegistration** cmdlet could alert administrators to the fact that some users were having difficulty registering with Lync Server.</span></span> <span data-ttu-id="0b43b-110">但是，合成事务在帮助管理员确定这些用户为什么在 Lync Server 中注册很有用。</span><span class="sxs-lookup"><span data-stu-id="0b43b-110">However, the synthetic transactions were somewhat less useful in helping administrators determine why these users were having difficulty registering with Lync Server.</span></span> <span data-ttu-id="0b43b-111">这是因为合成事务未提供详细的日志记录信息，可帮助管理员解决 Lync 服务器的问题。</span><span class="sxs-lookup"><span data-stu-id="0b43b-111">This was due to the fact that the synthetic transactions did not provide detailed logging information that could help administrators troubleshoot problems with Lync Server.</span></span> <span data-ttu-id="0b43b-112">在最大程度上，综合事务中的详细输出提供了分步信息，使管理员能够以有意义的方式猜测可能出现问题的位置。</span><span class="sxs-lookup"><span data-stu-id="0b43b-112">At best, the verbose output from a synthetic transaction provided step-by-step information that might enable an administrator to make an educated guess as to where a problem likely occurred.</span></span>
+
+<span data-ttu-id="0b43b-113">在 Microsoft Lync Server 2013 中，已重新设计了合成事务以提供丰富的日志记录。</span><span class="sxs-lookup"><span data-stu-id="0b43b-113">In Microsoft Lync Server 2013, synthetic transactions have been re-architected to provide rich logging.</span></span> <span data-ttu-id="0b43b-114">"丰富日志记录" 指对于综合事务仅负责的每个活动，将记录如下信息：</span><span class="sxs-lookup"><span data-stu-id="0b43b-114">"Rich logging" means that, for each activity that a synthetic transaction undertakes, information such as this will be recorded:</span></span>
+
+  - <span data-ttu-id="0b43b-115">活动开始的时间</span><span class="sxs-lookup"><span data-stu-id="0b43b-115">The time that the activity started</span></span>
+
+  - <span data-ttu-id="0b43b-116">活动完成的时间</span><span class="sxs-lookup"><span data-stu-id="0b43b-116">The time that the activity finished</span></span>
+
+  - <span data-ttu-id="0b43b-117">执行的操作 (例如，创建、加入或离开会议;登录 Lync Server;发送即时消息;依此类推) </span><span class="sxs-lookup"><span data-stu-id="0b43b-117">The action that was performed (for example, creating, joining, or leaving a conference; signing on to Lync Server; sending an instant message; and so on)</span></span>
+
+  - <span data-ttu-id="0b43b-118">活动运行时生成的信息、详细、警告或错误消息</span><span class="sxs-lookup"><span data-stu-id="0b43b-118">Informational, verbose, warning, or error messages generated when the activity ran</span></span>
+
+  - <span data-ttu-id="0b43b-119">SIP 注册消息</span><span class="sxs-lookup"><span data-stu-id="0b43b-119">SIP registration messages</span></span>
+
+  - <span data-ttu-id="0b43b-120">在活动运行时生成的异常记录或诊断代码</span><span class="sxs-lookup"><span data-stu-id="0b43b-120">Exception records or diagnostic codes generated when the activity ran</span></span>
+
+  - <span data-ttu-id="0b43b-121">活动运行的最终结果</span><span class="sxs-lookup"><span data-stu-id="0b43b-121">The net result of running the activity</span></span>
+
+<span data-ttu-id="0b43b-122">每次运行合成事务时都会自动生成此信息。</span><span class="sxs-lookup"><span data-stu-id="0b43b-122">This information is automatically generated each time a synthetic transaction is run.</span></span> <span data-ttu-id="0b43b-123">但是，信息不会自动显示或保存到日志文件。</span><span class="sxs-lookup"><span data-stu-id="0b43b-123">However, the information is not automatically displayed or saved to a log file.</span></span> <span data-ttu-id="0b43b-124">相反，手动运行合成事务的管理员可以使用 OutLoggerVariable 参数指定将存储信息的 Windows PowerShell 变量。</span><span class="sxs-lookup"><span data-stu-id="0b43b-124">Instead, administrators who are manually running a synthetic transaction can use the OutLoggerVariable parameter to specify a Windows PowerShell variable in which the information will be stored.</span></span> <span data-ttu-id="0b43b-125">然后，管理员可以使用一对方法，使其能够以 XML 或 HTML 格式保存和/或查看丰富的日志。</span><span class="sxs-lookup"><span data-stu-id="0b43b-125">From there, administrators can then use a pair of methods that enable them to save and/or view the rich log in either XML or HTML format.</span></span>
+
+<span data-ttu-id="0b43b-126">例如，Lync Server 2010 管理员可能使用类似如下的命令运行 **CsRegistration** cmdlet：</span><span class="sxs-lookup"><span data-stu-id="0b43b-126">For example, Lync Server 2010 administrators might run the **Test-CsRegistration** cmdlet by using a command similar to the following:</span></span>
+
+    Test-CsRegistration -TargetFqdn atl-cs-001.litwareinc.com
+
+<span data-ttu-id="0b43b-127">管理员可以选择包含 OutLoggerVariable 参数，后跟其选择的变量名称：</span><span class="sxs-lookup"><span data-stu-id="0b43b-127">Administrators have the option of including the OutLoggerVariable parameter followed by a variable name of their choosing:</span></span>
+
+    Test-CsRegistration -TargetFqdn atl-cs-001.litwareinc.com -OutLoggerVariable RegistrationTest
+
+> [!NOTE]  
+> <span data-ttu-id="0b43b-128">不要在变量名前面加 $ 字符。</span><span class="sxs-lookup"><span data-stu-id="0b43b-128">Do not preface the variable name with the $ character.</span></span> <span data-ttu-id="0b43b-129">使用变量名称（如 RegistrationTest，而不是 $RegistrationTest。</span><span class="sxs-lookup"><span data-stu-id="0b43b-129">Use a variable name like RegistrationTest and not $RegistrationTest.</span></span>
+
+<span data-ttu-id="0b43b-130">上面的命令输出类似于以下内容的内容：</span><span class="sxs-lookup"><span data-stu-id="0b43b-130">The preceding command outputs content similar to the following:</span></span>
+
+    Target Fqdn   : atl-cs-001.litwareinc.com
+    Result        : Failure
+    Latency       : 00:00:00
+    Error Message : This machine does not have any assigned certificates.
+    Diagnosis     :
+
+<span data-ttu-id="0b43b-131">但是，此故障的详细信息更详细，而不仅仅是上面显示的错误消息。</span><span class="sxs-lookup"><span data-stu-id="0b43b-131">However, much more detailed information is available for this failure than just the error message shown above.</span></span> <span data-ttu-id="0b43b-132">若要以 HTML 格式访问这些信息，请使用与此类似的命令，将变量 RegistrationTest 中存储的信息保存到 HTML 文件中：</span><span class="sxs-lookup"><span data-stu-id="0b43b-132">To access that information in HTML format, use a command similar to this in order to save the information stored in the variable RegistrationTest to an HTML file:</span></span>
+
+    $RegistrationTest.ToHTML() | Out-File C:\Logs\Registration.html
+
+<span data-ttu-id="0b43b-133">或者，你可以使用 ToXML ( # A1 方法将数据保存到 XML 文件：</span><span class="sxs-lookup"><span data-stu-id="0b43b-133">Alternatively, you can use the ToXML() method to save the data to an XML file:</span></span>
+
+    $RegistrationTest.ToXML() | Out-File C:\Logs\Registration.xml
+
+<span data-ttu-id="0b43b-134">然后，可以使用 Internet Explorer、Visual Studio 或任何其他能够打开 HTML/XML 文件的应用程序来查看这些文件。</span><span class="sxs-lookup"><span data-stu-id="0b43b-134">These files can then be viewed using Internet Explorer, Visual Studio, or any other application capable of opening HTML/XML files.</span></span>
+
+<span data-ttu-id="0b43b-135">从 System Center Operations Manager 内部运行的合成事务将自动为故障生成这些日志文件。</span><span class="sxs-lookup"><span data-stu-id="0b43b-135">Synthetic transactions run from inside of System Center Operations Manager will automatically generate these log files for failures.</span></span> <span data-ttu-id="0b43b-136">但是，如果在 Windows PowerShell 能够加载和运行合成事务之前执行失败，则不会生成这些日志。</span><span class="sxs-lookup"><span data-stu-id="0b43b-136">However, these logs will not be generated if the execution fails before Windows PowerShell is able to load and run the synthetic transaction.</span></span>
+
+> [!IMPORTANT]  
+> <span data-ttu-id="0b43b-137">默认情况下，Lync Server 2013 将日志文件保存到未共享的文件夹中。</span><span class="sxs-lookup"><span data-stu-id="0b43b-137">By default, Lync Server 2013 saves log files to a folder that is not shared.</span></span> <span data-ttu-id="0b43b-138">为了使这些日志易于访问，你应该共享此文件夹 (例如 \\ \\ atl-观察程序-litwareinc。 com\WatcherNode。</span><span class="sxs-lookup"><span data-stu-id="0b43b-138">To make these logs readily accessible, you should share this folder (for example, \\\\atl-watcher-001.litwareinc.com\WatcherNode.</span></span>
+
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
