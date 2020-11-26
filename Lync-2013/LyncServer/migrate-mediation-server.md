@@ -1,0 +1,74 @@
+---
+title: 迁移中介服务器
+description: 迁移中介服务器。
+ms.reviewer: ''
+ms.author: serdars
+author: serdarsoysal
+f1.keywords:
+- NOCSH
+TOCTitle: Migrate Mediation Server
+ms:assetid: b0b77121-2c8f-413e-b276-dbf1038361d3
+ms:mtpsurl: https://technet.microsoft.com/en-us/library/JJ205173(v=OCS.15)
+ms:contentKeyID: 48185117
+ms.date: 07/23/2014
+manager: serdars
+mtps_version: v=OCS.15
+ms.openlocfilehash: 31cc4c95f0e9c86b48594238218db22f3ec1a387
+ms.sourcegitcommit: 36fee89bb887bea4f18b19f17a8c69daf5bc423d
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "49446869"
+---
+# <a name="migrate-mediation-server"></a><span data-ttu-id="58c7e-103">迁移中介服务器</span><span class="sxs-lookup"><span data-stu-id="58c7e-103">Migrate Mediation Server</span></span>
+
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+
+<div class="topic" data-xmlns="http://www.w3.org/1999/xhtml" data-msxsl="urn:schemas-microsoft-com:xslt" data-cs="https://msdn.microsoft.com/">
+
+<div data-asp="https://msdn2.microsoft.com/asp">
+
+
+
+</div>
+
+<div id="mainSection">
+
+<div id="mainBody"><span data-ttu-id="58c7e-104">
+
+<span> </span></span><span class="sxs-lookup"><span data-stu-id="58c7e-104">
+
+<span> </span></span></span>
+
+<span data-ttu-id="58c7e-105">_**主题上次修改时间：** 2012-09-28_</span><span class="sxs-lookup"><span data-stu-id="58c7e-105">_**Topic Last Modified:** 2012-09-28_</span></span>
+
+<span data-ttu-id="58c7e-106">当运行 "合并向导" 时，中介服务器将合并到 Lync Server 2013 试点拓扑中。</span><span class="sxs-lookup"><span data-stu-id="58c7e-106">Your Mediation Server is merged into your Lync Server 2013 pilot topology when you run the Merge wizard.</span></span> <span data-ttu-id="58c7e-107">但是，你可以配置 Lync Server 2013 中介服务器，因为 Office 通信服务器 2007 R2 池无法与 Lync server 2013 中介服务器通信，因此在迁移所有用户后。</span><span class="sxs-lookup"><span data-stu-id="58c7e-107">You configure the Lync Server 2013 Mediation Server, however, after all users are migrated because an Office Communications Server 2007 R2 pool cannot communicate with a Lync Server 2013 Mediation Server.</span></span> <span data-ttu-id="58c7e-108">在并行迁移期间，Lync Server 2013 池与 Office 通信服务器 2007 R2 中介服务器通信。</span><span class="sxs-lookup"><span data-stu-id="58c7e-108">During the side-by-side migration, the Lync Server 2013 pool communicates with the Office Communications Server 2007 R2 Mediation Server.</span></span>
+
+<span data-ttu-id="58c7e-109">当您配置 Lync Server 2013 中介服务器时，您还必须升级或替换您的 Office 通信服务器 2007 R2 网关。</span><span class="sxs-lookup"><span data-stu-id="58c7e-109">When you configure your Lync Server 2013 Mediation Server, you must also upgrade or replace your Office Communications Server 2007 R2 gateways.</span></span> <span data-ttu-id="58c7e-110">Office 通信服务器 2007 R2 网关不支持 Lync Server 2013 中介服务器。</span><span class="sxs-lookup"><span data-stu-id="58c7e-110">Office Communications Server 2007 R2 gateways do not support Lync Server 2013 Mediation Server.</span></span> <span data-ttu-id="58c7e-111">你需要部署已认证的适用于 Lync Server 2013 的网关，并将其与 Lync Server 2013 中介服务器相关联。</span><span class="sxs-lookup"><span data-stu-id="58c7e-111">You need to deploy gateways that are certified for Lync Server 2013 and associate them with the Lync Server 2013 Mediation Server.</span></span> <span data-ttu-id="58c7e-112">必须先执行此步骤，然后才能完全停止 Office 通信服务器 2007 R2 部署。</span><span class="sxs-lookup"><span data-stu-id="58c7e-112">This step is required before you can completely decommission your Office Communications Server 2007 R2 deployment.</span></span>
+
+<span data-ttu-id="58c7e-113">本部分中的主题介绍了在完成 Lync Server 2013 中介服务器的迁移后需要执行的配置任务。</span><span class="sxs-lookup"><span data-stu-id="58c7e-113">The topics in this section describe configuration tasks that you need to perform after you have completed your migration of Lync Server 2013 Mediation Server.</span></span> <span data-ttu-id="58c7e-114">将 collocated 中介服务器转换为独立的中介服务器是一种可选任务。</span><span class="sxs-lookup"><span data-stu-id="58c7e-114">Transitioning the collocated Mediation Server to a stand-alone Mediation Server is an optional task.</span></span>
+
+  - [<span data-ttu-id="58c7e-115">配置中介服务器</span><span class="sxs-lookup"><span data-stu-id="58c7e-115">Configure Mediation Server</span></span>](configure-mediation-server.md)
+
+  - [<span data-ttu-id="58c7e-116">将语音路由更改为使用新的 Lync Server 2013 中介服务器</span><span class="sxs-lookup"><span data-stu-id="58c7e-116">Change voice routes to use the new Lync Server 2013 Mediation Server</span></span>](change-voice-routes-to-use-the-new-lync-server-2013-mediation-server.md)
+
+  - [<span data-ttu-id="58c7e-117">将 collocated 中介服务器切换到独立中介服务器 (可选) </span><span class="sxs-lookup"><span data-stu-id="58c7e-117">Transition a collocated Mediation Server to a stand-alone Mediation Server (optional)</span></span>](transition-a-collocated-mediation-server-to-a-stand-alone-mediation-server-optional.md)
+
+<span data-ttu-id="58c7e-118"></div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</span><span class="sxs-lookup"><span data-stu-id="58c7e-118"></div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</span></span></div>
+

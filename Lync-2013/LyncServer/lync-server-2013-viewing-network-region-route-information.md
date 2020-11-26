@@ -1,0 +1,130 @@
+---
+title: Lync Server 2013：查看网络区域路由信息
+description: Lync Server 2013：查看网络区域路由信息。
+ms.reviewer: ''
+ms.author: v-lanac
+author: lanachin
+f1.keywords:
+- NOCSH
+TOCTitle: Viewing network region route information
+ms:assetid: 34dd9fa3-e695-4680-b244-3019298b5009
+ms:mtpsurl: https://technet.microsoft.com/en-us/library/JJ688021(v=OCS.15)
+ms:contentKeyID: 49733611
+ms.date: 07/23/2014
+manager: serdars
+mtps_version: v=OCS.15
+ms.openlocfilehash: 3eca6348ecb13cd0b0b28950d57c741c056c1bd7
+ms.sourcegitcommit: 36fee89bb887bea4f18b19f17a8c69daf5bc423d
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "49446196"
+---
+# <a name="viewing-network-region-route-information-in-lync-server-2013"></a><span data-ttu-id="1b08e-103">在 Lync Server 2013 中查看网络区域路线信息</span><span class="sxs-lookup"><span data-stu-id="1b08e-103">Viewing network region route information in Lync Server 2013</span></span>
+
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+
+<div class="topic" data-xmlns="http://www.w3.org/1999/xhtml" data-msxsl="urn:schemas-microsoft-com:xslt" data-cs="https://msdn.microsoft.com/">
+
+<div data-asp="https://msdn2.microsoft.com/asp">
+
+
+
+</div>
+
+<div id="mainSection">
+
+<div id="mainBody"><span data-ttu-id="1b08e-104">
+
+<span> </span></span><span class="sxs-lookup"><span data-stu-id="1b08e-104">
+
+<span> </span></span></span>
+
+<span data-ttu-id="1b08e-105">_**主题上次修改时间：** 2013-02-23_</span><span class="sxs-lookup"><span data-stu-id="1b08e-105">_**Topic Last Modified:** 2013-02-23_</span></span>
+
+<span data-ttu-id="1b08e-106">呼叫许可控制中的每个地区 (CAC) 配置都必须具有某种方式才能访问其他每个区域。</span><span class="sxs-lookup"><span data-stu-id="1b08e-106">Every region within a call admission control (CAC) configuration must have some way to access every other region.</span></span> <span data-ttu-id="1b08e-107">虽然区域链接为区域之间的连接设置带宽限制，同时也表示物理链接，但路由决定了连接从一个地区到另一个地区的链接路径。</span><span class="sxs-lookup"><span data-stu-id="1b08e-107">While region links set bandwidth limitations on the connections between regions and also represent the physical links, a route determines which linked path the connection will traverse from one region to another.</span></span> <span data-ttu-id="1b08e-108">使用以下过程可查看 Lync Server 2013 控制面板中的现有网络区域路由或 Lync Server 2013 管理外壳程序。</span><span class="sxs-lookup"><span data-stu-id="1b08e-108">Use the following procedures to view existing network region routes in Lync Server 2013 Control Panel or Lync Server 2013 Management Shell.</span></span> <span data-ttu-id="1b08e-109">有关创建或修改网络区域路由的详细信息，请参阅 [在 Lync Server 2013 中创建或修改网络区域路由](lync-server-2013-creating-or-modifying-network-region-routes.md)。</span><span class="sxs-lookup"><span data-stu-id="1b08e-109">For details about creating or modifying network region routes, see [Creating or modifying network region routes in Lync Server 2013](lync-server-2013-creating-or-modifying-network-region-routes.md).</span></span>
+
+<div>
+
+## <a name="to-view-network-region-route-information-in-lync-server-control-panel"></a><span data-ttu-id="1b08e-110">在 Lync Server "控制面板" 中查看网络区域路线信息</span><span class="sxs-lookup"><span data-stu-id="1b08e-110">To view network region route information in Lync Server Control Panel</span></span>
+
+1.  <span data-ttu-id="1b08e-111">使用 RTCUniversalServerAdmins 组成员（或具有同等用户权限）的用户帐户，或分配给 CsAdministrator 角色的用户帐户，登录到内部部署中的任何计算机。</span><span class="sxs-lookup"><span data-stu-id="1b08e-111">From a user account that is a member of the RTCUniversalServerAdmins group (or has equivalent user rights), or is assigned to the CsAdministrator role, log on to any computer in your internal deployment.</span></span>
+
+2.  <span data-ttu-id="1b08e-112">打开一个浏览器窗口，然后输入 "管理员" URL 以打开 Lync Server "控制面板"。</span><span class="sxs-lookup"><span data-stu-id="1b08e-112">Open a browser window, and then enter the Admin URL to open the Lync Server Control Panel.</span></span> <span data-ttu-id="1b08e-113">有关可用于启动 Lync Server "控制面板" 的不同方法的详细信息，请参阅 [打开 Lync server 2013 管理工具](lync-server-2013-open-lync-server-administrative-tools.md)。</span><span class="sxs-lookup"><span data-stu-id="1b08e-113">For details about the different methods you can use to start Lync Server Control Panel, see [Open Lync Server 2013 administrative tools](lync-server-2013-open-lync-server-administrative-tools.md).</span></span>
+
+3.  <span data-ttu-id="1b08e-114">在左侧导航栏中，单击 " **网络配置** "，然后单击 " **区域路由**"。</span><span class="sxs-lookup"><span data-stu-id="1b08e-114">In the left navigation bar, click **Network Configuration** and then click **Region Route**.</span></span>
+
+4.  <span data-ttu-id="1b08e-115">在 " **区域路线** " 页面上，单击要查看的地区路线。</span><span class="sxs-lookup"><span data-stu-id="1b08e-115">On the **Region Route** page, click the region route that you want to view.</span></span>
+    
+    <div>
+    
+
+    > [!NOTE]  
+    > <span data-ttu-id="1b08e-116">一次只能查看一个区域路线。</span><span class="sxs-lookup"><span data-stu-id="1b08e-116">You can only view one region route at a time.</span></span>
+
+    
+    </div>
+
+5.  <span data-ttu-id="1b08e-117">在“编辑”菜单上，单击“显示详细信息”。</span><span class="sxs-lookup"><span data-stu-id="1b08e-117">On the **Edit** menu, click **Show details**.</span></span>
+
+</div>
+
+<div>
+
+## <a name="viewing-network-region-route-information-by-using-windows-powershell-cmdlets"></a><span data-ttu-id="1b08e-118">使用 Windows PowerShell Cmdlet 查看网络区域路由信息</span><span class="sxs-lookup"><span data-stu-id="1b08e-118">Viewing Network Region Route Information by Using Windows PowerShell Cmdlets</span></span>
+
+<span data-ttu-id="1b08e-119">可以使用 Windows PowerShell 和 Get-CsNetworkInterRegionRoute cmdlet 查看网络区域路线信息。</span><span class="sxs-lookup"><span data-stu-id="1b08e-119">Network region route information can be viewed by using Windows PowerShell and the Get-CsNetworkInterRegionRoute cmdlet.</span></span> <span data-ttu-id="1b08e-120">此 cmdlet 既可以从 Lync Server 2013 管理外壳运行，也可以从 Windows PowerShell 的远程会话运行。</span><span class="sxs-lookup"><span data-stu-id="1b08e-120">This cmdlet can be run either from the Lync Server 2013 Management Shell or from a remote session of Windows PowerShell.</span></span> <span data-ttu-id="1b08e-121">有关使用远程 Windows PowerShell 连接到 Lync Server 的详细信息，请参阅 Lync Server Windows PowerShell 博客文章 "快速入门：使用远程 PowerShell 管理 Microsoft Lync Server 2010" [https://go.microsoft.com/fwlink/p/?linkId=255876](https://go.microsoft.com/fwlink/p/?linkid=255876) 。</span><span class="sxs-lookup"><span data-stu-id="1b08e-121">For details about using remote Windows PowerShell to connect to Lync Server, see the Lync Server Windows PowerShell blog article "Quick Start: Managing Microsoft Lync Server 2010 Using Remote PowerShell" at [https://go.microsoft.com/fwlink/p/?linkId=255876](https://go.microsoft.com/fwlink/p/?linkid=255876).</span></span>
+
+<div>
+
+## <a name="to-view-network-region-route-information"></a><span data-ttu-id="1b08e-122">查看网络区域路线信息</span><span class="sxs-lookup"><span data-stu-id="1b08e-122">To view network region route information</span></span>
+
+  - <span data-ttu-id="1b08e-123">若要查看有关所有网络区域路由的信息，请在 Lync Server 命令行管理程序中键入以下命令，然后按 ENTER：</span><span class="sxs-lookup"><span data-stu-id="1b08e-123">To view information about all your network region routes, type the following command in the Lync Server Management Shell and then press ENTER:</span></span>
+    
+        Get-CsNetworkInterRegionRoute
+    
+    <span data-ttu-id="1b08e-124">这将返回与以下类似的信息：</span><span class="sxs-lookup"><span data-stu-id="1b08e-124">That will return information similar to this:</span></span>
+    
+        Identity                  : TransAmericaRoute
+        NetworkRegionLinks        : {NorthwestToNortheast}
+        InterNetworkRegionRouteID : TransAmericaRoute
+        NetworkRegionID1          : Pacific Northwest
+        NetworkRegionID2          : Northeast
+
+</div>
+
+<span data-ttu-id="1b08e-125">有关详细信息，请参阅 [CsNetworkInterRegionRoute](https://docs.microsoft.com/powershell/module/skype/Get-CsNetworkInterRegionRoute) cmdlet 的帮助主题。</span><span class="sxs-lookup"><span data-stu-id="1b08e-125">For more information, see the help topic for the [Get-CsNetworkInterRegionRoute](https://docs.microsoft.com/powershell/module/skype/Get-CsNetworkInterRegionRoute) cmdlet.</span></span>
+
+</div>
+
+<div>
+
+## <a name="see-also"></a><span data-ttu-id="1b08e-126">另请参阅</span><span class="sxs-lookup"><span data-stu-id="1b08e-126">See Also</span></span>
+
+
+[<span data-ttu-id="1b08e-127">在 Lync Server 2013 中创建或修改网络区域路由</span><span class="sxs-lookup"><span data-stu-id="1b08e-127">Creating or modifying network region routes in Lync Server 2013</span></span>](lync-server-2013-creating-or-modifying-network-region-routes.md)  
+[<span data-ttu-id="1b08e-128">删除 Lync Server 2013 中的现有网络区域路由</span><span class="sxs-lookup"><span data-stu-id="1b08e-128">Deleting existing network region routes in Lync Server 2013</span></span>](lync-server-2013-deleting-existing-network-region-routes.md)  
+  
+
+<span data-ttu-id="1b08e-129"></div>
+
+</div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</span><span class="sxs-lookup"><span data-stu-id="1b08e-129"></div>
+
+</div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</span></span></div>
+

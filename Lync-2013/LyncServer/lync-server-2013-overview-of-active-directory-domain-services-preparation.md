@@ -1,0 +1,175 @@
+---
+title: Lync Server 2013：Active Directory 域服务准备概述
+description: Lync Server 2013： Active Directory 域服务准备概述。
+ms.reviewer: ''
+ms.author: v-lanac
+author: lanachin
+f1.keywords:
+- NOCSH
+TOCTitle: Overview of Active Directory Domain Services preparation
+ms:assetid: cdd2a652-6a0d-4728-9950-3fcaa7a80066
+ms:mtpsurl: https://technet.microsoft.com/en-us/library/Gg398869(v=OCS.15)
+ms:contentKeyID: 48185662
+ms.date: 07/23/2014
+manager: serdars
+mtps_version: v=OCS.15
+ms.openlocfilehash: 18b22e11a73ad7a181e2eaf887b1b49b934d9db5
+ms.sourcegitcommit: 36fee89bb887bea4f18b19f17a8c69daf5bc423d
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "49445160"
+---
+# <a name="overview-of-active-directory-domain-services-preparation-in-lync-server-2013"></a><span data-ttu-id="f0fa4-103">Lync Server 2013 中的 Active Directory 域服务准备概述</span><span class="sxs-lookup"><span data-stu-id="f0fa4-103">Overview of Active Directory Domain Services preparation in Lync Server 2013</span></span>
+
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+
+<div class="topic" data-xmlns="http://www.w3.org/1999/xhtml" data-msxsl="urn:schemas-microsoft-com:xslt" data-cs="https://msdn.microsoft.com/">
+
+<div data-asp="https://msdn2.microsoft.com/asp">
+
+
+
+</div>
+
+<div id="mainSection">
+
+<div id="mainBody"><span data-ttu-id="f0fa4-104">
+
+<span> </span></span><span class="sxs-lookup"><span data-stu-id="f0fa4-104">
+
+<span> </span></span></span>
+
+<span data-ttu-id="f0fa4-105">_**主题上次修改时间：** 2012-10-29_</span><span class="sxs-lookup"><span data-stu-id="f0fa4-105">_**Topic Last Modified:** 2012-10-29_</span></span>
+
+<span data-ttu-id="f0fa4-106">若要为 Lync Server 2013 部署准备 Active Directory 域服务，必须按特定顺序执行三个步骤。</span><span class="sxs-lookup"><span data-stu-id="f0fa4-106">To prepare Active Directory Domain Services for your Lync Server 2013 deployment, you must perform three steps in a specific sequence.</span></span>
+
+<span data-ttu-id="f0fa4-107">下表介绍了为 Lync Server 准备 AD DS 所需的步骤。</span><span class="sxs-lookup"><span data-stu-id="f0fa4-107">The following table describes the steps required to prepare AD DS for Lync Server.</span></span>
+
+### <a name="active-directory-preparation-steps"></a><span data-ttu-id="f0fa4-108">Active Directory 准备步骤</span><span class="sxs-lookup"><span data-stu-id="f0fa4-108">Active Directory Preparation Steps</span></span>
+
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th><span data-ttu-id="f0fa4-109">步骤</span><span class="sxs-lookup"><span data-stu-id="f0fa4-109">Step</span></span></th>
+<th><span data-ttu-id="f0fa4-110">说明</span><span class="sxs-lookup"><span data-stu-id="f0fa4-110">Description</span></span></th>
+<th><span data-ttu-id="f0fa4-111">运行位置</span><span class="sxs-lookup"><span data-stu-id="f0fa4-111">Where run</span></span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><p>1.</p></td>
+<td><p><span data-ttu-id="f0fa4-112"><a href="lync-server-2013-preparing-the-active-directory-schema.md">在 Lync Server 2013 中准备 Active Directory 架构</a></span><span class="sxs-lookup"><span data-stu-id="f0fa4-112"><a href="lync-server-2013-preparing-the-active-directory-schema.md">Preparing the Active Directory schema in Lync Server 2013</a></span></span></p></td>
+<td><p><span data-ttu-id="f0fa4-113">通过添加 Lync Server 使用的新类和属性，扩展 Active Directory 架构。</span><span class="sxs-lookup"><span data-stu-id="f0fa4-113">Extends the Active Directory schema by adding new classes and attributes that are used by Lync Server.</span></span></p>
+<p><span data-ttu-id="f0fa4-114">对将在其中部署 Lync Server 的部署中的每个林运行一次。</span><span class="sxs-lookup"><span data-stu-id="f0fa4-114">Run once for each forest in your deployment where Lync Server will be deployed.</span></span></p></td>
+<td><p><span data-ttu-id="f0fa4-115">对于将在其中部署 Lync Server 的每个林的根域中的架构主机。</span><span class="sxs-lookup"><span data-stu-id="f0fa4-115">Against the schema master in the root domain of each forest where Lync Server will be deployed.</span></span></p>
+<div>
+
+> [!NOTE]  
+> <span data-ttu-id="f0fa4-116">如果你拥有架构主机的权限，则无需在根域中运行此步骤，但你必须是根域中的架构管理员组的成员，以及架构主机上企业管理员组的成员。</span><span class="sxs-lookup"><span data-stu-id="f0fa4-116">You do not need to run this step in the root domain if you have permissions on the schema master, but you must be a member of the Schema Admins group in the root domain and a member of the Enterprise Admins group on the schema master.</span></span> <span data-ttu-id="f0fa4-117">在资源林拓扑中，仅在资源目录林中运行此步骤，而不是在任何用户林中运行。</span><span class="sxs-lookup"><span data-stu-id="f0fa4-117">In a resource forest topology, run this step only in the resource forest, not in any user forests.</span></span> <span data-ttu-id="f0fa4-118">在中央林拓扑中，仅在中央林中（而不是在任何用户林中）运行此步骤。</span><span class="sxs-lookup"><span data-stu-id="f0fa4-118">In a central forest topology, run this step only in the central forest, not in any user forests.</span></span>
+
+
+</div></td>
+</tr>
+<tr class="even">
+<td><p>2.</p></td>
+<td><p><span data-ttu-id="f0fa4-119"><a href="lync-server-2013-preparing-the-forest.md">为 Lync Server 2013 准备林</a></span><span class="sxs-lookup"><span data-stu-id="f0fa4-119"><a href="lync-server-2013-preparing-the-forest.md">Preparing the forest for Lync Server 2013</a></span></span></p></td>
+<td><p><span data-ttu-id="f0fa4-120">创建由 Lync Server 使用的全局设置和通用组。</span><span class="sxs-lookup"><span data-stu-id="f0fa4-120">Creates global settings and universal groups that are used by Lync Server.</span></span></p>
+<p><span data-ttu-id="f0fa4-121">对将在其中部署 Lync Server 的部署中的每个林运行一次。</span><span class="sxs-lookup"><span data-stu-id="f0fa4-121">Run once for each forest in your deployment where Lync Server will be deployed.</span></span></p></td>
+<td><p><span data-ttu-id="f0fa4-122">在将在其中部署 Lync Server 的每个林的根域中。</span><span class="sxs-lookup"><span data-stu-id="f0fa4-122">In the root domain of each forest where Lync Server will be deployed.</span></span> <span data-ttu-id="f0fa4-123">若要运行此步骤，您必须是企业管理员组的成员。</span><span class="sxs-lookup"><span data-stu-id="f0fa4-123">To run this step, you must be a member of the Enterprise Admins group.</span></span></p>
+<div>
+
+> [!NOTE]  
+> <span data-ttu-id="f0fa4-124">在资源林拓扑中，仅在资源目录林中运行此步骤，而不是在任何用户林中运行。</span><span class="sxs-lookup"><span data-stu-id="f0fa4-124">In a resource forest topology, run this step only in the resource forest, not in any user forests.</span></span> <span data-ttu-id="f0fa4-125">在中央林拓扑中，仅在中央林中（而不是在任何用户林中）运行此步骤。</span><span class="sxs-lookup"><span data-stu-id="f0fa4-125">In a central forest topology, run this step only in the central forest, not in any user forests.</span></span>
+
+
+</div></td>
+</tr>
+<tr class="odd">
+<td><p>3.</p></td>
+<td><p><span data-ttu-id="f0fa4-126"><a href="lync-server-2013-preparing-domains.md">为 Lync Server 2013 准备域</a></span><span class="sxs-lookup"><span data-stu-id="f0fa4-126"><a href="lync-server-2013-preparing-domains.md">Preparing domains for Lync Server 2013</a></span></span></p></td>
+<td><p><span data-ttu-id="f0fa4-127">在要由通用组成员使用的对象上添加权限。</span><span class="sxs-lookup"><span data-stu-id="f0fa4-127">Adds permissions on objects to be used by members of universal groups.</span></span></p>
+<p><span data-ttu-id="f0fa4-128">每个用户域或服务器域运行一次。</span><span class="sxs-lookup"><span data-stu-id="f0fa4-128">Run once per user domain or server domain.</span></span></p>
+<div>
+
+> [!NOTE]  
+> <span data-ttu-id="f0fa4-129">如果要从 Lync Server 2010 迁移到 Lync Server 2013，则部署向导可能会指示域准备已完成。</span><span class="sxs-lookup"><span data-stu-id="f0fa4-129">If you are migrating from Lync Server 2010 to Lync Server 2013, the Deployment Wizard may indicate that domain preparation is already complete.</span></span> <span data-ttu-id="f0fa4-130">无需再次运行域准备。</span><span class="sxs-lookup"><span data-stu-id="f0fa4-130">You do not need to run domain preparation again.</span></span> <span data-ttu-id="f0fa4-131">权限未从 Lync Server 2010 更改为 Lync Server 2013。</span><span class="sxs-lookup"><span data-stu-id="f0fa4-131">Permissions were not changed from Lync Server 2010 to Lync Server 2013.</span></span>
+
+
+</div></td>
+<td><p><span data-ttu-id="f0fa4-132">在将部署 Lync Server 的每个域中的成员服务器上。</span><span class="sxs-lookup"><span data-stu-id="f0fa4-132">On a member server in each domain where Lync Server will be deployed.</span></span> <span data-ttu-id="f0fa4-133">若要运行此步骤，您必须是域管理员组的成员。</span><span class="sxs-lookup"><span data-stu-id="f0fa4-133">To run this step, you must be a member of the Domain Admins group.</span></span></p></td>
+</tr>
+</tbody>
+</table>
+
+
+<div id="sectionSection0" class="section">
+
+<span data-ttu-id="f0fa4-134">Lync Server 2013 （如 Lync Server 2010）将大部分配置信息存储在中央管理存储中，而不是在 Office 通信服务器 2007 R2 中的情况下，而不是在 AD DS 中。</span><span class="sxs-lookup"><span data-stu-id="f0fa4-134">Lync Server 2013, like Lync Server 2010, stores much of the configuration information in the Central Management store instead of in AD DS as was the case in Office Communications Server 2007 R2.</span></span> <span data-ttu-id="f0fa4-135">但是，以下信息存储在 AD DS 中：</span><span class="sxs-lookup"><span data-stu-id="f0fa4-135">However, the following information is stored in AD DS:</span></span>
+
+  - <span data-ttu-id="f0fa4-136">**架构扩展**：</span><span class="sxs-lookup"><span data-stu-id="f0fa4-136">**Schema extensions**:</span></span>
+    
+      - <span data-ttu-id="f0fa4-137">用户对象扩展</span><span class="sxs-lookup"><span data-stu-id="f0fa4-137">User object extensions</span></span>
+    
+      - <span data-ttu-id="f0fa4-138">用于维护向后兼容性的 Office 通信服务器 2007 R2 类的扩展</span><span class="sxs-lookup"><span data-stu-id="f0fa4-138">Extensions for Office Communications Server 2007 R2 classes to maintain backward compatibility</span></span>
+
+<!-- end list -->
+
+  - <span data-ttu-id="f0fa4-139">存储在 Lync Server 扩展架构和现有架构类) 中的 **数据** (：</span><span class="sxs-lookup"><span data-stu-id="f0fa4-139">**Data** (stored in Lync Server extended schema and in existing schema classes):</span></span>
+    
+      - <span data-ttu-id="f0fa4-140">用户 SIP 统一资源标识符 (URI) 和其他用户设置</span><span class="sxs-lookup"><span data-stu-id="f0fa4-140">User SIP Uniform Resource Identifier (URI) and other user settings</span></span>
+    
+      - <span data-ttu-id="f0fa4-141">响应组和会议助理等应用程序的联系人对象</span><span class="sxs-lookup"><span data-stu-id="f0fa4-141">Contact objects for applications such as Response Group and Conferencing Attendant</span></span>
+    
+      - <span data-ttu-id="f0fa4-142">指向中央管理存储的指针</span><span class="sxs-lookup"><span data-stu-id="f0fa4-142">A pointer to the Central Management store</span></span>
+    
+      - <span data-ttu-id="f0fa4-143">Kerberos 身份验证帐户（可选计算机对象）</span><span class="sxs-lookup"><span data-stu-id="f0fa4-143">Kerberos Authentication Account (an optional computer object)</span></span>
+
+<span data-ttu-id="f0fa4-144">在 Lync Server 2013 中，你可以通过向 RTCUniversalServerAdmins 通用组授予设置权限来委派设置和管理，以便该组的成员可以在本地服务器 (上安装和激活 Lync Server 2013，然后再将服务器添加到拓扑、已发布并启用) 。</span><span class="sxs-lookup"><span data-stu-id="f0fa4-144">In Lync Server 2013, you delegate setup and administration by granting setup permissions to the RTCUniversalServerAdmins universal group so that members of that group can install and activate Lync Server 2013 on a local server (after the server has been added to the topology, published, and enabled).</span></span> <span data-ttu-id="f0fa4-145">委派用户必须是安装和激活 Lync Server 2013 的计算机上的本地管理员，但不需要是域管理员组的成员。</span><span class="sxs-lookup"><span data-stu-id="f0fa4-145">The delegated users must be local administrators on the computer where they are installing and activating Lync Server 2013, but they do not need to be members of the Domain Admins group.</span></span> <span data-ttu-id="f0fa4-146">你还可以为指定组织单位 (Ou) 中的对象授予权限，以便在林准备期间创建的通用组的成员可以访问这些对象，而不是域管理员组的成员。</span><span class="sxs-lookup"><span data-stu-id="f0fa4-146">You can also grant permissions for objects in specified organizational units (OUs) so that members of the universal groups created during forest preparation can access those objects without being members of the Domain Admins group.</span></span>
+
+<span data-ttu-id="f0fa4-147">对于 Lync Server 2013 的新部署，全局设置必须存储在配置容器中。</span><span class="sxs-lookup"><span data-stu-id="f0fa4-147">For new deployments of Lync Server 2013, global settings must be stored in the Configuration container.</span></span> <span data-ttu-id="f0fa4-148">如果你的组织从早期版本升级，并且在系统容器中仍具有全局设置，则系统容器仍受支持。</span><span class="sxs-lookup"><span data-stu-id="f0fa4-148">If your organization is upgrading from an earlier version and you still have global settings in the System container, the System container is still supported.</span></span>
+
+</div>
+
+<div>
+
+## <a name="see-also"></a><span data-ttu-id="f0fa4-149">另请参阅</span><span class="sxs-lookup"><span data-stu-id="f0fa4-149">See Also</span></span>
+
+
+[<span data-ttu-id="f0fa4-150">在 Lync Server 2013 中准备 Active Directory 架构</span><span class="sxs-lookup"><span data-stu-id="f0fa4-150">Preparing the Active Directory schema in Lync Server 2013</span></span>](lync-server-2013-preparing-the-active-directory-schema.md)  
+[<span data-ttu-id="f0fa4-151">Lync Server 2013 使用的 Active Directory 架构扩展、类和属性</span><span class="sxs-lookup"><span data-stu-id="f0fa4-151">Active Directory schema extensions, classes, and attributes used by Lync Server 2013</span></span>](lync-server-2013-active-directory-schema-extensions-classes-and-attributes-used-by-lync-server.md)  
+
+
+[<span data-ttu-id="f0fa4-152">为 Lync Server 2013 准备林</span><span class="sxs-lookup"><span data-stu-id="f0fa4-152">Preparing the forest for Lync Server 2013</span></span>](lync-server-2013-preparing-the-forest.md)  
+[<span data-ttu-id="f0fa4-153">为 Lync Server 2013 准备域</span><span class="sxs-lookup"><span data-stu-id="f0fa4-153">Preparing domains for Lync Server 2013</span></span>](lync-server-2013-preparing-domains.md)  
+  
+
+<span data-ttu-id="f0fa4-154"></div>
+
+</div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</span><span class="sxs-lookup"><span data-stu-id="f0fa4-154"></div>
+
+</div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</span></span></div>
+
