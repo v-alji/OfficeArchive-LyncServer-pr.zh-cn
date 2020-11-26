@@ -1,0 +1,155 @@
+---
+title: Lync Server 2013：Internet Information Services (IIS) 要求
+description: Lync Server 2013： Internet 信息服务 (IIS) 要求。
+ms.reviewer: ''
+ms.author: v-lanac
+author: lanachin
+f1.keywords:
+- NOCSH
+TOCTitle: Internet Information Services (IIS) requirements
+ms:assetid: 4f57a605-a8a9-4c5a-9a18-05ecb3d9ab6b
+ms:mtpsurl: https://technet.microsoft.com/en-us/library/Gg398321(v=OCS.15)
+ms:contentKeyID: 48184128
+ms.date: 07/23/2014
+manager: serdars
+mtps_version: v=OCS.15
+ms.openlocfilehash: dd8de55fa4611c3ab29eac7d7c28c522b418e77d
+ms.sourcegitcommit: 36fee89bb887bea4f18b19f17a8c69daf5bc423d
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "49426853"
+---
+# <a name="internet-information-services-iis-requirements-in-lync-server-2013"></a><span data-ttu-id="f26d1-103">Lync Server 2013 中的 Internet Information Services (IIS) 要求</span><span class="sxs-lookup"><span data-stu-id="f26d1-103">Internet Information Services (IIS) requirements in Lync Server 2013</span></span>
+
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+
+<div class="topic" data-xmlns="http://www.w3.org/1999/xhtml" data-msxsl="urn:schemas-microsoft-com:xslt" data-cs="https://msdn.microsoft.com/">
+
+<div data-asp="https://msdn2.microsoft.com/asp">
+
+
+
+</div>
+
+<div id="mainSection">
+
+<div id="mainBody"><span data-ttu-id="f26d1-104">
+
+<span> </span></span><span class="sxs-lookup"><span data-stu-id="f26d1-104">
+
+<span> </span></span></span>
+
+<span data-ttu-id="f26d1-105">_**主题上次修改时间：** 2012-06-19_</span><span class="sxs-lookup"><span data-stu-id="f26d1-105">_**Topic Last Modified:** 2012-06-19_</span></span>
+
+<span data-ttu-id="f26d1-106">多个 Lync Server 2013 组件需要 Internet 信息服务 (IIS) 。</span><span class="sxs-lookup"><span data-stu-id="f26d1-106">Several Lync Server 2013 components require Internet Information Services (IIS).</span></span> <span data-ttu-id="f26d1-107">本主题介绍支持 Lync Server 所需的特定 IIS 功能。</span><span class="sxs-lookup"><span data-stu-id="f26d1-107">This topic describes the specific IIS features required to support Lync Server.</span></span> <span data-ttu-id="f26d1-108">本部分中的主题介绍 IIS 的特定组件的要求。</span><span class="sxs-lookup"><span data-stu-id="f26d1-108">The topics in this section describe the requirements of specific components for IIS.</span></span>
+
+<span data-ttu-id="f26d1-109">如果在 Windows Server 2008 上启用了 Web 服务器 (IIS) 角色，则默认情况下会安装各种角色服务。</span><span class="sxs-lookup"><span data-stu-id="f26d1-109">When the Web Server (IIS) role is enabled on Windows Server 2008, various role services are installed by default.</span></span> <span data-ttu-id="f26d1-110">下表介绍了在 Windows Server 2008 上启用 Web 服务器 (IIS) 角色时必须安装的其他角色服务。</span><span class="sxs-lookup"><span data-stu-id="f26d1-110">The following table describes the additional role services that must be installed when the Web Server (IIS) role is enabled on Windows Server 2008.</span></span>
+
+
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><span data-ttu-id="f26d1-111">角色服务</span><span class="sxs-lookup"><span data-stu-id="f26d1-111">Role service</span></span></th>
+<th><span data-ttu-id="f26d1-112">功能</span><span class="sxs-lookup"><span data-stu-id="f26d1-112">Feature</span></span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><p><span data-ttu-id="f26d1-113">常见的 HTTP 功能</span><span class="sxs-lookup"><span data-stu-id="f26d1-113">Common HTTP Features</span></span></p></td>
+<td><p><span data-ttu-id="f26d1-114">HTTP 重定向</span><span class="sxs-lookup"><span data-stu-id="f26d1-114">HTTP Redirection</span></span></p></td>
+</tr>
+<tr class="even">
+<td><p><span data-ttu-id="f26d1-115">应用程序开发</span><span class="sxs-lookup"><span data-stu-id="f26d1-115">Application Development</span></span></p></td>
+<td><p><span data-ttu-id="f26d1-116">ASP.NET</span><span class="sxs-lookup"><span data-stu-id="f26d1-116">ASP.NET</span></span></p></td>
+</tr>
+<tr class="odd">
+<td><p><span data-ttu-id="f26d1-117">应用程序开发</span><span class="sxs-lookup"><span data-stu-id="f26d1-117">Application Development</span></span></p></td>
+<td><p><span data-ttu-id="f26d1-118">.NET 扩展性</span><span class="sxs-lookup"><span data-stu-id="f26d1-118">.NET Extensibility</span></span></p></td>
+</tr>
+<tr class="even">
+<td><p><span data-ttu-id="f26d1-119">应用程序开发</span><span class="sxs-lookup"><span data-stu-id="f26d1-119">Application Development</span></span></p></td>
+<td><p><span data-ttu-id="f26d1-120">ISAPI 扩展</span><span class="sxs-lookup"><span data-stu-id="f26d1-120">ISAPI Extensions</span></span></p></td>
+</tr>
+<tr class="odd">
+<td><p><span data-ttu-id="f26d1-121">应用程序开发</span><span class="sxs-lookup"><span data-stu-id="f26d1-121">Application Development</span></span></p></td>
+<td><p><span data-ttu-id="f26d1-122">ISAPI 筛选器</span><span class="sxs-lookup"><span data-stu-id="f26d1-122">ISAPI Filters</span></span></p></td>
+</tr>
+<tr class="even">
+<td><p><span data-ttu-id="f26d1-123">运行状况和诊断</span><span class="sxs-lookup"><span data-stu-id="f26d1-123">Health and Diagnostics</span></span></p></td>
+<td><p><span data-ttu-id="f26d1-124">日志记录工具</span><span class="sxs-lookup"><span data-stu-id="f26d1-124">Logging Tools</span></span></p></td>
+</tr>
+<tr class="odd">
+<td><p><span data-ttu-id="f26d1-125">运行状况和诊断</span><span class="sxs-lookup"><span data-stu-id="f26d1-125">Health and Diagnostics</span></span></p></td>
+<td><p><span data-ttu-id="f26d1-126">跟踪</span><span class="sxs-lookup"><span data-stu-id="f26d1-126">Tracing</span></span></p></td>
+</tr>
+<tr class="even">
+<td><p><span data-ttu-id="f26d1-127">安全性</span><span class="sxs-lookup"><span data-stu-id="f26d1-127">Security</span></span></p></td>
+<td><p><span data-ttu-id="f26d1-128">基本身份验证</span><span class="sxs-lookup"><span data-stu-id="f26d1-128">Basic Authentication</span></span></p></td>
+</tr>
+<tr class="odd">
+<td><p><span data-ttu-id="f26d1-129">安全性</span><span class="sxs-lookup"><span data-stu-id="f26d1-129">Security</span></span></p></td>
+<td><p><span data-ttu-id="f26d1-130">Windows 身份验证</span><span class="sxs-lookup"><span data-stu-id="f26d1-130">Windows Authentication</span></span></p></td>
+</tr>
+<tr class="even">
+<td><p><span data-ttu-id="f26d1-131">管理工具</span><span class="sxs-lookup"><span data-stu-id="f26d1-131">Management Tools</span></span></p></td>
+<td><p><span data-ttu-id="f26d1-132">IIS 管理脚本和工具</span><span class="sxs-lookup"><span data-stu-id="f26d1-132">IIS Management Scripts and Tools</span></span></p></td>
+</tr>
+<tr class="odd">
+<td><p><span data-ttu-id="f26d1-133">管理工具</span><span class="sxs-lookup"><span data-stu-id="f26d1-133">Management Tools</span></span></p></td>
+<td><p><span data-ttu-id="f26d1-134">IIS 6 管理兼容性</span><span class="sxs-lookup"><span data-stu-id="f26d1-134">IIS 6 Management Compatibility</span></span></p></td>
+</tr>
+</tbody>
+</table>
+
+
+<div>
+
+<table>
+<thead>
+<tr class="header">
+<th><img src="images/Gg398321.security(OCS.15).gif" title="安全" alt="security" /><span data-ttu-id="f26d1-136">安全说明：</span><span class="sxs-lookup"><span data-stu-id="f26d1-136">Security Note:</span></span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span data-ttu-id="f26d1-137">如果在 Windows Server 2008 操作系统上使用 IIS 7.0，则 Lync Server 设置将在 IIS 中禁用内核模式身份验证。</span><span class="sxs-lookup"><span data-stu-id="f26d1-137">If you are using IIS 7.0 on a Windows Server 2008 operating system, Lync Server Setup disables kernel mode authentication in IIS.</span></span></td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+
+<div>
+
+## <a name="in-this-section"></a><span data-ttu-id="f26d1-138">本节内容</span><span class="sxs-lookup"><span data-stu-id="f26d1-138">In This Section</span></span>
+
+  - [<span data-ttu-id="f26d1-139">Lync Server 2013 中前端池和 Standard Edition 服务器的 IIS 要求</span><span class="sxs-lookup"><span data-stu-id="f26d1-139">IIS requirements for Front End pools and Standard Edition servers in Lync Server 2013</span></span>](lync-server-2013-iis-requirements-for-front-end-pools-and-standard-edition-servers.md)
+
+<span data-ttu-id="f26d1-140"></div>
+
+</div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</span><span class="sxs-lookup"><span data-stu-id="f26d1-140"></div>
+
+</div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</span></span></div>
+

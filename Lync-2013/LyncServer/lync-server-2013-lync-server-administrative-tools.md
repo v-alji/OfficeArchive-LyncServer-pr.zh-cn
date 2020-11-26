@@ -1,0 +1,188 @@
+---
+title: Lync Server 2013：Lync Server 管理工具
+description: Lync Server 2013： Lync Server 管理工具。
+ms.reviewer: ''
+ms.author: v-lanac
+author: lanachin
+f1.keywords:
+- NOCSH
+TOCTitle: Lync Server administrative tools
+ms:assetid: 9b006f93-4f3d-461d-89b8-e80a34fdb3c5
+ms:mtpsurl: https://technet.microsoft.com/en-us/library/Gg195756(v=OCS.15)
+ms:contentKeyID: 48184972
+ms.date: 07/23/2014
+manager: serdars
+mtps_version: v=OCS.15
+ms.openlocfilehash: b654d48c6ad52175bfdfe745518007d76d626a37
+ms.sourcegitcommit: 36fee89bb887bea4f18b19f17a8c69daf5bc423d
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "49426296"
+---
+# <a name="lync-server-2013-administrative-tools"></a><span data-ttu-id="20fb9-103">Lync Server 2013 管理工具</span><span class="sxs-lookup"><span data-stu-id="20fb9-103">Lync Server 2013 administrative tools</span></span>
+
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+
+<div class="topic" data-xmlns="http://www.w3.org/1999/xhtml" data-msxsl="urn:schemas-microsoft-com:xslt" data-cs="https://msdn.microsoft.com/">
+
+<div data-asp="https://msdn2.microsoft.com/asp">
+
+
+
+</div>
+
+<div id="mainSection">
+
+<div id="mainBody"><span data-ttu-id="20fb9-104">
+
+<span> </span></span><span class="sxs-lookup"><span data-stu-id="20fb9-104">
+
+<span> </span></span></span>
+
+<span data-ttu-id="20fb9-105">_**主题上次修改时间：** 2013-02-21_</span><span class="sxs-lookup"><span data-stu-id="20fb9-105">_**Topic Last Modified:** 2013-02-21_</span></span>
+
+<span data-ttu-id="20fb9-106">本主题介绍了 Lync Server 2013 的管理工具。</span><span class="sxs-lookup"><span data-stu-id="20fb9-106">This topic describes the administrative tools for Lync Server 2013.</span></span>
+
+<span data-ttu-id="20fb9-107">默认情况下，在每台 Lync 服务器服务器上安装 "管理工具"。</span><span class="sxs-lookup"><span data-stu-id="20fb9-107">The administrative tools are installed by default on each Lync Server server.</span></span> <span data-ttu-id="20fb9-108">此外，还可以在其他计算机上安装管理工具，如专用管理控制台。</span><span class="sxs-lookup"><span data-stu-id="20fb9-108">Additionally, you can install the administrative tools on other computers, such as dedicated administrative consoles.</span></span> <span data-ttu-id="20fb9-109">有关安装管理工具的过程，请参阅 [安装 Lync Server 2013 管理工具](lync-server-2013-install-lync-server-administrative-tools.md)。</span><span class="sxs-lookup"><span data-stu-id="20fb9-109">For procedures to install the administrative tools, see [Install Lync Server 2013 administrative tools](lync-server-2013-install-lync-server-administrative-tools.md).</span></span> <span data-ttu-id="20fb9-110">有关打开用于执行管理任务的工具的步骤，请参阅 [打开 Lync Server 2013 管理工具](lync-server-2013-open-lync-server-administrative-tools.md)。</span><span class="sxs-lookup"><span data-stu-id="20fb9-110">For procedures to open the tools to perform management tasks, see [Open Lync Server 2013 administrative tools](lync-server-2013-open-lync-server-administrative-tools.md).</span></span>
+
+<span data-ttu-id="20fb9-111">在安装或使用 Lync Server 管理工具之前，请确保查看基础结构、操作系统、软件和管理员权限要求。</span><span class="sxs-lookup"><span data-stu-id="20fb9-111">Ensure that you review infrastructure, operating system, software, and administrator rights requirements before you install or use the Lync Server administrative tools.</span></span> <span data-ttu-id="20fb9-112">有关基础结构要求的详细信息，请参阅 [Lync Server 2013 中的管理工具基础结构要求](lync-server-2013-administrative-tools-infrastructure-requirements.md)。</span><span class="sxs-lookup"><span data-stu-id="20fb9-112">For details about infrastructure requirements, see [Administrative tools infrastructure requirements in Lync Server 2013](lync-server-2013-administrative-tools-infrastructure-requirements.md).</span></span> <span data-ttu-id="20fb9-113">有关操作系统和软件要求安装 Lync Server 管理工具的详细信息，请参阅 [lync server 2013 中的 "服务器和工具" 操作系统支持](lync-server-2013-server-and-tools-operating-system-support.md)、lync [server 2013 的其他软件要求](lync-server-2013-additional-software-requirements.md)以及 [Lync server 2013 中的其他服务器支持和要求](lync-server-2013-additional-server-support-and-requirements.md)。</span><span class="sxs-lookup"><span data-stu-id="20fb9-113">For details about operating system and software requirements to install the Lync Server administrative tools, see [Server and tools operating system support in Lync Server 2013](lync-server-2013-server-and-tools-operating-system-support.md), [Additional software requirements for Lync Server 2013](lync-server-2013-additional-software-requirements.md), and [Additional server support and requirements in Lync Server 2013](lync-server-2013-additional-server-support-and-requirements.md).</span></span> <span data-ttu-id="20fb9-114">安装和使用工具所需的用户权利和权限在 [设置和管理 Lync Server 2013 所需的管理员权限和权限](lync-server-2013-administrator-rights-and-permissions-required-for-setup-and-administration.md)中进行了说明。</span><span class="sxs-lookup"><span data-stu-id="20fb9-114">The user rights and permissions required to install and use the tools are described in [Administrator rights and permissions required for setup and administration of Lync Server 2013](lync-server-2013-administrator-rights-and-permissions-required-for-setup-and-administration.md).</span></span>
+
+<span data-ttu-id="20fb9-115">管理工具包括以下内容：</span><span class="sxs-lookup"><span data-stu-id="20fb9-115">The administrative tools consist of the following:</span></span>
+
+  - <span data-ttu-id="20fb9-116">**Lync Server 部署向导**   用于部署 Lync Server 和安装所有管理工具。</span><span class="sxs-lookup"><span data-stu-id="20fb9-116">**Lync Server Deployment Wizard**   Use to deploy Lync Server and to install all administrative tools.</span></span>
+
+  - <span data-ttu-id="20fb9-117">**Lync Server 拓扑生成器**   用于在部署中定义组件。</span><span class="sxs-lookup"><span data-stu-id="20fb9-117">**Lync Server Topology Builder**   Use to define components in your deployment.</span></span>
+
+  - <span data-ttu-id="20fb9-118">**Lync Server "控制面板"**   使用基于 web 的界面进行部署的日常管理。</span><span class="sxs-lookup"><span data-stu-id="20fb9-118">**Lync Server Control Panel**   Use for ongoing management of your deployment by using a web-based interface.</span></span>
+
+  - <span data-ttu-id="20fb9-119">**Lync Server 命令行管理**   程序  使用命令行对部署进行日常管理。</span><span class="sxs-lookup"><span data-stu-id="20fb9-119">**Lync Server Management Shell**   Use for ongoing management of your deployment by using the command line.</span></span>
+
+  - <span data-ttu-id="20fb9-120">**Lync Server 日志记录工具**   用于解决部署中的问题。</span><span class="sxs-lookup"><span data-stu-id="20fb9-120">**Lync Server Logging tool**   Use to troubleshoot problems in your deployment.</span></span>
+
+  - <span data-ttu-id="20fb9-121">**集中式日志记录服务**   从一台计算机、池、站点或全局位置收集日志和跟踪文件。</span><span class="sxs-lookup"><span data-stu-id="20fb9-121">**Centralized Logging Service**   Collect logs and trace files from one computer, pool, site or global.</span></span> <span data-ttu-id="20fb9-122">选择并定义包含提供程序、标志和跟踪级别的方案。</span><span class="sxs-lookup"><span data-stu-id="20fb9-122">Select and define scenarios that contain providers, flags and trace levels.</span></span> <span data-ttu-id="20fb9-123">日志记录被收集、聚合并与工具（如任何基于文本的工具或 Snooper.exe）一起显示。</span><span class="sxs-lookup"><span data-stu-id="20fb9-123">Logging is collected, aggregated and displayed with tools such as any text-based tool or Snooper.exe.</span></span>
+
+<span data-ttu-id="20fb9-124">你可以通过使用拓扑生成器和 Lync Server 控制面板来管理你的部署。</span><span class="sxs-lookup"><span data-stu-id="20fb9-124">You can manage your deployment by primarily using Topology Builder and Lync Server Control Panel.</span></span>
+
+<div>
+
+## <a name="deployment-wizard"></a><span data-ttu-id="20fb9-125">部署向导</span><span class="sxs-lookup"><span data-stu-id="20fb9-125">Deployment Wizard</span></span>
+
+<span data-ttu-id="20fb9-126">必须使用安装媒体上包含的 Lync Server 部署向导将所有管理工具安装到尚未安装 Lync Server 的计算机上。</span><span class="sxs-lookup"><span data-stu-id="20fb9-126">You must use the Lync Server Deployment Wizard included on the installation media to install all administrative tools onto a computer on which you have not already installed Lync Server.</span></span> <span data-ttu-id="20fb9-127">在 "管理工具" 安装过程中，将在本地安装 Lync Server 部署向导和其他工具，以便以后可以使用它为其他组件安装文件或删除计算机上不需要的组件的文件。</span><span class="sxs-lookup"><span data-stu-id="20fb9-127">During the administrative tools installation process, the Lync Server Deployment Wizard is installed locally along with the other tools so that you can later use it to install files for additional components or remove files for components that you do not want on the computer.</span></span>
+
+<span data-ttu-id="20fb9-128">有关如何首次从 Lync Server 安装媒体运行 Lync Server 部署向导的详细信息，请参阅 [安装 Lync server 2013 管理工具](lync-server-2013-install-lync-server-administrative-tools.md)。</span><span class="sxs-lookup"><span data-stu-id="20fb9-128">For details about how to run the Lync Server Deployment Wizard for the first time from the Lync Server installation media, see [Install Lync Server 2013 administrative tools](lync-server-2013-install-lync-server-administrative-tools.md).</span></span>
+
+</div>
+
+<div>
+
+## <a name="topology-builder"></a><span data-ttu-id="20fb9-129">拓扑生成器</span><span class="sxs-lookup"><span data-stu-id="20fb9-129">Topology Builder</span></span>
+
+<span data-ttu-id="20fb9-130">有关可使用拓扑生成器执行的部署任务的详细信息，请参阅每个服务器角色的部署文档。</span><span class="sxs-lookup"><span data-stu-id="20fb9-130">For details about deployment tasks that you can you perform by using Topology Builder, see the Deployment documentation for each server role.</span></span>
+
+</div>
+
+<div>
+
+## <a name="lync-server-control-panel"></a><span data-ttu-id="20fb9-131">Lync Server 控制面板</span><span class="sxs-lookup"><span data-stu-id="20fb9-131">Lync Server Control Panel</span></span>
+
+<span data-ttu-id="20fb9-132">可以使用 Lync Server 2013 控制面板执行管理和维护 Lync Server 2013 所需的大部分管理任务。</span><span class="sxs-lookup"><span data-stu-id="20fb9-132">You can use Lync Server 2013 Control Panel to perform most of the administrative tasks required to manage and maintain Lync Server 2013.</span></span> <span data-ttu-id="20fb9-133">Lync Server 控制面板为你提供了图形用户界面 (GUI) 管理运行 Lync Server 的服务器的配置，以及组织中的用户、客户端和设备。</span><span class="sxs-lookup"><span data-stu-id="20fb9-133">Lync Server Control Panel provides you with a graphical user interface (GUI) to manage the configuration of the servers running Lync Server, in addition to the users, clients, and devices in your organization.</span></span> <span data-ttu-id="20fb9-134">Lync Server Management Shell 使用 Lync Server 控制面板作为执行 Lync Server 配置的基础机制。</span><span class="sxs-lookup"><span data-stu-id="20fb9-134">Lync Server Management Shell uses Lync Server Control Panel as the underlying mechanism to perform Lync Server configuration.</span></span>
+
+<span data-ttu-id="20fb9-135">Lync Server "控制面板" 将自动安装在每个 Lync Server 前端服务器或标准版服务器上。</span><span class="sxs-lookup"><span data-stu-id="20fb9-135">Lync Server Control Panel is automatically installed on every Lync Server Front End Server or Standard Edition server.</span></span> <span data-ttu-id="20fb9-136">在此版本中，您可以远程管理边缘服务器。</span><span class="sxs-lookup"><span data-stu-id="20fb9-136">In this release, you administer Edge Servers remotely.</span></span> <span data-ttu-id="20fb9-137">您也可以在另一台计算机上安装 Lync Server 控制面板，例如要集中管理 Lync Server 的管理控制台。</span><span class="sxs-lookup"><span data-stu-id="20fb9-137">You can also install Lync Server Control Panel on another computer, such as a management console from which you want to centrally manage Lync Server.</span></span> <span data-ttu-id="20fb9-138">有关详细信息，请参阅 [安装 Lync Server 2013 管理工具](lync-server-2013-install-lync-server-administrative-tools.md)。</span><span class="sxs-lookup"><span data-stu-id="20fb9-138">For details, see [Install Lync Server 2013 administrative tools](lync-server-2013-install-lync-server-administrative-tools.md).</span></span>
+
+<div>
+
+
+> [!IMPORTANT]  
+> <UL>
+> <LI>
+> <P><span data-ttu-id="20fb9-139">若要使用 Lync Server "控制面板" 配置设置，必须使用分配给 CsAdministrator 角色的帐户登录。</span><span class="sxs-lookup"><span data-stu-id="20fb9-139">To configure settings using Lync Server Control Panel, you must be logged in using an account that is assigned to the CsAdministrator role.</span></span> <span data-ttu-id="20fb9-140">有关 Lync Server 2013 中可用的预定义管理角色的详细信息，请参阅 <A href="lync-server-2013-planning-for-role-based-access-control.md">在 Lync server 2013 中规划基于角色的访问控制</A>。</span><span class="sxs-lookup"><span data-stu-id="20fb9-140">For details about the predefined administrative roles available in Lync Server 2013, see <A href="lync-server-2013-planning-for-role-based-access-control.md">Planning for role-based access control in Lync Server 2013</A>.</span></span></P>
+> <LI>
+> <P><span data-ttu-id="20fb9-141">若要使用 Lync Server "控制面板" 配置设置，还必须使用最小屏幕分辨率为 1024 x 768 的计算机。</span><span class="sxs-lookup"><span data-stu-id="20fb9-141">To configure settings using Lync Server Control Panel, you must also use a computer with a minimum screen resolution of 1024 x 768.</span></span></P></LI></UL>
+
+
+
+</div>
+
+</div>
+
+<div>
+
+## <a name="lync-server-management-shell"></a><span data-ttu-id="20fb9-142">Lync Server 命令行管理程序</span><span class="sxs-lookup"><span data-stu-id="20fb9-142">Lync Server Management Shell</span></span>
+
+<span data-ttu-id="20fb9-143">在 Lync Server 中，Lync Server 命令行管理程序提供了一种用于管理和管理的新方法。</span><span class="sxs-lookup"><span data-stu-id="20fb9-143">In Lync Server, the Lync Server Management Shell provides a new method for administration and management.</span></span> <span data-ttu-id="20fb9-144">Lync Server 命令行管理程序是在 Windows PowerShell 命令行界面上构建的一种功能强大的管理界面，其中包括一组特定于 Lync Server 的全套 cmdlet。</span><span class="sxs-lookup"><span data-stu-id="20fb9-144">Lync Server Management Shell is a powerful management interface, built on the Windows PowerShell command-line interface, that includes a comprehensive set of cmdlets that are specific to Lync Server.</span></span> <span data-ttu-id="20fb9-145">使用 Lync Server 命令行管理程序，你可以获得一组丰富的配置和自动化控件。</span><span class="sxs-lookup"><span data-stu-id="20fb9-145">With Lync Server Management Shell, you gain a rich set of configuration and automation controls.</span></span> <span data-ttu-id="20fb9-146">拓扑生成器和 Lync Server 控制面板都实现这些 cmdlet 的子集以支持 Lync Server 的管理。</span><span class="sxs-lookup"><span data-stu-id="20fb9-146">Topology Builder and Lync Server Control Panel both implement subsets of these cmdlets to support management of Lync Server.</span></span> <span data-ttu-id="20fb9-147">Lync Server Management Shell 包含所有 Lync Server 管理任务的 cmdlet，你可以单独使用这些 cmdlet 来管理你的部署。</span><span class="sxs-lookup"><span data-stu-id="20fb9-147">The Lync Server Management Shell includes cmdlets for all Lync Server administration tasks, and you can use the cmdlets individually to manage your deployment.</span></span> <span data-ttu-id="20fb9-148">有关详细信息，请参阅 [Lync Server 2013](lync-server-2013-lync-server-management-shell.md) 命令行管理程序文档或每个 cmdlet 的命令行帮助。</span><span class="sxs-lookup"><span data-stu-id="20fb9-148">For details, see [Lync Server 2013 Management Shell](lync-server-2013-lync-server-management-shell.md) documentation or the command-line help for each cmdlet.</span></span>
+
+</div>
+
+<div>
+
+## <a name="logging-tool"></a><span data-ttu-id="20fb9-149">日志记录工具</span><span class="sxs-lookup"><span data-stu-id="20fb9-149">Logging Tool</span></span>
+
+<span data-ttu-id="20fb9-150">通过在产品运行期间捕获产品的日志记录和跟踪信息，Lync Server 日志记录工具有助于进行故障排除。</span><span class="sxs-lookup"><span data-stu-id="20fb9-150">The Lync Server Logging Tool facilitates troubleshooting by capturing logging and tracing information from the product while the product is running.</span></span> <span data-ttu-id="20fb9-151">你可以使用该工具在任何 Lync Server 服务器角色上运行调试会话。</span><span class="sxs-lookup"><span data-stu-id="20fb9-151">You can use the tool to run debug sessions on any Lync Server server role.</span></span> <span data-ttu-id="20fb9-152">有关日志记录工具的详细信息，请参阅 TechNet 库中的 Lync Server 2010 日志记录工具文档 [https://go.microsoft.com/fwlink/p/?linkId=199265](https://go.microsoft.com/fwlink/p/?linkid=199265) 。</span><span class="sxs-lookup"><span data-stu-id="20fb9-152">For details about the Logging Tool, see the Lync Server 2010 Logging Tool documentation on the TechNet Library at [https://go.microsoft.com/fwlink/p/?linkId=199265](https://go.microsoft.com/fwlink/p/?linkid=199265).</span></span>
+
+<div>
+
+
+> [!IMPORTANT]  
+> <span data-ttu-id="20fb9-153">对于所有情况下 Lync Server 日志记录工具上的所有日志记录收集，建议使用集中式日志记录服务。</span><span class="sxs-lookup"><span data-stu-id="20fb9-153">The Centralized Logging Service is recommended for all logging collection over the Lync Server Logging Tool in all circumstances.</span></span> <span data-ttu-id="20fb9-154">Lync Server 日志记录工具仍有效，但如果集中式日志记录服务已在运行，它将干扰或呈现为主要无效。</span><span class="sxs-lookup"><span data-stu-id="20fb9-154">The Lync Server Logging Tool will still work, but it will interfere or be rendered mostly ineffective if the Centralized Logging Service is already running.</span></span> <span data-ttu-id="20fb9-155">你应该仅使用集中式日志记录服务或 Lync Server 日志记录工具，但绝不会同时使用。</span><span class="sxs-lookup"><span data-stu-id="20fb9-155">You should use only the Centralized Logging Service or the Lync Server Logging Tool, but never both concurrently.</span></span> <span data-ttu-id="20fb9-156">有关集中式日志记录服务以及应以独占方式使用它的详细信息，请参阅 <A href="lync-server-2013-using-the-centralized-logging-service.md">在 Lync Server 2013 中使用集中式日志记录服务</A>。</span><span class="sxs-lookup"><span data-stu-id="20fb9-156">For more information on the Centralized Logging Service and why you should use it exclusively, see <A href="lync-server-2013-using-the-centralized-logging-service.md">Using the Centralized Logging Service in Lync Server 2013</A>.</span></span>
+
+
+
+</div>
+
+</div>
+
+<div>
+
+## <a name="in-this-section"></a><span data-ttu-id="20fb9-157">本节内容</span><span class="sxs-lookup"><span data-stu-id="20fb9-157">In This Section</span></span>
+
+  - [<span data-ttu-id="20fb9-158">Lync Server 2013 中的管理工具基础结构要求</span><span class="sxs-lookup"><span data-stu-id="20fb9-158">Administrative tools infrastructure requirements in Lync Server 2013</span></span>](lync-server-2013-administrative-tools-infrastructure-requirements.md)
+
+  - [<span data-ttu-id="20fb9-159">Lync Server 2013 中的服务器和工具操作系统支持</span><span class="sxs-lookup"><span data-stu-id="20fb9-159">Server and tools operating system support in Lync Server 2013</span></span>](lync-server-2013-server-and-tools-operating-system-support.md)
+
+  - [<span data-ttu-id="20fb9-160">Lync Server 2013 中的管理工具软件要求</span><span class="sxs-lookup"><span data-stu-id="20fb9-160">Administrative tools software requirements in Lync Server 2013</span></span>](lync-server-2013-administrative-tools-software-requirements.md)
+
+  - [<span data-ttu-id="20fb9-161">Lync Server 2013 的安装和管理所需的管理员权限</span><span class="sxs-lookup"><span data-stu-id="20fb9-161">Administrator rights and permissions required for setup and administration of Lync Server 2013</span></span>](lync-server-2013-administrator-rights-and-permissions-required-for-setup-and-administration.md)
+
+  - [<span data-ttu-id="20fb9-162">在 Lync Server 2013 中发布拓扑的要求</span><span class="sxs-lookup"><span data-stu-id="20fb9-162">Requirements to publish a topology in Lync Server 2013</span></span>](lync-server-2013-requirements-to-publish-a-topology.md)
+
+  - [<span data-ttu-id="20fb9-163">安装 Lync Server 2013 管理工具</span><span class="sxs-lookup"><span data-stu-id="20fb9-163">Install Lync Server 2013 administrative tools</span></span>](lync-server-2013-install-lync-server-administrative-tools.md)
+
+  - [<span data-ttu-id="20fb9-164">打开 Lync Server 2013 管理工具</span><span class="sxs-lookup"><span data-stu-id="20fb9-164">Open Lync Server 2013 administrative tools</span></span>](lync-server-2013-open-lync-server-administrative-tools.md)
+
+  - [<span data-ttu-id="20fb9-165">Lync Server 2013 控制面板疑难解答</span><span class="sxs-lookup"><span data-stu-id="20fb9-165">Troubleshooting Lync Server 2013 Control Panel</span></span>](lync-server-2013-troubleshooting-lync-server-2013-control-panel.md)
+
+  - [<span data-ttu-id="20fb9-166">在 Lync Server 2013 中使用集中式日志记录服务</span><span class="sxs-lookup"><span data-stu-id="20fb9-166">Using the Centralized Logging Service in Lync Server 2013</span></span>](lync-server-2013-using-the-centralized-logging-service.md)
+
+</div>
+
+<div>
+
+## <a name="see-also"></a><span data-ttu-id="20fb9-167">另请参阅</span><span class="sxs-lookup"><span data-stu-id="20fb9-167">See Also</span></span>
+
+
+[<span data-ttu-id="20fb9-168">Lync Server 2013 命令行管理程序</span><span class="sxs-lookup"><span data-stu-id="20fb9-168">Lync Server 2013 Management Shell</span></span>](lync-server-2013-lync-server-management-shell.md)  
+  
+
+<span data-ttu-id="20fb9-169"></div>
+
+</div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</span><span class="sxs-lookup"><span data-stu-id="20fb9-169"></div>
+
+</div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</span></span></div>
+
