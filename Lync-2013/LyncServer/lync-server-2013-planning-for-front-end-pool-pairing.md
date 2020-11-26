@@ -1,0 +1,72 @@
+---
+title: Lync Server 2013：规划前端池配对
+description: Lync Server 2013：计划前端池配对。
+ms.reviewer: ''
+ms.author: v-lanac
+author: lanachin
+f1.keywords:
+- NOCSH
+TOCTitle: Planning for Front End pool pairing
+ms:assetid: cca5773d-57ff-45ce-a7b4-f82ae697c477
+ms:mtpsurl: https://technet.microsoft.com/en-us/library/JJ205293(v=OCS.15)
+ms:contentKeyID: 48185508
+ms.date: 07/23/2014
+manager: serdars
+mtps_version: v=OCS.15
+ms.openlocfilehash: ac235cf682e286132836e13b34b457adf2bfc233
+ms.sourcegitcommit: 36fee89bb887bea4f18b19f17a8c69daf5bc423d
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "49424560"
+---
+# <a name="planning-for-front-end-pool-pairing-in-lync-server-2013"></a>在 Lync Server 2013 中规划前端池配对
+
+<div data-xmlns="http://www.w3.org/1999/xhtml">
+
+<div class="topic" data-xmlns="http://www.w3.org/1999/xhtml" data-msxsl="urn:schemas-microsoft-com:xslt" data-cs="https://msdn.microsoft.com/">
+
+<div data-asp="https://msdn2.microsoft.com/asp">
+
+
+
+</div>
+
+<div id="mainSection">
+
+<div id="mainBody">
+
+<span> </span>
+
+_**主题上次修改时间：** 2012-09-28_
+
+为了获得 Lync Server 2013 中的最佳灾难恢复能力，请跨两个地理位置分散的网站部署前端池对。 每个网站都包含一个与另一个网站中的对应前端池配对的前端池。 两个网站都处于活动状态，并且 Lync Server 备份服务提供实时数据复制以保持池同步。 备份服务是 Lync Server 2013 中的一项新功能，旨在支持灾难恢复解决方案。 当您将池与另一个前端池配对时，它将安装在前端池。
+
+如果某个网站中的池出现故障，则可以将用户从该池中故障转移到另一个网站中的池，然后在两个池中的所有用户提供服务。 对于容量规划，每个池都应设计为在发生灾难时处理两个池中所有用户的工作负荷。
+
+<div>
+
+## <a name="in-this-section"></a>本节内容
+
+  - [支持 Lync Server 2013 的池配对选项和最佳做法](lync-server-2013-supported-pool-pairing-options-and-best-practices.md)
+
+  - [Lync Server 2013 中的备份注册器关系](lync-server-2013-backup-registrar-relationships.md)
+
+  - [Lync Server 2013 中的池故障转移和池故障回复的恢复时间](lync-server-2013-recovery-time-for-pool-failover-and-pool-failback.md)
+
+  - [Lync Server 2013 中的中央管理存储故障转移](lync-server-2013-central-management-store-failover.md)
+
+  - [Lync Server 2013 中的前端池配对数据安全](lync-server-2013-front-end-pool-pairing-data-security.md)
+
+</div>
+
+</div>
+
+<span> </span>
+
+</div>
+
+</div>
+
+</div>
+
