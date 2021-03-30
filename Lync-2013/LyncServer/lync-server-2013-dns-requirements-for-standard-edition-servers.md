@@ -38,9 +38,9 @@ ms.locfileid: "49391830"
 
 <span> </span>
 
-_**上次修改主题** ：2012-06-19_
+_**主题上次修改时间** ：2012-06-19_
 
-本部分介绍部署标准 (所需的 (DNS) 记录。
+本部分介绍域名系统 (DNS) 部署标准版服务器所需的记录。
 
 <div>
 
@@ -64,19 +64,19 @@ _**上次修改主题** ：2012-06-19_
 <tbody>
 <tr class="odd">
 <td><p>Standard Edition Server</p></td>
-<td><p>一个内部 A 记录，用于将服务器的 FQDN (FQDN) 到其 IP 地址。</p></td>
+<td><p>内部 A 记录，用于将服务器的 FQDN (FQDN) 到其 IP 地址。</p></td>
 </tr>
 <tr class="even">
 <td><p>自动客户端登录</p></td>
-<td><p>对于每个受支持的 SIP 域，_sipinternaltls._tcp 的 SRV 记录。 &lt;通过端口 5061 的域，该域映射到标准版服务器的 FQDN，该服务器对客户端登录请求进行身份验证 &gt; 和重定向。 有关详细信息，请参阅 <a href="lync-server-2013-dns-requirements-for-automatic-client-sign-in.md">Lync Server 2013</a>中自动客户端登录的 DNS 要求。</p></td>
+<td><p>对于每个支持的 SIP 域，_sipinternaltls._tcp 的 SRV 记录。 &lt;通过端口 5061 的域，该域映射到标准版服务器的 FQDN，该服务器对客户端登录请求进行身份验证和 &gt; 重定向。 有关详细信息，请参阅 <a href="lync-server-2013-dns-requirements-for-automatic-client-sign-in.md">Lync Server 2013</a>中客户端自动登录的 DNS 要求。</p></td>
 </tr>
 <tr class="odd">
-<td><p>设备更新 Web 服务发现（由统一通信 (UC) 设备）</p></td>
-<td><p>名称为 ucupdates-r2 的内部 A 记录。 &lt;解析为托管设备更新 Web 服务的标准版服务器的 IP 地址的 SIP &gt; 域。 如果 UC 设备已打开，但用户从未登录到该设备，则 A 记录允许设备发现托管设备更新 Web 服务的服务器并获取更新。 否则，设备在用户首次登录时通过带内预配获取服务器信息。</p></td>
+<td><p>通过统一通信通过统一通信发现 (UC) 设备</p></td>
+<td><p>名称为 ucupdates-r2 的内部 A 记录。 &lt;SIP 域，解析为托管设备更新 Web &gt; 服务的标准版本服务器的 IP 地址。 如果 UC 设备已打开，但用户从未登录到该设备，则 A 记录允许设备发现托管设备更新 Web 服务的服务器并获取更新。 否则，设备在用户首次登录时通过带内预配获取服务器信息。</p></td>
 </tr>
 <tr class="even">
 <td><p>支持 HTTP 流量的反向代理</p></td>
-<td><p>将外部 Web 场 FQDN 解析为反向代理的外部 IP 地址的外部 A 记录。 客户端和 UC 设备使用此记录连接到反向代理。 有关详细信息，请参阅"规划"文档中的"确定 <a href="lync-server-2013-determine-dns-requirements.md">Lync Server 2013</a> 的 DNS 要求"。</p></td>
+<td><p>外部 A 记录，用于将外部 Web 场 FQDN 解析为反向代理的外部 IP 地址。 客户端和 UC 设备使用此记录连接到反向代理。 有关详细信息，请参阅规划文档中的确定 <a href="lync-server-2013-determine-dns-requirements.md">Lync Server 2013</a> 的 DNS 要求。</p></td>
 </tr>
 </tbody>
 </table>
